@@ -1,0 +1,98 @@
+{
+  "inventory_version": "kg-phase0-contract-inventory.v1",
+  "scope": "knowledge-graph contract and provenance baseline",
+  "artifacts": [
+    {"id": "kg.openapi.v1", "location": "local", "path": "schemas/openapi.json", "format": "json", "owner": "knowledge-graph", "authority": "exported-api-contract", "lifecycle": "versioned-export", "runtime_required": true},
+    {"id": "kg.jd-extraction-v2.schema", "location": "local", "path": "schemas/jd-extraction-v2.schema.json", "format": "json", "owner": "knowledge-graph", "authority": "exported-schema", "lifecycle": "versioned-export", "runtime_required": true},
+    {"id": "kg.jd-normalized-v2.schema", "location": "local", "path": "schemas/jd-normalized-v2.schema.json", "format": "json", "owner": "knowledge-graph", "authority": "exported-schema", "lifecycle": "versioned-export", "runtime_required": true},
+    {"id": "kg.normalization-map.main-capability-snapshot-v2", "location": "local", "path": "config/normalization_map.yaml", "format": "yaml", "owner": "main-system", "authority": "empty-local-map-authoritative-snapshots-only", "lifecycle": "versioned-configuration", "runtime_required": true},
+    {"id": "shared.extraction-v2.python", "location": "repository", "path": "packages/contracts/jobgraph_contracts/extraction_v2.py", "format": "text", "owner": "shared-contracts", "authority": "runtime-dto-contract", "lifecycle": "source-versioned", "runtime_required": true},
+    {"id": "shared.normalization-v2.python", "location": "repository", "path": "packages/contracts/jobgraph_contracts/normalization_v2.py", "format": "text", "owner": "shared-contracts", "authority": "runtime-dto-contract", "lifecycle": "source-versioned", "runtime_required": true},
+    {"id": "shared.catalog.python", "location": "repository", "path": "packages/contracts/jobgraph_contracts/catalog.py", "format": "text", "owner": "main-system", "authority": "standard-identity-snapshot-contract", "lifecycle": "source-versioned", "runtime_required": true},
+    {"id": "shared.position-profile.python", "location": "repository", "path": "packages/contracts/jobgraph_contracts/position_profile.py", "format": "text", "owner": "knowledge-graph", "authority": "formal-position-profile-contract", "lifecycle": "versioned-export", "runtime_required": true},
+    {"id": "shared.review.python", "location": "repository", "path": "packages/contracts/jobgraph_contracts/review.py", "format": "text", "owner": "knowledge-graph", "authority": "review-task-contract", "lifecycle": "versioned-export", "runtime_required": true},
+    {"id": "main.kg-boundary-mapper.python", "location": "repository", "path": "apps/api/app/integrations/knowledge_graph/mappings.py", "format": "text", "owner": "main-system", "authority": "anti-corruption-mapper", "lifecycle": "source-versioned", "runtime_required": false},
+    {"id": "extraction.field-contract.v2", "location": "repository", "path": "services/jd-extraction/config/field_contract.yaml", "format": "yaml", "owner": "jd-extraction", "authority": "extraction-internal-contract", "lifecycle": "versioned-configuration", "runtime_required": false},
+    {"id": "extraction.semantic-rules.v2", "location": "repository", "path": "services/jd-extraction/config/model_semantic_rules.yaml", "format": "yaml", "owner": "jd-extraction", "authority": "extraction-semantic-policy", "lifecycle": "versioned-configuration", "runtime_required": false},
+    {"id": "extraction.review-rules.v2", "location": "repository", "path": "services/jd-extraction/config/review_rules.yaml", "format": "yaml", "owner": "jd-extraction", "authority": "extraction-review-policy", "lifecycle": "versioned-configuration", "runtime_required": false},
+    {"id": "extraction.normalization-map.v2", "location": "repository", "path": "services/jd-extraction/config/normalization_map.yaml", "format": "yaml", "owner": "jd-extraction", "authority": "extraction-normalization-policy", "lifecycle": "versioned-configuration", "runtime_required": false}
+  ],
+  "runtime_contracts": [
+    {
+      "id": "kg.jd-extraction-v2.runtime",
+      "model": "app.schemas.extraction:JDExtractionResult",
+      "owner": "shared-contracts",
+      "root_fields": ["schema_version", "document_id", "job_title", "responsibilities", "requirements", "company_facts", "employment_facts", "requirement_graph"],
+      "hash_participation": "included when embedded in published-jd-fact.v1"
+    },
+    {
+      "id": "kg.jd-normalized-v2.runtime",
+      "model": "app.schemas.normalization:JDNormalizedResult",
+      "owner": "shared-contracts",
+      "root_fields": ["schema_version", "document_id", "job_classification", "normalized_requirements", "salary", "unresolved_items"],
+      "hash_participation": "included when embedded in published-jd-fact.v1"
+    },
+    {
+      "id": "kg.published-jd-fact.v3.runtime",
+      "model": "jobgraph_contracts.published_jd:PublishedJDFactV3",
+      "owner": "main-system",
+      "root_fields": ["contract_version", "schema_version", "source_system", "source_jd_id", "source_fact_id", "source_fact_version", "review_status", "published_at", "position_fact", "skill_facts", "requirement_facts", "education_fact", "experience_fact", "industry_fact", "company_facts", "employment_facts", "evidence", "extraction_fact", "normalized_fact", "trace_metadata", "validation_lineage", "skill_catalog_snapshot", "position_catalog_snapshot"],
+      "version_participation": "source_fact_version plus explicit skill and position catalog snapshots"
+    },
+    {
+      "id": "kg.position-profile.v1.runtime",
+      "model": "jobgraph_contracts.position_profile:PositionProfileV1",
+      "owner": "knowledge-graph",
+      "root_fields": ["contract_version", "position_id", "position_name", "graph_version", "profile_state", "taxonomy_version", "responsibilities", "requirements", "skill_relations", "evidence_summary", "quality", "requirement_inflation"],
+      "hash_participation": "entire profile"
+    },
+    {
+      "id": "kg.position-profile.v3.runtime",
+      "model": "jobgraph_contracts.position_profile:PositionProfileV3",
+      "owner": "knowledge-graph",
+      "root_fields": ["contract_version", "position_id", "position_name", "graph_version", "profile_state", "taxonomy_version", "responsibilities", "requirements", "skill_relations", "evidence_summary", "quality", "requirement_inflation", "graph_version_id", "published_at", "dependencies", "position_code", "classification_status", "career_level", "leadership_scope", "sample_support_status"],
+      "version_participation": "explicit graph, skill taxonomy, position taxonomy, classification, and dependency versions"
+    },
+    {
+      "id": "kg.review-task.v1.runtime",
+      "model": "jobgraph_contracts.review:ReviewTaskV1",
+      "owner": "knowledge-graph",
+      "root_fields": ["contract_version", "task_id", "source_system", "task_kind", "object_type", "object_id", "build_run_id", "status", "allowed_actions", "risk_level", "assignee_id", "evidence_context", "created_at"],
+      "hash_participation": "entire review task"
+    },
+    {
+      "id": "kg.review-batch.v1.runtime",
+      "model": "jobgraph_contracts.review:ReviewBatchOperationV1",
+      "owner": "knowledge-graph",
+      "root_fields": ["contract_version", "task_ids", "action", "reason"],
+      "hash_participation": "entire batch command"
+    }
+  ],
+  "declarative_contracts": [
+    {
+      "id": "kg.graph-version.snapshot.v1",
+      "owner": "knowledge-graph",
+      "root_fields": ["position_id", "base_version_id", "position", "time_window", "sample_stats", "skill_relations", "requirement_profile", "responsibilities", "company_context", "employment_context", "evidence_summary", "algorithm_metadata", "normalization_metadata", "release_notes"],
+      "hash_participation": "entire snapshot",
+      "immutability": "published snapshots cannot be updated or deleted"
+    }
+  ],
+  "compatibility_matrix": [
+    {"source": "Extraction SourcedText.value", "target": "KG SourcedText.text", "policy": "explicit mapper; preserve Evidence"},
+    {"source": "Extraction TaskRequirement.action", "target": "KG TaskRequirement.text", "policy": "explicit mapper; do not copy task kind or modality"},
+    {"source": "Extraction structured non-skill requirement", "target": "KG structured requirement fields plus optional text", "policy": "preserve education, experience, certificate, and soft-skill fields; text remains backward-compatible display data"},
+    {"source": "Extraction SkillItem.item_type", "target": "KG SkillItem.item_type", "policy": "explicit closed-enum mapping; unknown values require contract review"},
+    {"source": "Extraction CompanyFact.kind/value", "target": "KG CompanyFact.text plus extension in Published Fact", "policy": "preserve fact_id and Evidence; do not promote kind to a standard identity"},
+    {"source": "Extraction EmploymentFact.kind/value", "target": "KG EmploymentFact.fact_type/text", "policy": "explicit closed-enum mapping; unsupported kinds require reviewed boundary rules"},
+    {"source": "Extraction flat normalized skill records", "target": "KG NormalizedRequirement.normalized_skills", "policy": "join by a unique extraction requirement_id; ambiguity remains unresolved"},
+    {"source": "Extraction normalization catalog identity", "target": "main-system standard catalog snapshot", "policy": "main system owns authoritative IDs; KG consumes explicit snapshots and mappings"}
+  ],
+  "pending_upstream_fields": [
+    {"name": "data_validation_task_id", "status": "not-in-published-jd-fact.v1"},
+    {"name": "validation_report_id", "status": "not-in-published-jd-fact.v1"},
+    {"name": "validated_bundle_snapshot_id", "status": "not-in-published-jd-fact.v1"},
+    {"name": "validation_policy_version", "status": "not-in-published-jd-fact.v1"},
+    {"name": "validation_conclusion", "status": "not-in-published-jd-fact.v1"},
+    {"name": "validated_bundle_fingerprint", "status": "proposed-not-confirmed"}
+  ]
+}

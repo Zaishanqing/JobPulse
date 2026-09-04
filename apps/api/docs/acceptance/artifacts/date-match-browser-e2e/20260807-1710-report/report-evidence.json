@@ -1,0 +1,40 @@
+{
+  "stage": "evaluation-report",
+  "evaluation_id": "evaluation_task_28c41415cebf4103946ba1b5412a28f7",
+  "page_score": "22.5\n综合匹配 / 100",
+  "page_gap_count": 6,
+  "page_evidence": "候选人 Evidence\n3\n2024.03 - 2025.02 多格式简历解析平台 | 核心开发\nvalidated_cv_snapshot · 3b34b71c-7424-40a4-81cf-895a2c8cc816 · snapshot=3b34b71c-7424-40a4-81cf-895a2c8cc816:1: · span 431-466 · exact\n来源版本：3b34b71c-7424-40a4-81cf-895a2c8cc816 · snapshot=3b34b71c-7424-40a4-81cf-895a2c8cc816:1: · a34c732b-168a-4849-a9ef-3717c257415d · 9b474d7e-bff2-5d48-a28c-f387c4ef73f8 · current · evaluation_task_28c41415cebf4103946ba1b5412a28f7\n查看原文\n实现文本 PDF、DOCX、图片和扫描 PDF 的统一解析流程,区分文本提取与 OCR 模式。\nvalidated_cv_snapshot · 3b34b71c-7424-40a4-81cf-895a2c8cc816 · snapshot=3b34b71c-7424-40a4-81cf-895a2c8cc816:1: · span 471-518 · exact\n来源版本：3b34b71c-7424-40a4-81cf-895a2c8cc816 · snapshot=3b34b71c-7424-40a4-81cf-895a2c8cc816:1: · a34c732b-168a-4849-a9ef-3717c257415d · 9b474d7e-bff2-5d48-a28c-f387c4ef73f8 · current · evaluation_task_28c41415cebf4103946ba1b5412a28f7\n查看原文\n设计任务状态、错误反馈与人工确认流程,使抽取结果可复核并可继续用于岗位匹配。\nvalidated_cv_snapshot · 3b34b71c-7424-40a4-81cf-895a2c8cc816 · snapshot=3b34b71c-7424-40a4-81cf-895a2c8cc816:1: · span 523-561 · exact\n来源版本：3b34b71c-7424-40a4-81cf-895a2c8cc816 · snapshot=3b34b71c-7424-40a4-81cf-895a2c8cc816:1: · a34c732b-168a-4849-a9ef-3717c257415d · 9b474d7e-bff2-5d48-a28c-f387c4ef73f8 · current · evaluation_task_28c41415cebf4103946ba1b5412a28f7\n查看原文\n岗位 Evidence\n2\nPython 和 SQL 为必需技能\nposition_profile · 9b474d7e-bff2-5d48-a28c-f387c4ef73f8 · kg=9b474d7e-bff2-5d48-a28c-f387c4ef73f8:kg-graph-3:2026-q2 · span 0-18 · exact\n来源版本：a34c732b-168a-4849-a9ef-3717c257415d · 9b474d7e-bff2-5d48-a28c-f387c4ef73f8 · current · kg=9b474d7e-bff2-5d48-a28c-f387c4ef73f8:kg-graph-3:2026-q2 · evaluation_task_28c41415cebf4103946ba1b5412a28f7\n查看原文\n了解 FastAPI\nposition_profile · 9b474d7e-bff2-5d48-a28c-f387c4ef73f8 · kg=9b474d7e-bff2-5d48-a28c-f387c4ef73f8:kg-graph-3:2026-q2 · span 0-10 · exact\n来源版本：a34c732b-168a-4849-a9ef-3717c257415d · 9b474d7e-bff2-5d48-a28c-f387c4ef73f8 · current · kg=9b474d7e-bff2-5d48-a28c-f387c4ef73f8:kg-graph-3:2026-q2 · evaluation_task_28c41415cebf4103946ba1b5412a28f7\n查看原文",
+  "backend_status": 200,
+  "backend_overall_score": 22.5,
+  "backend_recommendation": "not_recommended",
+  "backend_gap_count": 6,
+  "backend_lineage": {
+    "resume_id": "a34c732b-168a-4849-a9ef-3717c257415d",
+    "position_id": "9b474d7e-bff2-5d48-a28c-f387c4ef73f8",
+    "validated_cv_snapshot_id": "3b34b71c-7424-40a4-81cf-895a2c8cc816",
+    "target_type": "standard_position",
+    "provider": "matching-service",
+    "method": "deterministic_explainable",
+    "algorithm_versions": {
+      "evaluation": "deterministic-matching.v5",
+      "scoring": "explainable-scoring.v1",
+      "scoring_config": "scoring-config.v1",
+      "gap": "deterministic-gap-path.v1",
+      "gap_config": "gap-analysis-config.v1",
+      "semantic": "semantic-shadow.v1+dense-1+sparse-0+rrf-k30+rrf-w0.7-0.3+hybrid-top10-t0.7+rerank-off+top50-10"
+    },
+    "data_versions": {
+      "cv_source": "snapshot=3b34b71c-7424-40a4-81cf-895a2c8cc816:1:",
+      "position_source": "kg=9b474d7e-bff2-5d48-a28c-f387c4ef73f8:kg-graph-3:2026-q2",
+      "cv_taxonomy": "skill-taxonomy-snapshot.v1",
+      "position_taxonomy": "sha256:467b6df0854341e7101ee88e83ab6b1c57bdbd857b3c69f4da4949eac8d4a513",
+      "graph": "3",
+      "embedding": "5617a9f61b028005a4858fdac845db406aefb181"
+    }
+  },
+  "page_score_after_refresh": "22.5\n综合匹配 / 100",
+  "evidence_link_href": "/matching/reports/evaluation_task_28c41415cebf4103946ba1b5412a28f7?evidenceRef=matching_evidence%3Aevaluation_task_28c41415cebf4103946ba1b5412a28f7%23evidence%3A51090%3A0-18",
+  "evidence_link_text": "查看原文",
+  "bff_only": true,
+  "bff_violations": []
+}

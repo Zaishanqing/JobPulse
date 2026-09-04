@@ -1,0 +1,34 @@
+# 定时调度配置
+# 每天早 8:00 开始依次触发三类爬虫，各错开 3 分钟避免并发争抢浏览器资源
+
+schedules:
+  # Boss 直聘 — 每天 8:00
+  - name: "Boss直聘-每日Java北京"
+    enabled: true
+    task_type: boss
+    cron: "0 8 * * *"
+    user_id: 1
+    params:
+      keyword: "Java"
+      city: "北京"
+      pages: 5
+
+  # 多公司爬虫 — 每天 8:03
+  - name: "多公司-每日Playwright平台"
+    enabled: true
+    task_type: company
+    cron: "3 8 * * *"
+    user_id: 1
+    params:
+      company_name: "all"
+      platform: "playwright"
+
+  # 猎聘 — 每天 8:06
+  - name: "猎聘-每日JavaPython前端"
+    enabled: true
+    task_type: liepin
+    cron: "6 8 * * *"
+    user_id: 1
+    params:
+      keywords: ["Java", "Python", "前端"]
+      cities: ["北京", "上海", "深圳"]

@@ -1,0 +1,62 @@
+version: "1.2"
+
+level_order:
+  unknown: 0
+  basic: 1
+  working: 2
+  proficient: 3
+  advanced: 4
+  expert: 5
+
+display_labels:
+  unknown: 未判定
+  basic: 入门
+  working: 可应用
+  proficient: 熟练
+  advanced: 优秀
+  expert: 专家
+
+declared_level_order:
+  know: 1
+  familiar: 2
+  proficient: 3
+  expert: 4
+
+level_thresholds:
+  basic: 1
+  working: 3
+  proficient: 6
+  advanced: 9
+  expert: 13
+
+signals:
+  direct_experience_occurrence: 1
+  direct_task_mention: 2
+  additional_direct_task: 1
+  maximum_additional_direct_tasks: 2
+  dated_experience: 1
+  explicit_role: 1
+  directly_linked_measurable_outcome: 2
+  repeated_independent_experience: 3
+  maximum_repeated_experiences: 3
+
+confidence:
+  direct_occurrence: 0.45
+  direct_task_mention: 0.20
+  additional_direct_task: 0.05
+  dated_experience: 0.05
+  explicit_role: 0.05
+  directly_linked_measurable_outcome: 0.15
+  repeated_independent_experience: 0.10
+  medium_threshold: 0.65
+  high_threshold: 0.85
+
+matching_bonus:
+  maximum: 0.20
+  partial_support: 0.03
+  medium_support: 0.08
+  high_support: 0.12
+  advanced_level: 0.04
+  repeated_experience: 0.04
+
+measurable_outcome_pattern: '(?i)(?:\d+(?:\.\d+)?\s*(?:%|倍|万|千|百|QPS|TPS|ms|秒|分钟|小时|用户|请求|准确率|召回率|F1|AUC)|提升|降低|减少|缩短|达到|实现).{0,32}\d'

@@ -1,0 +1,2594 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="JobPulse 用户手册：依据系统前端导航与已实现功能整理，按治理、企业、个人三种使用视角提供清晰操作说明。" />
+  <title>JobPulse 用户手册</title>
+  <style>
+    :root{
+      --home-bg:#f8f5ef;
+      --canvas:#f6f2ea;
+      --surface:#fffdfc;
+      --surface-muted:#f2eee7;
+      --surface-hover:#f4eee7;
+      --charcoal:#252827;
+      --charcoal-soft:#343735;
+      --text:#252827;
+      --text-soft:#514f49;
+      --text-muted:#696861;
+      --terracotta:#b94d2e;
+      --terracotta-hover:#a94429;
+      --terracotta-soft:#f3e3d9;
+      --emerald:#1f883d;
+      --emerald-soft:#e6ece5;
+      --status-success:#1f883d;
+      --status-success-soft:#e6ece5;
+      --status-success-border:#b6c3b5;
+      --status-warning:#c58b2a;
+      --status-danger:#b94a3b;
+      --status-on-solid:#fff;
+      --copper:#9a6335;
+      --sand:#b58a62;
+      --border:#ded7cc;
+      --border-soft:#ece6dc;
+      --shell:#292c2a;
+      --shell-raised:#343735;
+      --on-dark:#fffaf4;
+      --on-dark-soft:#c9c3b9;
+      --on-dark-muted:#aaa89f;
+      --on-dark-accent:#d7b18d;
+      --error:#b94a3b;
+      --radius-tag:6px;
+      --radius-control:10px;
+      --radius-compact:12px;
+      --radius-surface:14px;
+      --radius-feature:16px;
+      --shadow-focus:0 18px 48px rgba(53,43,34,.12);
+      --sidebar-width:282px;
+      --topbar-height:72px;
+      --ease:cubic-bezier(.16,1,.3,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    html,body{margin:0;min-height:100%;background:var(--home-bg);color:var(--text)}
+    body{
+      min-width:320px;
+      font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,-apple-system,sans-serif;
+      text-rendering:optimizeLegibility;
+    }
+    button,input{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit}
+    ::selection{background:var(--terracotta-soft);color:var(--terracotta-hover)}
+    :focus-visible{outline:2px solid var(--terracotta);outline-offset:3px}
+
+    .brand-mark{display:inline-block;width:48px;height:48px;flex:0 0 auto;object-fit:contain}
+    .brand-pulse{color:var(--terracotta)}
+
+    /* role gate */
+    .role-gate{
+      position:fixed;inset:0;z-index:1000;overflow:auto;
+      display:grid;place-items:center;padding:32px;
+      background:
+        radial-gradient(circle at 17% 15%, rgba(185,77,46,.10), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(116,119,90,.11), transparent 28%),
+        radial-gradient(circle at 70% 88%, rgba(181,138,98,.12), transparent 30%),
+        var(--home-bg);
+      transition:opacity .25s var(--ease),visibility .25s var(--ease);
+    }
+    .role-gate.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .gate-card{
+      position:relative;width:min(1080px,100%);padding:34px;
+      border:1px solid var(--border);border-radius:22px;background:rgba(255,253,252,.96);
+      box-shadow:var(--shadow-focus);overflow:hidden
+    }
+    .gate-card::after{
+      content:"";position:absolute;width:330px;height:330px;border:1px solid rgba(181,138,98,.28);
+      border-radius:50%;right:-170px;top:-170px;box-shadow:0 0 0 58px rgba(181,138,98,.045),0 0 0 116px rgba(185,77,46,.025);
+      pointer-events:none
+    }
+    .gate-head{display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;z-index:1}
+    .gate-brand{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:700}
+    .gate-version{font:600 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--copper);letter-spacing:.08em}
+    .gate-copy{max-width:700px;margin:62px auto 36px;text-align:center;position:relative;z-index:1}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:5px 10px;
+      border-radius:999px;background:var(--terracotta-soft);color:var(--copper);font-size:12px;font-weight:700
+    }
+    .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terracotta)}
+    .gate-copy h1{margin:0;font-size:clamp(36px,6vw,68px);line-height:1.08;letter-spacing:-.055em}
+    .gate-copy p{
+      max-width:720px;margin:20px auto 0;color:var(--text-soft);font-size:16px;line-height:1.9;
+      letter-spacing:.02em;text-wrap:balance
+    }
+    .role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:1}
+    .role-door{
+      min-height:210px;padding:22px;text-align:left;border:1px solid var(--border);border-radius:var(--radius-feature);
+      color:var(--text);background:var(--surface);transition:transform .18s var(--ease),border-color .18s var(--ease),background .18s var(--ease)
+    }
+    .role-door:hover{transform:translateY(-3px);border-color:var(--sand);background:var(--surface-hover)}
+    .role-door .role-no{display:flex;align-items:center;justify-content:space-between;color:var(--text-muted);font-size:11px;font-weight:700;letter-spacing:.12em}
+    .role-door h2{margin:0 0 8px;font-size:22px}
+    .role-door p{margin:0;color:var(--text-muted);font-size:13px;line-height:1.7}
+    .role-enter{display:flex;align-items:center;gap:8px;margin-top:20px;color:var(--terracotta);font-size:13px;font-weight:700}
+    .gate-note{display:flex;justify-content:center;gap:28px;margin-top:28px;color:var(--text-muted);font-size:12px}
+    .gate-note span{display:flex;align-items:center;gap:8px}
+    .gate-note i{width:6px;height:6px;border-radius:50%;background:var(--emerald)}
+
+    /* app shell */
+    .app{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:100vh}
+    .sidebar{
+      position:fixed;inset:0 auto 0 0;z-index:50;width:var(--sidebar-width);
+      display:flex;flex-direction:column;background:var(--shell);color:var(--on-dark);border-right:1px solid #3b3e3b
+    }
+    .side-brand{height:72px;display:flex;align-items:center;gap:12px;padding:0 22px;border-bottom:1px solid #3b3e3b;font-size:22px;font-weight:700}
+    .side-caption{padding:20px 20px 8px;color:var(--on-dark-muted);font-size:10px;font-weight:700;letter-spacing:.16em}
+    .side-role{
+      margin:0 12px 8px;padding:14px;border:1px solid #414440;border-radius:var(--radius-compact);
+      background:#303330
+    }
+    .side-role-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .side-role strong{font-size:14px}
+    .side-role button{padding:0;border:0;background:transparent;color:var(--on-dark-accent);font-size:12px}
+    .side-role p{margin:7px 0 0;color:var(--on-dark-soft);font-size:11px;line-height:1.55}
+    .side-nav{flex:1;overflow:auto;padding:0 12px 22px}
+    .nav-link{
+      position:relative;display:flex;align-items:center;gap:11px;width:100%;min-height:42px;margin:3px 0;padding:9px 12px;
+      border:0;border-radius:9px;color:var(--on-dark-soft);background:transparent;text-align:left;font-size:13px;font-weight:600;
+      transition:background .16s var(--ease),color .16s var(--ease)
+    }
+    .nav-link:hover{background:var(--shell-raised);color:var(--on-dark)}
+    .nav-link.is-active{background:#3a302b;color:var(--on-dark);box-shadow:inset 2px 0 var(--on-dark-accent)}
+    .nav-link .nav-icon{display:grid;place-items:center;width:22px;height:22px;color:var(--on-dark-muted);font-size:13px}
+    .nav-link.is-active .nav-icon{color:var(--on-dark-accent)}
+    .side-footer{padding:14px 18px;border-top:1px solid #3b3e3b;color:var(--on-dark-muted);font:500 10px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace}
+    .main-shell{grid-column:2;min-width:0;background:var(--canvas)}
+    .topbar{
+      position:sticky;top:0;z-index:40;height:var(--topbar-height);display:flex;align-items:center;justify-content:space-between;gap:18px;
+      padding:0 28px;background:rgba(255,253,252,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)
+    }
+    .top-context{min-width:0;display:flex;align-items:baseline;gap:12px}
+    .top-context strong{font-size:16px;white-space:nowrap}
+    .top-context span{overflow:hidden;color:var(--text-muted);font-size:12px;text-overflow:ellipsis;white-space:nowrap}
+    .top-actions{display:flex;align-items:center;gap:10px}
+    .search-box{position:relative;width:min(330px,32vw)}
+    .search-box input{
+      width:100%;height:40px;padding:0 16px 0 38px;border:1px solid var(--border);border-radius:var(--radius-control);
+      background:var(--surface);color:var(--text)
+    }
+    .search-box svg{position:absolute;left:13px;top:12px;width:16px;height:16px;color:var(--text-muted)}
+    .top-button{
+      height:40px;padding:0 14px;border:1px solid var(--border);border-radius:var(--radius-control);
+      background:var(--surface);color:var(--text);font-size:12px;font-weight:700
+    }
+    .top-button:hover{border-color:var(--terracotta);color:var(--terracotta)}
+    .mobile-menu{display:none}
+    .reading-progress{position:fixed;left:var(--sidebar-width);right:0;top:0;z-index:60;height:3px;background:transparent}
+    .reading-progress i{display:block;width:0;height:100%;background:var(--terracotta);transition:width .08s linear}
+
+    .content{width:min(1500px,100%);margin:0 auto;padding:28px}
+    .manual-hero{
+      position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);gap:28px;min-height:410px;
+      padding:42px;border:1px solid var(--border);border-radius:20px;background:var(--surface);overflow:hidden
+    }
+    .manual-hero::before{
+      content:"";position:absolute;inset:auto -110px -160px auto;width:420px;height:420px;border-radius:50%;
+      border:1px solid rgba(181,138,98,.25);box-shadow:0 0 0 70px rgba(181,138,98,.04),0 0 0 140px rgba(185,77,46,.025)
+    }
+    .hero-copy{align-self:center;position:relative;z-index:1}
+    .hero-copy h1{max-width:780px;margin:0;font-size:clamp(34px,4vw,58px);line-height:1.12;letter-spacing:-.045em}
+    .hero-copy h1 em{color:var(--terracotta);font-style:normal}
+    .hero-copy p{max-width:720px;margin:22px 0 0;color:var(--text-soft);font-size:16px;line-height:1.9}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+    .tag{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:var(--radius-tag);font-size:11px;font-weight:700}
+    .tag.terracotta{background:var(--terracotta-soft);color:var(--copper)}
+    .tag.emerald{background:var(--status-success-soft);color:var(--status-success);border:1px solid var(--status-success-border)}
+    .tag.neutral{background:var(--surface-muted);color:var(--text-muted)}
+    .hero-visual{position:relative;display:grid;place-items:center;min-height:300px}
+    .graph-card{
+      position:relative;width:min(420px,100%);aspect-ratio:1.2;border:1px solid var(--border);border-radius:18px;
+      background:linear-gradient(145deg,#fffdfc,#f4eee7);overflow:hidden
+    }
+    .graph-card .axis-label{position:absolute;color:var(--text-muted);font-size:10px;font-weight:700;letter-spacing:.08em}
+    .axis-label.a{left:18px;top:16px}.axis-label.b{right:18px;bottom:16px}
+    .graph-card svg{width:100%;height:100%}
+    .graph-edge{stroke:#c7b9aa;stroke-width:1.2}
+    .graph-edge.dashed{stroke-dasharray:5 5}
+    .node{stroke:#fffdfc;stroke-width:5}
+    .node-label{font-size:9px;fill:#514f49;font-weight:700}
+
+    .section{scroll-margin-top:90px;margin-top:28px;padding:30px;border:1px solid var(--border);border-radius:var(--radius-feature);background:var(--surface)}
+    .section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:22px}
+    .section-kicker{margin:0 0 7px;color:var(--copper);font-size:11px;font-weight:700;letter-spacing:.13em}
+    .section h2{margin:0;font-size:clamp(26px,3vw,38px);line-height:1.2;letter-spacing:-.035em}
+    .section-intro{max-width:790px;margin:10px 0 0;color:var(--text-soft);line-height:1.8}
+    .section-no{font:700 40px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--border)}
+    .overview-grid{display:grid;grid-template-columns:1fr;gap:24px}
+    .paper-panel{padding:22px;border:1px solid var(--border-soft);border-radius:var(--radius-surface);background:var(--surface)}
+    .access-guide{margin-top:24px}
+    .paper-panel h3{margin:0 0 14px;font-size:17px}
+    .paper-panel p{margin:0;color:var(--text-soft);font-size:13px;line-height:1.8}
+    .pipeline{display:flex;align-items:stretch;gap:0;margin-top:18px;overflow:auto;padding-bottom:4px}
+    .pipeline-step{position:relative;min-width:145px;flex:1;padding:16px 14px;border:1px solid var(--border);border-right:0;background:var(--surface)}
+    .pipeline-step:first-child{border-radius:12px 0 0 12px}
+    .pipeline-step:last-child{border-right:1px solid var(--border);border-radius:0 12px 12px 0}
+    .pipeline-step small{display:block;color:var(--copper);font:700 9px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}
+    .pipeline-step strong{display:block;margin-top:8px;font-size:13px}
+    .pipeline-step span{display:block;margin-top:5px;color:var(--text-muted);font-size:10px;line-height:1.5}
+    .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .principle{padding:16px;border-radius:12px;background:var(--surface-muted)}
+    .principle b{display:block;font-size:13px}
+    .principle span{display:block;margin-top:5px;color:var(--text-muted);font-size:11px;line-height:1.55}
+
+    .feature-index{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .feature-card{
+      display:flex;flex-direction:column;min-height:185px;padding:18px;border:1px solid var(--border-soft);border-radius:14px;
+      background:var(--surface);transition:border-color .16s var(--ease),background .16s var(--ease),transform .16s var(--ease)
+    }
+    .feature-card:hover{border-color:var(--sand);background:var(--surface-hover);transform:translateY(-2px)}
+    .feature-card .feature-code{color:var(--copper);font:700 10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
+    .feature-card h3{margin:20px 0 7px;font-size:17px}
+    .feature-card p{margin:0;color:var(--text-muted);font-size:12px;line-height:1.7}
+    .feature-card footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:18px;color:var(--terracotta);font-size:14px;font-weight:700}
+
+    .chapter-list{display:grid;gap:18px}
+    .chapter{
+      scroll-margin-top:90px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.76fr);gap:24px;
+      padding:24px;border:1px solid var(--border-soft);border-radius:var(--radius-surface);background:var(--surface)
+    }
+    .chapter-copy{min-width:0}
+    .chapter-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .chapter-num{color:var(--copper);font:700 10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}
+    .chapter h3{margin:12px 0 8px;font-size:24px;letter-spacing:-.025em}
+    .chapter .summary{margin:0;color:var(--text-soft);font-size:13px;line-height:1.8}
+    .chapter h4{margin:22px 0 10px;font-size:12px;letter-spacing:.08em}
+    .step-list{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+    .step-list li{display:grid;grid-template-columns:26px 1fr;gap:10px;color:var(--text-soft);font-size:12px;line-height:1.65}
+    .step-list b{display:grid;place-items:center;width:24px;height:24px;border-radius:8px;background:var(--surface-muted);color:var(--copper);font:700 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace}
+    .result-box{margin-top:17px;padding:14px 16px;border-left:3px solid var(--status-success);background:var(--status-success-soft);color:var(--status-success);font-size:12px;line-height:1.7}
+    .note-box{margin-top:10px;padding:14px 16px;border-left:3px solid var(--sand);background:#f6eee6;color:#6c543f;font-size:12px;line-height:1.7}
+    .shot-placeholder{
+      position:relative;display:grid;place-items:center;min-height:320px;padding:24px;border:1px dashed #bcae9e;border-radius:14px;
+      background:
+        linear-gradient(90deg,transparent 49.5%,rgba(181,138,98,.08) 50%,transparent 50.5%),
+        linear-gradient(transparent 49.5%,rgba(181,138,98,.08) 50%,transparent 50.5%),
+        var(--surface-muted);
+      background-size:36px 36px;text-align:center;overflow:hidden
+    }
+    .shot-placeholder::before,.shot-placeholder::after{
+      content:"";position:absolute;width:42px;height:42px;border-color:var(--sand);opacity:.55
+    }
+    .shot-placeholder::before{left:13px;top:13px;border-left:2px solid;border-top:2px solid}
+    .shot-placeholder::after{right:13px;bottom:13px;border-right:2px solid;border-bottom:2px solid}
+    .shot-placeholder .shot-icon{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 16px;border-radius:16px;background:var(--surface);border:1px solid var(--border);font-size:22px}
+    .shot-placeholder strong{display:block;font-size:14px}
+    .shot-placeholder p{max-width:320px;margin:7px auto 0;color:var(--text-muted);font-size:11px;line-height:1.6}
+    .shot-placeholder code{display:inline-block;margin-top:12px;padding:4px 8px;border-radius:6px;background:var(--surface);color:var(--copper);font-size:10px}
+
+    .capability-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .capability{padding:20px;border:1px solid var(--border-soft);border-radius:14px;background:var(--surface)}
+    .capability header{display:flex;align-items:center;gap:12px}
+    .capability .cap-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--terracotta-soft);color:var(--terracotta);font-weight:700}
+    .capability h3{margin:0;font-size:15px}
+    .capability p{margin:10px 0 0;color:var(--text-muted);font-size:12px;line-height:1.7}
+
+    .boundary{
+      display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;overflow:hidden;border:1px solid var(--border);border-radius:16px
+    }
+    .boundary > div{padding:24px;background:var(--surface)}
+    .boundary > div+div{border-left:1px solid var(--border);background:var(--surface-muted)}
+    .boundary h3{margin:0 0 12px;font-size:17px}
+    .boundary ul{margin:0;padding-left:18px;color:var(--text-soft);font-size:12px;line-height:1.85}
+    .glossary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .term{padding:16px;border:1px solid var(--border-soft);border-radius:12px;background:var(--surface)}
+    .term dt{font:700 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--copper)}
+    .term dd{margin:8px 0 0;color:var(--text-muted);font-size:11px;line-height:1.6}
+    .manual-footer{margin-top:28px;padding:30px;border-radius:16px;background:var(--charcoal);color:var(--on-dark)}
+    .manual-footer strong{font-size:18px}
+    .manual-footer p{margin:8px 0 0;color:var(--on-dark-soft);font-size:12px;line-height:1.7}
+    .no-results{display:none;margin-top:28px;padding:40px;text-align:center;border:1px dashed var(--border);border-radius:16px;background:var(--surface)}
+    .no-results.is-visible{display:block}
+    .search-hidden{display:none!important}
+
+    @media (max-width:1180px){
+      :root{--sidebar-width:250px}
+      .manual-hero{grid-template-columns:1fr;padding:34px}
+      .hero-visual{min-height:270px}
+      .feature-index{grid-template-columns:repeat(2,1fr)}
+      .chapter{grid-template-columns:1fr}
+      .shot-placeholder{min-height:270px}
+    }
+    @media (max-width:860px){
+      :root{--sidebar-width:0px}
+      .app{display:block}
+      .sidebar{transform:translateX(-100%);width:280px;transition:transform .22s var(--ease);box-shadow:12px 0 38px rgba(20,20,18,.18)}
+      .sidebar.is-open{transform:translateX(0)}
+      .main-shell{grid-column:auto}
+      .mobile-menu{display:inline-grid;place-items:center;width:40px;padding:0}
+      .topbar{padding:0 14px}
+      .top-context span{display:none}
+      .search-box{width:min(260px,45vw)}
+      .reading-progress{left:0}
+      .content{padding:16px}
+      .role-grid{grid-template-columns:1fr}
+      .role-door{min-height:150px}
+      .gate-copy{margin-top:42px}
+      .overview-grid,.boundary{grid-template-columns:1fr}
+      .boundary > div+div{border-left:0;border-top:1px solid var(--border)}
+      .capability-grid{grid-template-columns:1fr}
+      .glossary{grid-template-columns:repeat(2,1fr)}
+      .manual-hero{padding:28px}
+      .section{padding:24px}
+    }
+    @media (max-width:600px){
+      .role-gate{padding:12px}
+      .gate-card{padding:22px}
+      .gate-head{align-items:flex-start}
+      .gate-version{display:none}
+      .gate-copy{text-align:left;margin:38px 0 28px}
+      .gate-copy p{margin-left:0}
+      .gate-note{display:none}
+      .top-context{display:none}
+      .search-box{width:calc(100vw - 136px)}
+      .top-button.role-switch-label{width:40px;padding:0;font-size:0}
+      .top-button.role-switch-label::after{content:"角";font-size:12px}
+      .manual-hero{padding:24px}
+      .hero-copy h1{font-size:38px}
+      .hero-visual{min-height:230px}
+      .feature-index{grid-template-columns:1fr}
+      .section{padding:20px}
+      .section-head{gap:10px}
+      .section-no{font-size:28px}
+      .chapter{padding:18px}
+      .chapter h3{font-size:21px}
+      .shot-placeholder{min-height:230px}
+      .glossary{grid-template-columns:1fr}
+      .pipeline-step{min-width:132px}
+    }
+    @media print{
+      .role-gate,.sidebar,.topbar,.reading-progress{display:none!important}
+      .app,.main-shell{display:block}
+      .content{width:100%;padding:0}
+      .section,.manual-hero,.chapter{break-inside:avoid;box-shadow:none}
+      .shot-placeholder{min-height:220px}
+      body{background:#fff}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+    }
+
+    /* JobPulse 用户手册界面样式 */
+    :root{
+      --sidebar-width:256px;
+      --shell-surface:#fcfaf6;
+      --shell-line:#e8e0d6;
+      --shell-text:#34312e;
+      --shell-muted:#7a746d;
+      --shell-icon:#77736d;
+      --shell-hover:#f8efe9;
+      --shell-selected:#f3e3d9;
+    }
+    .sidebar{
+      background:var(--shell-surface);
+      color:var(--shell-text);
+      border-right:1px solid var(--shell-line);
+    }
+    .side-brand{
+      color:var(--shell-text);
+      border-bottom:1px solid var(--shell-line);
+      letter-spacing:-.02em;
+    }
+    .side-caption{color:var(--shell-muted);padding:22px 22px 8px}
+    .side-role{
+      margin:0 12px 10px;
+      border:1px solid var(--shell-line);
+      background:var(--surface);
+      color:var(--shell-text);
+    }
+    .side-role button{color:var(--terracotta)}
+    .side-role p{color:var(--shell-muted)}
+    .nav-link{
+      min-height:44px;
+      color:var(--shell-text);
+      font-weight:600;
+      border-radius:10px;
+      padding:9px 14px;
+    }
+    .nav-link .nav-icon{color:var(--shell-icon)}
+    .nav-link:hover{
+      color:var(--terracotta-hover);
+      background:var(--shell-hover);
+    }
+    .nav-link:hover .nav-icon{color:var(--terracotta)}
+    .nav-link.is-active{
+      color:var(--terracotta-hover);
+      background:var(--shell-selected);
+      box-shadow:inset 2px 0 var(--terracotta);
+    }
+    .nav-link.is-active .nav-icon{color:var(--terracotta)}
+    .side-footer{
+      border-top:1px solid var(--shell-line);
+      color:var(--shell-muted);
+      background:var(--shell-surface);
+    }
+    .topbar{
+      background:rgba(255,253,252,.97);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:none;
+    }
+    .main-shell{background:var(--canvas)}
+    .content{width:min(1680px,100%);padding:28px}
+    .section,.chapter,.paper-panel,.feature-card,.capability,.term{
+      box-shadow:none;
+    }
+    .manual-hero{
+      box-shadow:none;
+      min-height:390px;
+    }
+    .manual-hero::before{opacity:.72}
+    .chapter{align-items:start}
+    .chapter-copy{padding-top:2px}
+    .chapter-meta{margin-bottom:2px}
+    .chapter h4{
+      margin-top:20px;
+      color:var(--text-muted);
+      font-size:11px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+    .entry-line{
+      display:grid;
+      grid-template-columns:92px minmax(0,1fr);
+      align-items:center;
+      gap:10px;
+      margin:16px 0 2px;
+      padding:11px 12px;
+      border:1px solid var(--border-soft);
+      border-radius:var(--radius-control);
+      background:var(--surface-muted);
+      font-size:11px;
+    }
+    .entry-line > span{color:var(--text-muted);font-weight:700}
+    .entry-line > strong{color:var(--text);font-size:12px}
+    .entry-line code{
+      padding:3px 7px;
+      border-radius:6px;
+      background:var(--surface);
+      color:var(--copper);
+      font:600 10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;
+      white-space:nowrap;
+    }
+    .feature-entry{
+      display:block;
+      margin-top:11px;
+      color:var(--copper);
+      font-size:10px;
+      font-weight:700;
+      line-height:1.5;
+    }
+    .chapter-guide{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .guide-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:5px 8px;
+      border:1px solid var(--border-soft);
+      border-radius:6px;
+      color:var(--text-muted);
+      background:var(--surface);
+      font-size:10px;
+      font-weight:600;
+    }
+    .guide-chip i{
+      width:5px;height:5px;border-radius:50%;background:var(--terracotta);
+    }
+    .result-box{border-left-color:var(--emerald);background:var(--emerald-soft)}
+    .note-box{border-left-color:var(--sand);background:#f6eee6}
+    .shot-placeholder{
+      min-height:300px;
+      border-style:solid;
+      border-color:var(--border-soft);
+      background:
+        linear-gradient(90deg,transparent 49.5%,rgba(181,138,98,.06) 50%,transparent 50.5%),
+        linear-gradient(transparent 49.5%,rgba(181,138,98,.06) 50%,transparent 50.5%),
+        #fbf8f2;
+    }
+    .shot-placeholder code{background:var(--surface)}
+    .role-door{box-shadow:none}
+    .role-door:hover{box-shadow:none}
+    .gate-card{box-shadow:0 18px 48px rgba(53,43,34,.12)}
+    .manual-footer{background:var(--charcoal)}
+    .manual-note{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid var(--border-soft);
+      border-radius:10px;
+      background:var(--surface-muted);
+      color:var(--text-muted);
+      font-size:11px;
+      line-height:1.7;
+    }
+    @media (max-width:860px){
+      .entry-line{grid-template-columns:68px 1fr}
+      .entry-line code{grid-column:2;justify-self:start}
+    }
+
+  </style>
+
+  <style id="larger-font-override">
+    /* 评委阅读版：统一放大字号，提升长页面阅读性 */
+    html{font-size:17px;}
+    body{
+      font-size:17px !important;
+      line-height:1.8 !important;
+    }
+
+    /* 顶部与导航 */
+    .side-brand{font-size:24px !important;}
+    .side-caption{font-size:14px !important;}
+    .side-role h3,.side-role strong{font-size:17px !important;}
+    .side-role p{font-size:15px !important; line-height:1.8 !important;}
+    .nav-link{font-size:16px !important; line-height:1.7 !important;}
+    .topbar-title,.page-title,.route-title{font-size:22px !important;}
+    .topbar-subtitle,.route-description{font-size:16px !important; line-height:1.8 !important;}
+
+    /* 首页/封面 */
+    .manual-hero h1,
+    .hero-copy h1{
+      font-size:42px !important;
+      line-height:1.3 !important;
+    }
+    .manual-hero p,
+    .hero-copy p{
+      font-size:19px !important;
+      line-height:1.9 !important;
+    }
+
+    /* 通用标题与段落 */
+    h1{font-size:50px !important; line-height:1.2 !important;}
+    h2{font-size:34px !important; line-height:1.28 !important;}
+    h3{font-size:24px !important; line-height:1.4 !important;}
+    h4{font-size:16px !important; line-height:1.55 !important;}
+    p, li, dd, dt, blockquote, figcaption{
+      font-size:17px !important;
+      line-height:1.85 !important;
+    }
+    small{font-size:14px !important;}
+
+    /* 标签与摘要 */
+    .tag,
+    .feature-code,
+    .chapter-num,
+    .chapter-meta,
+    .guide-chip,
+    .entry-line,
+    .entry-line span,
+    .entry-line strong,
+    .entry-line code,
+    .feature-entry,
+    .manual-note,
+    .result-box,
+    .note-box{
+      font-size:15px !important;
+      line-height:1.8 !important;
+    }
+
+    /* 卡片与模块 */
+    .feature-card h3,
+    .capability h3,
+    .principle b,
+    .pipeline-step strong,
+    .term dt{
+      font-size:20px !important;
+      line-height:1.45 !important;
+    }
+    .feature-card p,
+    .capability p,
+    .principle span,
+    .pipeline-step span,
+    .term dd{
+      font-size:17px !important;
+      line-height:1.85 !important;
+    }
+    .feature-card footer{
+      font-size:15px !important;
+      line-height:1.75 !important;
+    }
+
+    /* 功能章节 */
+    .chapter h3{font-size:28px !important; line-height:1.35 !important;}
+    .chapter .summary{font-size:18px !important; line-height:1.9 !important;}
+    .step-list li span{font-size:17px !important; line-height:1.85 !important;}
+    .step-list li b{font-size:15px !important;}
+    .chapter-copy h4{font-size:17px !important;}
+
+    /* 截图占位区 */
+    .shot-placeholder strong{font-size:19px !important;}
+    .shot-placeholder p,
+    .shot-placeholder code{
+      font-size:15px !important;
+      line-height:1.8 !important;
+    }
+
+    /* 页脚 */
+    .manual-footer,
+    .manual-footer p,
+    .manual-footer li,
+    .manual-footer strong{
+      font-size:16px !important;
+      line-height:1.85 !important;
+    }
+
+    /* 移动端也保持较大字号 */
+    @media (max-width: 860px){
+      html{font-size:16px;}
+      body{font-size:16px !important;}
+      .manual-hero h1,.hero-copy h1,h1{font-size:38px !important;}
+      h2{font-size:28px !important;}
+      h3,.chapter h3{font-size:22px !important;}
+      p, li, dd, dt{font-size:16px !important;}
+      .feature-card p,.capability p,.principle span,.term dd,.chapter .summary{font-size:16px !important;}
+      .tag,.feature-code,.chapter-num,.guide-chip,.entry-line,.manual-note,.result-box,.note-box{font-size:14px !important;}
+    }
+  </style>
+
+
+  <style id="hierarchical-nav-override">
+    /* 侧栏目录：一级章节 → 二级功能类别 → 三级具体功能 */
+    .side-nav{
+      padding:8px 12px 24px !important;
+    }
+
+    .nav-link{
+      height:auto !important;
+      min-height:42px !important;
+    }
+
+    .nav-link.nav-level-1{
+      gap:10px !important;
+      margin:5px 0 2px !important;
+      padding:10px 10px !important;
+      font-size:17px !important;
+      font-weight:700 !important;
+      color:var(--shell-text) !important;
+    }
+
+    .nav-link.nav-level-1 .nav-number{
+      flex:0 0 28px;
+      width:28px;
+      font-size:15px;
+      font-weight:800;
+      color:var(--terracotta);
+      font-variant-numeric:tabular-nums;
+    }
+
+    .nav-parent{
+      margin-top:9px !important;
+    }
+
+    .nav-parent .nav-label{
+      flex:1;
+      text-align:left;
+    }
+
+    .nav-caret{
+      flex:0 0 auto;
+      color:var(--shell-muted);
+      font-size:18px;
+      line-height:1;
+      transform:rotate(0deg);
+      transition:transform .18s var(--ease);
+    }
+
+    .nav-parent[aria-expanded="true"] .nav-caret{
+      transform:rotate(90deg);
+    }
+
+    .nav-collapsible[hidden]{
+      display:none !important;
+    }
+
+    .nav-group-label{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      margin:9px 8px 3px 15px;
+      padding:7px 8px 5px;
+      color:var(--shell-muted);
+      font-size:15px;
+      line-height:1.5;
+      font-weight:700;
+      letter-spacing:.01em;
+      border-left:1px solid var(--shell-line);
+    }
+
+    .nav-group-label .nav-number{
+      flex:0 0 36px;
+      width:36px;
+      color:var(--copper);
+      font-size:14px;
+      font-weight:800;
+      font-variant-numeric:tabular-nums;
+    }
+
+    .nav-link.nav-level-3{
+      position:relative;
+      align-items:flex-start !important;
+      gap:8px !important;
+      margin:1px 0 1px 25px !important;
+      width:calc(100% - 25px) !important;
+      min-height:38px !important;
+      padding:8px 9px 8px 10px !important;
+      border-radius:8px !important;
+      color:var(--shell-muted) !important;
+      font-size:15.5px !important;
+      line-height:1.7 !important;
+      font-weight:600 !important;
+    }
+
+    .nav-link.nav-level-3::before{
+      content:"";
+      position:absolute;
+      left:-11px;
+      top:0;
+      bottom:0;
+      width:1px;
+      background:var(--shell-line);
+    }
+
+    .nav-link.nav-level-3 .nav-number{
+      flex:0 0 48px;
+      width:48px;
+      padding-top:1px;
+      color:#9a8b7d;
+      font-size:13.5px;
+      line-height:1.7;
+      font-weight:700;
+      font-variant-numeric:tabular-nums;
+      letter-spacing:-.02em;
+    }
+
+    .nav-link.nav-level-3 .nav-label{
+      min-width:0;
+      flex:1;
+    }
+
+    .nav-link.nav-level-3:hover{
+      color:var(--shell-text) !important;
+    }
+
+    .nav-link.nav-level-3.is-active{
+      background:var(--shell-selected) !important;
+      color:var(--shell-text) !important;
+      box-shadow:inset 2px 0 var(--terracotta) !important;
+    }
+
+    .nav-link.nav-level-3.is-active .nav-number{
+      color:var(--terracotta);
+      font-weight:800;
+    }
+
+    .nav-link.nav-level-1.is-active{
+      background:var(--shell-selected) !important;
+      color:var(--shell-text) !important;
+      box-shadow:inset 2px 0 var(--terracotta) !important;
+    }
+
+    .nav-divider{
+      height:1px;
+      margin:10px 10px;
+      background:var(--shell-line);
+    }
+
+    @media (max-width:860px){
+      .nav-link.nav-level-1{font-size:16px !important;}
+      .nav-group-label{font-size:14px !important;}
+      .nav-link.nav-level-3{font-size:15px !important;}
+    }
+  </style>
+
+
+  <style id="ui-mockup-override">
+    .chapter{
+      grid-template-columns:1fr !important;
+      gap:24px !important;
+      align-items:start !important;
+    }
+    .chapter-copy{
+      width:100%;
+      max-width:980px;
+      margin:0 auto;
+      padding-right:4px !important;
+    }
+    .chapter-purpose{
+      margin-top:20px;
+      padding:16px 18px;
+      border:1px solid var(--border-soft);
+      border-radius:12px;
+      background:#fbf8f2;
+    }
+    .chapter-block-label{
+      display:block;
+      color:var(--copper);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.06em;
+    }
+    .chapter-purpose .summary{
+      margin-top:7px;
+    }
+    .chapter-steps{
+      margin-top:28px;
+      padding-top:24px;
+      border-top:1px solid var(--border-soft);
+    }
+    .chapter-steps h4{
+      margin:0 0 14px;
+      color:var(--text);
+      font-size:16px;
+      letter-spacing:.02em;
+      text-transform:none;
+    }
+    .chapter-outcomes{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:22px;
+    }
+    .chapter-outcomes .result-box,
+    .chapter-outcomes .note-box{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+      height:100%;
+      box-sizing:border-box;
+      margin-top:0;
+    }
+    .chapter-outcomes strong{
+      font-size:14px;
+    }
+    .chapter-outcomes span{
+      display:block;
+    }
+    .chapter-demo{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      width:100%;
+      max-width:1120px;
+      margin:0 auto;
+      min-width:0;
+    }
+    .chapter-demo-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      padding-bottom:12px;
+      border-bottom:1px solid var(--border-soft);
+    }
+    .chapter-demo-title strong{
+      color:var(--text);
+      font-size:16px;
+    }
+    .chapter-demo-title span{
+      color:var(--text-muted);
+      font-size:12px;
+    }
+    .friendly-strip{
+      display:flex;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-top:-4px;
+    }
+    .friendly-chip{
+      display:inline-flex;
+      align-items:center;
+      min-height:28px;
+      box-sizing:border-box;
+      border-radius:999px;
+      font-size:13px;
+      line-height:1.4;
+    }
+    .friendly-chip{
+      gap:6px;
+      padding:4px 10px;
+      border:1px solid #e2d8cd;
+      background:#fffaf5;
+      color:var(--shell-text);
+      font-weight:650;
+    }
+    .friendly-chip::before{
+      content:"✓";
+      color:var(--terracotta);
+      font-size:12px;
+      font-weight:900;
+    }
+    .ux-detail-panel{
+      margin-top:18px;
+      padding:16px 18px;
+      border:1px solid #e3d8cc;
+      border-radius:14px;
+      background:linear-gradient(135deg,#fffaf5 0%,#f6f2ea 100%);
+    }
+    .ux-detail-head{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .ux-detail-head strong{font-size:17px;color:var(--text);}
+    .ux-detail-head span{font-size:13px;color:var(--terracotta);font-weight:800;letter-spacing:.08em;}
+    .ux-detail-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+    }
+    .ux-detail-item{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      padding:9px 11px;
+      border:1px solid rgba(181,138,98,.18);
+      border-radius:10px;
+      background:rgba(255,255,255,.72);
+      color:var(--text-soft);
+      font-size:14px;
+      line-height:1.55;
+    }
+    .ux-detail-item b{
+      display:grid;
+      place-items:center;
+      flex:0 0 23px;
+      width:23px;
+      height:23px;
+      border-radius:7px;
+      background:#ead8ce;
+      color:#9f452c;
+      font-size:12px;
+    }
+    .ui-mock{
+      border:1px solid var(--shell-line);
+      border-radius:16px;
+      overflow:hidden;
+      background:var(--surface);
+      box-shadow:none;
+    }
+    .ui-mock-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      background:var(--shell-surface);
+      border-bottom:1px solid var(--shell-line);
+    }
+    .ui-mock-title{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+      min-width:0;
+    }
+    .ui-mock-title strong{
+      font-size:16px;
+      line-height:1.4;
+      color:var(--shell-text);
+    }
+    .ui-mock-title span{
+      font-size:12px;
+      color:var(--shell-muted);
+      line-height:1.5;
+    }
+    .ui-mock-actions{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .mini-btn,.mini-tag,.mini-chip,.mini-side-item,.mini-tab,.mini-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:9px;
+      white-space:nowrap;
+      font-size:12px;
+      line-height:1.4;
+    }
+    .mini-btn{
+      padding:7px 10px;
+      border:1px solid var(--border);
+      color:var(--shell-text);
+      background:var(--surface);
+      font-weight:600;
+    }
+    .mini-btn.primary{
+      background:var(--terracotta);
+      border-color:var(--terracotta);
+      color:#fffaf4;
+    }
+    .mini-btn.warn{
+      background:#f6efe4;
+      border-color:#e8d6bb;
+      color:#8c6126;
+    }
+    .mini-btn.ghost{
+      background:var(--surface-muted);
+    }
+    .mini-tag{
+      padding:4px 8px;
+      border:1px solid var(--border);
+      background:var(--surface-muted);
+      color:var(--text-muted);
+      font-weight:700;
+    }
+    .mini-tag.success{background:var(--status-success);border-color:var(--status-success);color:var(--status-on-solid);}
+    .mini-tag.warning{background:var(--status-warning);border-color:var(--status-warning);color:var(--status-on-solid);}
+    .mini-tag.error{background:var(--status-danger);border-color:var(--status-danger);color:var(--status-on-solid);}
+    .mini-tag.info{background:var(--surface-muted);border-color:var(--border);color:var(--text-soft);}
+    .ui-mock-body{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      background:#fffdfc;
+    }
+    .ui-kpis{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:8px;
+    }
+    .ui-kpis.two{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .ui-kpis.three{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .ui-kpi{
+      border:1px solid var(--border-soft);
+      border-radius:12px;
+      padding:10px 10px 9px;
+      background:var(--surface-muted);
+    }
+    .ui-kpi span{
+      display:block;
+      font-size:11px;
+      color:var(--text-muted);
+      line-height:1.5;
+      margin-bottom:3px;
+    }
+    .ui-kpi strong{
+      display:block;
+      font-size:18px;
+      color:var(--text);
+      line-height:1.25;
+    }
+
+    .ui-layout{
+      display:grid;
+      grid-template-columns:160px minmax(0,1fr);
+      gap:12px;
+      min-width:0;
+    }
+    .ui-layout.compact-left{grid-template-columns:128px minmax(0,1fr);}
+    .ui-side{
+      border:1px solid var(--border-soft);
+      border-radius:12px;
+      padding:8px;
+      background:var(--surface-muted);
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+    .mini-side-item{
+      justify-content:flex-start;
+      padding:8px 10px;
+      background:var(--surface);
+      color:var(--text-muted);
+      border:1px solid transparent;
+      font-weight:600;
+    }
+    .mini-side-item.active{
+      background:#f3e3d9;
+      color:var(--terracotta-hover);
+      border-color:#ecd6c8;
+      box-shadow:inset 2px 0 var(--terracotta);
+    }
+
+    .ui-panel{
+      border:1px solid var(--border-soft);
+      border-radius:12px;
+      padding:11px 12px;
+      background:var(--surface);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-width:0;
+    }
+    .ui-panel-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .ui-panel-head strong{
+      font-size:14px;
+      line-height:1.4;
+      color:var(--text);
+    }
+    .ui-panel-head span{
+      font-size:12px;
+      color:var(--text-muted);
+      line-height:1.55;
+    }
+    .ui-toolbar{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .mini-chip{
+      padding:6px 9px;
+      border:1px solid var(--border-soft);
+      background:var(--surface-muted);
+      color:var(--text-muted);
+      font-weight:600;
+    }
+    .mini-chip.active{
+      background:#f3e3d9;
+      color:var(--terracotta-hover);
+      border-color:#ebd3c6;
+    }
+    .mini-tabs{
+      display:flex;
+      align-items:center;
+      gap:7px;
+      flex-wrap:wrap;
+    }
+    .mini-tab{
+      padding:6px 10px;
+      border:1px solid var(--border);
+      background:var(--surface-muted);
+      color:var(--text-muted);
+      font-weight:700;
+    }
+    .mini-tab.active{
+      background:#fff;
+      color:var(--text);
+      border-color:#d8d0c6;
+    }
+
+    .mini-list,.mini-table,.mini-flow,.mini-cards{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-width:0;
+    }
+    .mini-row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      padding:9px 10px;
+      border:1px solid var(--border-soft);
+      border-radius:10px;
+      background:var(--surface-muted);
+      min-width:0;
+    }
+    .mini-row strong{
+      display:block;
+      font-size:13px;
+      line-height:1.45;
+      color:var(--text);
+    }
+    .mini-row span{
+      display:block;
+      font-size:11.5px;
+      line-height:1.55;
+      color:var(--text-muted);
+    }
+    .mini-row-main{
+      min-width:0;
+      flex:1;
+    }
+    .mini-table-head{
+      display:grid;
+      grid-template-columns:1.4fr .9fr .9fr;
+      gap:8px;
+      padding:0 4px;
+      color:var(--text-muted);
+      font-size:11.5px;
+      font-weight:700;
+    }
+    .mini-table-row{
+      display:grid;
+      grid-template-columns:1.4fr .9fr .9fr;
+      gap:8px;
+      padding:9px 10px;
+      border:1px solid var(--border-soft);
+      border-radius:10px;
+      background:var(--surface-muted);
+      font-size:12px;
+      line-height:1.5;
+      color:var(--text);
+      align-items:center;
+    }
+    .mini-table-row strong{
+      font-size:12.5px;
+      line-height:1.45;
+      color:var(--text);
+    }
+    .mini-progress{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .mini-progress-bar{
+      position:relative;
+      flex:1;
+      height:8px;
+      border-radius:999px;
+      background:#ece6dc;
+      overflow:hidden;
+    }
+    .mini-progress-bar i{
+      position:absolute;
+      inset:0 auto 0 0;
+      width:var(--value,52%);
+      background:linear-gradient(90deg,var(--terracotta),#d48a63);
+      border-radius:999px;
+    }
+    .mini-progress span{
+      font-size:11.5px;
+      color:var(--text-muted);
+      white-space:nowrap;
+    }
+
+    .ui-flow{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:7px;
+    }
+    .ui-flow.three{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .ui-flow.five{grid-template-columns:repeat(5,minmax(0,1fr));}
+    .flow-step{
+      position:relative;
+      padding:9px 9px 8px;
+      border:1px solid var(--border-soft);
+      border-radius:10px;
+      background:var(--surface-muted);
+      min-height:58px;
+    }
+    .flow-step strong{
+      display:block;
+      font-size:12px;
+      line-height:1.45;
+      color:var(--text);
+      margin-bottom:2px;
+    }
+    .flow-step span{
+      display:block;
+      font-size:11px;
+      line-height:1.5;
+      color:var(--text-muted);
+    }
+
+    .ui-note-stack{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+    .ui-note{
+      padding:9px 10px;
+      border-radius:10px;
+      background:var(--surface-muted);
+      border:1px solid var(--border-soft);
+      font-size:12px;
+      color:var(--text-muted);
+      line-height:1.6;
+    }
+
+    .demo-guide{
+      border:1px solid var(--border-soft);
+      border-radius:12px;
+      background:var(--surface-muted);
+      padding:12px 13px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .demo-guide strong{
+      font-size:14px;
+      line-height:1.45;
+      color:var(--text);
+    }
+    .demo-guide ul{
+      margin:0;
+      padding-left:18px;
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+    }
+    .demo-guide li{
+      font-size:13px !important;
+      line-height:1.7 !important;
+      color:var(--text-muted);
+    }
+    .callout{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:var(--terracotta);
+      color:#fff;
+      font-size:11px;
+      font-weight:800;
+      margin-right:6px;
+      vertical-align:middle;
+    }
+    .ui-search{
+      height:34px;
+      border:1px solid var(--border-soft);
+      border-radius:9px;
+      background:var(--surface);
+      padding:0 11px;
+      display:flex;
+      align-items:center;
+      color:#8d857a;
+      font-size:12px;
+    }
+    .ui-code{
+      padding:3px 7px;
+      border-radius:7px;
+      background:#f5efe7;
+      color:#85674b;
+      font-size:11px;
+      font-weight:700;
+      font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+    }
+
+    /* 界面示意中的说明文字也与正文保持一致的阅读大小 */
+    .chapter-block-label,
+    .chapter-demo-title span,
+    .ui-mock-title span,
+    .ui-kpi span,
+    .ui-panel-head span,
+    .mini-row span,
+    .mini-table-head,
+    .mini-table-row,
+    .mini-progress span,
+    .flow-step span,
+    .ui-note,
+    .ui-search,
+    .ui-code{
+      font-size:15px !important;
+      line-height:1.8 !important;
+    }
+    .mini-btn,
+    .mini-tag,
+    .mini-chip,
+    .mini-side-item,
+    .mini-tab,
+    .mini-pill{
+      font-size:15px !important;
+      line-height:1.6 !important;
+    }
+    .chapter-demo-title strong,
+    .chapter-outcomes strong{
+      font-size:16px !important;
+    }
+
+    @media (max-width:1180px){
+      .chapter{
+        grid-template-columns:1fr !important;
+      }
+      .chapter-demo{
+        order:0;
+      }
+    }
+    @media (max-width:640px){
+      .ux-detail-grid{grid-template-columns:1fr;}
+      .ui-layout,.ui-layout.compact-left{
+        grid-template-columns:1fr;
+      }
+      .ui-kpis,.ui-kpis.two,.ui-kpis.three,.ui-flow,.ui-flow.three,.ui-flow.five{
+        grid-template-columns:1fr 1fr;
+      }
+      .mini-table-head,.mini-table-row{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+
+
+<style id="button-number-guide">
+  .mini-btn{
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    min-height:40px;
+    box-sizing:border-box;
+    padding:7px 12px 7px 8px;
+    border-radius:10px;
+    box-shadow:0 1px 2px rgba(31,35,40,.06);
+  }
+  .btn-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:22px;
+    height:22px;
+    border-radius:6px;
+    background:var(--terracotta);
+    border:0;
+    color:#fff !important;
+    font-size:12px;
+    line-height:1;
+    font-weight:800;
+    flex:0 0 22px;
+  }
+  .mini-btn.primary .btn-num{
+    background:#fff8f3;
+    color:#a84f32 !important;
+  }
+  .mini-row .mini-btn .btn-num{
+    display:inline-flex !important;
+    color:#fff !important;
+    font-size:12px !important;
+    line-height:1 !important;
+  }
+  .mini-row .mini-btn.primary .btn-num{
+    color:#a84f32 !important;
+  }
+  .mini-btn .btn-label,
+  .mini-row .mini-btn .btn-label{
+    display:inline !important;
+    color:inherit !important;
+    font-size:15px !important;
+    line-height:1.4 !important;
+  }
+  .mini-row > .mini-btn{
+    align-self:center;
+    flex:none;
+  }
+  .button-legend{
+    margin-top:2px;
+    border:1px solid var(--border-soft);
+    border-radius:12px;
+    background:var(--surface-muted);
+    padding:16px 18px;
+  }
+  .button-legend-title{
+    font-size:18px;
+    font-weight:800;
+    color:var(--text);
+    margin-bottom:12px;
+  }
+  .button-legend-list{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px 28px;
+  }
+  .button-legend-item{
+    display:grid;
+    grid-template-columns:28px minmax(0,1fr);
+    gap:8px;
+    align-items:start;
+    font-size:15px;
+    line-height:1.7;
+    color:var(--text-muted);
+  }
+  .button-legend-item .legend-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:var(--terracotta);
+    color:#fff;
+    font-size:13px;
+    font-weight:800;
+    margin-top:1px;
+  }
+  .button-legend-item strong{
+    display:block;
+    color:var(--text);
+    font-size:16px;
+    line-height:1.45;
+    margin-bottom:2px;
+  }
+  .button-legend-item div span{
+    display:block;
+    color:var(--text-muted);
+  }
+  @media (max-width:640px){
+    .button-legend-list{grid-template-columns:1fr;}
+  }
+</style>
+
+<style id="readability-override">
+  /* 正文与说明文字统一放大，标题保持现有层级 */
+  .side-role p,
+  .side-role button,
+  .top-context span,
+  .top-button,
+  .gate-note,
+  .role-door .role-no,
+  .role-enter,
+  .section-kicker,
+  .chapter-block-label,
+  .chapter-demo-title span{
+    font-size:15px !important;
+    line-height:1.75 !important;
+  }
+  .paper-panel p,
+  .boundary ul,
+  .term dd,
+  .manual-footer p,
+  .section-intro,
+  .feature-card p,
+  .feature-entry,
+  .capability p,
+  .principle span,
+  .pipeline-step span,
+  .entry-line,
+  .manual-note,
+  .result-box,
+  .note-box{
+    font-size:17px !important;
+    line-height:1.85 !important;
+  }
+  .chapter-demo-title strong,
+  .chapter-outcomes strong{
+    font-size:16px !important;
+  }
+  .feature-card h3{
+    margin-top:0 !important;
+  }
+  /* 中文编号使用界面正文字体。 */
+  .feature-code,
+  .chapter-num{
+    font-family:"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,-apple-system,sans-serif !important;
+    font-weight:600 !important;
+    letter-spacing:.02em !important;
+  }
+  .step-list{
+    gap:12px !important;
+  }
+  .step-list li{
+    position:relative;
+    display:block !important;
+    padding-left:22px;
+  }
+  .step-list li::before{
+    content:"";
+    position:absolute;
+    left:2px;
+    top:.8em;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--terracotta);
+  }
+  .step-list li b{
+    display:none !important;
+  }
+</style>
+
+<style id="chapter-hierarchy-override">
+  /* 功能章节：标题、说明、步骤与页面结果 */
+  .chapter-list{
+    gap:30px !important;
+  }
+  .chapter{
+    padding:0 !important;
+    gap:0 !important;
+    overflow:hidden;
+    border-color:#ded6cc !important;
+    background:#fff !important;
+    box-shadow:0 10px 30px rgba(55,45,36,.055);
+  }
+  .chapter-copy{
+    width:100%;
+    max-width:none !important;
+    margin:0 !important;
+    padding:0 32px 28px !important;
+    box-sizing:border-box;
+  }
+  .chapter-heading{
+    margin:0 -32px 26px;
+    padding:27px 32px 24px;
+    border-bottom:1px solid var(--border-soft);
+    background:linear-gradient(100deg,#fff 0%,#fbf7f1 100%);
+  }
+  .chapter-heading h3{
+    margin:12px 0 0 !important;
+  }
+  .chapter-panel{
+    width:100%;
+    max-width:1120px;
+    margin:16px auto 0 !important;
+    padding:22px 24px !important;
+    box-sizing:border-box;
+    border:1px solid var(--border-soft) !important;
+    border-radius:14px;
+    background:#fff;
+  }
+  .chapter-purpose{
+    margin-top:0 !important;
+    background:#fbf8f2;
+  }
+  .chapter-steps{
+    border-top:1px solid var(--border-soft) !important;
+  }
+  .chapter-outcomes-section{
+    background:#fcfbf8;
+  }
+  .chapter-section-title,
+  .chapter-demo-title{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:11px;
+    padding:0 0 14px;
+    border-bottom:1px solid var(--border-soft);
+  }
+  .chapter-section-title > span,
+  .chapter-section-index{
+    display:inline-grid;
+    place-items:center;
+    width:30px;
+    height:30px;
+    flex:0 0 30px;
+    border-radius:8px;
+    background:var(--terracotta);
+    color:#fff !important;
+    font-size:13px !important;
+    line-height:1 !important;
+    font-weight:800;
+    letter-spacing:0;
+  }
+  .chapter-section-title > strong,
+  .chapter-demo-title > strong{
+    color:var(--text);
+    font-size:18px !important;
+    line-height:1.45;
+  }
+  .chapter-purpose .summary{
+    margin:17px 0 0 !important;
+  }
+  .chapter-steps .step-list{
+    margin-top:18px;
+  }
+  .chapter-outcomes{
+    margin-top:18px !important;
+  }
+  .chapter-outcomes .result-box,
+  .chapter-outcomes .note-box{
+    padding:17px 19px;
+    border-radius:0 10px 10px 0;
+  }
+  .chapter-demo{
+    width:100%;
+    max-width:none !important;
+    margin:0 !important;
+    padding:28px 32px 32px;
+    box-sizing:border-box;
+    gap:16px;
+    border-top:5px solid #d7c6b6;
+    background:#f4f1eb;
+  }
+  .chapter-demo-title,
+  .chapter-demo > .friendly-strip,
+  .chapter-demo > .ui-mock,
+  .chapter-demo > .button-legend{
+    width:100%;
+    max-width:1120px;
+    margin-left:auto;
+    margin-right:auto;
+    box-sizing:border-box;
+  }
+  .chapter-demo-title{
+    margin-bottom:2px;
+    padding-bottom:16px;
+    border-bottom-color:#d9d0c6;
+  }
+  .chapter-demo > .friendly-strip{
+    margin-top:0;
+  }
+  .button-legend{
+    margin-top:4px !important;
+    border-color:#d9d0c6 !important;
+    background:#fff !important;
+  }
+  @media (max-width:640px){
+    .chapter-copy{padding:0 16px 20px !important;}
+    .chapter-heading{margin:0 -16px 20px;padding:22px 18px 20px;}
+    .chapter-panel{padding:18px !important;}
+    .chapter-demo{padding:22px 16px 24px;}
+  }
+</style>
+
+</head>
+<body>
+  <div class="role-gate" id="roleGate" aria-modal="true" role="dialog" aria-labelledby="gateTitle">
+    <section class="gate-card">
+      <div class="gate-head">
+        <div class="gate-brand">
+          <img class="brand-mark" src="/jobpulse-logo.png" alt="" aria-hidden="true">
+          <span>Job<span class="brand-pulse">Pulse</span></span>
+        </div>
+        <span class="gate-version">USER MANUAL · 2026.09.01</span>
+      </div>
+      <div class="gate-copy">
+        <span class="eyebrow">用户手册入口</span>
+        <h1 id="gateTitle">选择使用角色</h1>
+        <p>选择与账号对应的角色，查看常用功能、操作步骤和页面结果。治理端显示的功能会随账号权限变化。</p>
+      </div>
+      <div class="role-grid">
+        <button class="role-door" data-role-choice="admin">
+          <span class="role-no"><span>ROLE 01</span><span>治理端</span></span>
+          <h2>治理人员</h2>
+          <p>适用于审核员、管理员和开发账号，主要处理数据、图谱、审核、版本和新兴岗位。</p>
+          <span class="role-enter">查看治理端手册 <span aria-hidden="true">→</span></span>
+        </button>
+        <button class="role-door" data-role-choice="enterprise">
+          <span class="role-no"><span>ROLE 02</span><span>招聘端</span></span>
+          <h2>企业</h2>
+          <p>从企业空间和招聘岗位开始，配置岗位需求，查看授权候选人并完成评估与招聘判断。</p>
+          <span class="role-enter">查看企业手册 <span aria-hidden="true">→</span></span>
+        </button>
+        <button class="role-door" data-role-choice="personal">
+          <span class="role-no"><span>ROLE 03</span><span>求职端</span></span>
+          <h2>个人</h2>
+          <p>浏览企业岗位，上传并确认简历，运行岗位匹配，查看能力差距和学习路径。</p>
+          <span class="role-enter">查看个人手册 <span aria-hidden="true">→</span></span>
+        </button>
+      </div>
+      <div class="gate-note">
+        <span><i></i>内容与当前前端菜单一致</span>
+        <span><i></i>按角色查看常用功能</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="reading-progress" aria-hidden="true"><i id="progressBar"></i></div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img class="brand-mark" src="/jobpulse-logo.png" alt="" aria-hidden="true">
+        <span>Job<span class="brand-pulse">Pulse</span></span>
+      </div>
+      <div class="side-caption">CURRENT VIEW</div>
+      <div class="side-role">
+        <div class="side-role-top"><strong id="sideRoleName">治理人员视角</strong><button data-open-gate>切换</button></div>
+        <p id="sideRoleDesc">处理数据、图谱、证据、审核与版本。</p>
+      </div>
+      <div class="side-caption">MANUAL CONTENTS</div>
+      <nav class="side-nav" id="sideNav" aria-label="用户手册目录"></nav>
+      <div class="side-footer">JOBPULSE / USER MANUAL<br/>2026.09.01</div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <button class="top-button mobile-menu" id="menuButton" aria-label="打开目录">☰</button>
+        <div class="top-context">
+          <strong id="topRoleName">治理端用户手册</strong>
+          <span id="topRoleDesc">数据、图谱、审核与版本治理</span>
+        </div>
+        <div class="top-actions">
+          <label class="search-box" aria-label="搜索本手册">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="manualSearch" type="search" placeholder="搜索功能或操作…" autocomplete="off" />
+          </label>
+          <button class="top-button role-switch-label" data-open-gate>切换视角</button>
+        </div>
+      </header>
+
+      <main class="content" id="manualContent">
+        <section class="manual-hero searchable" id="start" data-title="开始阅读 用户手册">
+          <div class="hero-copy">
+            <span class="eyebrow" id="heroEyebrow">管理员视角</span>
+            <h1>JobPulse<br/><em>功能与操作手册</em></h1>
+        <p id="heroDescription">本手册按角色列出功能入口、操作步骤和页面结果。</p>
+            <div class="hero-meta">
+              <span class="tag terracotta">对应前端菜单</span>
+              <span class="tag emerald">支持来源追溯</span>
+              <span class="tag neutral">按角色组织</span>
+            </div>
+          </div>
+          <div class="hero-visual" aria-label="岗位能力图谱示意">
+            <div class="graph-card">
+              <span class="axis-label a">JOBPULSE WORKSPACE</span>
+              <span class="axis-label b">EVIDENCE · VERSION · ROLE</span>
+              <svg viewBox="0 0 420 350" aria-hidden="true">
+                <line class="graph-edge" x1="84" y1="83" x2="206" y2="68"/>
+                <line class="graph-edge" x1="206" y1="68" x2="331" y2="110"/>
+                <line class="graph-edge" x1="84" y1="83" x2="128" y2="198"/>
+                <line class="graph-edge" x1="128" y1="198" x2="248" y2="211"/>
+                <line class="graph-edge" x1="331" y1="110" x2="248" y2="211"/>
+                <line class="graph-edge dashed" x1="248" y1="211" x2="348" y2="282"/>
+                <line class="graph-edge" x1="128" y1="198" x2="72" y2="286"/>
+                <line class="graph-edge dashed" x1="206" y1="68" x2="248" y2="211"/>
+                <circle class="node" cx="84" cy="83" r="28" fill="#b94d2e"/>
+                <circle class="node" cx="206" cy="68" r="17" fill="#9a6335"/>
+                <circle class="node" cx="331" cy="110" r="27" fill="#1f883d"/>
+                <circle class="node" cx="128" cy="198" r="20" fill="#b58a62"/>
+                <circle class="node" cx="248" cy="211" r="37" fill="#f3e3d9"/>
+                <circle class="node" cx="348" cy="282" r="17" fill="#1f883d"/>
+                <circle class="node" cx="72" cy="286" r="14" fill="#9a6335"/>
+                <text class="node-label" x="61" y="128">岗位</text>
+                <text class="node-label" x="187" y="104">职责</text>
+                <text class="node-label" x="310" y="153">证据</text>
+                <text class="node-label" x="109" y="238">技能</text>
+                <text class="node-label" x="228" y="264">版本</text>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <section class="section searchable" id="overview" data-title="系统概览 闭环 能力">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">SYSTEM OVERVIEW</p>
+              <h2>系统流程概览</h2>
+              <p class="section-intro">JobPulse 将岗位、简历、招聘和匹配放在同一套工作流程中。页面会显示处理进度，结果可查看对应来源。</p>
+            </div>
+            <span class="section-no">01</span>
+          </div>
+          <div class="overview-grid">
+            <div class="paper-panel">
+              <h3>从资料到岗位与匹配结果</h3>
+              <p>资料包括招聘岗位、导入的 JD 和上传的简历。系统读取内容并完成确认后，用于岗位整理、招聘和匹配。</p>
+              <div class="pipeline" aria-label="系统处理流程">
+                <div class="pipeline-step"><small>STEP 01</small><strong>添加资料</strong><span>采集岗位 / 导入 JD / 上传简历</span></div>
+                <div class="pipeline-step"><small>STEP 02</small><strong>读取内容</strong><span>整理字段，保留来源</span></div>
+                <div class="pipeline-step"><small>STEP 03</small><strong>整理岗位要求</strong><span>技能、职责和变化</span></div>
+                <div class="pipeline-step"><small>STEP 04</small><strong>确认与发布</strong><span>检查内容，保存结果</span></div>
+                <div class="pipeline-step"><small>STEP 05</small><strong>招聘与匹配</strong><span>投递、结果和改进建议</span></div>
+              </div>
+            </div>
+            <div class="paper-panel">
+              <h3>使用原则</h3>
+              <div class="principles">
+                <div class="principle"><b>查看来源</b><span>岗位、匹配和变化结果都可打开对应原文或来源记录。</span></div>
+                <div class="principle"><b>保留记录</b><span>修改和发布会留下历史记录，便于查看变化。</span></div>
+                <div class="principle"><b>按角色显示功能</b><span>不同角色看到的菜单和操作按钮不同。</span></div>
+                <div class="principle"><b>关注页面状态</b><span>处理中、已完成和失败会显示在任务或业务页面。</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="paper-panel access-guide">
+            <h3>登录、角色与权限</h3>
+            <div class="principles">
+              <div class="principle"><b>从首页登录</b><span>点击“登录使用”，输入账号和密码，登录后打开对应工作空间。</span></div>
+              <div class="principle"><b>按角色显示菜单</b><span>个人、企业、审核员、管理员和开发账号看到的菜单不同；治理端手册覆盖后三类账号。</span></div>
+              <div class="principle"><b>按权限显示操作</b><span>运行、审核和发布等按钮会按账号权限显示。</span></div>
+              <div class="principle"><b>退出与重新登录</b><span>点击右上角账号区域的“退出登录”结束当前会话；切换角色时先退出，再使用对应账号重新登录。</span></div>
+            </div>
+          </div>
+          <div class="ux-detail-panel" aria-label="页面反馈">
+            <div class="ux-detail-head"><strong>页面反馈</strong><span>PAGE STATUS</span></div>
+            <div class="ux-detail-grid">
+              <div class="ux-detail-item"><b>01</b><span>菜单按角色与权限显示，减少无关入口干扰。</span></div>
+              <div class="ux-detail-item"><b>02</b><span>运行前检查会列出还缺少的资料。</span></div>
+              <div class="ux-detail-item"><b>03</b><span>处理中、失败和过期状态会给出对应操作。</span></div>
+              <div class="ux-detail-item"><b>04</b><span>岗位、匹配和变化结果可查看来源。</span></div>
+              <div class="ux-detail-item"><b>05</b><span>删除、取消和回滚会显示确认信息。</span></div>
+              <div class="ux-detail-item"><b>06</b><span>草稿、历史版本和任务记录可随时查看。</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section searchable" id="quick-map" data-title="功能地图 快速入口">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">ROLE CAPABILITY MAP</p>
+              <h2 id="mapTitle">治理人员功能地图</h2>
+              <p class="section-intro" id="mapDescription">按功能模块浏览治理人员可使用的功能。点击卡片可查看入口、步骤和页面结果。</p>
+            </div>
+            <span class="section-no">02</span>
+          </div>
+          <div class="feature-index" id="featureIndex"></div>
+          <div class="manual-note">菜单和操作按钮会按账号角色与权限显示；待确认内容可在“审核中心”处理。</div>
+        </section>
+
+        <section class="section" id="features">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">FEATURE GUIDE</p>
+              <h2>功能与操作说明</h2>
+              <p class="section-intro">每项功能列出用途、入口、操作步骤、页面结果和补充说明。</p>
+            </div>
+            <span class="section-no">03</span>
+          </div>
+          <div class="chapter-list" id="chapterList"></div>
+        </section>
+
+        <section class="section searchable" id="capabilities" data-title="系统能力 证据 版本 权限">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">PLATFORM CAPABILITIES</p>
+              <h2>贯穿所有角色的系统能力</h2>
+              <p class="section-intro">这些能力会出现在多个页面中。</p>
+            </div>
+            <span class="section-no">04</span>
+          </div>
+          <div class="capability-grid">
+            <article class="capability"><header><span class="cap-icon">E</span><h3>来源追溯</h3></header><p>岗位职责、技能关系和匹配结果可查看对应原文与来源记录。</p></article>
+            <article class="capability"><header><span class="cap-icon">V</span><h3>版本管理</h3></header><p>每次发布形成独立版本，历史版本用于差异比较和恢复。</p></article>
+            <article class="capability"><header><span class="cap-icon">R</span><h3>角色与权限</h3></header><p>个人、企业和治理账号显示不同入口，具体功能由账号权限决定。</p></article>
+            <article class="capability"><header><span class="cap-icon">H</span><h3>人工审核</h3></header><p>待确认内容会形成审核任务，由治理人员处理。</p></article>
+            <article class="capability"><header><span class="cap-icon">D</span><h3>能力演化</h3></header><p>系统比较不同时间和版本的岗位要求，记录技能与职责变化。</p></article>
+            <article class="capability"><header><span class="cap-icon">M</span><h3>匹配解释</h3></header><p>匹配报告包括结果、优势、差距、判断依据和改进方案。</p></article>
+          </div>
+        </section>
+
+        <section class="section searchable" id="boundaries" data-title="常见问题 页面状态 异常处理">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">STATUS &amp; TROUBLESHOOTING</p>
+              <h2>常见状态与处理</h2>
+              <p class="section-intro">遇到未就绪、处理中、失败或结果过期时，可按页面状态处理。</p>
+            </div>
+            <span class="section-no">05</span>
+          </div>
+          <div class="boundary">
+            <div>
+              <h3>状态说明</h3>
+              <ul>
+                <li><strong>未就绪：</strong>资料或配置尚未完成，页面会列出所需内容。</li>
+                <li><strong>处理中：</strong>任务仍在运行，可刷新页面或到任务中心查看进度。</li>
+                <li><strong>失败：</strong>任务没有完成，页面会显示原因和可用操作。</li>
+                <li><strong>结果过期：</strong>岗位、简历或配置有更新，需要重新运行匹配或评估。</li>
+              </ul>
+            </div>
+            <div>
+              <h3>处理方式</h3>
+              <ul>
+                <li>菜单或按钮没有显示时，核对当前账号角色与权限。</li>
+                <li>简历或 JD 读取失败时，查看错误信息后刷新、重试或更换读取方式。</li>
+                <li>后台任务失败时，到任务中心查看错误信息和可用操作。</li>
+                <li>匹配或评估结果标记为过期时，保留历史记录并重新运行任务。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section searchable" id="glossary" data-title="术语表 JD CV Evidence Snapshot Evaluation">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">GLOSSARY</p>
+              <h2>常用术语</h2>
+              <p class="section-intro">这里列出页面中常见的名称。</p>
+            </div>
+            <span class="section-no">06</span>
+          </div>
+          <dl class="glossary">
+            <div class="term"><dt>JD</dt><dd>Job Description，岗位描述，包含工作内容和任职要求。</dd></div>
+            <div class="term"><dt>CV</dt><dd>Curriculum Vitae，简历。系统会从文件中读取教育、经历、项目和技能。</dd></div>
+            <div class="term"><dt>Evidence</dt><dd>来源证据，指支持某项内容的原文、文件和出处。</dd></div>
+            <div class="term"><dt>验证快照</dt><dd>已经逐项检查并确认过的一份简历版本，可用于匹配和投递。</dd></div>
+            <div class="term"><dt>Evaluation</dt><dd>一次岗位匹配结果，说明简历与目标岗位的优势和差距。</dd></div>
+            <div class="term"><dt>构建任务</dt><dd>一次岗位图谱整理任务，包含使用的资料和处理结果。</dd></div>
+            <div class="term"><dt>审核任务</dt><dd>需要人工查看、修改或确认的一项内容。</dd></div>
+            <div class="term"><dt>名称归一化</dt><dd>把岗位名或技能名的不同写法对应到同一个标准名称。</dd></div>
+            <div class="term"><dt>新兴岗位</dt><dd>从近期岗位资料中发现、正在形成的新岗位。</dd></div>
+            <div class="term"><dt>投递记录</dt><dd>个人向企业岗位提交简历后形成的记录。</dd></div>
+            <div class="term"><dt>运行前检查</dt><dd>运行匹配前检查简历和岗位资料是否齐全。</dd></div>
+          </dl>
+        </section>
+
+        <div class="no-results" id="noResults">
+          <strong>没有找到匹配内容</strong>
+          <p>尝试搜索“证据”“简历”“审核”“岗位”或清空搜索框。</p>
+        </div>
+
+        <footer class="manual-footer">
+          <strong>JobPulse 用户手册</strong>
+          <p>本手册说明 JobPulse 当前前端的主要功能、操作步骤和页面结果。不同账号会看到与角色和权限对应的菜单。</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const roleProfiles = {
+      admin:{
+        name:"治理人员",
+        sideName:"治理人员视角",
+        topName:"治理端用户手册",
+        short:"数据、图谱、审核与版本治理",
+        desc:"管理岗位数据、图谱内容、审核结果和历史版本。",
+        hero:"治理端用于管理岗位数据、图谱构建、审核、版本和新兴岗位治理。",
+        map:"以下列出治理端的日常功能。账号权限不同，菜单和按钮也会不同。"
+      },
+      enterprise:{
+        name:"企业",
+        sideName:"企业视角",
+        topName:"企业用户手册",
+        short:"岗位管理、候选评估与招聘决策",
+        desc:"管理企业空间、招聘岗位和候选人评估。",
+        hero:"企业端用于创建企业空间、发布招聘岗位、设置技能要求、评估候选人并记录招聘结果。",
+        map:"企业端常用“JD 数据中心”和“招聘工作台”；“岗位全景”和证据页面用于查看岗位要求及来源。"
+      },
+      personal:{
+        name:"个人",
+        sideName:"个人视角",
+        topName:"个人用户手册",
+        short:"企业岗位、简历、岗位匹配与学习路径",
+        desc:"浏览岗位、确认简历，投递并查看匹配建议。",
+        hero:"个人端用于浏览企业岗位、管理简历、提交投递、运行岗位匹配并查看差距和学习路径。",
+        map:"常用顺序：浏览岗位 → 上传并确认简历 → 投递或运行匹配 → 查看报告与学习路径。"
+      }
+    };
+
+    const commonFeatures = [
+      {
+        id:"demo-overview", title:"演示总览", code:"COMMON-01", icon:"◫", roles:["admin","enterprise","personal"],
+        entry:"侧栏 · 演示总览", route:"/demo",
+        summary:"查看三条业务演示链路的进度和对应页面。",
+        steps:["打开“演示总览”，查看每条演示链路的当前状态。","点击环节卡片，打开对应业务页面。","有任务运行时，可在页面顶部查看或刷新进度。"],
+        result:"三条演示链路的进度状态、任务运行状态和对应业务页面入口。",
+        note:"演示总览只汇总状态，具体操作在对应业务页面完成。",
+        shot:"演示总览"
+      },
+      {
+        id:"position-panorama", title:"岗位全景", code:"COMMON-02", icon:"◇", roles:["admin","enterprise","personal"],
+        entry:"侧栏 · 岗位全景", route:"/positions",
+        summary:"用于查看标准岗位的能力结构、岗位画像和技能关系。",
+        steps:["打开“岗位全景”，从列表中选择一个标准岗位。","在关系图或列表中查看岗位技能；列表可按技术领域筛选。","切换岗位画像页签，查看职责、学历、经验、证书和其他要求。","打开技能或岗位要求校准结果，查看对应原文和来源。","个人用户可把该岗位设为匹配目标。"],
+        roleSteps:{
+          admin:["治理账号可从技能列表创建草稿，调整技能的重要程度并填写修改原因。","草稿完成审核和发布后会形成新的正式版本。"]
+        },
+        result:"已发布标准岗位的职责、技能和要求、岗位要求校准结果，以及这些内容的来源。",
+        note:"标准岗位是通用能力参考；具体企业的招聘岗位请到“企业岗位 / 招聘工作台”查看。",
+        roleNotes:{
+          admin:"标准岗位图谱的修改保存在草稿中；企业招聘工作台中的技能设置只用于本企业岗位。"
+        },
+        shot:"岗位全景与岗位图谱"
+      },
+      {
+        id:"emerging-public", title:"新兴岗位", code:"COMMON-03", icon:"↗", roles:["admin","enterprise","personal"],
+        entry:"侧栏 · 新兴岗位", route:"/emerging",
+        summary:"用于查看已发布的新兴岗位定义、职责、技能和来源。",
+        steps:["打开“新兴岗位”列表并选择岗位。","在详情页查看岗位定义、主要职责和技能。","查看识别时间和来源；点击来源可查看原文。"],
+        result:"已整理的新兴岗位定义、职责、技能和来源说明。",
+        note:"“新兴岗位”是系统根据资料整理出的岗位结果。",
+        shot:"新兴岗位列表与详情"
+      },
+      {
+        id:"evidence-court", title:"证据法庭", code:"COMMON-04", icon:"§", roles:["admin","enterprise","personal"],
+        entry:"证据治理 · 证据法庭", route:"/evidence/court",
+        summary:"用于核对岗位、技能或匹配结论的原文依据。",
+        steps:["打开“证据法庭”，找到要查看的岗位、技能或匹配结论。","查看对应原文、来源和时间。","按需要比较不同来源，查看它们是否支持同一结论。"],
+        result:"结论对应的来源、原文、时间和核对状态。",
+        note:"来源、时间和原文会与结论一起显示。",
+        shot:"证据法庭"
+      },
+      {
+        id:"evidence-rag", title:"证据问答", code:"COMMON-05", icon:"⌁", roles:["admin","enterprise","personal"],
+        entry:"证据治理 · 证据问答", route:"/evidence/assistant",
+        summary:"查询岗位、技能和匹配结果的来源，也可围绕同一主题连续提问。",
+        steps:["选择一个或多个标准岗位和证据类型；从岗位或报告打开时，页面会自动带入对象。","输入问题并点击“提问”，可在当前对话中继续追问。","展开“引用证据”，查看原文片段、来源和对应业务页面。","查看证据关系，了解引用是支持、矛盾还是暂时没有足够信息。"],
+        result:"问答记录、引用原文和证据关系。",
+        note:"查询多个岗位时，每条引用都会标明所属岗位。",
+        shot:"证据问答与引用来源"
+      }
+    ];
+
+    const roleFeatures = {
+      personal:[
+        {
+          id:"published-jobs", title:"企业岗位", code:"PERSONAL-01", icon:"▤",
+          entry:"能力匹配 · 企业岗位", route:"/jobs",
+          summary:"用于浏览企业当前发布并开放投递的招聘岗位。",
+          steps:["打开“企业岗位”，浏览当前招聘岗位。","打开岗位详情，查看企业、地点、薪资、人数和岗位要求。","在投递区选择一份已确认的简历，点击“确认投递”。","投递后可在岗位详情查看记录或撤回。"],
+          result:"企业岗位详情和投递记录。",
+          note:"投递使用已确认的简历；“岗位全景”展示的是标准岗位。",
+          shot:"企业岗位列表、详情与投递区"
+        },
+        {
+          id:"resume-center", title:"我的简历", code:"PERSONAL-02", icon:"□",
+          entry:"能力匹配 · 我的简历", route:"/profile/resumes",
+          summary:"上传、检查和管理简历，生成可用于投递与匹配的确认版本。",
+          steps:["打开“我的简历”，选择文件并上传；扫描件或图片可使用 OCR。","系统读取完成后，检查教育、经历、项目和技能，按原文修改需要调整的内容。","提交确认后，可用这份简历投递或运行岗位匹配。","简历详情还可重命名、查看历史匹配和删除没有关联报告的简历。"],
+          result:"简历记录、技能与经历信息、确认版本。",
+          note:"支持 PDF、DOC/DOCX、TXT 和图片；旧版 DOC 读取失败时，可另存为 DOCX 或 PDF。",
+          shot:"我的简历、抽取进度与字段审核"
+        },
+        {
+          id:"personal-matching", title:"岗位匹配", code:"PERSONAL-03", icon:"◎",
+          entry:"能力匹配 · 岗位匹配", route:"/matching",
+          summary:"用于评估已确认简历与标准岗位的匹配情况。",
+          steps:["选择一份已确认的简历和目标标准岗位。","查看运行前检查；有缺少的资料时，按页面提示补齐。","点击“运行匹配”，处理期间可刷新状态。","任务完成后打开匹配报告；页面提示结果过期时，重新运行匹配。"],
+          result:"岗位匹配报告，包括匹配结论、优势、差距和待补充信息。",
+          note:"运行前检查会列出简历或岗位中还缺少的内容。",
+          shot:"个人岗位匹配与运行前检查"
+        },
+        {
+          id:"match-report", title:"匹配报告、假设分析与学习路径", code:"PERSONAL-04", icon:"↳",
+          entry:"岗位匹配 · 匹配报告（运行匹配后打开）", route:"/matching/reports/:evaluationId",
+          summary:"用于查看匹配结论、证据、能力差距、假设分析和学习路径。",
+          steps:["核对报告对应的简历和岗位，并查看报告是否需要重新计算。","查看总体结果、硬性条件、优势和能力差距；需要时打开证据详情。","在假设分析中选择行动或学习路线，比较调整前后的结果。","生成学习路径时选择目标岗位和时间预算；历史路径可再次查看。"],
+          result:"匹配结果、来源、能力差距、尝试方案和学习计划。",
+          note:"假设分析展示选定条件下的模拟变化，学习路径提供时间安排参考。",
+          shot:"匹配报告、能力差距、尝试方案与学习路径"
+        }
+      ],
+      enterprise:[
+        {
+          id:"enterprise-jd", title:"JD 数据中心", code:"ENTERPRISE-01", icon:"▤",
+          entry:"系统管理 · JD 数据中心", route:"/data/jds",
+          summary:"用于查看和处理企业账号可访问的岗位描述。",
+          steps:["查看 JD 总数、待审核、已确认、已发布和处理失败数量。","打开全部 JD，按标题、来源或编号查找记录。","有导入权限时，可用文本、文件或 OCR 添加 JD。","打开记录查看处理进度、岗位信息和来源；待确认内容会显示审核入口。"],
+          result:"企业可查看的岗位描述、处理状态、岗位信息和来源。",
+          note:"导入和审核按钮会按企业账号权限显示。",
+          shot:"JD 数据中心概览、列表与详情"
+        },
+        {
+          id:"enterprise-space", title:"招聘工作台 · 企业空间与岗位", code:"ENTERPRISE-02", icon:"▥",
+          entry:"能力匹配 · 招聘工作台", route:"/enterprise/recruitment",
+          summary:"用于创建企业空间并管理企业招聘岗位。",
+          steps:["首次使用时，填写企业名称、行业、规模、所在地和简介，创建企业空间。","创建招聘岗位，填写岗位名称、地点、用工类型、招聘人数和 JD；也可关联标准岗位。","从岗位列表选择岗位，查看岗位要求和当前状态。","按招聘安排发布、暂停、恢复、取消或删除岗位记录。"],
+          result:"企业空间、招聘岗位，以及岗位下的投递和候选人记录。",
+          note:"取消岗位会保留历史记录；删除岗位会同时清除关联的投递、招聘判断和技能设置。",
+          shot:"企业空间创建与招聘工作台"
+        },
+        {
+          id:"skill-weights", title:"招聘工作台 · 企业技能权重", code:"ENTERPRISE-03", icon:"％",
+          entry:"招聘工作台 · 岗位设置", route:"/enterprise/recruitment",
+          summary:"用于配置当前企业岗位的技能类型和相对权重。",
+          steps:["在招聘工作台选择目标岗位，保持“岗位设置”视图。","打开“企业技能权重”，添加技能并设为必备、加分或相关。","调整技能的相对权重并保存，后续候选评估会使用这套设置。"],
+          result:"当前企业岗位的技能类型和优先级。",
+          note:"这里的设置只影响当前企业岗位的候选评估。",
+          shot:"岗位设置与企业技能权重抽屉"
+        },
+        {
+        id:"candidate-evaluation", title:"招聘工作台 · 候选评估与决策", code:"ENTERPRISE-04", icon:"✓",
+          entry:"招聘工作台 · 候选评估", route:"/enterprise/recruitment",
+          summary:"用于评估已授权候选人并记录招聘决策。",
+          steps:["在招聘工作台选择岗位，切换到“候选评估”。","从候选池选择已投递且资料完整的候选人，运行候选评估。","在评估记录或决策板查看排名、匹配状态、优势和能力差距。","选择 2–3 位可排名候选人，点击“比较候选”查看差异。","记录“适配”或“不适配”，选择原因并填写说明。"],
+          result:"候选匹配结果、处理状态和招聘判断记录。",
+          note:"已撤回的投递和已取消岗位仍可查看历史记录。",
+          shot:"候选池、评估任务、评估记录与决策板"
+        }
+      ],
+      admin:[
+        {
+          id:"admin-jd", title:"JD 数据中心", code:"GOV-01", icon:"▤",
+          entry:"系统管理 · JD 数据中心", route:"/data/jds",
+          summary:"用于查看岗位描述从导入到发布的状态，并处理待确认内容。",
+          steps:["查看 JD 总览中的待审核、已确认、已发布和处理失败数量。","用文本、文件或 OCR 导入 JD，并选择页面提供的读取方式。","打开详情，查看原文、岗位信息和来源。","待确认内容可从页面打开审核中心。"],
+          result:"岗位描述的原文、读取结果、处理状态和来源记录。",
+          note:"读取方式的可用状态会直接显示在页面中。",
+          shot:"JD 数据中心与结构化详情"
+        },
+        {
+          id:"task-center", title:"任务中心", code:"GOV-02", icon:"⌛",
+          entry:"系统管理 · 任务中心", route:"/tasks",
+          summary:"用于查看后台任务进度、失败原因和结果入口。",
+          steps:["在“业务总览”或“执行明细”中，按任务类型、状态或业务对象筛选。","打开任务查看进度、更新时间和执行日志。","任务完成后点击“查看结果”，打开对应业务页面。","任务失败时查看原因；页面提供重试按钮时，可直接重新运行。"],
+          result:"后台任务的状态、日志、结果入口和错误信息。",
+          note:"刷新用于更新页面状态；重试会重新执行任务。",
+          shot:"任务中心列表与任务详情"
+        },
+        {
+          id:"evolution", title:"能力演化", code:"GOV-03", icon:"⌁",
+          entry:"能力图谱 · 能力演化", route:"/analysis/evolution",
+          summary:"用于比较岗位要求在不同时间或版本之间的变化。",
+          steps:["选择岗位和比较范围。","查看技能、职责和要求的新增、删除和修改。","打开一项变化，查看对应来源和时间。"],
+          result:"岗位要求变化的对比、时间记录和来源说明。",
+          note:"页面会同时显示比较范围和相关来源。",
+          shot:"能力演化、事件时间线与详情"
+        },
+        {
+          id:"trend-intelligence", title:"趋势情报", code:"GOV-04", icon:"↗",
+          entry:"侧栏 · 趋势情报", route:"/analysis/trends",
+          summary:"结合岗位图谱和外部来源查看岗位趋势，并管理报告审核与发布。",
+          steps:["选择标准岗位，在关系图、技术栈或能力级别中查看当前岗位信息。","打开“趋势报告”，设置日期范围并运行分析；没有运行权限的账号可查看已有报告。","从分析快照选择报告，查看上升、下降、新增能力和技能组合变化。","完成内容检查和审核后，按页面状态发布报告。"],
+          result:"趋势报告、能力变化、外部来源和审核发布状态。",
+          note:"每份趋势报告都会显示所用的时间范围和来源。",
+          shot:"趋势情报、分析快照与报告审核"
+        },
+        {
+          id:"evaluation-governance", title:"评估与反馈", code:"GOV-05", icon:"⊙",
+          entry:"证据治理 · 评估与反馈", route:"/governance/evaluation",
+          summary:"检查系统结果是否可靠，并处理用户反馈。",
+          steps:["在“质量评估”中选择已有数据集，或按页面格式创建数据集。","选择报告类型并运行评估，在结果区查看状态、样本和错误记录。","切换到“用户反馈”，按处理状态筛选。","打开反馈，选择采纳或驳回并填写处理说明。"],
+          result:"评估数据集、评估结果和用户反馈处理记录。",
+          note:"评估结果会同时显示数据集和报告类型。",
+          shot:"评估与反馈"
+        },
+        {
+          id:"integration", title:"数据同步", code:"GOV-06", icon:"⇄",
+          entry:"系统管理 · 数据同步", route:"/admin/integration",
+          summary:"用于检查服务状态、数据同步情况和异常信息。",
+          steps:["查看各服务和数据的当前状态。","按页面提示执行同步、刷新或恢复。","操作完成后回到业务页面查看更新结果。"],
+          result:"服务状态、资料同步情况和异常提示。",
+          note:"同步完成后回到业务页面核对实际结果。",
+          shot:"数据同步与集成状态"
+        },
+        {
+          id:"acquisition", title:"数据采集", code:"GOV-07", icon:"↓",
+          entry:"系统管理 · 数据采集", route:"/admin/acquisition",
+          summary:"用于从已配置的招聘数据源采集岗位信息。",
+          steps:["查看采集源状态和登录提示。","填写关键词、城市和页数，创建采集任务。","在任务列表查看找到、导入、重复和失败的数量。","任务完成后，可到 JD 数据中心查看导入的岗位；失败记录可打开查看原因。"],
+          result:"采集任务记录、处理统计和导入系统的岗位资料。",
+          note:"采集源状态和任务统计会显示在同一页面。",
+          shot:"采集源状态、采集任务与详情"
+        },
+        {
+          id:"graph-build", title:"图谱构建", code:"GOV-08", icon:"⬡",
+          entry:"能力图谱 · 图谱构建", route:"/admin/build",
+          summary:"用于将已整理的岗位资料构建为岗位能力图谱草稿。",
+          steps:["选择标准岗位并启动构建，任务完成后查看采用的资料和技能关系。","打开构建草稿，检查技能、职责、要求和来源；需要时修改单条技能关系。","在“构建记录”中选择批次，运行发布检查并处理审核任务。","页面显示可发布后，点击“发布正式图谱”。"],
+          result:"岗位图谱草稿、构建记录、发布检查和正式版本。",
+          note:"发布检查会列出还需要处理的内容。",
+          shot:"图谱构建、构建记录与发布检查"
+        },
+        {
+          id:"mapping", title:"岗位与技能映射", code:"GOV-09", icon:"↔",
+          entry:"能力图谱 · 岗位与技能映射", route:"/admin/mappings",
+          summary:"用于将来源岗位或技能名称映射到标准实体。",
+          steps:["打开待映射对象，查看来源名称、JD 原文和上下文。","搜索标准岗位或技能，选择含义相符的结果。","保存映射；没有合适结果时，可保留原文或留待后续处理。"],
+          result:"资料中的名称与系统标准岗位、标准技能之间的对应关系。",
+          note:"映射结果会保留来源名称，方便后续查看。",
+          shot:"岗位与技能映射"
+        },
+        {
+          id:"review-center", title:"审核中心", code:"GOV-10", icon:"✓",
+          entry:"能力图谱 · 审核中心", route:"/admin/review",
+          summary:"用于处理图谱结论、JD 治理和数据质量审核任务。",
+          steps:["打开“审核中心”，选择图谱结论、JD 审核或数据质量任务。","对照原内容、建议内容和来源，选择采用、修改或退回。","JD 审核可确认岗位分类、职责、要求和未解决技能。","处理完成后发布、提交发布、退回重新读取或弃用，并填写处理说明。"],
+          result:"带有处理意见和记录的人工确认结果。",
+          note:"每次审核都会保存处理结果和说明。",
+          shot:"审核中心与待处理任务"
+        },
+        {
+          id:"version-management", title:"图谱版本管理", code:"GOV-11", icon:"V",
+          entry:"能力图谱 · 图谱版本管理", route:"/admin/versions",
+          summary:"用于查看、比较和恢复岗位图谱历史版本。",
+          steps:["选择岗位，查看各正式版本的发布时间和说明。","打开版本内容，查看技能关系、职责和任职要求。","选择两个版本比较差异；需要恢复旧内容时，填写理由并创建新的正式版本。"],
+          result:"岗位要求的历史版本、版本差异和恢复记录。",
+          note:"回滚以新版本形式保存，完整保留中间历史。",
+          shot:"图谱版本管理与版本对比"
+        },
+        {
+          id:"discovery", title:"新兴岗位发现", code:"GOV-12", icon:"✣",
+          entry:"新兴治理 · 新兴岗位发现", route:"/admin/discovery",
+          summary:"用于从指定时间范围的岗位资料中识别新兴岗位候选。",
+          steps:["在“发现运行”查看历史任务，或按日期范围运行新的发现任务。","切换到“岗位簇”，按状态、成员数和稳定性查看候选。","打开岗位簇详情或“查看生命周期”，了解成员、来源和变化过程。","选择需要继续整理的结果，提交到“新兴岗位候选”。"],
+          result:"发现运行记录、按时间范围整理的岗位簇、对应候选生命周期和相关来源。",
+          note:"发现结果完成候选治理和发布后，会显示在公开的新兴岗位列表中。",
+          shot:"新兴岗位发现任务与岗位簇"
+        },
+        {
+          id:"emerging-candidates", title:"新兴岗位候选", code:"GOV-13", icon:"↗",
+          entry:"新兴治理 · 新兴岗位候选", route:"/admin/emerging",
+          summary:"整理新兴岗位候选的定义，完成审核、发布和标准岗位转化。",
+          steps:["在“发现候选”选择候选，查看来源、生命周期和当前状态。","点击“生成定义”，检查岗位名称、职责、技能和来源。","选择定义版本并提交审核，按审核结果修改或发布。","发布后可按页面条件转为标准岗位；治理记录会保存全过程。"],
+          result:"候选定义、审核记录、发布状态和标准岗位转化记录。",
+          note:"候选详情会显示当前定义版本和处理状态。",
+          shot:"新兴岗位候选治理"
+        },
+        {
+          id:"model-service", title:"模型服务配置", code:"GOV-14", icon:"⚙",
+          entry:"系统管理 · 模型服务配置", route:"/admin/model-service",
+          summary:"配置 JD 内容读取所使用的模型服务。",
+          steps:["打开“模型服务配置”，查看当前配置状态。","填写服务地址、密钥和模型名称，点击“测试连接”。","测试成功后保存配置，再回到 JD 数据中心使用内容读取功能。"],
+          result:"模型服务地址、模型名称和配置状态。",
+          note:"已保存的密钥不会在页面中完整显示。",
+          shot:"模型服务配置与连接测试"
+        }
+      ]
+    };
+
+    const fixedNav = [
+      {id:"start",label:"使用说明",icon:"01"},
+      {id:"overview",label:"系统概览",icon:"02"},
+      {id:"quick-map",label:"角色功能",icon:"03"}
+    ];
+    const footerNav = [
+      {id:"capabilities",label:"系统能力",icon:"04"},
+      {id:"boundaries",label:"常见问题",icon:"05"},
+      {id:"glossary",label:"术语表",icon:"06"}
+    ];
+
+    let currentRole = localStorage.getItem("jobpulse-manual-role") || "personal";
+    let activeObserver = null;
+
+    const roleGate = document.getElementById("roleGate");
+    const sideNav = document.getElementById("sideNav");
+    const chapterList = document.getElementById("chapterList");
+    const featureIndex = document.getElementById("featureIndex");
+    const sidebar = document.getElementById("sidebar");
+    const searchInput = document.getElementById("manualSearch");
+    const noResults = document.getElementById("noResults");
+
+    function allFeaturesFor(role){
+      return [...commonFeatures.filter(item=>item.roles.includes(role)), ...roleFeatures[role]];
+    }
+
+    function featureSteps(item){
+      return [...item.steps,...(item.roleSteps?.[currentRole]||[])];
+    }
+
+    function featureNote(item){
+      const roleNote=item.roleNotes?.[currentRole];
+      return roleNote?`${item.note} ${roleNote}`:item.note;
+    }
+
+    function updateRoleCopy(role){
+      const profile = roleProfiles[role];
+      document.getElementById("sideRoleName").textContent = profile.sideName;
+      document.getElementById("sideRoleDesc").textContent = profile.desc;
+      document.getElementById("topRoleName").textContent = profile.topName;
+      document.getElementById("topRoleDesc").textContent = profile.short;
+      document.getElementById("heroEyebrow").textContent = profile.sideName;
+      document.getElementById("heroDescription").textContent = profile.hero;
+      document.getElementById("mapTitle").textContent = `${profile.name}功能地图`;
+      document.getElementById("mapDescription").textContent = profile.map;
+      document.title = `JobPulse ${profile.name}用户手册`;
+    }
+
+    function renderFeatureIndex(features){
+      featureIndex.innerHTML = features.map(item=>`
+        <article class="feature-card searchable" data-title="${item.title} ${item.summary} ${item.entry||""} ${item.route||""}">
+          <h3>${item.title}</h3>
+          <p><strong>适合：</strong>${item.summary}</p>
+          <span class="feature-entry">入口：${item.entry||"页面内入口"}</span>
+          <footer><button style="all:unset;cursor:pointer" data-jump="${item.id}">查看说明</button></footer>
+        </article>
+      `).join("");
+    }
+
+
+    function renderChapters(features){
+      chapterList.innerHTML = features.map(item=>`
+        <article class="chapter searchable" style="grid-template-columns:1fr" id="${item.id}" data-title="${item.title} ${item.summary} ${item.entry||""} ${item.route||""} ${featureSteps(item).join(" ")} ${item.result} ${featureNote(item)}">
+          <div class="chapter-copy">
+            <header class="chapter-heading">
+              <div class="chapter-meta">
+                <span class="tag ${item.roles ? "neutral" : (currentRole==="admin"?"terracotta":currentRole==="enterprise"?"emerald":"neutral")}">${item.roles ? "常用功能" : roleProfiles[currentRole].name+"功能"}</span>
+              </div>
+              <h3>${item.title}</h3>
+            </header>
+            <section class="chapter-panel chapter-purpose" aria-label="功能说明">
+              <div class="chapter-section-title"><span>01</span><strong>功能说明</strong></div>
+              <p class="summary">${item.summary}</p>
+              <div class="entry-line">
+                <span>功能入口</span>
+                <strong>${item.entry||"页面内入口"}</strong>
+              </div>
+            </section>
+            <section class="chapter-panel chapter-steps" aria-label="操作步骤">
+              <div class="chapter-section-title"><span>02</span><strong>操作步骤</strong></div>
+              <ul class="step-list">
+                ${featureSteps(item).map(step=>`<li><span>${step}</span></li>`).join("")}
+              </ul>
+            </section>
+            <section class="chapter-panel chapter-outcomes-section" aria-label="结果与使用说明">
+              <div class="chapter-section-title"><span>03</span><strong>结果与使用说明</strong></div>
+              <div class="chapter-outcomes">
+                <div class="result-box"><strong>页面结果</strong><span>${item.result}</span></div>
+                <div class="note-box"><strong>使用说明</strong><span>${featureNote(item)}</span></div>
+              </div>
+            </section>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function renderNav(features){
+      const commonItems = features.filter(item=>item.roles);
+      const roleItems = features.filter(item=>!item.roles);
+      const roleGroupName = `${roleProfiles[currentRole].name}功能`;
+
+      const level1 = (number,id,label,extraClass="") => `
+        <button class="nav-link nav-level-1 ${extraClass}" data-nav-target="${id}">
+          <span class="nav-number">${number}</span>
+          <span class="nav-label">${label}</span>
+        </button>
+      `;
+
+      const groupLabel = (number,label) => `
+        <div class="nav-group-label" aria-hidden="true">
+          <span class="nav-number">${number}</span>
+          <span>${label}</span>
+        </div>
+      `;
+
+      const level3 = (number,item) => `
+        <button class="nav-link nav-level-3" data-nav-target="${item.id}">
+          <span class="nav-number">${number}</span>
+          <span class="nav-label">${item.title}</span>
+        </button>
+      `;
+
+      const commonLinks = commonItems
+        .map((item,index)=>level3(`4.1.${index+1}`,item))
+        .join("");
+
+      const roleLinks = roleItems
+        .map((item,index)=>level3(`4.2.${index+1}`,item))
+        .join("");
+
+      const featureParent = `
+        <button class="nav-link nav-level-1 nav-parent" type="button" data-nav-toggle="feature-nav-children" aria-expanded="false" aria-controls="feature-nav-children">
+          <span class="nav-number">4</span>
+          <span class="nav-label">功能与操作说明</span>
+          <span class="nav-caret" aria-hidden="true">›</span>
+        </button>
+      `;
+
+      sideNav.innerHTML = [
+        level1("1","start","使用说明"),
+        level1("2","overview","系统概览"),
+        level1("3","quick-map","角色功能"),
+        '<div class="nav-divider"></div>',
+        featureParent,
+        '<div class="nav-collapsible" id="feature-nav-children" hidden>',
+        groupLabel("4.1","通用功能"),
+        commonLinks,
+        groupLabel("4.2",roleGroupName),
+        roleLinks,
+        '</div>',
+        '<div class="nav-divider"></div>',
+        level1("5","capabilities","系统能力"),
+        level1("6","boundaries","常见问题"),
+        level1("7","glossary","术语表")
+      ].join("");
+    }
+
+    function setupNavigation(){
+      document.querySelectorAll("[data-nav-toggle]").forEach(button=>{
+        button.addEventListener("click",()=>{
+          const target = document.getElementById(button.dataset.navToggle);
+          if(!target) return;
+          const expanded = button.getAttribute("aria-expanded")==="true";
+          button.setAttribute("aria-expanded",String(!expanded));
+          target.hidden = expanded;
+        });
+      });
+      document.querySelectorAll("[data-nav-target],[data-jump]").forEach(button=>{
+        button.addEventListener("click",()=>{
+          const id = button.dataset.navTarget || button.dataset.jump;
+          const target = document.getElementById(id);
+          if(target){
+            target.scrollIntoView({behavior:"smooth",block:"start"});
+            sidebar.classList.remove("is-open");
+          }
+        });
+      });
+      if(activeObserver) activeObserver.disconnect();
+      activeObserver = new IntersectionObserver(entries=>{
+        const visible = entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if(!visible) return;
+        document.querySelectorAll(".nav-link").forEach(link=>{
+          link.classList.toggle("is-active",link.dataset.navTarget===visible.target.id);
+        });
+      },{rootMargin:"-18% 0px -68% 0px",threshold:[0,.2,.5]});
+      document.querySelectorAll("#manualContent > [id],#chapterList > [id]").forEach(section=>activeObserver.observe(section));
+    }
+
+    function applyRole(role,{closeGate=true}={}){
+      currentRole = role;
+      localStorage.setItem("jobpulse-manual-role",role);
+      updateRoleCopy(role);
+      const features = allFeaturesFor(role);
+      renderFeatureIndex(features);
+      renderChapters(features);
+      renderNav(features);
+      setupNavigation();
+      clearSearch();
+      if(closeGate) roleGate.classList.add("is-hidden");
+      window.scrollTo({top:0,behavior:"smooth"});
+    }
+
+    function openGate(){
+      roleGate.classList.remove("is-hidden");
+      setTimeout(()=>roleGate.querySelector(`[data-role-choice="${currentRole}"]`)?.focus(),30);
+    }
+
+    function normalize(value){
+      return String(value||"").toLowerCase().replace(/\s+/g,"");
+    }
+
+    function matchesSearch(element,query){
+      if(!element) return false;
+      const haystack = normalize(`${element.dataset?.title||""} ${element.textContent||""}`);
+      return haystack.includes(query);
+    }
+
+    function runSearch(){
+      const query = normalize(searchInput.value.trim());
+      const featureCards = [...featureIndex.querySelectorAll(".feature-card")];
+      const chapters = [...chapterList.querySelectorAll(".chapter")];
+      const staticSections = ["start","overview","quick-map","capabilities","boundaries","glossary"]
+        .map(id=>document.getElementById(id))
+        .filter(Boolean);
+      if(!query){
+        document.querySelectorAll(".search-hidden").forEach(item=>item.classList.remove("search-hidden"));
+        noResults.classList.remove("is-visible");
+        return;
+      }
+
+      let matches = 0;
+      featureCards.forEach(card=>{
+        const show = matchesSearch(card,query);
+        card.classList.toggle("search-hidden",!show);
+        if(show) matches++;
+      });
+
+      chapters.forEach(chapter=>{
+        const show = matchesSearch(chapter,query);
+        chapter.classList.toggle("search-hidden",!show);
+        if(show) matches++;
+      });
+
+      staticSections.forEach(section=>{
+        const directMatch = matchesSearch(section,query);
+        const visibleChild = section.querySelector(".searchable:not(.search-hidden)");
+        const show = directMatch || Boolean(visibleChild);
+        section.classList.toggle("search-hidden",!show);
+        if(show) matches++;
+      });
+
+      const featuresSection = document.getElementById("features");
+      const featureHeaderMatch = matchesSearch(featuresSection?.querySelector(".section-head"),query);
+      const hasChapterMatch = chapters.some(chapter=>!chapter.classList.contains("search-hidden"));
+      featuresSection?.classList.toggle("search-hidden",!(featureHeaderMatch||hasChapterMatch));
+      if(featureHeaderMatch && !hasChapterMatch) matches++;
+
+      noResults.classList.toggle("is-visible",matches===0);
+    }
+
+    function clearSearch(){
+      searchInput.value="";
+      document.querySelectorAll(".search-hidden").forEach(item=>item.classList.remove("search-hidden"));
+      noResults.classList.remove("is-visible");
+    }
+
+    document.querySelectorAll("[data-role-choice]").forEach(button=>{
+      button.addEventListener("click",()=>applyRole(button.dataset.roleChoice));
+    });
+    document.querySelectorAll("[data-open-gate]").forEach(button=>button.addEventListener("click",openGate));
+    document.getElementById("menuButton").addEventListener("click",()=>sidebar.classList.toggle("is-open"));
+    searchInput.addEventListener("input",runSearch);
+
+    document.addEventListener("keydown",event=>{
+      if(event.key==="Escape"){
+        if(document.activeElement===searchInput){clearSearch();searchInput.blur()}
+        else if(!roleGate.classList.contains("is-hidden")) roleGate.classList.add("is-hidden");
+        sidebar.classList.remove("is-open");
+      }
+    });
+
+    document.addEventListener("click",event=>{
+      if(window.innerWidth<=860 && sidebar.classList.contains("is-open") && !sidebar.contains(event.target) && event.target.id!=="menuButton"){
+        sidebar.classList.remove("is-open");
+      }
+    });
+
+    window.addEventListener("scroll",()=>{
+      const root = document.documentElement;
+      const max = root.scrollHeight-root.clientHeight;
+      const value = max>0 ? (root.scrollTop/max)*100 : 0;
+      document.getElementById("progressBar").style.width = `${value}%`;
+    },{passive:true});
+
+    if(!roleProfiles[currentRole]) currentRole="personal";
+    applyRole(currentRole,{closeGate:false});
+  </script>
+</body>
+</html>

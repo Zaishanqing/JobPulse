@@ -1,0 +1,286 @@
+{
+  "$defs": {
+    "JobClassification": {
+      "additionalProperties": false,
+      "properties": {
+        "source_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Title"
+        },
+        "position_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Position Id"
+        },
+        "canonical_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Canonical Name"
+        },
+        "resolution_status": {
+          "default": "unresolved",
+          "enum": [
+            "resolved",
+            "manually_confirmed",
+            "unresolved",
+            "rejected"
+          ],
+          "title": "Resolution Status",
+          "type": "string"
+        }
+      },
+      "title": "JobClassification",
+      "type": "object"
+    },
+    "NormalizedRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "normalized_skills": {
+          "items": {
+            "$ref": "#/$defs/NormalizedSkill"
+          },
+          "title": "Normalized Skills",
+          "type": "array"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "kind"
+      ],
+      "title": "NormalizedRequirement",
+      "type": "object"
+    },
+    "NormalizedSalary": {
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "default": "CNY",
+          "title": "Currency",
+          "type": "string"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maximum"
+        },
+        "period": {
+          "default": "unknown",
+          "enum": [
+            "hour",
+            "day",
+            "month",
+            "year",
+            "unknown"
+          ],
+          "title": "Period",
+          "type": "string"
+        }
+      },
+      "title": "NormalizedSalary",
+      "type": "object"
+    },
+    "NormalizedSkill": {
+      "additionalProperties": false,
+      "properties": {
+        "source_name": {
+          "title": "Source Name",
+          "type": "string"
+        },
+        "skill_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Skill Id"
+        },
+        "canonical_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Canonical Name"
+        },
+        "category_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Category Code"
+        },
+        "subcategory_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subcategory Code"
+        },
+        "resolution_status": {
+          "enum": [
+            "resolved",
+            "manually_confirmed",
+            "unresolved",
+            "rejected"
+          ],
+          "title": "Resolution Status",
+          "type": "string"
+        },
+        "resolution_source": {
+          "default": "unresolved",
+          "enum": [
+            "explicit_mapping",
+            "same_id",
+            "canonical_name",
+            "alias",
+            "unresolved"
+          ],
+          "title": "Resolution Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_name",
+        "resolution_status"
+      ],
+      "title": "NormalizedSkill",
+      "type": "object"
+    },
+    "UnresolvedItem": {
+      "additionalProperties": false,
+      "properties": {
+        "source_name": {
+          "title": "Source Name",
+          "type": "string"
+        },
+        "item_type": {
+          "enum": [
+            "skill",
+            "position"
+          ],
+          "title": "Item Type",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_name",
+        "item_type",
+        "reason"
+      ],
+      "title": "UnresolvedItem",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "job_classification": {
+      "$ref": "#/$defs/JobClassification"
+    },
+    "normalized_requirements": {
+      "items": {
+        "$ref": "#/$defs/NormalizedRequirement"
+      },
+      "title": "Normalized Requirements",
+      "type": "array"
+    },
+    "salary": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/NormalizedSalary"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "unresolved_items": {
+      "items": {
+        "$ref": "#/$defs/UnresolvedItem"
+      },
+      "title": "Unresolved Items",
+      "type": "array"
+    }
+  },
+  "required": [
+    "document_id",
+    "job_classification"
+  ],
+  "title": "JDNormalizedResult",
+  "type": "object"
+}

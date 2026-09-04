@@ -1,0 +1,942 @@
+# Production-parity orchestration for the JobPulse layout.
+#
+# The default topology includes every API, database, cache, migration job,
+# worker and dispatcher in the always-on production chain. Model-backed JD,
+# CV and semantic infrastructure remain explicit profiles because they require
+# external credentials or large model resources. The crawler's MySQL, API and
+# scheduler are also available from this Compose file through the crawler profile.
+name: jobpulse-candidate
+
+x-python-build-args: &python-build-args
+  PIP_INDEX_URL: ${PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+
+x-main-database-environment: &main-database-environment
+  DATABASE_URL: postgresql+psycopg://jobgraph_main:${MAIN_POSTGRES_PASSWORD:?set a unique strong main database password}@main-postgres:5432/jobgraph_main
+
+x-main-image: &main-image
+  build:
+    context: ..
+    dockerfile: apps/api/Dockerfile
+    args: *python-build-args
+  image: jobpulse-main-backend:${JOBPULSE_IMAGE_TAG:-candidate}
+
+x-main-runtime-environment: &main-runtime-environment
+  <<: *main-database-environment
+  ENVIRONMENT: ${ENVIRONMENT:-production}
+  JWT_SECRET_KEY: ${MAIN_BACKEND_JWT_SECRET_KEY:?set a unique strong main backend JWT secret}
+  ALLOW_DEMO_ADMIN_REGISTRATION: ${ALLOW_DEMO_ADMIN_REGISTRATION:-false}
+  UPLOAD_DIR: /app/uploads
+  ACQUISITION_ENABLED: ${ACQUISITION_ENABLED:-false}
+  CRAWLER_BASE_URL: ${CRAWLER_BASE_URL:-http://crawler-api:8000}
+  CRAWLER_INTERNAL_TOKEN: ${CRAWLER_INTERNAL_TOKEN:-jobpulse-crawler-internal-token-0123456789abcdef}
+  ACQUISITION_BUNDLE_DIR: /app/bundles
+  KNOWLEDGE_GRAPH_ENABLED: true
+  KNOWLEDGE_GRAPH_BASE_URL: http://knowledge-graph-backend:8000
+  KNOWLEDGE_GRAPH_SERVICE_USERNAME: ${KNOWLEDGE_GRAPH_SERVICE_USERNAME:-integration_developer}
+  KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong knowledge graph service password}
+  EMERGING_DISCOVERY_ENABLED: true
+  EMERGING_DISCOVERY_BASE_URL: http://emerging-discovery:8000
+  EMERGING_DISCOVERY_INTERNAL_TOKEN: ${EMERGING_DISCOVERY_INTERNAL_TOKEN:?set a unique strong emerging discovery token}
+  EMERGING_DISCOVERY_TIMEOUT_SECONDS: ${EMERGING_DISCOVERY_TIMEOUT_SECONDS:-1800}
+  TREND_INTELLIGENCE_ENABLED: true
+  TREND_INTELLIGENCE_BASE_URL: http://trend-intelligence:8000
+  TREND_INTELLIGENCE_INTERNAL_TOKEN: ${TREND_INTELLIGENCE_INTERNAL_TOKEN:?set a unique strong trend intelligence token}
+  MATCHING_SERVICE_ENABLED: true
+  MATCHING_SERVICE_BASE_URL: ${MATCHING_SERVICE_BASE_URL:-http://matching-api:8000}
+  MATCHING_SERVICE_ISSUER: ${MATCHING_AUTH_ISSUER:-https://matching.local/issuer}
+  MATCHING_SERVICE_AUDIENCE: ${MATCHING_SERVICE_AUDIENCE:-matching-api}
+  MATCHING_SERVICE_SIGNING_KEY: ${MATCHING_SERVICE_SIGNING_KEY:?set a unique strong matching signing key}
+  MATCHING_UPSTREAM_SERVICE_TOKEN: ${MATCHING_UPSTREAM_SERVICE_TOKEN:?set a unique strong matching upstream token}
+  DATA_VALIDATION_MODE: ${DATA_VALIDATION_MODE:-enforce}
+  DATA_VALIDATION_WORKER_POLL_SECONDS: ${DATA_VALIDATION_WORKER_POLL_SECONDS:-1}
+  JD_EXTRACTION_BASE_URL: ${JD_EXTRACTION_BASE_URL:-http://jd-extraction:8000}
+  JD_EXTRACTION_INTERNAL_TOKEN: ${JD_EXTRACTION_INTERNAL_TOKEN:?set a unique strong extraction token}
+  JD_EXTRACTION_WORKER_POLL_INTERVAL_SECONDS: ${JD_EXTRACTION_WORKER_POLL_INTERVAL_SECONDS:-1}
+  JD_EXTRACTION_WORKER_CONCURRENCY: ${JD_EXTRACTION_WORKER_CONCURRENCY:-2}
+  JD_EXTRACTION_WORKER_LEASE_TIMEOUT_SECONDS: ${JD_EXTRACTION_WORKER_LEASE_TIMEOUT_SECONDS:-300}
+  JD_EXTRACTION_STALE_RECOVERY_INTERVAL_SECONDS: ${JD_EXTRACTION_STALE_RECOVERY_INTERVAL_SECONDS:-30}
+  CV_EXTRACTION_ENABLED: ${CV_EXTRACTION_ENABLED:-false}
+  CV_EXTRACTION_BASE_URL: ${CV_EXTRACTION_BASE_URL:-http://cv-extraction:8000}
+  CV_EXTRACTION_INTERNAL_TOKEN: ${CV_EXTRACTION_INTERNAL_TOKEN:?set a unique strong CV extraction token}
+  CV_EXTRACTION_TAXONOMY_VERSION: ${CV_EXTRACTION_TAXONOMY_VERSION:?set the CV taxonomy version}
+  CV_EXTRACTION_WORKER_POLL_INTERVAL_SECONDS: ${CV_EXTRACTION_WORKER_POLL_INTERVAL_SECONDS:-1}
+  CV_EXTRACTION_READ_TIMEOUT_SECONDS: ${CV_EXTRACTION_READ_TIMEOUT_SECONDS:-600}
+  CV_EXTRACTION_WORKER_CONCURRENCY: ${CV_EXTRACTION_WORKER_CONCURRENCY:-2}
+  CV_EXTRACTION_WORKER_LEASE_TIMEOUT_SECONDS: ${CV_EXTRACTION_WORKER_LEASE_TIMEOUT_SECONDS:-1800}
+  CV_EXTRACTION_STALE_RECOVERY_INTERVAL_SECONDS: ${CV_EXTRACTION_STALE_RECOVERY_INTERVAL_SECONDS:-30}
+  KG_OUTBOX_WORKER_CONCURRENCY: ${KG_OUTBOX_WORKER_CONCURRENCY:-8}
+  KG_OUTBOX_POLL_INTERVAL_SECONDS: ${KG_OUTBOX_POLL_INTERVAL_SECONDS:-1}
+  KG_OUTBOX_LEASE_SECONDS: ${KG_OUTBOX_LEASE_SECONDS:-60}
+  KG_OUTBOX_MAX_ATTEMPTS: ${KG_OUTBOX_MAX_ATTEMPTS:-5}
+  OUTBOX_DISPATCH_ONCE: false
+  RAG_EVIDENCE_ENABLED: ${RAG_EVIDENCE_ENABLED:-false}
+  RAG_EVIDENCE_EMBEDDING_URL: ${RAG_EVIDENCE_EMBEDDING_URL:-http://embedding-service:8000}
+  RAG_EVIDENCE_QDRANT_URL: ${RAG_EVIDENCE_QDRANT_URL:-http://qdrant:6333}
+  RAG_EVIDENCE_LLM_MODEL: ${RAG_EVIDENCE_LLM_MODEL:-deepseek-v4-flash}
+  RAG_EVIDENCE_MULTI_OBJECT_MAX_HITS: ${RAG_EVIDENCE_MULTI_OBJECT_MAX_HITS:-40}
+  RAG_EVIDENCE_MULTI_OBJECT_MAX_CONTEXT_CHARS: ${RAG_EVIDENCE_MULTI_OBJECT_MAX_CONTEXT_CHARS:-24000}
+  KNOWLEDGE_GRAPH_RAG_DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@knowledge-graph-postgres:5432/knowledge_graph
+  DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+  DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+
+x-matching-environment: &matching-environment
+  MATCHING_RUNTIME_MODE: production
+  MATCHING_PERSISTENCE_PROVIDER: postgres
+  MATCHING_DATABASE_URL: postgresql+psycopg://matching:${MATCHING_POSTGRES_PASSWORD:-jobgraph-matching-local-password}@matching-postgres:5432/matching
+  MATCHING_QUEUE_PROVIDER: redis
+  MATCHING_REDIS_URL: redis://matching-redis:6379/0
+  MATCHING_AUTH_MODE: jwt
+  MATCHING_AUTH_ISSUER: ${MATCHING_AUTH_ISSUER:-https://matching.local/issuer}
+  MATCHING_AUTH_AUDIENCE: ${MATCHING_SERVICE_AUDIENCE:-matching-api}
+  MATCHING_AUTH_VERIFICATION_KEY: ${MATCHING_SERVICE_SIGNING_KEY:-jobgraph-matching-local-signing-key-change-me}
+  # Internal workers mint short-lived JWTs with the same local key that the
+  # Matching authentication provider verifies.
+  MATCHING_WORKER_SIGNING_KEY: ${MATCHING_SERVICE_SIGNING_KEY:-jobgraph-matching-local-signing-key-change-me}
+  MATCHING_AUTH_ALGORITHMS: HS256
+  MATCHING_CV_SOURCE_URL: http://main-backend:8000
+  MATCHING_POSITION_SOURCE_URL: http://main-backend:8000
+  MATCHING_GRAPH_SOURCE_URL: http://main-backend:8000
+  MATCHING_GRAPH_HEALTH_URL: http://main-backend:8000/health
+  MATCHING_GRAPH_VERSION: current
+  MATCHING_CV_AUTHORIZATION_URL: http://main-backend:8000/api/v1/authorization/cv-owner
+  MATCHING_APPLICATION_GRANT_URL: http://main-backend:8000/api/v1/authorization/application-grant
+  MATCHING_ENTERPRISE_JOB_GRANT_URL: http://main-backend:8000/api/v1/authorization/enterprise-job-grant
+  MATCHING_UPSTREAM_SERVICE_TOKEN: ${MATCHING_UPSTREAM_SERVICE_TOKEN:-jobgraph-matching-upstream-local-token}
+  MATCHING_SEMANTIC_MODE: disabled
+  MATCHING_VECTOR_ADMIN_ENABLED: false
+  MATCHING_RESPONSIBILITY_CE_MODE: ${MATCHING_RESPONSIBILITY_CE_MODE:-disabled}
+  MATCHING_RESPONSIBILITY_CE_MODEL_PATH: ${MATCHING_RESPONSIBILITY_CE_MODEL_PATH:-/models/responsibility-ce-v1}
+  MATCHING_RESPONSIBILITY_CE_MANIFEST_PATH: ${MATCHING_RESPONSIBILITY_CE_MANIFEST_PATH:-/models/responsibility-ce-v1/manifest.json}
+  MATCHING_RESPONSIBILITY_CE_EMBEDDING_URL: ${MATCHING_RESPONSIBILITY_CE_EMBEDDING_URL:-http://embedding-service:8000}
+  MATCHING_RESPONSIBILITY_CE_EMBEDDING_TIMEOUT_SECONDS: ${MATCHING_RESPONSIBILITY_CE_EMBEDDING_TIMEOUT_SECONDS:-120}
+  MATCHING_RESPONSIBILITY_CE_FALLBACK_TO_RULES: ${MATCHING_RESPONSIBILITY_CE_FALLBACK_TO_RULES:-false}
+
+x-matching-image: &matching-image
+  image: jobpulse-matching-service:${JOBPULSE_IMAGE_TAG:-candidate}
+  build:
+    context: ..
+    dockerfile: services/matching-service/Dockerfile
+    args:
+      <<: *python-build-args
+      INSTALL_RESPONSIBILITY_CE: ${MATCHING_INSTALL_RESPONSIBILITY_CE:-false}
+      TORCH_CPU_INDEX_URL: ${TORCH_CPU_INDEX_URL:-https://download.pytorch.org/whl/cpu}
+  environment: *matching-environment
+  volumes:
+    - ${MATCHING_RESPONSIBILITY_CE_MODEL_HOST_PATH:-../models/responsibility-ce-v1}:/models/responsibility-ce-v1:ro
+
+# Worker containers do not expose an HTTP port. This process-level probe makes
+# Compose wait/health status distinguish a live worker from a crashed process;
+# task leases and heartbeats remain the application-level liveness signal.
+x-worker-healthcheck: &worker-healthcheck
+  test: ['CMD', 'python', '-c', 'import os; os.kill(1, 0)']
+  interval: 10s
+  timeout: 3s
+  retries: 3
+  start_period: 10s
+
+services:
+  main-postgres:
+    image: postgres:16-alpine
+    command: ['postgres', '-c', 'max_connections=${MAIN_POSTGRES_MAX_CONNECTIONS:-200}']
+    environment:
+      POSTGRES_USER: jobgraph_main
+      POSTGRES_PASSWORD: ${MAIN_POSTGRES_PASSWORD:?set a unique strong main database password}
+      POSTGRES_DB: jobgraph_main
+    ports:
+      - ${MAIN_POSTGRES_PORT:-5433}:5432
+    volumes:
+      - main_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U jobgraph_main -d jobgraph_main']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  knowledge-graph-postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: knowledge_graph
+      POSTGRES_PASSWORD: ${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}
+      POSTGRES_DB: knowledge_graph
+    volumes:
+      - knowledge_graph_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U knowledge_graph -d knowledge_graph']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  knowledge-graph-migrate:
+    build:
+      context: ..
+      dockerfile: services/knowledge-graph/Dockerfile
+      args: *python-build-args
+    image: jobpulse-knowledge-graph-backend:${JOBPULSE_IMAGE_TAG:-candidate}
+    command: ['alembic', 'upgrade', 'head']
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@knowledge-graph-postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${KNOWLEDGE_GRAPH_JWT_SECRET_KEY}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD}
+      CATALOG_WRITES_ENABLED: false
+      POSITION_CATALOG_READINESS_REQUIRED: true
+      EXPECTED_POSITION_CATALOG_COUNT: 112
+    depends_on:
+      knowledge-graph-postgres:
+        condition: service_healthy
+    restart: 'no'
+
+  knowledge-graph-bootstrap:
+    image: jobpulse-knowledge-graph-backend:${JOBPULSE_IMAGE_TAG:-candidate}
+    # A-DATA-01 frozen-release snapshots are a legacy experiment baseline and
+    # are intentionally not part of startup. Run import_frozen_releases.py
+    # explicitly only when restoring that historical dataset.
+    command: ['sh', '-c', 'python scripts/sync_integration_service_identity.py && python scripts/sync_skill_taxonomy_catalog.py && python scripts/import_resolved_position_catalog.py config/resolved-position-catalog.v3.json']
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@knowledge-graph-postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${KNOWLEDGE_GRAPH_JWT_SECRET_KEY}
+      KNOWLEDGE_GRAPH_SERVICE_USERNAME: ${KNOWLEDGE_GRAPH_SERVICE_USERNAME:-integration_developer}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong knowledge graph service password}
+      CATALOG_WRITES_ENABLED: false
+      POSITION_CATALOG_READINESS_REQUIRED: true
+      EXPECTED_POSITION_CATALOG_COUNT: 112
+    depends_on:
+      knowledge-graph-migrate:
+        condition: service_completed_successfully
+    restart: 'no'
+
+  # These two one-shot services are deliberately outside the default and full
+  # profiles. A graph build changes the named volume and must be run once by
+  # an operator after real published facts are present in the KG database.
+  knowledge-graph-real-data-init:
+    profiles: ['kg-init']
+    image: jobpulse-knowledge-graph-backend:${JOBPULSE_IMAGE_TAG:-candidate}
+    command: ['python', 'scripts/build_kg_graphs.py', '--workers', '${KG_GRAPH_BUILD_WORKERS:-1}', '--timeout', '${KG_GRAPH_BUILD_TIMEOUT_SECONDS:-120}']
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@knowledge-graph-postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${KNOWLEDGE_GRAPH_JWT_SECRET_KEY}
+      KNOWLEDGE_GRAPH_SERVICE_USERNAME: ${KNOWLEDGE_GRAPH_SERVICE_USERNAME:-integration_developer}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong knowledge graph service password}
+      CATALOG_WRITES_ENABLED: false
+      POSITION_CATALOG_READINESS_REQUIRED: true
+      EXPECTED_POSITION_CATALOG_COUNT: 112
+      KG_API_BASE_URL: http://knowledge-graph-backend:8000
+    depends_on:
+      knowledge-graph-backend:
+        condition: service_healthy
+    restart: 'no'
+
+  knowledge-graph-readiness-check:
+    profiles: ['kg-init']
+    image: jobpulse-knowledge-graph-backend:${JOBPULSE_IMAGE_TAG:-candidate}
+    command: ['python', 'scripts/check_kg_graph_readiness.py']
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@knowledge-graph-postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${KNOWLEDGE_GRAPH_JWT_SECRET_KEY}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong knowledge graph service password}
+      CATALOG_WRITES_ENABLED: false
+      POSITION_CATALOG_READINESS_REQUIRED: true
+      EXPECTED_POSITION_CATALOG_COUNT: 112
+      KG_REQUIRED_POSITION_CODE: ${KG_REQUIRED_POSITION_CODE:-}
+    depends_on:
+      knowledge-graph-postgres:
+        condition: service_healthy
+    restart: 'no'
+
+  knowledge-graph-backend:
+    build:
+      context: ..
+      dockerfile: services/knowledge-graph/Dockerfile
+      args: *python-build-args
+    image: jobpulse-knowledge-graph-backend:${JOBPULSE_IMAGE_TAG:-candidate}
+    init: true
+    command: ['uvicorn', 'app.main:app', '--host', '0.0.0.0', '--port', '8000', '--workers', '${KNOWLEDGE_GRAPH_BACKEND_WORKERS:-2}']
+    expose: [8000]
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@knowledge-graph-postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${KNOWLEDGE_GRAPH_JWT_SECRET_KEY}
+      KNOWLEDGE_GRAPH_SERVICE_USERNAME: ${KNOWLEDGE_GRAPH_SERVICE_USERNAME:-integration_developer}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong knowledge graph service password}
+      KG_EMBEDDING_ENDPOINT: http://embedding-service:8000
+      KG_EMBEDDING_TIMEOUT_SECONDS: ${EMERGING_DISCOVERY_EMBEDDING_TIMEOUT_SECONDS:-300}
+      CATALOG_WRITES_ENABLED: false
+      POSITION_CATALOG_READINESS_REQUIRED: true
+      EXPECTED_POSITION_CATALOG_COUNT: 112
+    depends_on:
+      knowledge-graph-bootstrap:
+        condition: service_completed_successfully
+      embedding-service:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+    restart: unless-stopped
+
+  knowledge-graph-worker:
+    image: jobpulse-knowledge-graph-backend:${JOBPULSE_IMAGE_TAG:-candidate}
+    init: true
+    command: ['python', 'scripts/run_build_worker.py']
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@knowledge-graph-postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${KNOWLEDGE_GRAPH_JWT_SECRET_KEY}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD}
+      CATALOG_WRITES_ENABLED: false
+      POSITION_CATALOG_READINESS_REQUIRED: true
+      EXPECTED_POSITION_CATALOG_COUNT: 112
+      BUILD_JOB_WORKER_ID: knowledge-graph-worker-candidate
+    healthcheck: *worker-healthcheck
+    depends_on:
+      knowledge-graph-bootstrap:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  matching-postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: matching
+      POSTGRES_PASSWORD: ${MATCHING_POSTGRES_PASSWORD:-jobgraph-matching-local-password}
+      POSTGRES_DB: matching
+    volumes:
+      - matching_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U matching -d matching']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  matching-redis:
+    image: redis:7-alpine
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - matching_redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  matching-migrate:
+    <<: *matching-image
+    command: ['migrate']
+    depends_on:
+      matching-postgres:
+        condition: service_healthy
+    restart: 'no'
+
+  matching-api:
+    <<: *matching-image
+    command: ['api']
+    expose: [8000]
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      matching-redis:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/live', timeout=3)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+    restart: unless-stopped
+
+  matching-worker:
+    <<: *matching-image
+    command: ['worker']
+    environment:
+      <<: *matching-environment
+      MATCHING_WORKER_SIGNING_KEY: ${MATCHING_SERVICE_SIGNING_KEY:-jobgraph-matching-local-signing-key-change-me}
+    deploy:
+      replicas: 4
+    healthcheck: *worker-healthcheck
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      matching-redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  matching-dispatcher:
+    <<: *matching-image
+    command: ['dispatcher']
+    healthcheck: *worker-healthcheck
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      matching-redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  analytics-postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: analytics_admin
+      POSTGRES_PASSWORD: ${ANALYTICS_POSTGRES_ADMIN_PASSWORD:-jobgraph-analytics-admin-local-password}
+      POSTGRES_DB: postgres
+      EMERGING_DISCOVERY_POSTGRES_PASSWORD: ${EMERGING_DISCOVERY_POSTGRES_PASSWORD:-jobgraph-emerging-local-password}
+      TREND_INTELLIGENCE_POSTGRES_PASSWORD: ${TREND_INTELLIGENCE_POSTGRES_PASSWORD:-jobgraph-trend-local-password}
+    ports:
+      - ${ANALYTICS_POSTGRES_PORT:-5434}:5432
+    volumes:
+      - analytics_postgres_data:/var/lib/postgresql/data
+      - ../services/emerging-discovery/docker/init-databases.sql:/docker-entrypoint-initdb.d/10-init-databases.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'PGPASSWORD=$${EMERGING_DISCOVERY_POSTGRES_PASSWORD} psql -U emerging_discovery -d emerging_discovery -c "SELECT 1"']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  emerging-discovery-migrate:
+    build:
+      context: ..
+      dockerfile: services/emerging-discovery/Dockerfile
+      args: *python-build-args
+    image: jobpulse-emerging-discovery:${JOBPULSE_IMAGE_TAG:-candidate}
+    command: ['alembic', 'upgrade', 'head']
+    environment:
+      DATABASE_URL: postgresql+psycopg://emerging_discovery:${EMERGING_DISCOVERY_POSTGRES_PASSWORD:-jobgraph-emerging-local-password}@analytics-postgres:5432/emerging_discovery
+    depends_on:
+      analytics-postgres:
+        condition: service_healthy
+    restart: 'no'
+
+  emerging-discovery:
+    build:
+      context: ..
+      dockerfile: services/emerging-discovery/Dockerfile
+      args: *python-build-args
+    image: jobpulse-emerging-discovery:${JOBPULSE_IMAGE_TAG:-candidate}
+    init: true
+    expose: [8000]
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://emerging_discovery:${EMERGING_DISCOVERY_POSTGRES_PASSWORD:-jobgraph-emerging-local-password}@analytics-postgres:5432/emerging_discovery
+      ALGORITHM_VERSION: emerge-v3.2
+      FORMULA_VERSION: emerge-v3.2
+      INTERNAL_SERVICE_TOKEN: ${EMERGING_DISCOVERY_INTERNAL_TOKEN}
+      MAINTENANCE_TOKEN: ${EMERGING_DISCOVERY_MAINTENANCE_TOKEN}
+      POSITION_REFERENCE_PROVIDER: knowledge_graph_http
+      KNOWLEDGE_GRAPH_BASE_URL: http://knowledge-graph-backend:8000
+      KNOWLEDGE_GRAPH_SERVICE_USERNAME: ${KNOWLEDGE_GRAPH_SERVICE_USERNAME}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD}
+      KNOWLEDGE_GRAPH_TIMEOUT_SECONDS: ${EMERGING_DISCOVERY_KG_TIMEOUT_SECONDS:-300}
+      EMBEDDING_BASE_URL: http://embedding-service:8000
+      EMBEDDING_TIMEOUT_SECONDS: ${EMERGING_DISCOVERY_EMBEDDING_TIMEOUT_SECONDS:-300}
+    depends_on:
+      emerging-discovery-migrate:
+        condition: service_completed_successfully
+      knowledge-graph-backend:
+        condition: service_healthy
+      embedding-service:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readiness', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 20s
+    restart: unless-stopped
+
+  trend-intelligence:
+    build:
+      context: ..
+      dockerfile: services/trend-intelligence/Dockerfile
+      args: *python-build-args
+    image: jobpulse-trend-intelligence:${JOBPULSE_IMAGE_TAG:-candidate}
+    init: true
+    command: ['api']
+    expose: [8000]
+    environment:
+      TREND_INTELLIGENCE_DATABASE_URL: postgresql+psycopg://trend_intelligence:${TREND_INTELLIGENCE_POSTGRES_PASSWORD:-jobgraph-trend-local-password}@analytics-postgres:5432/trend_intelligence
+      TREND_INTELLIGENCE_INTERNAL_TOKEN: ${TREND_INTELLIGENCE_INTERNAL_TOKEN:-jobgraph-trend-intelligence-local-token}
+      TREND_INTELLIGENCE_MAX_ATTEMPTS: ${TREND_INTELLIGENCE_MAX_ATTEMPTS:-3}
+    depends_on:
+      analytics-postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readiness', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 20s
+    restart: unless-stopped
+
+  trend-intelligence-worker:
+    image: jobpulse-trend-intelligence:${JOBPULSE_IMAGE_TAG:-candidate}
+    init: true
+    command: ['worker']
+    environment:
+      TREND_INTELLIGENCE_DATABASE_URL: postgresql+psycopg://trend_intelligence:${TREND_INTELLIGENCE_POSTGRES_PASSWORD:-jobgraph-trend-local-password}@analytics-postgres:5432/trend_intelligence
+      TREND_INTELLIGENCE_INTERNAL_TOKEN: ${TREND_INTELLIGENCE_INTERNAL_TOKEN:-jobgraph-trend-intelligence-local-token}
+      TREND_INTELLIGENCE_WORKER_ID: trend-intelligence-worker-candidate
+    healthcheck: *worker-healthcheck
+    depends_on:
+      trend-intelligence:
+        condition: service_healthy
+    restart: unless-stopped
+
+  main-backend:
+    <<: *main-image
+    init: true
+    # Ranking generation uses process-local cooperative cancellation while the
+    # formal position evaluations still run in a four-thread batch. One API
+    # process keeps start/status/cancel requests on the same coordinator.
+    command: ['sh', '-c', 'python -m alembic upgrade head && python scripts/seed_bootstrap_accounts.py && python scripts/sync_skill_taxonomy_catalog.py && python scripts/sync_position_taxonomy_catalog.py && exec uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers ${MAIN_BACKEND_WORKERS:-1}']
+    ports:
+      - ${MAIN_BACKEND_PORT:-8000}:8000
+    environment:
+      <<: *main-runtime-environment
+      JD_EXTRACTION_WORKER_ENABLED: false
+      CV_EXTRACTION_WORKER_ENABLED: false
+    volumes:
+      - main_uploads:/app/uploads
+      - ../services/crawler/output:/app/bundles:ro
+    depends_on:
+      main-postgres:
+        condition: service_healthy
+      knowledge-graph-backend:
+        condition: service_healthy
+      emerging-discovery:
+        condition: service_healthy
+      trend-intelligence:
+        condition: service_healthy
+      matching-api:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readiness', timeout=10)"]
+      interval: 10s
+      timeout: 12s
+      retries: 12
+      start_period: 15s
+    restart: unless-stopped
+
+  main-judge-data-init:
+    <<: *main-image
+    init: true
+    command:
+      - sh
+      - -ec
+      - >-
+        if [ "$${LOAD_PACKAGED_JUDGE_DATA}" != "true" ]; then
+        echo "Packaged judge data initialization is disabled";
+        exit 0;
+        fi;
+        python scripts/import_audit_jds_concurrent.py
+        --input data/extraction-audit/position-cleaned-publishable-v3-recleaned-20260814.zip
+        --source-selection-file data/extraction-audit/recent-position-signals-selection.v1.json
+        --main-url http://main-backend:8000
+        --main-username demo_admin
+        --main-password password123
+        --batch-name recent-position-signals-v1
+        --workers 5
+        --http-connections 5
+        --max-in-flight 5
+        --approve-validation-warnings
+        --report data/extraction-audit/recent-position-signals-import-report.json
+        && python scripts/import_audit_jds_concurrent.py
+        --input data/extraction-audit/position-cleaned-publishable-v3-recleaned-20260814.zip
+        --source-selection-file data/extraction-audit/capability-evolution-2026-selection.json
+        --main-url http://main-backend:8000
+        --main-username demo_admin
+        --main-password password123
+        --batch-name emerging-discovery-3day-v1
+        --workers 16
+        --http-connections 16
+        --max-in-flight 32
+        --approve-validation-warnings
+        --report data/extraction-audit/emerging-discovery-3day-import-report.json
+    environment:
+      <<: *main-runtime-environment
+      JD_EXTRACTION_WORKER_ENABLED: false
+      CV_EXTRACTION_WORKER_ENABLED: false
+      LOAD_PACKAGED_JUDGE_DATA: ${LOAD_PACKAGED_JUDGE_DATA:-true}
+    depends_on:
+      main-backend:
+        condition: service_healthy
+      validation-worker:
+        condition: service_healthy
+    restart: "no"
+
+  extraction-worker:
+    profiles: ['model-extraction', 'full']
+    <<: *main-image
+    init: true
+    command: ['jobgraph-extraction-worker']
+    healthcheck: *worker-healthcheck
+    environment:
+      <<: *main-runtime-environment
+      JD_EXTRACTION_WORKER_ENABLED: true
+      CV_EXTRACTION_WORKER_ENABLED: false
+    volumes:
+      - main_uploads:/app/uploads
+    depends_on:
+      main-backend:
+        condition: service_healthy
+      jd-extraction:
+        condition: service_healthy
+    restart: unless-stopped
+
+  validation-worker:
+    <<: *main-image
+    init: true
+    command: ['jobgraph-validation-worker']
+    healthcheck: *worker-healthcheck
+    environment:
+      <<: *main-runtime-environment
+      JD_EXTRACTION_WORKER_ENABLED: false
+      CV_EXTRACTION_WORKER_ENABLED: false
+    depends_on:
+      main-backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  kg-outbox-worker:
+    <<: *main-image
+    init: true
+    command: ['jobgraph-outbox-worker']
+    healthcheck: *worker-healthcheck
+    environment:
+      <<: *main-runtime-environment
+      JD_EXTRACTION_WORKER_ENABLED: false
+      CV_EXTRACTION_WORKER_ENABLED: false
+      OUTBOX_WORKER_ID: kg-outbox-worker
+    volumes:
+      - main_uploads:/app/uploads
+    depends_on:
+      main-backend:
+        condition: service_healthy
+      knowledge-graph-backend:
+        condition: service_healthy
+      matching-api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  cv-extraction-worker:
+    profiles: ['cv-extraction', 'full']
+    <<: *main-image
+    init: true
+    command: ['jobgraph-cv-extraction-worker']
+    healthcheck: *worker-healthcheck
+    environment:
+      <<: *main-runtime-environment
+      CV_EXTRACTION_ENABLED: true
+      JD_EXTRACTION_WORKER_ENABLED: false
+      CV_EXTRACTION_WORKER_ENABLED: true
+    volumes:
+      - main_uploads:/app/uploads
+    depends_on:
+      main-backend:
+        condition: service_healthy
+      cv-extraction:
+        condition: service_healthy
+    restart: unless-stopped
+
+  main-frontend:
+    build:
+      context: ../apps/web
+      dockerfile: Dockerfile
+      args:
+        NPM_CONFIG_REGISTRY: ${NPM_CONFIG_REGISTRY:-https://registry.npmmirror.com}
+    image: jobpulse-main-frontend:${JOBPULSE_IMAGE_TAG:-candidate}
+    ports:
+      - ${MAIN_FRONTEND_PORT:-3000}:80
+    depends_on:
+      main-judge-data-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://127.0.0.1/']
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+  embedding-service:
+    build:
+      context: ..
+      dockerfile: services/embedding-service/Dockerfile
+      args:
+        <<: *python-build-args
+        PIP_DEFAULT_TIMEOUT: ${PIP_DEFAULT_TIMEOUT:-120}
+        PIP_RETRIES: ${PIP_RETRIES:-10}
+        TORCH_VARIANT: cpu
+        TORCH_CPU_VERSION: ${TORCH_CPU_VERSION:-2.6.0+cpu}
+        TORCH_CPU_INDEX_URL: ${TORCH_CPU_INDEX_URL:-https://download.pytorch.org/whl/cpu}
+    image: jobpulse-embedding-service:${JOBPULSE_IMAGE_TAG:-candidate}
+    expose: [8000]
+    env_file:
+      - ../config/semantic-demo-contract.env
+    environment:
+      EMBEDDING_BATCH_SIZE: ${EMBEDDING_BATCH_SIZE:-16}
+      EMBEDDING_MAX_CONCURRENCY: ${EMBEDDING_MAX_CONCURRENCY:-2}
+      EMBEDDING_REQUEST_TIMEOUT_SECONDS: ${EMBEDDING_REQUEST_TIMEOUT_SECONDS:-180}
+      HF_HUB_DISABLE_XET: ${HF_HUB_DISABLE_XET:-1}
+      HF_HUB_OFFLINE: ${HF_HUB_OFFLINE:-}
+      HF_ENDPOINT: ${HF_ENDPOINT:-https://hf-mirror.com}
+    volumes:
+      - embedding_model_cache:/models
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+      interval: 15s
+      timeout: 5s
+      retries: 40
+      start_period: 120s
+    restart: unless-stopped
+
+  qdrant:
+    profiles: ['semantic-demo', 'evidence-rag', 'full']
+    image: qdrant/qdrant:v1.12.5
+    expose: [6333]
+    volumes:
+      - matching_qdrant_data:/qdrant/storage
+    healthcheck:
+      test: ['CMD-SHELL', "bash -c ':> /dev/tcp/127.0.0.1/6333'"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  matching-api-semantic-demo:
+    profiles: ['semantic-demo', 'full']
+    <<: *matching-image
+    env_file:
+      - ../config/semantic-demo-contract.env
+    environment:
+      <<: *matching-environment
+      MATCHING_SEMANTIC_DEMO: true
+      MATCHING_SEMANTIC_MODE: shadow
+      MATCHING_VECTOR_ADMIN_ENABLED: true
+      MATCHING_INDEXING_ENABLED: true
+      MATCHING_RETRIEVAL_ENABLED: true
+    command: ['api']
+    expose: [8000]
+    ports:
+      - ${MATCHING_SEMANTIC_API_PUBLISHED_PORT:-8011}:8000
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      matching-redis:
+        condition: service_healthy
+      embedding-service:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+      main-backend:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 15s
+    restart: unless-stopped
+
+  matching-vector-worker-semantic-demo:
+    profiles: ['semantic-demo', 'full']
+    <<: *matching-image
+    env_file:
+      - ../config/semantic-demo-contract.env
+    environment:
+      <<: *matching-environment
+      MATCHING_SEMANTIC_DEMO: true
+      MATCHING_SEMANTIC_MODE: shadow
+      MATCHING_VECTOR_ADMIN_ENABLED: true
+      MATCHING_INDEXING_ENABLED: true
+      MATCHING_RETRIEVAL_ENABLED: true
+      MATCHING_VECTOR_WORKER_ID: matching-vector-worker-semantic-demo
+      MATCHING_VECTOR_WORKER_METRICS_HOST: 0.0.0.0
+      MATCHING_VECTOR_WORKER_METRICS_PORT: 9092
+    command: ['vector-worker']
+    expose: [9092]
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      main-backend:
+        condition: service_healthy
+      embedding-service:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:9092/health/ready', timeout=3)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 15s
+    restart: unless-stopped
+
+  jd-extraction:
+    profiles: ['model-extraction', 'full']
+    build:
+      context: ..
+      dockerfile: services/jd-extraction/Dockerfile
+      args: *python-build-args
+    image: jobpulse-jd-extraction:${JOBPULSE_IMAGE_TAG:-candidate}
+    expose: [8000]
+    environment:
+      JD_EXTRACTION_INTERNAL_TOKEN: ${JD_EXTRACTION_INTERNAL_TOKEN:?set a unique strong extraction token}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      JD_POSITION_TAXONOMY_PATH: /app/config/position_taxonomy_catalog.v3.json
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readiness', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    restart: unless-stopped
+
+  cv-extraction:
+    profiles: ['cv-extraction', 'full']
+    build:
+      context: ..
+      dockerfile: services/cv-extraction/Dockerfile
+      args: *python-build-args
+    image: jobpulse-cv-extraction:${JOBPULSE_IMAGE_TAG:-candidate}
+    expose: [8000]
+    environment:
+      CV_EXTRACTION_INTERNAL_TOKEN: ${CV_EXTRACTION_INTERNAL_TOKEN:?set a unique strong CV extraction token}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      POSITION_TAXONOMY_PATH: /app/cv-extraction/resources/taxonomy/position/3.0/position_taxonomy_catalog.v3.json
+      RESOURCE_MANIFEST_PATH: /app/cv-extraction/resources/cv-resource-manifest.v1.json
+      NORMALIZATION_PATH: /app/cv-extraction/resources/normalization/2.0/normalization_map.yaml
+      SKILL_TAXONOMY_PATH: /app/cv-extraction/resources/taxonomy/2.0/skill_taxonomy_snapshot.json
+      CV_EXTRACTION_CHECKPOINT_PATH: /var/lib/jobpulse/cv-extraction/checkpoints.sqlite3
+      CV_EXTRACTION_API_TIMEOUT_SECONDS: ${CV_EXTRACTION_API_TIMEOUT_SECONDS:-120}
+      CV_EXTRACTION_TASK_BUDGET_SECONDS: ${CV_EXTRACTION_TASK_BUDGET_SECONDS:-570}
+    volumes:
+      - cv_extraction_checkpoints:/var/lib/jobpulse/cv-extraction
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/readiness', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+    restart: unless-stopped
+
+  crawler-mysql:
+    profiles: ['crawler', 'full']
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${CRAWLER_MYSQL_ROOT_PASSWORD:-jobgraph-crawler-local-root-password}
+      MYSQL_DATABASE: ${CRAWLER_MYSQL_DATABASE:-crawler}
+      MYSQL_USER: ${CRAWLER_MYSQL_USER:-crawler}
+      MYSQL_PASSWORD: ${CRAWLER_MYSQL_PASSWORD:-jobgraph-crawler-local-password}
+    volumes:
+      - crawler_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD-SHELL', 'mysqladmin ping -h 127.0.0.1 -u root -p$${MYSQL_ROOT_PASSWORD}']
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+    restart: unless-stopped
+
+  crawler-api:
+    profiles: ['crawler', 'full']
+    build:
+      context: ..
+      dockerfile: services/crawler/deploy/Dockerfile.api
+      args:
+        <<: *python-build-args
+        DEBIAN_MIRROR_URL: ${DEBIAN_MIRROR_URL:-https://mirrors.tuna.tsinghua.edu.cn/debian}
+        PLAYWRIGHT_DOWNLOAD_HOST: ${PLAYWRIGHT_DOWNLOAD_HOST:-https://cdn.npmmirror.com/binaries/playwright}
+    image: jobpulse-crawler:${JOBPULSE_IMAGE_TAG:-candidate}
+    environment:
+      DB_HOST: crawler-mysql
+      DB_PORT: '3306'
+      DB_USER: ${CRAWLER_MYSQL_USER:-crawler}
+      DB_PASSWORD: ${CRAWLER_MYSQL_PASSWORD:-jobgraph-crawler-local-password}
+      DB_NAME: ${CRAWLER_MYSQL_DATABASE:-crawler}
+      MYSQL_HOST: crawler-mysql
+      MYSQL_PORT: '3306'
+      MYSQL_USER: ${CRAWLER_MYSQL_USER:-crawler}
+      MYSQL_PASSWORD: ${CRAWLER_MYSQL_PASSWORD:-jobgraph-crawler-local-password}
+      MYSQL_DATABASE: ${CRAWLER_MYSQL_DATABASE:-crawler}
+      JWT_SECRET: ${CRAWLER_JWT_SECRET:-jobgraph-crawler-local-jwt-secret-change-me}
+      INTERNAL_SERVICE_TOKEN: ${CRAWLER_INTERNAL_TOKEN:-jobpulse-crawler-internal-token-0123456789abcdef}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      CORS_ALLOWED_ORIGINS: ${CRAWLER_CORS_ALLOWED_ORIGINS:-http://localhost:53000}
+      CRAWLER_EMBEDDED_SCHEDULER_ENABLED: 'false'
+      OFFLINE_BUNDLE_DIR: /app/output
+      BOSS_COOKIES_PATH: /app/cookies/boss_cookies.json
+    volumes:
+      - ../services/crawler/data:/app/data
+      - ../services/crawler/output:/app/output
+      - ../services/crawler/cookies:/app/cookies
+    expose: [8000]
+    depends_on:
+      crawler-mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'python', '-c', "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=5)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+    restart: unless-stopped
+
+  crawler-scheduler:
+    profiles: ['crawler', 'full']
+    build:
+      context: ..
+      dockerfile: services/crawler/deploy/Dockerfile
+      args:
+        <<: *python-build-args
+        DEBIAN_MIRROR_URL: ${DEBIAN_MIRROR_URL:-https://mirrors.tuna.tsinghua.edu.cn/debian}
+        PLAYWRIGHT_DOWNLOAD_HOST: ${PLAYWRIGHT_DOWNLOAD_HOST:-https://cdn.npmmirror.com/binaries/playwright}
+    image: jobpulse-crawler:${JOBPULSE_IMAGE_TAG:-candidate}
+    command: ['python', '-m', 'patches.scheduler']
+    environment:
+      MYSQL_HOST: crawler-mysql
+      MYSQL_PORT: '3306'
+      MYSQL_USER: ${CRAWLER_MYSQL_USER:-crawler}
+      MYSQL_PASSWORD: ${CRAWLER_MYSQL_PASSWORD:-jobgraph-crawler-local-password}
+      MYSQL_DATABASE: ${CRAWLER_MYSQL_DATABASE:-crawler}
+      DB_HOST: crawler-mysql
+      DB_PORT: '3306'
+      DB_USER: ${CRAWLER_MYSQL_USER:-crawler}
+      DB_PASSWORD: ${CRAWLER_MYSQL_PASSWORD:-jobgraph-crawler-local-password}
+      DB_NAME: ${CRAWLER_MYSQL_DATABASE:-crawler}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      JWT_SECRET: ${CRAWLER_JWT_SECRET:-jobgraph-crawler-local-jwt-secret-change-me}
+      INTERNAL_SERVICE_TOKEN: ${CRAWLER_INTERNAL_TOKEN:-jobpulse-crawler-internal-token-0123456789abcdef}
+      CRAWLER_LEASE_SECONDS: ${CRAWLER_LEASE_SECONDS:-5400}
+      CRAWLER_MAX_RETRIES: ${CRAWLER_MAX_RETRIES:-2}
+      OFFLINE_BUNDLE_DIR: /app/output
+      BOSS_COOKIES_PATH: /app/cookies/boss_cookies.json
+    volumes:
+      - ../services/crawler/data:/app/data
+      - ../services/crawler/output:/app/output
+      - ../services/crawler/cookies:/app/cookies
+      - ../services/crawler/patches/schedule_config.yaml:/app/patches/schedule_config.yaml:ro
+    depends_on:
+      crawler-mysql:
+        condition: service_healthy
+      crawler-api:
+        condition: service_healthy
+    healthcheck: *worker-healthcheck
+    restart: unless-stopped
+
+volumes:
+  main_postgres_data:
+  main_uploads:
+  knowledge_graph_postgres_data:
+  analytics_postgres_data:
+  matching_postgres_data:
+  matching_redis_data:
+  embedding_model_cache:
+  matching_qdrant_data:
+  crawler_mysql_data:
+  cv_extraction_checkpoints:

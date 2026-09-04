@@ -1,0 +1,210 @@
+version: "2.4"
+contract_id: cvextraction.v2_4.field_contract
+pydantic:
+  source_module: src.models
+  extra_fields: forbid
+  assignment_validation: true
+canonical_enums:
+  degree_level: [high_school, associate, bachelor, master, doctor, postdoc, unknown]
+  gender: [male, female, unknown]
+  language_proficiency: [native, fluent, professional, conversational, basic, unknown]
+  skill_item_type: [programming_language, framework, library, database, tool, platform, methodology, domain_knowledge, soft_skill, language, other]
+  proficiency: [know, familiar, proficient, expert, unknown]
+  alignment: [exact, normalized_exact, unresolved]
+  resolution_status: [resolved, ambiguous, unresolved]
+  position_classification_status: [resolved, manually_confirmed, ambiguous, out_of_scope, catalog_gap]
+  work_type: [full_time, internship, part_time, contract, unknown]
+  work_status: [employed, unemployed, student, graduating, unknown]
+  award_level: [international, national, provincial, municipal, school, other, unknown]
+  certificate_kind: [professional_certification, language_certification, license, competition_award, other]
+  modality: [required, preferred, bonus, unknown]
+  personal_field_evidence_name: [current_location, expected_location, expected_position, expected_salary, work_status, available_date]
+  education_field_evidence_name: [school, college, major, degree, date, gpa, gpa_scale, location, school_tag]
+  work_field_evidence_name: [company, position, date, department, location, work_type]
+  project_field_evidence_name: [name, date, role, affiliation]
+  match_feature_type: [skill, task, experience, role, education, certificate, language, location, salary, soft_skill, award, self_evaluation, work_status, availability]
+models:
+  Evidence:
+    fields:
+      source_id: {type: string, required: true, nullable: false}
+      quote: {type: string, required: true, nullable: false}
+      start: {type: integer, required: false, nullable: true, minimum: 0, generated_by: python}
+      end: {type: integer, required: false, nullable: true, minimum: 0, generated_by: python}
+      alignment: {type: alignment, required: true, nullable: false, default: unresolved, generated_by: python}
+      occurrence_index: {type: integer, required: false, nullable: true, minimum: 0, generated_by: python}
+  SourcedText:
+    fields:
+      value: {type: string, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  PersonalFieldEvidence:
+    fields:
+      field_name: {type: personal_field_evidence_name, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  EducationFieldEvidence:
+    fields:
+      field_name: {type: education_field_evidence_name, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  WorkFieldEvidence:
+    fields:
+      field_name: {type: work_field_evidence_name, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  ProjectFieldEvidence:
+    fields:
+      field_name: {type: project_field_evidence_name, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  DateRange:
+    fields:
+      start: {type: string, required: false, nullable: true}
+      end: {type: string, required: false, nullable: true}
+      duration_text: {type: string, required: false, nullable: true}
+  SkillItem:
+    fields:
+      item_id: {type: string, required: true, nullable: false, generated_by: python}
+      name: {type: string, required: true, nullable: false}
+      item_type: {type: skill_item_type, required: true, nullable: false}
+      proficiency: {type: proficiency, required: false, nullable: true}
+      evidence: {type: Evidence, required: true, nullable: false}
+  PersonalInfo:
+    fields:
+      name: {type: string, required: false, nullable: true}
+      gender: {type: gender, required: false, nullable: true}
+      birth_year: {type: integer, required: false, nullable: true}
+      phone: {type: string, required: false, nullable: true}
+      email: {type: string, required: false, nullable: true}
+      current_location: {type: string, required: false, nullable: true}
+      expected_location: {type: string, required: false, nullable: true}
+      expected_position: {type: string, required: false, nullable: true}
+      expected_salary: {type: string, required: false, nullable: true}
+      work_status: {type: work_status, required: false, nullable: true}
+      available_date: {type: string, required: false, nullable: true}
+      evidence: {type: Evidence, required: true, nullable: false}
+      field_evidence: {type: "list[PersonalFieldEvidence]", required: true, nullable: false}
+  EducationEntry:
+    fields:
+      entry_id: {type: string, required: true, nullable: false, generated_by: python}
+      school: {type: string, required: true, nullable: false}
+      college: {type: string, required: false, nullable: true}
+      major: {type: string, required: true, nullable: false}
+      degree: {type: degree_level, required: true, nullable: false}
+      date: {type: DateRange, required: false, nullable: true}
+      gpa: {type: string, required: false, nullable: true}
+      gpa_scale: {type: string, required: false, nullable: true}
+      location: {type: string, required: false, nullable: true}
+      school_tag: {type: string, required: false, nullable: true}
+      evidence: {type: Evidence, required: true, nullable: false}
+      field_evidence: {type: "list[EducationFieldEvidence]", required: true, nullable: false}
+  WorkEntry:
+    fields:
+      entry_id: {type: string, required: true, nullable: false, generated_by: python}
+      company: {type: string, required: true, nullable: false}
+      position: {type: string, required: false, nullable: true}
+      date: {type: DateRange, required: false, nullable: true}
+      department: {type: string, required: false, nullable: true}
+      location: {type: string, required: false, nullable: true}
+      work_type: {type: work_type, required: false, nullable: true}
+      tech_stack: {type: "list[SkillItem]", required: true, nullable: false}
+      responsibilities: {type: "list[SourcedText]", required: true, nullable: false}
+      achievements: {type: "list[SourcedText]", required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+      field_evidence: {type: "list[WorkFieldEvidence]", required: true, nullable: false}
+  ProjectEntry:
+    fields:
+      entry_id: {type: string, required: true, nullable: false, generated_by: python}
+      name: {type: string, required: true, nullable: false}
+      date: {type: DateRange, required: false, nullable: true}
+      role: {type: string, required: false, nullable: true}
+      affiliation: {type: string, required: false, nullable: true}
+      description: {type: SourcedText, required: false, nullable: true}
+      tech_stack: {type: "list[SkillItem]", required: true, nullable: false}
+      highlights: {type: "list[SourcedText]", required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+      field_evidence: {type: "list[ProjectFieldEvidence]", required: true, nullable: false}
+  LanguageSkill:
+    fields:
+      entry_id: {type: string, required: true, nullable: false, generated_by: python}
+      language: {type: string, required: true, nullable: false}
+      proficiency: {type: language_proficiency, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  CertificateEntry:
+    fields:
+      entry_id: {type: string, required: true, nullable: false, generated_by: python}
+      name: {type: string, required: true, nullable: false}
+      kind: {type: certificate_kind, required: true, nullable: false}
+      issuing_body: {type: string, required: false, nullable: true}
+      date: {type: string, required: false, nullable: true}
+      evidence: {type: Evidence, required: true, nullable: false}
+  AwardEntry:
+    fields:
+      entry_id: {type: string, required: true, nullable: false, generated_by: python}
+      name: {type: string, required: true, nullable: false}
+      level: {type: award_level, required: false, nullable: true}
+      date: {type: string, required: false, nullable: true}
+      issuing_body: {type: string, required: false, nullable: true}
+      evidence: {type: Evidence, required: true, nullable: false}
+  SelfEvaluation:
+    fields:
+      entry_id: {type: string, required: true, nullable: false, generated_by: python}
+      content: {type: string, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  CVExtractionResult:
+    fields:
+      document_id: {type: string, required: true, nullable: false, generated_by: python}
+      personal_info: {type: PersonalInfo, required: false, nullable: true}
+      education: {type: "list[EducationEntry]", required: true, nullable: false}
+      work_experience: {type: "list[WorkEntry]", required: true, nullable: false}
+      project_experience: {type: "list[ProjectEntry]", required: true, nullable: false}
+      skills: {type: "list[SkillItem]", required: true, nullable: false}
+      languages: {type: "list[LanguageSkill]", required: true, nullable: false}
+      certificates: {type: "list[CertificateEntry]", required: true, nullable: false}
+      awards: {type: "list[AwardEntry]", required: true, nullable: false}
+      publications: {type: "list[PublicationEntry]", required: true, nullable: false}
+      patents: {type: "list[PatentEntry]", required: true, nullable: false}
+      research_outputs: {type: "list[ResearchOutputEntry]", required: true, nullable: false}
+      self_evaluation: {type: "list[SelfEvaluation]", required: true, nullable: false}
+  NormalizedSkill:
+    fields:
+      source_item_id: {type: string, required: true, nullable: false}
+      source_scope: {type: string, required: true, nullable: false}
+      source_name: {type: string, required: true, nullable: false}
+      skill_id: {type: string, required: false, nullable: true}
+      canonical_name: {type: string, required: false, nullable: true}
+      category_code: {type: skill_item_type, required: true, nullable: false}
+      subcategory_code: {type: string, required: false, nullable: true}
+      resolution_status: {type: resolution_status, required: true, nullable: false}
+      normalization_confidence: {type: number, required: false, nullable: true, minimum: 0, maximum: 1}
+      resolution_source: {type: "explicit_mapping | same_id | canonical_name | alias | unresolved", required: true, nullable: false, default: unresolved}
+  CVNormalizedResult:
+    fields:
+      document_id: {type: string, required: true, nullable: false}
+      normalized_skills: {type: "list[NormalizedSkill]", required: true, nullable: false}
+      unresolved_items: {type: "list[string]", required: true, nullable: false}
+  MatchFeature:
+    fields:
+      feature_id: {type: string, required: true, nullable: false, generated_by: python}
+      document_id: {type: string, required: true, nullable: false, generated_by: python}
+      side: {type: "cv | jd", required: true, nullable: false}
+      feature_type: {type: match_feature_type, required: true, nullable: false}
+      source_object_id: {type: string, required: true, nullable: false}
+      source_scope: {type: string, required: true, nullable: false}
+      canonical_id: {type: string, required: false, nullable: true}
+      canonical_name: {type: string, required: false, nullable: true}
+      raw_text: {type: string, required: true, nullable: false}
+      vector_text: {type: string, required: false, nullable: true}
+      requirement_modality: {type: modality, required: false, nullable: true}
+      candidate_level: {type: string, required: false, nullable: true}
+      structured_values: {type: "dict[string, scalar]", required: true, nullable: false}
+      resolution_status: {type: resolution_status, required: true, nullable: false}
+      evidence_refs: {type: "list[Evidence]", required: true, nullable: false}
+      taxonomy_version: {type: string, required: true, nullable: false}
+      derivation_version: {type: string, required: true, nullable: false}
+    role_position_invariants:
+      - role canonical_id is always null; position identity is structured_values.position_code plus taxonomy_version
+      - structured_values.classification_status uses position_classification_status
+      - unresolved position classifications retain candidates, evidence and policy version
+  CVMatchFeatureResult:
+    fields:
+      document_id: {type: string, required: true, nullable: false}
+      as_of_date: {type: string, required: true, nullable: false}
+      taxonomy_version: {type: string, required: true, nullable: false}
+      derivation_version: {type: string, required: true, nullable: false}
+      features: {type: "list[MatchFeature]", required: true, nullable: false}

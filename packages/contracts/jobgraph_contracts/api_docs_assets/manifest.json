@@ -1,0 +1,11 @@
+{
+  "schema_version": "jobpulse-offline-api-doc-assets.v1",
+  "swagger_ui_dist": {
+    "version": "5.32.14",
+    "source": "npm:swagger-ui-dist@5.32.14"
+  },
+  "redoc": {
+    "version": "2.5.3",
+    "source": "npm:redoc@2.5.3"
+  }
+}

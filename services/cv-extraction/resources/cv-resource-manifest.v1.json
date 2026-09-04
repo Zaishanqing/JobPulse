@@ -1,0 +1,14 @@
+{
+  "manifest_schema_version": "cv-resource-manifest.v1",
+  "normalization_version": "2.0",
+  "normalization_relative_path": "normalization/2.0/normalization_map.yaml",
+  "normalization_sha256": "1e55ffe5cecd6b591fb989145312dbb8797a26646c452d112e49f4ff4ef53d24",
+  "taxonomy_version": "skill-taxonomy-snapshot.v1",
+  "taxonomy_relative_path": "taxonomy/2.0/skill_taxonomy_snapshot.json",
+  "taxonomy_sha256": "87ca77ebbd87e3ea80166db0adf4e4994f8f98606843df15f87348c9b5dafa92",
+  "generated_at": "2026-08-04T00:00:00Z",
+  "source_version": "main@c888b42eb64bd9ada9540e4c820ff937ae45ecc1",
+  "compatible_cv_schema_versions": [
+    "2.4"
+  ]
+}

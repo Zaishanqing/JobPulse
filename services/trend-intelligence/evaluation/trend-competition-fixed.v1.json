@@ -1,0 +1,49 @@
+{
+  "dataset_id": "trend-competition-fixed",
+  "dataset_version": "trend-competition-fixed.v1",
+  "algorithm_config_version": "trend-ranking-competition.v1",
+  "purpose": "竞赛规模的固定 Trend 排名评估；expected 由岗位目录规则人工复核，不来自算法输出。",
+  "cases": [
+    {
+      "case_id": "trend-ai-roles-2026h1",
+      "input": {
+        "terms": [
+          {"source": "policy", "term": "large language model", "published_at": "2026-05-10T00:00:00Z", "content_hash": "1010101010101010101010101010101010101010101010101010101010101010"},
+          {"source": "arxiv", "term": "llm", "published_at": "2026-05-18T00:00:00Z", "content_hash": "2020202020202020202020202020202020202020202020202020202020202020"},
+          {"source": "github", "term": "multimodal", "published_at": "2026-05-24T00:00:00Z", "content_hash": "3030303030303030303030303030303030303030303030303030303030303030"}
+        ]
+      },
+      "expected": {
+        "provenance": "explicit_rule",
+        "annotation_note": "两名维护者复核：固定人工智能岗位目录中的五个岗位均由三类大模型信号覆盖，方向应为 rising。",
+        "ranked_candidates": ["AGI安全研究员", "AI伦理合规师", "AI大模型训练师", "多模态AI工程师", "提示词工程师"],
+        "direction": "rising",
+        "k": 5
+      },
+      "source_metadata": {
+        "required_sources": ["policy", "arxiv", "github"],
+        "references": ["policy://ai-action-2026", "arxiv://llm-survey-2026", "github://topic/llm"]
+      },
+      "windows": {
+        "observation": {"start": "2026-05-01T00:00:00Z", "end": "2026-06-01T00:00:00Z"},
+        "validation": {"start": "2026-06-02T00:00:00Z", "end": "2026-08-01T00:00:00Z"}
+      },
+      "algorithm_config": {
+        "version": "trend-ranking-competition.v1",
+        "source_weights": {"policy": 1.0, "academic": 1.0, "github": 1.0},
+        "job_knowledge": {
+          "人工智能": {
+            "research_keywords": ["large language model", "llm", "multimodal"],
+            "jobs": [
+              {"name": "AI大模型训练师", "industry": "人工智能/互联网"},
+              {"name": "提示词工程师", "industry": "人工智能/互联网"},
+              {"name": "AI伦理合规师", "industry": "人工智能/科技法规"},
+              {"name": "AGI安全研究员", "industry": "人工智能/安全"},
+              {"name": "多模态AI工程师", "industry": "人工智能/计算机视觉"}
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

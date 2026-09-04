@@ -1,0 +1,86 @@
+name: jobgraph-standalone
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: knowledge_graph
+      POSTGRES_PASSWORD: ${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}
+      POSTGRES_DB: knowledge_graph
+    volumes:
+      - knowledge-graph-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL','pg_isready -U knowledge_graph -d knowledge_graph']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  migrate:
+    build:
+      context: ../..
+      dockerfile: services/knowledge-graph/Dockerfile
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?set a unique JWT secret of at least 32 characters}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong service password}
+      CATALOG_WRITES_ENABLED: false
+    command: ['alembic','upgrade','head']
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  bootstrap:
+    build:
+      context: ../..
+      dockerfile: services/knowledge-graph/Dockerfile
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?set a unique JWT secret of at least 32 characters}
+      KNOWLEDGE_GRAPH_SERVICE_USERNAME: ${KNOWLEDGE_GRAPH_SERVICE_USERNAME:-integration_developer}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong service password}
+      CATALOG_WRITES_ENABLED: false
+    command: ['sh','-c','python scripts/sync_integration_service_identity.py && python scripts/sync_skill_taxonomy_catalog.py']
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  backend:
+    build:
+      context: ../..
+      dockerfile: services/knowledge-graph/Dockerfile
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?set a unique JWT secret of at least 32 characters}
+      KNOWLEDGE_GRAPH_SERVICE_USERNAME: ${KNOWLEDGE_GRAPH_SERVICE_USERNAME:-integration_developer}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong service password}
+      CATALOG_WRITES_ENABLED: false
+    command: ['uvicorn','app.main:app','--host','0.0.0.0','--port','8000']
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+    ports:
+      - 8000:8000
+    healthcheck:
+      test: ['CMD','python','-c','import urllib.request; urllib.request.urlopen(''http://localhost:8000/readiness'')']
+      interval: 10s
+      timeout: 3s
+      retries: 10
+  worker:
+    build:
+      context: ../..
+      dockerfile: services/knowledge-graph/Dockerfile
+    environment:
+      ENVIRONMENT: production
+      DATABASE_URL: postgresql+psycopg://knowledge_graph:${KNOWLEDGE_GRAPH_POSTGRES_PASSWORD:-jobgraph-kg-local-postgres-password}@postgres:5432/knowledge_graph
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?set a unique JWT secret of at least 32 characters}
+      KNOWLEDGE_GRAPH_SERVICE_PASSWORD: ${KNOWLEDGE_GRAPH_SERVICE_PASSWORD:?set a unique strong service password}
+      CATALOG_WRITES_ENABLED: false
+      BUILD_JOB_WORKER_ID: knowledge-graph-worker-standalone
+    command: ['python','scripts/run_build_worker.py']
+    depends_on:
+      bootstrap:
+        condition: service_completed_successfully
+volumes:
+  knowledge-graph-postgres-data:

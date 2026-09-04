@@ -1,0 +1,304 @@
+version: "1.16"
+
+scope_boundaries:
+  personal_info: 简历头部个人信息，包括姓名、联系方式、期望岗位等
+  education: 教育经历，每条包含学校、专业、学位、时间、GPA等
+  work_experience: 工作/实习经历，每条包含公司、职位、职责、成果和原文明示的技术栈
+  project_experience: 项目经历，每条包含项目名、技术栈、关键亮点等
+  skills: 原子技能列表，每个技能包含名称、类型、熟练度和独立证据
+  languages: 外语能力，每种语言包含熟练度
+  certificates: 可独立验证的职业认证、语言认证、执业许可或其他资格凭证；不包含竞赛名次、奖金、荣誉称号或获奖证书
+  awards: 竞赛名次、奖金、荣誉称号、表彰和获奖证书；不包含仅证明资格或考试水平的认证
+  self_evaluation: 自我评价/个人总结
+
+requirement_kinds:
+  education: 教育经历，进入 education 列表
+  work: 工作/实习经历，进入 work_experience 列表
+  project: 项目经历，进入 project_experience 列表
+  skill: 原子技能，进入 skills 列表
+  language: 外语能力，进入 languages 列表
+  certificate: 证书资质，进入 certificates 列表
+  award: 获奖荣誉，进入 awards 列表
+  self_eval: 自我评价，进入 self_evaluation 列表
+
+detailed_boundaries:
+  - '简历中的"专业技能"或"技术技能"部分抽取为 skills，每项一个 SkillItem'
+  - 项目经历中列出的技术关键词抽取到 project.tech_stack，每个技术是独立 SkillItem 并携带自己的 evidence
+  - 项目 tech_stack 必须覆盖项目标题、显式技术栈、description 和 highlights 中所有原文明示的具名技术，不得只读取“技术栈”标题行
+  - 工作经历中原文明示的技术关键词抽取到 work_experience.tech_stack；职责和成果中的具名技术也必须覆盖
+  - 工作、项目和实践分区内的每个实质性 source block 必须至少被该分区允许的 entry、事实或技术项 Evidence 引用；不得只抽标题或部分要点
+  - 技能声明区域中每个原文明示的具名技能都必须进入 skills；不得只抽取句首、分类标题或部分示例
+  - C/C++、TensorFlow/PyTorch 等并列技术必须拆成多个独立 SkillItem
+  - 只有斜杠两侧都是可独立复用的具名技术时才拆分；中文共享语义结构须补全共享部分后拆成完整技能，不得生成残片
+  - 复合表达拆出的技能共同引用包含完整复合表达的原文 Evidence，不得为缩写展开项虚构原文不存在的 quote
+  - '''和/或''是自然语言连接结构，不是技能分隔符'
+  - SkillItem.name 必须是可复用的具名技术、方法或知识领域
+  - '原文中"熟悉XXX，具备XXX能力"应抽取具体的技能名称，不抽取描述性短句'
+  - 工作或项目 tech_stack 的 proficiency 只有在该技能自己的 Evidence 原句存在明确程度词时才能填写；使用、负责、基于、引入或取得成果不能反推熟练度
+  - '''相关场景''、''某某能力''、''某某技术栈''等描述性短语不进入技能名'
+  - 具名技术后附用途说明时只保留原文中的具名核心，例如 MCP工具协议抽取 MCP、ReAct工具调用Agent主循环抽取 ReAct
+  - 教育经历必须填写 school/major/degree 三个核心字段
+  - 工作经历必须填写 company/position 两个核心字段
+  - 项目经历必须填写 name 核心字段
+  - 项目 name 必须是原文中最短且可独立识别项目的连续名词短语，不得包含列表符号、句末标点或整句任务动作/成果
+  - 项目 name 不得只是项目使用的单个技能、框架、模型或协议名称；原文无显式标题时，应选择同时包含业务对象或项目产出的最短连续名词短语，不得虚构标题
+  - 简历原文中明确标注【已遮挡】或马赛克的个人信息不要抽取
+  - 公司名或项目名部分遮挡不等于整段经历无效；保留原文可识别的占位名称，并完整抽取其后仍有 Evidence 的职责、成果、项目和技术事实
+  - 实践经历、校园经历、学生工作和社会实践中的项目型对象进入 project_experience；只有组织/机构与任职角色的对象进入 work_experience，不得把职位名称伪装成项目名称
+  - '学位映射：高中→high_school, 大专→associate, 本科→bachelor, 硕士→master, 博士→doctor, 博士后→postdoc'
+  - '工作类型映射：全职→full_time, 实习→internship, 兼职→part_time, 合同→contract'
+  - 语言水平映射：CET-4/CET-6从分数推断，雅思/托福从分数推断
+  - CET、IELTS、TOEFL 等语言证书进入 certificates 与 languages，不得同时进入 skills
+  - 原文明示自然语言阅读、读写、听说、交流或考试能力时必须进入 languages；同一种语言在多处重复声明只建立一个对象，不得因重复 Evidence 增生对象
+  - 竞赛、大赛、比赛的名次或奖项一律进入 awards，即使原文称其为“获奖证书”；CertificateKind.competition_award 仅为既有字段契约兼容值，模型不得生成
+  - 职业认证、语言认证、执业许可和资格证进入 certificates；没有奖项语义的认证不得进入 awards
+
+evidence_rules:
+  - 每个 entry、skill、responsibility、achievement、project description、project highlight 和 tech_stack item 都必须输出 source_id 与连续 quote
+  - quote 必须逐字存在于对应 source block，不得改词、改标点、拼接或省略中间文字
+  - 一个原子语义对象只引用一个 source block
+  - start、end、alignment 和 occurrence_index 由 Python 确定，模型不得输出
+  - entry 的 evidence 只证明该经历主体；职责、成果、技术栈和亮点必须使用各自的 evidence，不得复用标题证据替代
+
+skill_item_types:
+  programming_language: 可直接编写程序或脚本的语言
+  framework: 应用或工程框架
+  library: 被代码调用的程序库或 SDK
+  database: 数据库、向量库、缓存或中间件
+  tool: 具体开发、部署、协作或 AI 辅助工具
+  platform: 云平台、业务平台、操作系统或运行环境
+  methodology: 算法、工程方法、训练方法、分析方法
+  domain_knowledge: 理论、行业或业务领域知识
+  soft_skill: 沟通、协作、学习、逻辑、责任心等行为特质
+  language: 自然语言（英语、日语等）
+  other: 仅用于确实无法归入以上类别的稳定技能实体
+
+atomicity_rules:
+  - 一个 education/work/project entry 必须能够独立判断
+  - 不同学校、不同公司的经历分别建立 entry
+  - 同一公司内不同职位可以合并或分开，按原文结构判断
+  - 不得从项目经历中凭空推导工作经历，不得从技能列表中无证据推断教育背景
+
+normalization_boundary:
+  - 模型只按通用类型定义抽取原文技能名称与 item_type，不在提示词中接收标准技能词表
+  - Python 在生成 ID 与 Schema 校验前，按标准词表对精确命中且唯一的 item_type 执行确定性权威字段校正
+  - Python 在语义校验后再次校验 item_type 契约，不允许冲突类型进入成功结果
+  - 模型不得输出归一化名称、标准技能 ID 或导出字段
+  - 归一化由独立 Python 阶段处理
+
+source_coverage:
+  local_repair_owner_max_distance: 2
+  local_repair_candidate_owner_max_distance: 6
+  explicit_personal_name_patterns:
+    - '^(?:候选人|姓名)\s*[:：]\s*[\u4e00-\u9fff·]{2,20}$'
+  personal_name_evidence_patterns:
+    - '^[\u4e00-\u9fff·]{2,4}$'
+  personal_header_name_patterns:
+    - '^(?:#+\s*)?[\u4e00-\u9fff·]{2,4}\s*(?:[|｜/—-]|目标岗位\s*[:：]).+$'
+    - '^(?:#+\s*)?(?!(?:个人简历|求职简历|个人信息|基本信息)\s)[\u4e00-\u9fff·]{2,4}\s+.{1,40}(?:工程师|开发|实习生?|分析师|研究员|产品经理|设计师)$'
+  personal_header_max_source_index: 2
+  language_aliases:
+    English: [英语, 英文, English]
+    Japanese: [日语, 日文, Japanese]
+    Korean: [韩语, 韩文, Korean]
+    French: [法语, French]
+    German: [德语, German]
+    Spanish: [西班牙语, Spanish]
+    Russian: [俄语, Russian]
+  explicit_language_patterns:
+    - '^(?=.*(?P<language>英语|英文|日语|日文|韩语|韩文|法语|德语|西班牙语|俄语|(?i:English|Japanese|Korean|French|German|Spanish|Russian)))(?=.*(?:阅读|读写|听说|交流|沟通|能力|水平|熟练|掌握|CET|雅思|托福|JLPT|TOPIK|DELF|TestDaF|IELTS|TOEFL)).+$'
+  taxonomy_skill_checked_sections: [skills, work, project]
+  taxonomy_skill_default_categories:
+    - programming_language
+    - framework
+    - library
+    - database
+    - tool
+    - platform
+  taxonomy_skill_minimum_alias_characters: 2
+  taxonomy_skill_ignored_alias_patterns:
+    - '^[A-Za-z]$'
+  taxonomy_skill_ignored_source_patterns:
+    - '^(?i:GitHub|GitLab|Gitee)\s*(?:主页|链接|地址|[:：]\s*\[?https?://|\d+\+?\s*(?:Stars?|Forks?))'
+    - '^(?:项目地址|代码仓库|仓库地址|源码地址)\s*[:：]\s*\[?https?://'
+  local_repair_append_context_radius: 3
+  local_repair_append_trigger_patterns:
+    - '^(?:(?:19|20)\d{2}|20XX)[./-].*'
+  local_repair_preferred_collections:
+    work: work_experience
+    project: project_experience
+    practice: work_experience
+  heading_patterns:
+    personal:
+      - '^(?:个人信息|基本信息|个人资料)$'
+    education:
+      - '^(?:教育背景|教育经历|学历信息)(?:\s+(?i:EDUCATION))?$'
+    work:
+      - '^(?:实习经历|工作经历|职业经历|任职经历)$'
+      - '^(?i:RESEARCH\s*&\s*ENGINEERING EXPERIENCE|ENGINEERING EXPERIENCE|WORK EXPERIENCE)$'
+    project:
+      - '^(?:项目|项目经历|项目经验|科研经历|科研项目|科研竞赛|科研/项目经历|课程项目|项目实践|项目/校园经历)$'
+      - '^(?:项目实现补充|项目补充)(?:[（(].*[）)])?$'
+    practice:
+      - '^(?:实践经历|校园经历|学生工作|学生工作经历|社会实践|组织经历)$'
+      - '^(?:代表性实践|项目与经历|实践记录|实习/工作与项目经历|工作与项目经历|实习与项目经历)(?:[（(].*[）)])?$'
+    skills:
+      - '^(?:专业技能|技术技能|AI技能|产品技能|技能特长|技能清单|技能专长|技能/优势及其他)$'
+      - '^(?:专业能力|能力摘要|我能使用的工具|(?i:SKILLS))$'
+      - '^(?i:SKILLS)\s+(?:专业技能|技术技能)$'
+    awards:
+      - '^(?:荣誉奖项|荣誉证书|奖项荣誉|获奖经历|竞赛经历|荣誉/奖项|竞赛获奖|校园荣誉|证书获奖)$'
+      - '^(?:荣誉/活动|校园与荣誉|竞赛与荣誉补充|荣誉补充)(?:[（(].*[）)])?$'
+    research:
+      - '^(?:论文|论文发表|代表性论文|专利|专利成果|科研成果|研究成果|论文与专利|学术成果)$'
+      - '^(?i:PUBLICATIONS|PATENTS|RESEARCH OUTPUTS|SELECTED PUBLICATIONS)$'
+    additional:
+      - '^(?:附加信息|其他信息|自我评价|个人总结|个人总结/自我评价|求职意向|语言能力)$'
+      - '^(?:科研说明|工程说明|研究兴趣|研究与成果|职业方向|补充说明|(?i:ADDITIONAL))$'
+  inline_section_transition_patterns:
+    work:
+      - '^[\s•·●▪◦*◆◇■□-]*[^|｜\n]{1,50}[|｜][^|｜\n]{1,80}[|｜]\s*(?:(?:19|20)\d{2}|20XX)[./-]\d{1,2}\s*(?:—|–|-|~|至)\s*(?:(?:(?:19|20)\d{2}|20XX)[./-]\d{1,2}|至今|现在|Present)\s*$'
+    skills:
+      - '^(?:技能|专业技能|技术技能)[:：].+$'
+    awards:
+      - '^补充[:：].*(?:奖|荣誉).*$'
+  enforced_sections:
+    work:
+      - work_experience
+      - project_experience
+    project:
+      - project_experience
+      - awards
+    practice:
+      - work_experience
+      - project_experience
+    research:
+      - publications
+      - patents
+      - research_outputs
+  ignored_content_patterns:
+    - '^=+$'
+    - '^(?:GitHub.*|Project Page|arXiv|Under Review)$'
+    - '^.{1,30}[:：]$'
+  required_content_patterns:
+    - '^.{24,}$'
+    - '.*【[^】]*(?:遮挡|保密)[^】]*】.*'
+    - '^(?:(?:19|20)\d{2}|20XX)[./-].*'
+    - '^[•·●▪◦*-].*'
+  minimum_content_characters: 2
+
+proficiency_evidence:
+  enforced_scopes:
+    - work_experience
+    - project_experience
+  level_patterns:
+    expert: '(?:精通)'
+    proficient: '(?:熟练掌握|熟练使用|熟练|掌握|擅长)'
+    familiar: '(?:熟悉|具备)'
+    know: '(?:了解|理解)'
+
+language_proficiency_evidence:
+  level_patterns:
+    native: '(?i:母语|母语水平|native)'
+    fluent: '(?i:流利|fluent|熟练(?:掌握|使用)?\s*(?:英语|英文|日语|日文|韩语|韩文|法语|德语|西班牙语|俄语|English|Japanese|Korean|French|German|Spanish|Russian))'
+    professional: '(?i:商务英语|工作语言|专业(?:英语|英文)|professional)'
+    conversational: '(?i:日常(?:英语|英文|日语|日文|韩语|韩文|法语|德语|西班牙语|俄语)?(?:交流|沟通|会话)|conversational)'
+    basic: '(?i:基础|基本(?:掌握|了解)?|basic)'
+  scored_certification_patterns:
+    - '(?i:CET(?:[- ]?[46])?|IELTS|TOEFL|JLPT|TOPIK|DELF|TestDaF).*[0-9N][0-9.]*'
+
+deterministic_validation:
+  award_level_authority:
+    shared_evidence_separator_pattern: '[、；;]'
+    semantic_scope_strip_patterns:
+      - '(?:全国|国家级|国赛|国家(?=(?:一等|二等|三等|特等|金奖|银奖|铜奖)))'
+      - '(?:省级|省赛)'
+      - '(?:市级|市赛)'
+      - '(?:校级|校内|院级|院内|^校)'
+      - '(?:区域赛|区域|赛区)'
+    level_patterns:
+      international: '(?:国际(?:级|赛)?)'
+      national: '(?:全国|国家级|国家(?:励志)?奖学金|国赛|国家(?=(?:一等|二等|三等|特等|金奖|银奖|铜奖)))'
+      provincial: '(?:省级|省赛|^省(?=(?:三好|优秀|先进))|[\u4e00-\u9fff]{2,8}省(?:政府)?(?=(?:奖学金|一等|二等|三等|特等|金奖|银奖|铜奖)))'
+      municipal: '(?:市级|市赛|[\u4e00-\u9fff]{2,8}市(?=.*(?:竞赛|大赛|比赛).*(?:奖|冠军|亚军|季军)))'
+      school: '(?:校级|校内|院级|院内|学院|^校|(?:大学|学院).*(?:奖学金|三好学生|优秀学生|优秀团员|优秀毕业生))'
+      other: '(?:区域赛|区域|赛区|^公司|^企业内部|^课题组)'
+  credential_award_classification:
+    forbidden_model_certificate_kinds: [competition_award]
+    award_identity_patterns:
+      - '(?:一等奖|二等奖|三等奖|特等奖|金奖|银奖|铜奖|优胜奖|优秀项目|获奖|荣誉|表彰|奖金|奖学金|分享奖)'
+      - '(?:竞赛|大赛|比赛).*(?:奖|名|冠军|亚军|季军)'
+    credential_identity_patterns:
+      - '(?i:CET(?:[- ]?[46])?|IELTS|TOEFL|PMP|CPA|CFA|AWS Certified)'
+      - '(?:认证|资格证|许可证|执照|等级证书)'
+    project_metric_only_patterns:
+      - '^(?:排名|名次)\s*[:：]?\s*\d+\s*/\s*\d+$'
+      - '^第?\s*\d+\s*名$'
+    award_result_patterns:
+      - '(?:一等奖|二等奖|三等奖|特等奖|金奖|银奖|铜奖|优胜奖|冠军|亚军|季军|提名)'
+    vague_award_name_patterns:
+      - '^(?:单项奖|其他奖项|奖项若干|若干奖项)$'
+    award_identity_separator_pattern: '[、,，；;]'
+  composite_skill:
+    fixed_terms:
+      - CI/CD
+      - TCP/IP
+      - I/O
+      - A/B测试
+      - A/B 测试
+    separators:
+      - "/"
+    taxonomy_confirmed_shared_separators:
+      - "、"
+      - "与"
+      - "和"
+      - "及"
+  descriptive_skill:
+    suffixes:
+      - 能力
+      - 技术栈
+    prefixes:
+      - 相关
+  project_name:
+    leading_marker_pattern: '^[\s•·●▪◦*-]+'
+    sentence_endings:
+      - "。"
+      - "；"
+      - ";"
+    action_prefix_pattern: '^(?:实现|完成|提升|微调|搭建|开发|采用)(?:一个|一套|一种)?'
+    role_title_pattern: '^(?:.+)?(?:部长|讲师|助教|教学助理|研究助理|项目助理|实习|实习生|工程师|负责人|主席|干事)$'
+    activity_title_pattern: '^.*(?:分享|活动|讲座|会议)$'
+    competition_title_pattern: '.*(?:竞赛|大赛)$'
+    technical_artifact_pattern: '(?:.*(?:系统|平台|小程序|工具)(?:开发|后端|前端|[,，;；。]|$).*)|(?:.*(?:搭建|开发|实现|构建|微调).{0,24}(?:系统|平台|小程序|工具|模型|框架|算法).*)'
+    organization_name_pattern: '.*(?:Club|学生会|社团|协会|中心|部门|工作室)$'
+    organization_role_pattern: '.*(?:社长|会长|部长|主席|负责人|干事|创始人).*$'
+    outcome_phrase_pattern: '.*(?:水平|表现|效果|能力)$'
+  experience_classification:
+    research_project_source_patterns:
+      - '^(?:\d+[.、]\s*)?(?:博士|硕士|科研)?课题(?:[|｜].*)?$'
+
+repair_instructions:
+  credential_award_misclassified: 按 expected_collection 在 certificates 与 awards 之间移动该对象；必须 remove 原对象并向目标 collection append 一个对象。竞赛名次、奖金、荣誉、表彰和获奖证书进入 awards；职业认证、语言认证、执业许可和资格凭证进入 certificates。只转换两个模型共有且有原文支持的字段，目标枚举无法由原文明示时省略可选枚举，不得猜测等级或签发机构。
+  composite_skill_item: 按 error_details.parts 将复合名称拆成完整的具名原子技能；中文共享前后缀表达只有在权威词表能唯一确认全部展开项时才会进入本规则；不得产生残片，拆出的技能共同引用包含完整复合表达的原文 Evidence。
+  invalid_numeric_skill_component: 不得生成纯数字技能；版本缩写按共同技术前缀展开，否则删除不受原文支持的对象。
+  descriptive_skill_item: 从描述性表达中提取原文内可独立复用的具名技能核心；不得按固定后缀机械裁剪，也不得把完整方法型名词短语改成载体或文件名。
+  invalid_project_name_shape: 若 reasons 含 outcome_phrase_instead_of_project_identifier，且给定 source_blocks 中不存在可独立识别项目的连续系统、平台、工具、模型、框架或业务产物名词短语，必须删除整个项目对象；不得把“模型/技能+水平/表现/效果/能力”截短后伪造项目名称。其他情况将 name 改成原文中最短且可独立识别该项目的连续名词短语，并同步修正唯一的 name field_evidence；存在合法项目标识时不得仅因名称错误删除项目。
+  competition_title_as_project_name: 当前 name 只是竞赛或大赛名称，但该项目的 highlights 原文包含更具体的技术产物名称；从该项目已有 source_blocks 中选择最短且可独立识别的系统、平台、小程序或工具名称作为 name，并同步修正 name field_evidence。竞赛名称继续保留在 awards，不得把奖项名称当作技术项目名称。
+  project_metric_as_award: 当前 awards 对象只是项目内的排名或名次指标，并非带有竞赛身份的独立奖项；删除该 awards 副本，项目中的同一成果事实必须继续保留在原经历 highlights 或 achievements，不得删除原始成果。
+  award_name_missing_result: 当前 awards.name 只保留了竞赛名称，遗漏 Evidence 中明确的奖次或提名结果；将 name 改为同时包含竞赛身份和明确结果的连续原文事实，不得只把结果放在 level，也不得改写原文。
+  vague_award_name: 当前 awards.name 只是“单项奖”“其他奖项”等无法独立识别的泛称；删除该对象，不得根据“若干”等文字补造具体奖项。
+  duplicate_entry_semantics: 相同语义对象只输出一次。
+  skill_evidence_name_uncovered: 技能 Evidence 对应的 source block 没有原样出现该技能名称或同一 canonical identity 的权威别名；改用当前对象内直接出现该技能的 source_id 和精确 quote，若原文没有明示则删除该技能。不得从大小写相近词、文件扩展名、产品链接或泛化描述推断技能。
+  invalid_personal_location_shape: current_location 或 expected_location 混入了学校、学院、研究院、实验室等机构名称；只保留原文明示且连续的行政区划或城市部分，并同步保留直接支持该值的 field_evidence。
+  skill_item_type_mismatch: 将 item_type 改为 error_details 中由共享 JD 词表确定的权威类型；技能名称和 Evidence 不变。
+  empty_structured_entry: 补齐 Schema 要求的核心识别字段；原文不支持对象时才删除对象。
+  unsupported_experience_skill_proficiency: 经历技术项只有在该技能 Evidence 原句包含与 proficiency 对应的明确程度词时才保留熟练度；仅有使用、负责、基于、引入或成果事实时删除 proficiency，能力水平由独立验证层推导。
+  source_section_uncovered: error_details 列出的 source_ids 位于受覆盖契约保护的经历分区，但没有被任何允许字段引用；重新检查该分区并完整抽取遗漏的经历、项目、职责、成果和技术事实；若存在 required_taxonomy_skills，必须同步补入对应经历 tech_stack 或技能区，部分遮挡不得导致整段删除。
+  source_section_misclassified: error_details 列出的 source_ids 被写入了不允许的业务分区；按照 expected_collections 重新归类，实践、校园、学生工作和社会实践不得伪装成项目。
+  role_title_as_project: 当前 project_experience.name 只是组织任职角色而不是项目标识；从原文重新判断组织/机构和职位并抽取为 work_experience，不得虚构项目名称，也不得只删除仍有职责或成果 Evidence 的经历。
+  activity_title_as_project: 当前 project_experience.name 只是分享、活动、讲座或会议名称，不是可独立识别的技术项目；删除该项目对象。若原文明示组织与任职角色，应按原文另行抽取为 work_experience，不得把一次参与活动虚构成项目。
+  research_project_as_work: 当前 work_experience 的主体原文明示为博士、硕士、科研课题，而机构只是 affiliation，不是雇主；remove 原工作对象并向 project_experience append 一个项目对象，保留原文支持的课题名称、机构、日期、描述、亮点和技术栈，不得虚构职位或雇佣关系。
+  taxonomy_skill_uncovered: 原文明确出现了JD权威词表中可唯一识别的技能，但对应声明技能区或经历技术栈没有该标准技能；按 error_details 的 name 与 expected_item_type 补齐，使用所列 source_id 的精确原文作为 Evidence，不得扩写或生成未出现的技能。
+  explicit_personal_name_uncovered: 原文使用“姓名/候选人”强标签或在简历头部用“姓名—岗位”“姓名 目标岗位:”等结构明确给出姓名，但 personal_info.name 为空；从所列 source_id 原样抽取姓名并保留 personal_info 的完整 Evidence，不得从电话、邮箱或岗位猜测姓名。
+  explicit_language_uncovered: 原文明示自然语言阅读、读写、听说、交流、考试或水平能力，但 languages 中没有对应语言；向 languages append 一个对应语言对象并逐字引用所列原文。同一种语言只建立一个对象，只按原文明示填写 proficiency，不能从“可进行”推断级别。
+  unsupported_language_proficiency: 当前 languages.proficiency 没有同一 Evidence 中的明确等级词或带分数的语言考试支持；保留语言对象并把 proficiency 改为 unknown，不得根据“能够、可进行、阅读文档/论文”推断等级。

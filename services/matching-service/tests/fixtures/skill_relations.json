@@ -1,0 +1,135 @@
+{
+  "contract_version": "skill-relations.v1",
+  "relations": [
+    {
+      "relation_id": "relation_equivalent_python",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_python_equivalent",
+      "relation_type": "equivalent",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.95,
+      "evidence_refs": [{"source_id": "graph:eq:1", "quote": "Python equivalent skill", "start": 0, "end": 23, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_parent_python",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_programming_parent",
+      "relation_type": "parent_child",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.9,
+      "evidence_refs": [{"source_id": "graph:parent:1", "quote": "Python child of programming", "start": 0, "end": 27, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_related_python",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_backend_related",
+      "relation_type": "related",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.86,
+      "evidence_refs": [{"source_id": "graph:related:1", "quote": "Python related to backend skill", "start": 0, "end": 31, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_transferable_python",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_service_transfer",
+      "relation_type": "transferable",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.88,
+      "evidence_refs": [{"source_id": "graph:transfer:1", "quote": "Python transfers to service skill", "start": 0, "end": 33, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_prerequisite_python",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_advanced_target",
+      "relation_type": "prerequisite",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.92,
+      "evidence_refs": [{"source_id": "graph:prerequisite:1", "quote": "Python prerequisite only", "start": 0, "end": 24, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_low_confidence",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_low_confidence",
+      "relation_type": "transferable",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.4,
+      "evidence_refs": [{"source_id": "graph:low:1", "quote": "low confidence relation", "start": 0, "end": 23, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_without_evidence",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_no_evidence",
+      "relation_type": "related",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.99,
+      "evidence_refs": []
+    },
+    {
+      "relation_id": "relation_duplicate_a",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_duplicate_target",
+      "relation_type": "related",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.9,
+      "evidence_refs": [{"source_id": "graph:duplicate:a", "quote": "duplicate relation A", "start": 0, "end": 20, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_duplicate_b",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_duplicate_target",
+      "relation_type": "related",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.9,
+      "evidence_refs": [{"source_id": "graph:duplicate:b", "quote": "duplicate relation B", "start": 0, "end": 20, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_cycle_forward",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_cycle_target",
+      "relation_type": "related",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.84,
+      "evidence_refs": [{"source_id": "graph:cycle:forward", "quote": "cycle forward", "start": 0, "end": 13, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_cycle_reverse",
+      "source_skill_id": "skill_cycle_target",
+      "target_skill_id": "skill_python",
+      "relation_type": "related",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.84,
+      "evidence_refs": [{"source_id": "graph:cycle:reverse", "quote": "cycle reverse", "start": 0, "end": 13, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_transitive_first",
+      "source_skill_id": "skill_python",
+      "target_skill_id": "skill_intermediate",
+      "relation_type": "transferable",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.9,
+      "evidence_refs": [{"source_id": "graph:path:1", "quote": "first path edge", "start": 0, "end": 15, "alignment": "exact", "occurrence_index": 0}]
+    },
+    {
+      "relation_id": "relation_transitive_second",
+      "source_skill_id": "skill_intermediate",
+      "target_skill_id": "skill_transitive_target",
+      "relation_type": "transferable",
+      "source_system": "knowledge-graph-fixture",
+      "graph_version": "graph-relations-v1",
+      "confidence": 0.9,
+      "evidence_refs": [{"source_id": "graph:path:2", "quote": "second path edge", "start": 0, "end": 16, "alignment": "exact", "occurrence_index": 0}]
+    }
+  ]
+}

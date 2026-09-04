@@ -1,0 +1,847 @@
+{
+  "summary": {
+    "manifest_version": "A-DATA-01-v1",
+    "generated_at": "2026-08-10T12:52:34.952725+00:00",
+    "detector_version": "position-evolution-events-v1",
+    "config_version": "evolution-defaults-v1",
+    "catalog_version": "CAT-v1-real-jd",
+    "data_source": "NFBS daily JD bundles",
+    "positions": {
+      "POS_JAVA_BACKEND": {
+        "position_name": "Java后端工程师",
+        "release_count": 6,
+        "pair_count": 5,
+        "blocked_pairs": 1,
+        "comparable_pairs": 4,
+        "position_identity_issues": [],
+        "catalog_change_issues": [
+          "taxonomy_version varies across snapshots: real-jd-v1 (v[2, 3, 4, 5, 6]), unknown (v[1])"
+        ],
+        "algorithm_stability_issues": []
+      },
+      "POS_LLM_ALGO": {
+        "position_name": "大模型算法工程师",
+        "release_count": 5,
+        "pair_count": 4,
+        "blocked_pairs": 2,
+        "comparable_pairs": 2,
+        "position_identity_issues": [],
+        "catalog_change_issues": [
+          "taxonomy_version varies across snapshots: real-jd-v1 (v[1, 2, 3, 5]), unknown (v[4])"
+        ],
+        "algorithm_stability_issues": []
+      }
+    },
+    "pair_summary": {
+      "total": 9,
+      "blocked": 3,
+      "complete_with_limitations": 4,
+      "complete": 2
+    }
+  },
+  "releases": [
+    {
+      "release_id": "REL-POS_JAVA_BACKEND-2026-07-27",
+      "graph_version_id": "GV-POS_JAVA_BACKEND-v1",
+      "graph_version_number": 1,
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-07-27",
+        "end": "2026-07-27"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 2,
+      "skill_count": 0,
+      "responsibility_count": 6,
+      "snapshot_file": "POS_JAVA_BACKEND_v1.json",
+      "source_platforms": [
+        "feishu"
+      ],
+      "source_count": 1,
+      "enterprise_count": 2,
+      "unique_content_hashes": 2,
+      "duplicate_record_count": 0,
+      "coverage_risks": [
+        "SINGLE_SOURCE: only one source platform, source_concentrated risk high",
+        "LOW_ENTERPRISE_DIVERSITY: 2 enterprises, coverage risk high",
+        "LOW_SAMPLE_COUNT: 2 records, insufficient for robust analysis",
+        "LOW_UNIQUE_CONTENT: 2 unique hashes from 2 records"
+      ],
+      "source_record_ids_sample": [
+        "7430798200876321035",
+        "7662959767250405651"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-07-27T08:03:03.046486Z",
+        "latest": "2026-07-27T08:03:35.009768Z"
+      },
+      "manifest_file": "manifest-POS_JAVA_BACKEND_v1.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_JAVA_BACKEND-2026-07-28",
+      "graph_version_id": "GV-POS_JAVA_BACKEND-v2",
+      "graph_version_number": 2,
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-07-28",
+        "end": "2026-07-28"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 8,
+      "skill_count": 11,
+      "responsibility_count": 18,
+      "snapshot_file": "POS_JAVA_BACKEND_v2.json",
+      "source_platforms": [
+        "boss_zhipin",
+        "feishu"
+      ],
+      "source_count": 2,
+      "enterprise_count": 4,
+      "unique_content_hashes": 4,
+      "duplicate_record_count": 4,
+      "coverage_risks": [],
+      "source_record_ids_sample": [
+        "5a7b5c5e199eea6e0nB82t--FVVY",
+        "bcdd0ea56ebec9450nZy39q5ElBU",
+        "7430798200876321035",
+        "7662959767250405651",
+        "5a7b5c5e199eea6e0nB82t--FVVY",
+        "bcdd0ea56ebec9450nZy39q5ElBU",
+        "7430798200876321035",
+        "7662959767250405651"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-07-27T08:03:03.046486Z",
+        "latest": "2026-07-28T00:08:58.412582Z"
+      },
+      "manifest_file": "manifest-POS_JAVA_BACKEND_v2.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_JAVA_BACKEND-2026-07-29",
+      "graph_version_id": "GV-POS_JAVA_BACKEND-v3",
+      "graph_version_number": 3,
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-07-29",
+        "end": "2026-07-29"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 16,
+      "skill_count": 26,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_JAVA_BACKEND_v3.json",
+      "source_platforms": [
+        "boss_zhipin"
+      ],
+      "source_count": 1,
+      "enterprise_count": 16,
+      "unique_content_hashes": 16,
+      "duplicate_record_count": 0,
+      "coverage_risks": [
+        "SINGLE_SOURCE: only one source platform, source_concentrated risk high"
+      ],
+      "source_record_ids_sample": [
+        "1a2fd6496531e89003N_3du7F1ZX",
+        "1a4fa7c06d0b5f3033dy29S1ElQ~",
+        "22120e204290caae03F62du6FlZZ",
+        "33386aae799110c303R52Ni-GVpY",
+        "3675a7d7a8c64b291nd439q6GFRZ",
+        "3d73c79a7f6509b20nF82Ni7GFtV",
+        "50c596647a4b6e3a03Nz096_GFpZ",
+        "5352f69dc9fca9b90nV63928FlNR",
+        "5b2d8d8795dc1f2a0nFz2dm_EFRX",
+        "71b7f1d95e48cdda0nV429u8GFdR",
+        "81a0f64e579603c103V43d2_FFNV",
+        "83396df3fec5b02003N_0ty9E1JQ",
+        "89adf73e48f1fd78031_3t-9FlFZ",
+        "c5d0b83a4305afa803Zy3Nm4GVBU",
+        "e796e8a98bb49ee80nBy2Ny9EFJQ",
+        "ec85532d250133971H1809i8EVJQ"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-07-29T15:04:47.490815Z",
+        "latest": "2026-07-29T15:19:19.005129Z"
+      },
+      "manifest_file": "manifest-POS_JAVA_BACKEND_v3.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_JAVA_BACKEND-2026-08-01",
+      "graph_version_id": "GV-POS_JAVA_BACKEND-v4",
+      "graph_version_number": 4,
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-08-01",
+        "end": "2026-08-01"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 49,
+      "skill_count": 37,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_JAVA_BACKEND_v4.json",
+      "source_platforms": [
+        "boss_zhipin",
+        "liepin",
+        "playwright"
+      ],
+      "source_count": 3,
+      "enterprise_count": 35,
+      "unique_content_hashes": 45,
+      "duplicate_record_count": 4,
+      "coverage_risks": [],
+      "source_record_ids_sample": [
+        "006649790992e7c60nB83Nu5FlBU",
+        "067222f3d436b3240nJ63Nu6GVFR",
+        "10fd250a3df7fe480nFz3Nm-EVZQ",
+        "13f6c90de94a5ee90nF82t28FVJS",
+        "1a487021fbe8128b0nB-39y_E1dW",
+        "1a682f095628b2ad0nd809W9GFJU",
+        "2631e3e5601790d50nF_2967EFNT",
+        "2a1f7d08d157d3930nBy09-4E1NY",
+        "38b257b4ac8dab690nV73tW1EFdR",
+        "5537d713d0ee331a0nFy3Nq4GVBU",
+        "6c9d399e735f0f4403Vy2Ni8GFJW",
+        "984e871b2bd2a0550nFy29q7FlVZ",
+        "a813bfa6e5e75a360nFz2Nm-FFVX",
+        "a91476d69da4bc501nV72Ny7ElQ~",
+        "a9fe8c5c574c91f60nJ73ty1FVtW",
+        "b01a5089ca3dede10nB50t2_FlVU",
+        "c952cdec515c9e330nZ_3d68FFRT",
+        "f173c4dc17df5e000nJ42968FlpS",
+        "fac1f8e279c5b93e0nZ42t68FVtU",
+        "33901657"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-08-01T00:03:10.388754Z",
+        "latest": "2026-08-01T01:11:46.343135Z"
+      },
+      "manifest_file": "manifest-POS_JAVA_BACKEND_v4.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_JAVA_BACKEND-2026-08-04",
+      "graph_version_id": "GV-POS_JAVA_BACKEND-v5",
+      "graph_version_number": 5,
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-08-04",
+        "end": "2026-08-04"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 23,
+      "skill_count": 16,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_JAVA_BACKEND_v5.json",
+      "source_platforms": [
+        "boss_zhipin",
+        "liepin"
+      ],
+      "source_count": 2,
+      "enterprise_count": 22,
+      "unique_content_hashes": 23,
+      "duplicate_record_count": 0,
+      "coverage_risks": [],
+      "source_record_ids_sample": [
+        "005020f7704a8a351nN43ti_GFE~",
+        "15900301f01daed803173dm_FVBR",
+        "191e364e770e709c0nV63N2-FFBY",
+        "58643f9f68d5ba770nJ43NW-FlJR",
+        "5b2b5ae1fa136b3e1XZ82927ElZS",
+        "74da8b09e098f61f0nJ52t25EFtQ",
+        "b8d8fef744e25d0103J50tq9F1FS",
+        "da6f89d286fcdd091X162t28FVdS",
+        "33901657",
+        "65435115",
+        "76972451",
+        "77582205",
+        "77712767",
+        "77846139",
+        "78380813",
+        "82329303",
+        "83665159",
+        "83925863",
+        "84173369",
+        "84359177"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-08-04T15:09:58.011601Z",
+        "latest": "2026-08-04T15:29:28.742675Z"
+      },
+      "manifest_file": "manifest-POS_JAVA_BACKEND_v5.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_JAVA_BACKEND-2026-08-07",
+      "graph_version_id": "GV-POS_JAVA_BACKEND-v6",
+      "graph_version_number": 6,
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-08-07",
+        "end": "2026-08-07"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 101,
+      "skill_count": 57,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_JAVA_BACKEND_v6.json",
+      "source_platforms": [
+        "boss_zhipin",
+        "feishu",
+        "liepin",
+        "playwright"
+      ],
+      "source_count": 4,
+      "enterprise_count": 71,
+      "unique_content_hashes": 97,
+      "duplicate_record_count": 4,
+      "coverage_risks": [],
+      "source_record_ids_sample": [
+        "005020f7704a8a351nN43ti_GFE~",
+        "006649790992e7c60nB83Nu5FlBU",
+        "067222f3d436b3240nJ63Nu6GVFR",
+        "10fd250a3df7fe480nFz3Nm-EVZQ",
+        "13f6c90de94a5ee90nF82t28FVJS",
+        "15900301f01daed803173dm_FVBR",
+        "191e364e770e709c0nV63N2-FFBY",
+        "1a2fd6496531e89003N_3du7F1ZX",
+        "1a487021fbe8128b0nB-39y_E1dW",
+        "1a4fa7c06d0b5f3033dy29S1ElQ~",
+        "1a682f095628b2ad0nd809W9GFJU",
+        "22120e204290caae03F62du6FlZZ",
+        "23d9f4860e25f1f30nB429W9E1FV",
+        "2631e3e5601790d50nF_2967EFNT",
+        "2a1f7d08d157d3930nBy09-4E1NY",
+        "33386aae799110c303R52Ni-GVpY",
+        "3675a7d7a8c64b291nd439q6GFRZ",
+        "38b257b4ac8dab690nV73tW1EFdR",
+        "3d73c79a7f6509b20nF82Ni7GFtV",
+        "50c596647a4b6e3a03Nz096_GFpZ"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-07-28T00:08:23.556897Z",
+        "latest": "2026-08-07T06:00:00Z"
+      },
+      "manifest_file": "manifest-POS_JAVA_BACKEND_v6.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_LLM_ALGO-2026-07-27",
+      "graph_version_id": "GV-POS_LLM_ALGO-v1",
+      "graph_version_number": 1,
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-07-27",
+        "end": "2026-07-27"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 46,
+      "skill_count": 15,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_LLM_ALGO_v1.json",
+      "source_platforms": [
+        "feishu"
+      ],
+      "source_count": 1,
+      "enterprise_count": 4,
+      "unique_content_hashes": 44,
+      "duplicate_record_count": 2,
+      "coverage_risks": [
+        "SINGLE_SOURCE: only one source platform, source_concentrated risk high"
+      ],
+      "source_record_ids_sample": [
+        "7314867704011196735",
+        "7316911720496351538",
+        "7347541830537791753",
+        "7355855413792901403",
+        "7396932222302865674",
+        "7415633360330410277",
+        "7418045852743190794",
+        "7434080512123406646",
+        "7473713817776752923",
+        "7474868680229603623",
+        "7475231199750981915",
+        "7480821082879183141",
+        "7483859335455361306",
+        "7486123409668786483",
+        "7530842831729887526",
+        "7537574485588347178",
+        "7540231825995712831",
+        "7540605216338168091",
+        "7546544629992556851",
+        "7567228850435066148"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-07-27T08:00:33.952008Z",
+        "latest": "2026-07-27T08:04:16.758475Z"
+      },
+      "manifest_file": "manifest-POS_LLM_ALGO_v1.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_LLM_ALGO-2026-07-28",
+      "graph_version_id": "GV-POS_LLM_ALGO-v2",
+      "graph_version_number": 2,
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-07-28",
+        "end": "2026-07-28"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 92,
+      "skill_count": 25,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_LLM_ALGO_v2.json",
+      "source_platforms": [
+        "feishu"
+      ],
+      "source_count": 1,
+      "enterprise_count": 4,
+      "unique_content_hashes": 44,
+      "duplicate_record_count": 48,
+      "coverage_risks": [
+        "SINGLE_SOURCE: only one source platform, source_concentrated risk high",
+        "HIGH_DUPLICATION: >50% records are exact duplicates"
+      ],
+      "source_record_ids_sample": [
+        "7314867704011196735",
+        "7316911720496351538",
+        "7347541830537791753",
+        "7355855413792901403",
+        "7396932222302865674",
+        "7415633360330410277",
+        "7418045852743190794",
+        "7434080512123406646",
+        "7473713817776752923",
+        "7474868680229603623",
+        "7475231199750981915",
+        "7480821082879183141",
+        "7483859335455361306",
+        "7486123409668786483",
+        "7530842831729887526",
+        "7537574485588347178",
+        "7540231825995712831",
+        "7540605216338168091",
+        "7546544629992556851",
+        "7567228850435066148"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-07-27T08:00:33.952008Z",
+        "latest": "2026-07-27T08:04:16.758475Z"
+      },
+      "manifest_file": "manifest-POS_LLM_ALGO_v2.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_LLM_ALGO-2026-08-01",
+      "graph_version_id": "GV-POS_LLM_ALGO-v3",
+      "graph_version_number": 3,
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-08-01",
+        "end": "2026-08-01"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 148,
+      "skill_count": 32,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_LLM_ALGO_v3.json",
+      "source_platforms": [
+        "feishu",
+        "liepin",
+        "playwright"
+      ],
+      "source_count": 3,
+      "enterprise_count": 12,
+      "unique_content_hashes": 146,
+      "duplicate_record_count": 2,
+      "coverage_risks": [],
+      "source_record_ids_sample": [
+        "7668506777416583462",
+        "83451485",
+        "84388157",
+        "13572",
+        "167063",
+        "167135",
+        "167164",
+        "167191",
+        "167193",
+        "167194",
+        "167195",
+        "167196",
+        "167448",
+        "167449",
+        "167450",
+        "18195",
+        "25968",
+        "26279",
+        "27251",
+        "27832"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-08-01T00:06:10.763947Z",
+        "latest": "2026-08-01T01:11:46.343191Z"
+      },
+      "manifest_file": "manifest-POS_LLM_ALGO_v3.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_LLM_ALGO-2026-08-04",
+      "graph_version_id": "GV-POS_LLM_ALGO-v4",
+      "graph_version_number": 4,
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-08-04",
+        "end": "2026-08-04"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 2,
+      "skill_count": 0,
+      "responsibility_count": 7,
+      "snapshot_file": "POS_LLM_ALGO_v4.json",
+      "source_platforms": [
+        "feishu",
+        "liepin"
+      ],
+      "source_count": 2,
+      "enterprise_count": 2,
+      "unique_content_hashes": 2,
+      "duplicate_record_count": 0,
+      "coverage_risks": [
+        "LOW_ENTERPRISE_DIVERSITY: 2 enterprises, coverage risk high",
+        "LOW_SAMPLE_COUNT: 2 records, insufficient for robust analysis",
+        "LOW_UNIQUE_CONTENT: 2 unique hashes from 2 records"
+      ],
+      "source_record_ids_sample": [
+        "7670141739214653746",
+        "83968899"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-08-04T15:24:59.701898Z",
+        "latest": "2026-08-04T15:29:28.742648Z"
+      },
+      "manifest_file": "manifest-POS_LLM_ALGO_v4.json",
+      "evidence_available": true
+    },
+    {
+      "release_id": "REL-POS_LLM_ALGO-2026-08-07",
+      "graph_version_id": "GV-POS_LLM_ALGO-v5",
+      "graph_version_number": 5,
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "catalog_version_id": "CAT-v1-real-jd",
+      "time_window": {
+        "start": "2026-08-07",
+        "end": "2026-08-07"
+      },
+      "detector_version": "position-evolution-events-v1",
+      "config_version": "evolution-defaults-v1",
+      "sample_count": 265,
+      "skill_count": 39,
+      "responsibility_count": 20,
+      "snapshot_file": "POS_LLM_ALGO_v5.json",
+      "source_platforms": [
+        "feishu",
+        "liepin",
+        "playwright"
+      ],
+      "source_count": 3,
+      "enterprise_count": 16,
+      "unique_content_hashes": 260,
+      "duplicate_record_count": 5,
+      "coverage_risks": [],
+      "source_record_ids_sample": [
+        "7314867704011196735",
+        "7316911720496351538",
+        "7347541830537791753",
+        "7355855413792901403",
+        "7396932222302865674",
+        "7415633360330410277",
+        "7418045852743190794",
+        "7434080512123406646",
+        "7473713817776752923",
+        "7474868680229603623",
+        "7475231199750981915",
+        "7480821082879183141",
+        "7483859335455361306",
+        "7486123409668786483",
+        "7530842831729887526",
+        "7537574485588347178",
+        "7540231825995712831",
+        "7540605216338168091",
+        "7546544629992556851",
+        "7567228850435066148"
+      ],
+      "crawl_time_range": {
+        "earliest": "2026-07-27T08:01:12.836663Z",
+        "latest": "2026-08-07T05:56:46.923777Z"
+      },
+      "manifest_file": "manifest-POS_LLM_ALGO_v5.json",
+      "evidence_available": true
+    }
+  ],
+  "version_pairs": [
+    {
+      "pair_id": "PAIR-POS_JAVA_BACKEND-v1-to-v2",
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "from_release_id": "REL-POS_JAVA_BACKEND-2026-07-27",
+      "to_release_id": "REL-POS_JAVA_BACKEND-2026-07-28",
+      "from_graph_version_id": "GV-POS_JAVA_BACKEND-v1",
+      "to_graph_version_id": "GV-POS_JAVA_BACKEND-v2",
+      "from_date": "2026-07-27",
+      "to_date": "2026-07-28",
+      "from_version_number": 1,
+      "to_version_number": 2,
+      "comparability_status": "blocked",
+      "is_blocked": true,
+      "blocked_reasons": [
+        "from_version has 2 sample(s), below minimum threshold (3). insufficient_evidence."
+      ],
+      "limitations": [
+        "from_version (POS_JAVA_BACKEND_v1.json): SINGLE_SOURCE — only 1 source(s)",
+        "from_version (POS_JAVA_BACKEND_v1.json): LOW_ENTERPRISE_DIVERSITY — 2 enterprise(s)"
+      ],
+      "event_count": 13,
+      "event_pair_file": "java_events/pair_1_to_2.json",
+      "from_sample_count": 2,
+      "to_sample_count": 8,
+      "from_skill_count": 0,
+      "to_skill_count": 11
+    },
+    {
+      "pair_id": "PAIR-POS_JAVA_BACKEND-v2-to-v3",
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "from_release_id": "REL-POS_JAVA_BACKEND-2026-07-28",
+      "to_release_id": "REL-POS_JAVA_BACKEND-2026-07-29",
+      "from_graph_version_id": "GV-POS_JAVA_BACKEND-v2",
+      "to_graph_version_id": "GV-POS_JAVA_BACKEND-v3",
+      "from_date": "2026-07-28",
+      "to_date": "2026-07-29",
+      "from_version_number": 2,
+      "to_version_number": 3,
+      "comparability_status": "complete_with_limitations",
+      "is_blocked": false,
+      "blocked_reasons": [],
+      "limitations": [
+        "to_version (POS_JAVA_BACKEND_v3.json): SINGLE_SOURCE — only 1 source(s)"
+      ],
+      "event_count": 26,
+      "event_pair_file": "java_events/pair_2_to_3.json",
+      "from_sample_count": 8,
+      "to_sample_count": 16,
+      "from_skill_count": 11,
+      "to_skill_count": 26
+    },
+    {
+      "pair_id": "PAIR-POS_JAVA_BACKEND-v3-to-v4",
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "from_release_id": "REL-POS_JAVA_BACKEND-2026-07-29",
+      "to_release_id": "REL-POS_JAVA_BACKEND-2026-08-01",
+      "from_graph_version_id": "GV-POS_JAVA_BACKEND-v3",
+      "to_graph_version_id": "GV-POS_JAVA_BACKEND-v4",
+      "from_date": "2026-07-29",
+      "to_date": "2026-08-01",
+      "from_version_number": 3,
+      "to_version_number": 4,
+      "comparability_status": "complete_with_limitations",
+      "is_blocked": false,
+      "blocked_reasons": [],
+      "limitations": [
+        "from_version (POS_JAVA_BACKEND_v3.json): SINGLE_SOURCE — only 1 source(s)"
+      ],
+      "event_count": 15,
+      "event_pair_file": "java_events/pair_3_to_4.json",
+      "from_sample_count": 16,
+      "to_sample_count": 49,
+      "from_skill_count": 26,
+      "to_skill_count": 37
+    },
+    {
+      "pair_id": "PAIR-POS_JAVA_BACKEND-v4-to-v5",
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "from_release_id": "REL-POS_JAVA_BACKEND-2026-08-01",
+      "to_release_id": "REL-POS_JAVA_BACKEND-2026-08-04",
+      "from_graph_version_id": "GV-POS_JAVA_BACKEND-v4",
+      "to_graph_version_id": "GV-POS_JAVA_BACKEND-v5",
+      "from_date": "2026-08-01",
+      "to_date": "2026-08-04",
+      "from_version_number": 4,
+      "to_version_number": 5,
+      "comparability_status": "complete",
+      "is_blocked": false,
+      "blocked_reasons": [],
+      "limitations": [],
+      "event_count": 8,
+      "event_pair_file": "java_events/pair_4_to_5.json",
+      "from_sample_count": 49,
+      "to_sample_count": 23,
+      "from_skill_count": 37,
+      "to_skill_count": 16
+    },
+    {
+      "pair_id": "PAIR-POS_JAVA_BACKEND-v5-to-v6",
+      "position_id": "POS_JAVA_BACKEND",
+      "position_name": "Java后端工程师",
+      "from_release_id": "REL-POS_JAVA_BACKEND-2026-08-04",
+      "to_release_id": "REL-POS_JAVA_BACKEND-2026-08-07",
+      "from_graph_version_id": "GV-POS_JAVA_BACKEND-v5",
+      "to_graph_version_id": "GV-POS_JAVA_BACKEND-v6",
+      "from_date": "2026-08-04",
+      "to_date": "2026-08-07",
+      "from_version_number": 5,
+      "to_version_number": 6,
+      "comparability_status": "complete",
+      "is_blocked": false,
+      "blocked_reasons": [],
+      "limitations": [],
+      "event_count": 5,
+      "event_pair_file": "java_events/pair_5_to_6.json",
+      "from_sample_count": 23,
+      "to_sample_count": 101,
+      "from_skill_count": 16,
+      "to_skill_count": 57
+    },
+    {
+      "pair_id": "PAIR-POS_LLM_ALGO-v1-to-v2",
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "from_release_id": "REL-POS_LLM_ALGO-2026-07-27",
+      "to_release_id": "REL-POS_LLM_ALGO-2026-07-28",
+      "from_graph_version_id": "GV-POS_LLM_ALGO-v1",
+      "to_graph_version_id": "GV-POS_LLM_ALGO-v2",
+      "from_date": "2026-07-27",
+      "to_date": "2026-07-28",
+      "from_version_number": 1,
+      "to_version_number": 2,
+      "comparability_status": "complete_with_limitations",
+      "is_blocked": false,
+      "blocked_reasons": [],
+      "limitations": [
+        "from_version (POS_LLM_ALGO_v1.json): SINGLE_SOURCE — only 1 source(s)",
+        "to_version (POS_LLM_ALGO_v2.json): SINGLE_SOURCE — only 1 source(s)",
+        "to_version (POS_LLM_ALGO_v2.json): HIGH_DUPLICATION — 48 duplicate(s)"
+      ],
+      "event_count": 1,
+      "event_pair_file": "algo_events/pair_1_to_2.json",
+      "from_sample_count": 46,
+      "to_sample_count": 92,
+      "from_skill_count": 15,
+      "to_skill_count": 25
+    },
+    {
+      "pair_id": "PAIR-POS_LLM_ALGO-v2-to-v3",
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "from_release_id": "REL-POS_LLM_ALGO-2026-07-28",
+      "to_release_id": "REL-POS_LLM_ALGO-2026-08-01",
+      "from_graph_version_id": "GV-POS_LLM_ALGO-v2",
+      "to_graph_version_id": "GV-POS_LLM_ALGO-v3",
+      "from_date": "2026-07-28",
+      "to_date": "2026-08-01",
+      "from_version_number": 2,
+      "to_version_number": 3,
+      "comparability_status": "complete_with_limitations",
+      "is_blocked": false,
+      "blocked_reasons": [],
+      "limitations": [
+        "from_version (POS_LLM_ALGO_v2.json): SINGLE_SOURCE — only 1 source(s)",
+        "from_version (POS_LLM_ALGO_v2.json): HIGH_DUPLICATION — 48 duplicate(s)"
+      ],
+      "event_count": 2,
+      "event_pair_file": "algo_events/pair_2_to_3.json",
+      "from_sample_count": 92,
+      "to_sample_count": 148,
+      "from_skill_count": 25,
+      "to_skill_count": 32
+    },
+    {
+      "pair_id": "PAIR-POS_LLM_ALGO-v3-to-v4",
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "from_release_id": "REL-POS_LLM_ALGO-2026-08-01",
+      "to_release_id": "REL-POS_LLM_ALGO-2026-08-04",
+      "from_graph_version_id": "GV-POS_LLM_ALGO-v3",
+      "to_graph_version_id": "GV-POS_LLM_ALGO-v4",
+      "from_date": "2026-08-01",
+      "to_date": "2026-08-04",
+      "from_version_number": 3,
+      "to_version_number": 4,
+      "comparability_status": "blocked",
+      "is_blocked": true,
+      "blocked_reasons": [
+        "to_version has 2 sample(s), below minimum threshold (3). insufficient_evidence."
+      ],
+      "limitations": [
+        "to_version (POS_LLM_ALGO_v4.json): LOW_ENTERPRISE_DIVERSITY — 2 enterprise(s)"
+      ],
+      "event_count": 11,
+      "event_pair_file": "algo_events/pair_3_to_4.json",
+      "from_sample_count": 148,
+      "to_sample_count": 2,
+      "from_skill_count": 32,
+      "to_skill_count": 0
+    },
+    {
+      "pair_id": "PAIR-POS_LLM_ALGO-v4-to-v5",
+      "position_id": "POS_LLM_ALGO",
+      "position_name": "大模型算法工程师",
+      "from_release_id": "REL-POS_LLM_ALGO-2026-08-04",
+      "to_release_id": "REL-POS_LLM_ALGO-2026-08-07",
+      "from_graph_version_id": "GV-POS_LLM_ALGO-v4",
+      "to_graph_version_id": "GV-POS_LLM_ALGO-v5",
+      "from_date": "2026-08-04",
+      "to_date": "2026-08-07",
+      "from_version_number": 4,
+      "to_version_number": 5,
+      "comparability_status": "blocked",
+      "is_blocked": true,
+      "blocked_reasons": [
+        "from_version has 2 sample(s), below minimum threshold (3). insufficient_evidence."
+      ],
+      "limitations": [
+        "from_version (POS_LLM_ALGO_v4.json): LOW_ENTERPRISE_DIVERSITY — 2 enterprise(s)"
+      ],
+      "event_count": 3,
+      "event_pair_file": "algo_events/pair_4_to_5.json",
+      "from_sample_count": 2,
+      "to_sample_count": 265,
+      "from_skill_count": 0,
+      "to_skill_count": 39
+    }
+  ]
+}

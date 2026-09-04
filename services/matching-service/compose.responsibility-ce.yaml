@@ -1,0 +1,33 @@
+name: jobpulse-matching-responsibility-ce
+
+services:
+  matching-api:
+    image: ${MATCHING_CE_IMAGE:-jobpulse/matching-service:responsibility-ce-local}
+    build:
+      context: ../..
+      dockerfile: services/matching-service/Dockerfile.responsibility-ce
+    gpus: all
+    environment:
+      MATCHING_RUNTIME_MODE: development
+      MATCHING_AUTH_MODE: fake
+      MATCHING_FAKE_AUTH_TOKEN: test-token
+      MATCHING_FAKE_AUTH_ROLES: candidate
+      MATCHING_PERSISTENCE_PROVIDER: memory
+      MATCHING_QUEUE_PROVIDER: memory
+      MATCHING_SEMANTIC_MODE: disabled
+      MATCHING_RESPONSIBILITY_CE_MODE: enabled
+      MATCHING_RESPONSIBILITY_CE_MODEL_PATH: /models/responsibility-ce-v1
+      MATCHING_RESPONSIBILITY_CE_EMBEDDING_URL: http://host.docker.internal:${EMBEDDING_PUBLISHED_PORT:-8002}
+      MATCHING_RESPONSIBILITY_EMBEDDING_TIMEOUT_SECONDS: 30
+    volumes:
+      - type: bind
+        source: ${MATCHING_RESPONSIBILITY_MODEL_DIR:?set MATCHING_RESPONSIBILITY_MODEL_DIR}
+        target: /models/responsibility-ce-v1
+        read_only: true
+    ports:
+      - "${MATCHING_CE_PUBLISHED_PORT:-8003}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=2)"]
+      interval: 10s
+      timeout: 5s
+      retries: 30

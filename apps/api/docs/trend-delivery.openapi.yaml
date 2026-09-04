@@ -1,0 +1,223 @@
+openapi: 3.1.0
+info:
+  title: Jobgraph Trend Delivery API
+  version: trend-delivery.v1
+  description: Stable frontend contract for trend runs, predictions, and reports.
+servers:
+  - url: /api/v1
+security:
+  - bearerAuth: []
+paths:
+  /predicted-positions/tasks:
+    post:
+      operationId: createPredictionRun
+      responses:
+        "200": { $ref: "#/components/responses/ResourceResponse" }
+  /predicted-positions/tasks/{task_id}:
+    get:
+      operationId: getPredictionRun
+      parameters:
+        - { $ref: "#/components/parameters/TaskId" }
+      responses:
+        "200": { $ref: "#/components/responses/ResourceResponse" }
+  /predicted-positions:
+    get:
+      operationId: listPredictedPositions
+      parameters:
+        - { $ref: "#/components/parameters/Page" }
+        - { $ref: "#/components/parameters/PageSize" }
+        - { name: status, in: query, schema: { type: [string, "null"] } }
+        - { name: industry_domain, in: query, schema: { type: [string, "null"] } }
+        - { name: quality_flag, in: query, schema: { type: [string, "null"] } }
+        - { name: sort_by, in: query, schema: { type: string } }
+        - { name: sort_order, in: query, schema: { $ref: "#/components/schemas/SortOrder" } }
+      responses:
+        "200": { $ref: "#/components/responses/CollectionResponse" }
+  /predicted-positions/batch-query:
+    post:
+      operationId: batchGetPredictedPositions
+      requestBody: { $ref: "#/components/requestBodies/BatchQuery" }
+      responses:
+        "200": { $ref: "#/components/responses/CollectionResponse" }
+  /predicted-positions/{predicted_id}:
+    get:
+      operationId: getPredictedPosition
+      parameters:
+        - { $ref: "#/components/parameters/PredictedId" }
+      responses:
+        "200": { $ref: "#/components/responses/ResourceResponse" }
+  /trend-runs:
+    get:
+      operationId: listTrendRuns
+      parameters:
+        - { $ref: "#/components/parameters/Page" }
+        - { $ref: "#/components/parameters/PageSize" }
+        - { name: status, in: query, schema: { type: [string, "null"] } }
+        - { name: run_type, in: query, schema: { type: [string, "null"] } }
+        - { name: sort_order, in: query, schema: { $ref: "#/components/schemas/SortOrder" } }
+      responses:
+        "200": { $ref: "#/components/responses/CollectionResponse" }
+  /trend-runs/batch-query:
+    post:
+      operationId: batchGetTrendRuns
+      requestBody: { $ref: "#/components/requestBodies/BatchQuery" }
+      responses:
+        "200": { $ref: "#/components/responses/CollectionResponse" }
+  /positions/{position_id}/trend-analysis/tasks:
+    post:
+      operationId: createPositionSkillTrendRun
+      parameters:
+        - { $ref: "#/components/parameters/PositionId" }
+      responses:
+        "200": { $ref: "#/components/responses/ResourceResponse" }
+  /trend-analysis/tasks/{task_id}:
+    get:
+      operationId: getPositionSkillTrendRun
+      parameters:
+        - { $ref: "#/components/parameters/TaskId" }
+      responses:
+        "200": { $ref: "#/components/responses/ResourceResponse" }
+  /positions/{position_id}/trend-reports:
+    get:
+      operationId: listTrendReports
+      parameters:
+        - { $ref: "#/components/parameters/PositionId" }
+        - { $ref: "#/components/parameters/Page" }
+        - { $ref: "#/components/parameters/PageSize" }
+        - { name: status, in: query, schema: { type: [string, "null"] } }
+        - { name: quality_flag, in: query, schema: { type: [string, "null"] } }
+        - { name: sort_by, in: query, schema: { type: string } }
+        - { name: sort_order, in: query, schema: { $ref: "#/components/schemas/SortOrder" } }
+      responses:
+        "200": { $ref: "#/components/responses/CollectionResponse" }
+  /trend-reports/batch-query:
+    post:
+      operationId: batchGetTrendReports
+      requestBody: { $ref: "#/components/requestBodies/BatchQuery" }
+      responses:
+        "200": { $ref: "#/components/responses/CollectionResponse" }
+  /trend-reports/{report_id}:
+    get:
+      operationId: getTrendReport
+      parameters:
+        - { $ref: "#/components/parameters/ReportId" }
+      responses:
+        "200": { $ref: "#/components/responses/ResourceResponse" }
+  /trend-reports/{report_id}/publish:
+    post:
+      operationId: publishTrendReport
+      parameters:
+        - { $ref: "#/components/parameters/ReportId" }
+      responses:
+        "200": { $ref: "#/components/responses/ResourceResponse" }
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+  parameters:
+    Page: { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+    PageSize: { name: page_size, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
+    TaskId: { name: task_id, in: path, required: true, schema: { type: string } }
+    PositionId: { name: position_id, in: path, required: true, schema: { type: string } }
+    PredictedId: { name: predicted_id, in: path, required: true, schema: { type: string } }
+    ReportId: { name: report_id, in: path, required: true, schema: { type: string } }
+  requestBodies:
+    BatchQuery:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [ids]
+            properties:
+              ids: { type: array, minItems: 1, maxItems: 100, items: { type: string } }
+  responses:
+    ResourceResponse:
+      description: Unified trend resource response
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ResourceEnvelope" }
+    CollectionResponse:
+      description: Paginated trend resource collection
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/CollectionEnvelope" }
+  schemas:
+    SortOrder: { type: string, enum: [asc, desc] }
+    PublicationGate:
+      type: object
+      required: [applicable, eligible, blockers]
+      properties:
+        applicable: { type: boolean }
+        eligible: { type: boolean }
+        blockers: { type: array, items: { type: string } }
+    SkillTrendDetail:
+      type: object
+      required: [skill_id, skill_name, trend_score, growth_rate, trend_direction, evidence_count, evidence_references, quality_flags, score_explanation, current_window_signal, historical_window_signal, confidence]
+      properties:
+        skill_id: { type: string }
+        skill_name: { type: string }
+        trend_score: { type: number }
+        growth_rate: { type: [number, "null"] }
+        trend_direction: { type: [string, "null"] }
+        evidence_count: { type: integer, minimum: 0 }
+        evidence_references: { type: array, items: { type: string } }
+        quality_flags: { type: array, items: { type: string } }
+        score_explanation: { type: object, additionalProperties: true }
+        current_window_signal: { type: [number, "null"] }
+        historical_window_signal: { type: [number, "null"] }
+        confidence: { type: number, minimum: 0, maximum: 1 }
+    TrendDeliveryResource:
+      type: object
+      required: [schema_version, resource_type, resource_id, status, progress, source_coverage, missing_sources, quality_flags, evidence_references, review_status, review_task_id, publication_gate]
+      properties:
+        schema_version: { type: string, const: trend-delivery.v1 }
+        resource_type: { type: string, enum: [prediction_run, position_skill_trend_run, predicted_position, trend_report] }
+        resource_id: { type: string }
+        status: { type: string }
+        progress: { type: number, minimum: 0, maximum: 1 }
+        source_coverage: { type: [number, "null"], minimum: 0, maximum: 1 }
+        missing_sources: { type: array, items: { type: string } }
+        quality_flags: { type: array, items: {} }
+        evidence_references: { type: array, items: {} }
+        review_status: { type: [string, "null"] }
+        review_task_id: { type: [string, "null"] }
+        publication_gate: { $ref: "#/components/schemas/PublicationGate" }
+      additionalProperties: true
+    Collection:
+      type: object
+      required: [schema_version, items, pagination, filters, sort, not_found_ids]
+      properties:
+        schema_version: { type: string, const: trend-delivery.v1 }
+        items: { type: array, items: { $ref: "#/components/schemas/TrendDeliveryResource" } }
+        pagination:
+          type: object
+          required: [page, page_size, total, total_pages]
+          properties:
+            page: { type: integer, minimum: 1 }
+            page_size: { type: integer, minimum: 1, maximum: 100 }
+            total: { type: integer, minimum: 0 }
+            total_pages: { type: integer, minimum: 0 }
+        filters: { type: object, additionalProperties: true }
+        sort:
+          type: object
+          required: [by, order]
+          properties:
+            by: { type: string }
+            order: { $ref: "#/components/schemas/SortOrder" }
+        not_found_ids: { type: array, items: { type: string } }
+    ResourceEnvelope:
+      type: object
+      required: [code, message, data, trace_id]
+      properties:
+        code: { type: integer }
+        message: { type: string }
+        data: { $ref: "#/components/schemas/TrendDeliveryResource" }
+        trace_id: { type: string }
+    CollectionEnvelope:
+      type: object
+      required: [code, message, data, trace_id]
+      properties:
+        code: { type: integer }
+        message: { type: string }
+        data: { $ref: "#/components/schemas/Collection" }
+        trace_id: { type: string }

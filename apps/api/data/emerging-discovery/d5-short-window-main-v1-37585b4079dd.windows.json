@@ -1,0 +1,152 @@
+{
+  "schema_version": "d5-short-window-manifest.v1",
+  "dataset_version": "d5-short-window-main-v1-37585b4079dd",
+  "dataset_hash": "sha256:37585b4079dd33fc3c210827387188da8d4b7c332102cf9dd7152d74c062b04b",
+  "sample_manifest_hash": "sha256:d174ab44d7f79ca3b5b13a9cf980eb5bd522648fd2862a0b099aca995b4ec3ff",
+  "preregistered_at": "2026-08-12T00:00:00+08:00",
+  "granularity_frozen_before_algorithm_run": true,
+  "granularity_policy": "four adjacent windows: 5 days, 5 days, 5 days, 4 days",
+  "temporal_policy": {
+    "assignment_field": "publish_time_raw parsed without substitution",
+    "replacement_for_missing_publish_date": null,
+    "distant_window_stitching": false,
+    "post_result_window_reselection": false
+  },
+  "windows": [
+    {
+      "window_id": "D5-SW-01",
+      "start": "2026-07-16",
+      "end": "2026-07-20",
+      "ordinal": 1,
+      "day_count": 5,
+      "sample_count": 10,
+      "exact_dedup_cluster_count": 10,
+      "template_cluster_count": 10,
+      "populated_dates": [
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-19",
+        "2026-07-20"
+      ],
+      "empty_dates": [
+        "2026-07-18"
+      ],
+      "source_counts": {
+        "feishu": 8,
+        "playwright": 2
+      },
+      "company_counts": {
+        "B站": 2,
+        "蔚来": 8
+      },
+      "role_counts": {
+        "BACKEND_ENGINEER": 2,
+        "LLM_ALGORITHM_ENGINEER": 8
+      },
+      "source_diversity_gate_passed": true,
+      "company_diversity_gate_passed": true
+    },
+    {
+      "window_id": "D5-SW-02",
+      "start": "2026-07-21",
+      "end": "2026-07-25",
+      "ordinal": 2,
+      "day_count": 5,
+      "sample_count": 12,
+      "exact_dedup_cluster_count": 11,
+      "template_cluster_count": 12,
+      "populated_dates": [
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24"
+      ],
+      "empty_dates": [
+        "2026-07-25"
+      ],
+      "source_counts": {
+        "feishu": 8,
+        "playwright": 4
+      },
+      "company_counts": {
+        "B站": 4,
+        "小鹏汽车": 5,
+        "蔚来": 3
+      },
+      "role_counts": {
+        "LLM_ALGORITHM_ENGINEER": 12
+      },
+      "source_diversity_gate_passed": true,
+      "company_diversity_gate_passed": true
+    },
+    {
+      "window_id": "D5-SW-03",
+      "start": "2026-07-26",
+      "end": "2026-07-30",
+      "ordinal": 3,
+      "day_count": 5,
+      "sample_count": 54,
+      "exact_dedup_cluster_count": 53,
+      "template_cluster_count": 54,
+      "populated_dates": [
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30"
+      ],
+      "empty_dates": [
+        "2026-07-26"
+      ],
+      "source_counts": {
+        "feishu": 3,
+        "playwright": 51
+      },
+      "company_counts": {
+        "B站": 6,
+        "京东": 8,
+        "小红书": 37,
+        "小鹏汽车": 3
+      },
+      "role_counts": {
+        "BACKEND_ENGINEER": 3,
+        "LLM_ALGORITHM_ENGINEER": 51
+      },
+      "source_diversity_gate_passed": true,
+      "company_diversity_gate_passed": true
+    },
+    {
+      "window_id": "D5-SW-04",
+      "start": "2026-07-31",
+      "end": "2026-08-03",
+      "ordinal": 4,
+      "day_count": 4,
+      "sample_count": 51,
+      "exact_dedup_cluster_count": 51,
+      "template_cluster_count": 51,
+      "populated_dates": [
+        "2026-07-31",
+        "2026-08-01",
+        "2026-08-03"
+      ],
+      "empty_dates": [
+        "2026-08-02"
+      ],
+      "source_counts": {
+        "feishu": 4,
+        "playwright": 47
+      },
+      "company_counts": {
+        "小红书": 22,
+        "网易": 5,
+        "美团": 20,
+        "蔚来": 4
+      },
+      "role_counts": {
+        "BACKEND_ENGINEER": 3,
+        "LLM_ALGORITHM_ENGINEER": 48
+      },
+      "source_diversity_gate_passed": true,
+      "company_diversity_gate_passed": true
+    }
+  ]
+}

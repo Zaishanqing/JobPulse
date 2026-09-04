@@ -1,0 +1,494 @@
+{
+  "contract_version": "competition-demo-manifest.v1",
+  "dataset_version": "competition-demo-v1",
+  "demo_only": {
+    "label": "demo-only",
+    "allowed_on": "non_production",
+    "removed_by": "remove-demo-only",
+    "excluded_from_official_experiments": true
+  },
+  "implementation_status": "loadable_foundation",
+  "position_family": {
+    "alias": "family-ai-application-engineer",
+    "family_name": "AI Application Engineer",
+    "position_alias": "position-ai-application-engineer"
+  },
+  "jds": [
+    {
+      "alias": "jd-demo-001",
+      "source_type": "boss_zhipin",
+      "input_path": "inputs/jd-demo-001.json",
+      "anonymized": true,
+      "demo_only": true,
+      "expected_contract": "extracted-jd-bundle.v1"
+    },
+    {
+      "alias": "jd-demo-002",
+      "source_type": "liepin",
+      "input_path": "inputs/jd-demo-002.json",
+      "anonymized": true,
+      "demo_only": true,
+      "expected_contract": "extracted-jd-bundle.v1"
+    },
+    {
+      "alias": "jd-demo-003",
+      "source_type": "manual",
+      "input_path": "inputs/jd-demo-003.json",
+      "anonymized": true,
+      "demo_only": true,
+      "expected_contract": "extracted-jd-bundle.v1"
+    }
+  ],
+  "cvs": [
+    {
+      "alias": "cv-demo-001",
+      "input_path": "inputs/cv-demo-001.json",
+      "anonymized": true,
+      "demo_only": true,
+      "expected_contract": "cv-extraction-http.v2"
+    }
+  ],
+  "trend_windows": [
+    {
+      "alias": "window-2025-q4",
+      "start": "2025-10-01T00:00:00+08:00",
+      "end": "2026-01-01T00:00:00+08:00",
+      "graph_version_alias": "graph-2025-q4"
+    },
+    {
+      "alias": "window-2026-q1",
+      "start": "2026-01-01T00:00:00+08:00",
+      "end": "2026-04-01T00:00:00+08:00",
+      "graph_version_alias": "graph-2026-q1"
+    },
+    {
+      "alias": "window-2026-q2",
+      "start": "2026-04-01T00:00:00+08:00",
+      "end": "2026-07-01T00:00:00+08:00",
+      "graph_version_alias": "graph-2026-q2"
+    }
+  ],
+  "graph_versions": [
+    {
+      "alias": "graph-2025-q4",
+      "version_name": "2025-q4",
+      "version_number": 1,
+      "position_alias": "position-ai-application-engineer",
+      "graph_version_id": null
+    },
+    {
+      "alias": "graph-2026-q1",
+      "version_name": "2026-q1",
+      "version_number": 2,
+      "position_alias": "position-ai-application-engineer",
+      "graph_version_id": null
+    },
+    {
+      "alias": "graph-2026-q2",
+      "version_name": "2026-q2",
+      "version_number": 3,
+      "position_alias": "position-ai-application-engineer",
+      "graph_version_id": null
+    }
+  ],
+  "published_position": {
+    "alias": "published-position-ai-app-engineer",
+    "position_alias": "position-ai-application-engineer",
+    "graph_version_alias": "graph-2026-q2",
+    "profile_contract": "position-profile.v2",
+    "profile_state": "published"
+  },
+  "matching_target": {
+    "alias": "matching-target-ai-app-engineer",
+    "cv_alias": "cv-demo-001",
+    "position_alias": "position-ai-application-engineer",
+    "graph_version_alias": "graph-2026-q2",
+    "evaluation_contract": "matching-evaluation-result.v1"
+  },
+  "success_case": {
+    "alias": "case-success-ai-app-engineer",
+    "kind": "success",
+    "expected_status": "completed",
+    "description": "CV carries exact evidence for the core skills; matching succeeds and RAG answers with references."
+  },
+  "insufficient_evidence_case": {
+    "alias": "case-insufficient-evidence",
+    "kind": "insufficient_evidence",
+    "expected_status": "insufficient_evidence",
+    "description": "Candidate lacks evidence for the required skill; matching reports unresolved gaps and RAG refuses to answer."
+  },
+  "expected_resources": [
+    {
+      "alias": "position-family-ai-app-engineer",
+      "resource_type": "position_family",
+      "contract_version": "resolved-position-catalog.v2",
+      "owner_service": "main-system",
+      "expected_status": null
+    },
+    {
+      "alias": "source-jd-001",
+      "resource_type": "source_jd",
+      "contract_version": "crawler-jd-v1",
+      "owner_service": "crawler-collection",
+      "expected_status": null
+    },
+    {
+      "alias": "source-jd-002",
+      "resource_type": "source_jd",
+      "contract_version": "crawler-jd-v1",
+      "owner_service": "crawler-collection",
+      "expected_status": null
+    },
+    {
+      "alias": "source-jd-003",
+      "resource_type": "source_jd",
+      "contract_version": "manual-jd-input",
+      "owner_service": "main-system",
+      "expected_status": null
+    },
+    {
+      "alias": "extracted-jd-001",
+      "resource_type": "extracted_jd_bundle",
+      "contract_version": "extracted-jd-bundle.v1",
+      "owner_service": "jd-extraction",
+      "expected_status": null
+    },
+    {
+      "alias": "extracted-jd-002",
+      "resource_type": "extracted_jd_bundle",
+      "contract_version": "extracted-jd-bundle.v1",
+      "owner_service": "jd-extraction",
+      "expected_status": null
+    },
+    {
+      "alias": "extracted-jd-003",
+      "resource_type": "extracted_jd_bundle",
+      "contract_version": "extracted-jd-bundle.v1",
+      "owner_service": "jd-extraction",
+      "expected_status": null
+    },
+    {
+      "alias": "published-jd-fact-001",
+      "resource_type": "published_jd_fact",
+      "contract_version": "published-jd-fact.v2",
+      "owner_service": "main-system",
+      "expected_status": null
+    },
+    {
+      "alias": "published-jd-fact-002",
+      "resource_type": "published_jd_fact",
+      "contract_version": "published-jd-fact.v2",
+      "owner_service": "main-system",
+      "expected_status": null
+    },
+    {
+      "alias": "published-jd-fact-003",
+      "resource_type": "published_jd_fact",
+      "contract_version": "published-jd-fact.v2",
+      "owner_service": "main-system",
+      "expected_status": null
+    },
+    {
+      "alias": "graph-2025-q4",
+      "resource_type": "graph_version",
+      "contract_version": "kg-graph-version",
+      "owner_service": "knowledge-graph",
+      "expected_status": null
+    },
+    {
+      "alias": "graph-2026-q1",
+      "resource_type": "graph_version",
+      "contract_version": "kg-graph-version",
+      "owner_service": "knowledge-graph",
+      "expected_status": null
+    },
+    {
+      "alias": "graph-2026-q2",
+      "resource_type": "graph_version",
+      "contract_version": "kg-graph-version",
+      "owner_service": "knowledge-graph",
+      "expected_status": null
+    },
+    {
+      "alias": "position-profile-ai-app-engineer",
+      "resource_type": "position_profile",
+      "contract_version": "position-profile.v2",
+      "owner_service": "knowledge-graph",
+      "expected_status": null
+    },
+    {
+      "alias": "source-cv-demo-001",
+      "resource_type": "source_cv",
+      "contract_version": "source-cv",
+      "owner_service": "cv-extraction-service",
+      "expected_status": null
+    },
+    {
+      "alias": "cv-extraction-demo-001",
+      "resource_type": "cv_extraction_response",
+      "contract_version": "cv-extraction-http.v2",
+      "owner_service": "cv-extraction-service",
+      "expected_status": null
+    },
+    {
+      "alias": "validated-cv-snapshot-demo-001",
+      "resource_type": "validated_cv_snapshot",
+      "contract_version": "validated-cv-snapshot",
+      "owner_service": "main-system",
+      "expected_status": null
+    },
+    {
+      "alias": "cv-match-profile-demo-001",
+      "resource_type": "cv_match_profile",
+      "contract_version": "cv-match-profile.v1",
+      "owner_service": "matching-service",
+      "expected_status": null
+    },
+    {
+      "alias": "position-match-profile-ai-app-engineer",
+      "resource_type": "position_match_profile",
+      "contract_version": "position-match-profile.v1",
+      "owner_service": "matching-service",
+      "expected_status": null
+    },
+    {
+      "alias": "matching-evaluation-ai-app-engineer",
+      "resource_type": "matching_evaluation",
+      "contract_version": "matching-evaluation-result.v1",
+      "owner_service": "matching-service",
+      "expected_status": "completed"
+    },
+    {
+      "alias": "trend-report-2026-q2",
+      "resource_type": "trend_report",
+      "contract_version": "trend-analysis.v2",
+      "owner_service": "trend-intelligence",
+      "expected_status": null
+    },
+    {
+      "alias": "discovery-snapshot-2026-q2",
+      "resource_type": "discovery_snapshot",
+      "contract_version": "discovery-jd-snapshot.v2",
+      "owner_service": "emerging-discovery",
+      "expected_status": null
+    },
+    {
+      "alias": "rag-response-success",
+      "resource_type": "rag_response",
+      "contract_version": "evidence-rag-response.v1",
+      "owner_service": "main-system-bff",
+      "expected_status": "answered"
+    },
+    {
+      "alias": "rag-response-insufficient",
+      "resource_type": "rag_response",
+      "contract_version": "evidence-rag-response.v1",
+      "owner_service": "main-system-bff",
+      "expected_status": "insufficient_evidence"
+    }
+  ],
+  "relations": [
+    {
+      "alias": "rel-input-jd-001",
+      "source": "jd-demo-001",
+      "target": "source-jd-001",
+      "relation_type": "maps_to_source_jd"
+    },
+    {
+      "alias": "rel-input-jd-002",
+      "source": "jd-demo-002",
+      "target": "source-jd-002",
+      "relation_type": "maps_to_source_jd"
+    },
+    {
+      "alias": "rel-input-jd-003",
+      "source": "jd-demo-003",
+      "target": "source-jd-003",
+      "relation_type": "maps_to_source_jd"
+    },
+    {
+      "alias": "rel-input-cv-001",
+      "source": "cv-demo-001",
+      "target": "source-cv-demo-001",
+      "relation_type": "maps_to_source_cv"
+    },
+    {
+      "alias": "rel-window-graph-2025-q4",
+      "source": "window-2025-q4",
+      "target": "graph-2025-q4",
+      "relation_type": "time_range_for_graph_version"
+    },
+    {
+      "alias": "rel-window-graph-2026-q1",
+      "source": "window-2026-q1",
+      "target": "graph-2026-q1",
+      "relation_type": "time_range_for_graph_version"
+    },
+    {
+      "alias": "rel-window-graph-2026-q2",
+      "source": "window-2026-q2",
+      "target": "graph-2026-q2",
+      "relation_type": "time_range_for_graph_version"
+    },
+    {
+      "alias": "rel-extract-jd-001",
+      "source": "source-jd-001",
+      "target": "extracted-jd-001",
+      "relation_type": "produced_by_extraction"
+    },
+    {
+      "alias": "rel-extract-jd-002",
+      "source": "source-jd-002",
+      "target": "extracted-jd-002",
+      "relation_type": "produced_by_extraction"
+    },
+    {
+      "alias": "rel-extract-jd-003",
+      "source": "source-jd-003",
+      "target": "extracted-jd-003",
+      "relation_type": "produced_by_extraction"
+    },
+    {
+      "alias": "rel-publish-jd-001",
+      "source": "extracted-jd-001",
+      "target": "published-jd-fact-001",
+      "relation_type": "validated_and_published"
+    },
+    {
+      "alias": "rel-publish-jd-002",
+      "source": "extracted-jd-002",
+      "target": "published-jd-fact-002",
+      "relation_type": "validated_and_published"
+    },
+    {
+      "alias": "rel-publish-jd-003",
+      "source": "extracted-jd-003",
+      "target": "published-jd-fact-003",
+      "relation_type": "validated_and_published"
+    },
+    {
+      "alias": "rel-graph-2025-q4",
+      "source": "published-jd-fact-001",
+      "target": "graph-2025-q4",
+      "relation_type": "feeds_graph_version"
+    },
+    {
+      "alias": "rel-graph-2026-q1",
+      "source": "published-jd-fact-002",
+      "target": "graph-2026-q1",
+      "relation_type": "feeds_graph_version"
+    },
+    {
+      "alias": "rel-graph-2026-q2",
+      "source": "published-jd-fact-003",
+      "target": "graph-2026-q2",
+      "relation_type": "feeds_graph_version"
+    },
+    {
+      "alias": "rel-profile-publish",
+      "source": "graph-2026-q2",
+      "target": "position-profile-ai-app-engineer",
+      "relation_type": "publishes_position_profile"
+    },
+    {
+      "alias": "rel-cv-extract",
+      "source": "source-cv-demo-001",
+      "target": "cv-extraction-demo-001",
+      "relation_type": "produced_by_extraction"
+    },
+    {
+      "alias": "rel-cv-validate",
+      "source": "cv-extraction-demo-001",
+      "target": "validated-cv-snapshot-demo-001",
+      "relation_type": "validated_snapshot"
+    },
+    {
+      "alias": "rel-cv-profile",
+      "source": "validated-cv-snapshot-demo-001",
+      "target": "cv-match-profile-demo-001",
+      "relation_type": "supplies_match_profile"
+    },
+    {
+      "alias": "rel-match-cv",
+      "source": "cv-match-profile-demo-001",
+      "target": "matching-evaluation-ai-app-engineer",
+      "relation_type": "inputs_matching"
+    },
+    {
+      "alias": "rel-match-position",
+      "source": "position-match-profile-ai-app-engineer",
+      "target": "matching-evaluation-ai-app-engineer",
+      "relation_type": "inputs_matching"
+    },
+    {
+      "alias": "rel-trend",
+      "source": "graph-2026-q2",
+      "target": "trend-report-2026-q2",
+      "relation_type": "supplies_position_reference"
+    },
+    {
+      "alias": "rel-window-trend-2026-q2",
+      "source": "window-2026-q2",
+      "target": "trend-report-2026-q2",
+      "relation_type": "supplies_analysis_window"
+    },
+    {
+      "alias": "rel-profile-trend-2026-q2",
+      "source": "position-profile-ai-app-engineer",
+      "target": "trend-report-2026-q2",
+      "relation_type": "supplies_position_profile_context"
+    },
+    {
+      "alias": "rel-discovery",
+      "source": "graph-2026-q2",
+      "target": "discovery-snapshot-2026-q2",
+      "relation_type": "supplies_position_reference"
+    },
+    {
+      "alias": "rel-window-discovery-2026-q2",
+      "source": "window-2026-q2",
+      "target": "discovery-snapshot-2026-q2",
+      "relation_type": "supplies_analysis_window"
+    },
+    {
+      "alias": "rel-fact-discovery-2026-q2",
+      "source": "published-jd-fact-003",
+      "target": "discovery-snapshot-2026-q2",
+      "relation_type": "feeds_discovery_snapshot"
+    },
+    {
+      "alias": "rel-rag-jd-evidence",
+      "source": "published-jd-fact-003",
+      "target": "rag-response-success",
+      "relation_type": "supplies_evidence"
+    },
+    {
+      "alias": "rel-rag-cv-evidence",
+      "source": "validated-cv-snapshot-demo-001",
+      "target": "rag-response-success",
+      "relation_type": "supplies_evidence"
+    },
+    {
+      "alias": "rel-rag-matching-evidence",
+      "source": "matching-evaluation-ai-app-engineer",
+      "target": "rag-response-success",
+      "relation_type": "supplies_explanation_evidence"
+    },
+    {
+      "alias": "rel-case-success",
+      "source": "case-success-ai-app-engineer",
+      "target": "rag-response-success",
+      "relation_type": "expected_success"
+    },
+    {
+      "alias": "rel-case-insufficient",
+      "source": "case-insufficient-evidence",
+      "target": "rag-response-insufficient",
+      "relation_type": "expected_insufficient_evidence"
+    }
+  ],
+  "created_at": "2026-08-05T00:00:00+08:00",
+  "maintained_by": "JobPulse integration and data group"
+}
+
+

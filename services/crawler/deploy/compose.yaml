@@ -1,0 +1,77 @@
+# ============================================================
+# nfbs-crawler Compose 项目
+# Phase 1: 多公司官网爬虫, 定时调度, 独立 MySQL
+# ============================================================
+
+services:
+  crawler-mysql:
+    image: mysql:8.0
+    container_name: crawler-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    mem_limit: 1g
+    cpus: "1.0"
+    networks:
+      - crawler-net
+
+  crawler-scheduler:
+    build:
+      context: ../../..
+      dockerfile: services/crawler/deploy/Dockerfile
+    container_name: crawler-scheduler
+    restart: unless-stopped
+    environment:
+      # 调度器数据库连接
+      MYSQL_HOST: crawler-mysql
+      MYSQL_PORT: "3306"
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      # unified_api 数据库连接 (另一套命名)
+      DB_HOST: crawler-mysql
+      DB_PORT: "3306"
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+      # 环境
+      ENVIRONMENT: production
+      JWT_SECRET: ${JWT_SECRET}
+      # 调度器参数
+      CRAWLER_LEASE_SECONDS: "5400"
+      CRAWLER_MAX_RETRIES: "2"
+      BOSS_COOKIES_PATH: "/app/cookies/boss_cookies.json"
+    volumes:
+      - ../data:/app/data
+      - ../output:/app/output
+      - ../cookies:/app/cookies
+      - ../patches/schedule_config.yaml:/app/patches/schedule_config.yaml:ro
+    shm_size: "1gb"
+    mem_limit: 4g
+    cpus: "2.0"
+    depends_on:
+      crawler-mysql:
+        condition: service_healthy
+    networks:
+      - crawler-net
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  crawler-net:
+    driver: bridge

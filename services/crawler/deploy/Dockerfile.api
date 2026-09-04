@@ -1,0 +1,39 @@
+FROM python:3.12-slim-bookworm
+
+ARG DEBIAN_MIRROR_URL=https://mirrors.tuna.tsinghua.edu.cn/debian
+ARG PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+ARG PLAYWRIGHT_DOWNLOAD_HOST=https://cdn.npmmirror.com/binaries/playwright
+
+RUN sed -i "s|http://deb.debian.org/debian|${DEBIAN_MIRROR_URL}|g; s|https://deb.debian.org/debian|${DEBIAN_MIRROR_URL}|g; s|http://deb.debian.org/debian-security|https://security.debian.org/debian-security|g; s|https://deb.debian.org/debian-security|https://security.debian.org/debian-security|g" /etc/apt/sources.list.d/debian.sources \
+    && apt-get -o Acquire::Retries=5 update \
+    && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
+    chromium \
+    openbox \
+    xvfb \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Shared contracts used by crawler bundle/manifest code.
+COPY packages/contracts/jobgraph_contracts /app/jobgraph_contracts
+# Crawler source tree (unified_api, multi_company_scraper, patches, ...).
+COPY services/crawler /app
+
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r /app/requirements.txt \
+    && pip install -e /app
+RUN playwright install-deps chromium
+
+COPY services/crawler/deploy/start-api.sh /usr/local/bin/start-crawler-api
+RUN chmod +x /usr/local/bin/start-crawler-api
+
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV DISPLAY=:99
+ENV BROWSER_EXECUTABLE_PATH=/usr/bin/chromium
+
+EXPOSE 8000
+
+CMD ["/usr/local/bin/start-crawler-api"]

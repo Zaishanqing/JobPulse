@@ -1,0 +1,73 @@
+{
+  "cv": {
+    "projects": [
+      {
+        "experience_id": "project_context_001",
+        "kind": "project",
+        "role": "Backend Engineer",
+        "responsibilities": ["Build backend services with Python"],
+        "business_scenarios": ["high concurrency"],
+        "tool_skill_ids": ["skill_python"],
+        "start_date": "2023-01-01",
+        "end_date": "2024-01-01",
+        "evidence_refs": [
+          {"source_id": "cv:project:task", "quote": "Build backend services with Python", "start": 0, "end": 34, "alignment": "exact", "occurrence_index": 0},
+          {"source_id": "cv:project:scenario", "quote": "high concurrency payments platform", "start": 0, "end": 34, "alignment": "exact", "occurrence_index": 0}
+        ]
+      }
+    ],
+    "match_features": [
+      {
+        "feature_id": "feature_project_achievement",
+        "document_id": "cv_fixture_001",
+        "side": "cv",
+        "feature_type": "task",
+        "source_object_id": "project_context_001",
+        "source_scope": "project:project_context_001:achievement",
+        "canonical_id": null,
+        "canonical_name": null,
+        "raw_text": "Reduced latency by 30%",
+        "vector_text": null,
+        "requirement_modality": null,
+        "candidate_level": null,
+        "structured_values": {},
+        "resolution_status": "resolved",
+        "evidence_refs": [{"source_id": "cv:project:achievement", "quote": "Reduced latency by 30%", "start": 0, "end": 22, "alignment": "exact", "occurrence_index": 0}],
+        "taxonomy_version": "taxonomy-fixture-v1",
+        "derivation_version": "cv-match-feature.v2"
+      },
+      {
+        "feature_id": "feature_project_industry",
+        "document_id": "cv_fixture_001",
+        "side": "cv",
+        "feature_type": "experience",
+        "source_object_id": "project_context_001",
+        "source_scope": "project:project_context_001:industry",
+        "canonical_id": null,
+        "canonical_name": null,
+        "raw_text": "Internet industry",
+        "vector_text": null,
+        "requirement_modality": null,
+        "candidate_level": null,
+        "structured_values": {"industry": "internet"},
+        "resolution_status": "resolved",
+        "evidence_refs": [{"source_id": "cv:project:industry", "quote": "internet", "start": 0, "end": 8, "alignment": "exact", "occurrence_index": 0}],
+        "taxonomy_version": "taxonomy-fixture-v1",
+        "derivation_version": "cv-match-feature.v2"
+      }
+    ]
+  },
+  "position": {
+    "evidence_refs": [
+      {"source_id": "jd:responsibility:1", "quote": "Build backend services", "start": 0, "end": 22, "alignment": "exact", "occurrence_index": 0}
+    ],
+    "industries": {
+      "values": ["internet"],
+      "evidence_refs": [{"source_id": "jd:industry:1", "quote": "internet", "start": 0, "end": 8, "alignment": "exact", "occurrence_index": 0}]
+    },
+    "business_scenarios": {
+      "values": ["high concurrency"],
+      "evidence_refs": [{"source_id": "jd:scenario:1", "quote": "high concurrency", "start": 0, "end": 16, "alignment": "exact", "occurrence_index": 0}]
+    }
+  }
+}

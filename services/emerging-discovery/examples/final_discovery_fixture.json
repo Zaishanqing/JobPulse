@@ -1,0 +1,194 @@
+{
+  "runs": [
+    {
+      "contract_version": "discovery.v2",
+      "request_id": "final-demo-window-1",
+      "algorithm": "emerge_v3_2",
+      "time_windows": [
+        {"window_id": "2026-01", "start": "2026-01-01", "end": "2026-01-31"},
+        {"window_id": "2026-02", "start": "2026-02-01", "end": "2026-02-28"},
+        {"window_id": "2026-03", "start": "2026-03-01", "end": "2026-03-31"}
+      ],
+      "snapshots": [
+        {
+          "source_fact_id": "demo-fact-1",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-1",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "RAG 应用工程师",
+          "source_name": "source-a",
+          "publish_date": "2026-01-10",
+          "structured_data": {
+            "responsibilities": ["负责 RAG 应用开发与优化"],
+            "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "RAG"}],
+            "bonus_skills": [{"raw_skill": "LangChain"}],
+            "business_scenarios": ["智能客服"],
+            "industry": "人工智能",
+            "company_name": "company-a",
+            "evidence_ids": ["evidence-1"]
+          }
+        },
+        {
+          "source_fact_id": "demo-fact-2",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-2",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "RAG 应用工程师",
+          "source_name": "source-b",
+          "publish_date": "2026-02-10",
+          "structured_data": {
+            "responsibilities": ["负责RAG应用的开发与优化"],
+            "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "RAG"}],
+            "bonus_skills": [{"raw_skill": "LangChain"}],
+            "business_scenarios": ["智能客服"],
+            "industry": "人工智能",
+            "company_name": "company-b",
+            "evidence_ids": ["evidence-2"]
+          }
+        },
+        {
+          "source_fact_id": "demo-fact-3",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-3",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "RAG 应用工程师",
+          "source_name": "source-a",
+          "publish_date": "2026-03-20",
+          "structured_data": {
+            "responsibilities": ["负责 RAG 应用开发与优化"],
+            "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "RAG"}],
+            "bonus_skills": [],
+            "business_scenarios": ["智能客服"],
+            "industry": "人工智能",
+            "company_name": "company-c",
+            "evidence_ids": ["evidence-3"]
+          }
+        }
+      ],
+      "position_references": [
+        {"position_id": "standard-backend", "graph_version_id": "graph-2026-03", "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "SQL"}]}
+      ],
+      "config": {"dataset_id": "emerging-discovery-full-temporal-v1"}
+    },
+    {
+      "contract_version": "discovery.v2",
+      "request_id": "final-demo-window-2",
+      "algorithm": "emerge_v3_2",
+      "time_windows": [
+        {"window_id": "2026-04", "start": "2026-04-01", "end": "2026-04-30"},
+        {"window_id": "2026-05", "start": "2026-05-01", "end": "2026-05-31"},
+        {"window_id": "2026-06", "start": "2026-06-01", "end": "2026-06-30"}
+      ],
+      "snapshots": [
+        {
+          "source_fact_id": "demo-fact-4",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-4",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "RAG 应用工程师",
+          "source_name": "source-a",
+          "publish_date": "2026-04-10",
+          "structured_data": {
+            "responsibilities": ["负责 RAG 应用开发与优化"],
+            "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "RAG"}],
+            "bonus_skills": [{"raw_skill": "LangChain"}],
+            "business_scenarios": ["智能客服"],
+            "industry": "人工智能",
+            "company_name": "company-a",
+            "evidence_ids": ["evidence-4"]
+          }
+        },
+        {
+          "source_fact_id": "demo-fact-5",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-5",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "RAG 应用工程师",
+          "source_name": "source-b",
+          "publish_date": "2026-05-10",
+          "structured_data": {
+            "responsibilities": ["负责RAG应用的开发与优化"],
+            "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "RAG"}],
+            "bonus_skills": [{"raw_skill": "LangChain"}],
+            "business_scenarios": ["智能客服"],
+            "industry": "人工智能",
+            "company_name": "company-b",
+            "evidence_ids": ["evidence-5"]
+          }
+        },
+        {
+          "source_fact_id": "demo-fact-6",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-6",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "RAG 应用工程师",
+          "source_name": "source-c",
+          "publish_date": "2026-06-10",
+          "structured_data": {
+            "responsibilities": ["负责 RAG 应用开发与优化"],
+            "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "RAG"}],
+            "bonus_skills": [],
+            "business_scenarios": ["智能客服"],
+            "industry": "人工智能",
+            "company_name": "company-c",
+            "evidence_ids": ["evidence-6"]
+          }
+        },
+        {
+          "source_fact_id": "demo-fact-duplicate",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-duplicate",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "RAG 应用工程师",
+          "source_name": "source-z",
+          "publish_date": "2026-06-15",
+          "structured_data": {
+            "responsibilities": ["重复内容"],
+            "required_skills": [{"raw_skill": "Python"}],
+            "bonus_skills": [],
+            "business_scenarios": [],
+            "company_name": "company-z"
+          }
+        },
+        {
+          "source_fact_id": "demo-fact-outside",
+          "source_fact_version": "1",
+          "jd_id": "demo-jd-outside",
+          "schema_version": "v2",
+          "review_status": "published",
+          "consumption_path": "published",
+          "title": "窗口外岗位",
+          "source_name": "source-outside",
+          "publish_date": "2026-06-20",
+          "structured_data": {
+            "responsibilities": ["窗口外职责"],
+            "required_skills": [{"raw_skill": "Go"}],
+            "bonus_skills": [],
+            "business_scenarios": []
+          }
+        }
+      ],
+      "position_references": [
+        {"position_id": "standard-backend", "graph_version_id": "graph-2026-05", "required_skills": [{"raw_skill": "Python"}, {"raw_skill": "SQL"}]}
+      ],
+      "config": {"dataset_id": "emerging-discovery-full-temporal-v1"}
+    }
+  ],
+  "comparison_algorithms": ["baseline", "fused_agglomerative", "density_noise"]
+}
+
+

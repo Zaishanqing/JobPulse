@@ -1,0 +1,110 @@
+# Candidate Docker build contexts.
+#
+# Each image lists its planned candidate context (the repository root) and
+# the COPY sources it must be able to see from that context.
+#
+context_root: "."
+contracts_home: "packages/contracts/jobgraph_contracts"
+
+images:
+  main-backend:
+    context: "."
+    dockerfile: "apps/api/Dockerfile"
+    copy_sources:
+      - "apps/api/pyproject.toml"
+      - "packages/contracts/pyproject.toml"
+      - "apps/api/app"
+      - "apps/api/config"
+      - "apps/api/docs"
+      - "apps/api/data"
+      - "apps/api/artifacts"
+      - "apps/api/scripts"
+      - "apps/api/alembic.ini"
+      - "apps/api/alembic"
+      - "packages/contracts/jobgraph_contracts"
+  knowledge-graph:
+    context: "."
+    dockerfile: "services/knowledge-graph/Dockerfile"
+    copy_sources:
+      - "services/knowledge-graph/pyproject.toml"
+      - "packages/contracts/pyproject.toml"
+      - "services/knowledge-graph/alembic.ini"
+      - "services/knowledge-graph/app"
+      - "services/knowledge-graph/alembic"
+      - "services/knowledge-graph/config"
+      - "services/knowledge-graph/schemas"
+      - "services/knowledge-graph/scripts"
+      - "packages/contracts/jobgraph_contracts"
+      - "apps/api/config/skill_taxonomy_catalog.v1.json"
+  matching-service:
+    context: "."
+    dockerfile: "services/matching-service/Dockerfile"
+    copy_sources:
+      - "services/matching-service/pyproject.toml"
+      - "packages/contracts/pyproject.toml"
+      - "services/matching-service/README.md"
+      - "services/matching-service/app"
+      - "services/matching-service/alembic.ini"
+      - "services/matching-service/migrations"
+      - "services/matching-service/docker"
+      - "packages/contracts/jobgraph_contracts"
+  emerging-discovery:
+    context: "."
+    dockerfile: "services/emerging-discovery/Dockerfile"
+    copy_sources:
+      - "services/emerging-discovery/pyproject.toml"
+      - "packages/contracts/pyproject.toml"
+      - "services/emerging-discovery/alembic.ini"
+      - "services/emerging-discovery/alembic"
+      - "services/emerging-discovery/app"
+      - "services/emerging-discovery/config/candidate_admission_policy.v2.json"
+      - "packages/contracts/jobgraph_contracts"
+  trend-intelligence:
+    context: "."
+    dockerfile: "services/trend-intelligence/Dockerfile"
+    copy_sources:
+      - "services/trend-intelligence/pyproject.toml"
+      - "services/trend-intelligence/alembic.ini"
+      - "services/trend-intelligence/alembic"
+      - "services/trend-intelligence/app"
+      - "services/trend-intelligence/demo"
+      - "services/trend-intelligence/scripts"
+  embedding-service:
+    context: "."
+    dockerfile: "services/embedding-service/Dockerfile"
+    copy_sources:
+      - "services/embedding-service/pyproject.toml"
+      - "services/embedding-service/README.md"
+      - "services/embedding-service/app"
+  jd-extraction:
+    context: "."
+    dockerfile: "services/jd-extraction/Dockerfile"
+    copy_sources:
+      - "services/jd-extraction/requirements.txt"
+      - "services/jd-extraction/src"
+      - "services/jd-extraction/scripts"
+      - "services/jd-extraction/config"
+      - "packages/contracts/pyproject.toml"
+      - "packages/contracts/jobgraph_contracts"
+  cv-extraction:
+    context: "."
+    dockerfile: "services/cv-extraction/Dockerfile"
+    copy_sources:
+      - "services/cv-extraction"
+      - "packages/contracts/pyproject.toml"
+      - "packages/contracts/jobgraph_contracts"
+  frontend:
+    context: "apps/web"
+    dockerfile: "Dockerfile"
+    copy_sources:
+      - "package.json"
+      - "package-lock.json"
+      - "src"
+      - "public"
+      - "nginx.conf"
+  crawler:
+    context: "."
+    dockerfile: "services/crawler/deploy/Dockerfile.api"
+    copy_sources:
+      - "services/crawler"
+      - "packages/contracts/jobgraph_contracts"

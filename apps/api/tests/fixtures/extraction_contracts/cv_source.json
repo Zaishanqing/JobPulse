@@ -1,0 +1,4 @@
+{
+  "document_id": "cv_demo_001",
+  "raw_text": "技能：Python、FastAPI、Docker、RAG、LangChain、LlamaIndex。项目经历：基于RAG的企业知识库问答系统（2024-01至2024-06），使用FastAPI+LangChain+Milvus构建，支持多轮对话和文档检索。教育：示例大学 计算机科学 本科 2020-09至2024-06。证书：计算机等级考试四级。获奖：校级优秀毕业生。"
+}

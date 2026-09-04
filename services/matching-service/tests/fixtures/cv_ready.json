@@ -1,0 +1,254 @@
+{
+  "contract_version": "cv-match-profile.v1",
+  "cv_id": "cv_fixture_001",
+  "user_id": "usr_opaque_fixture_001",
+  "verification_snapshot_id": "verification_fixture_001",
+  "as_of_date": "2026-07-27",
+  "skills": [
+    {
+      "aggregation_key": "skill:python",
+      "skill_id": "skill_python",
+      "canonical_name": "Python",
+      "normalization_confidence": 1.0,
+      "resolution_source": "canonical_name",
+      "declared_level": "proficient",
+      "demonstrated_level": "proficient",
+      "verification_status": "supported",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "cv:skill:1",
+          "quote": "Python",
+          "start": 0,
+          "end": 6,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "match_features": [
+    {
+      "feature_id": "feature_location",
+      "document_id": "cv_fixture_001",
+      "side": "cv",
+      "feature_type": "location",
+      "source_object_id": "personal_1",
+      "source_scope": "personal_info:expected_location",
+      "canonical_id": null,
+      "canonical_name": "Shanghai",
+      "raw_text": "Shanghai",
+      "vector_text": null,
+      "requirement_modality": null,
+      "candidate_level": null,
+      "structured_values": {
+        "location_kind": "expected_location"
+      },
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "cv:personal:1",
+          "quote": "Shanghai",
+          "start": 0,
+          "end": 8,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ],
+      "taxonomy_version": "taxonomy-fixture-v1",
+      "derivation_version": "cv-match-feature.v2"
+    },
+    {
+      "feature_id": "feature_availability",
+      "document_id": "cv_fixture_001",
+      "side": "cv",
+      "feature_type": "availability",
+      "source_object_id": "personal_1",
+      "source_scope": "personal_info:availability",
+      "canonical_id": null,
+      "canonical_name": "immediate",
+      "raw_text": "immediate",
+      "vector_text": null,
+      "requirement_modality": null,
+      "candidate_level": null,
+      "structured_values": {},
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "cv:personal:2",
+          "quote": "immediate",
+          "start": 0,
+          "end": 9,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ],
+      "taxonomy_version": "taxonomy-fixture-v1",
+      "derivation_version": "cv-match-feature.v2"
+    }
+  ],
+  "capability_profiles": [
+    {
+      "profile_id": "capability_python",
+      "document_id": "cv_fixture_001",
+      "aggregation_key": "skill:python",
+      "skill_id": "skill_python",
+      "canonical_name": "Python",
+      "declared_feature_ids": [
+        "declared_python"
+      ],
+      "experience_skill_feature_ids": [
+        "experience_python"
+      ],
+      "evidence_link_ids": [
+        "link_python"
+      ],
+      "declared_level": "proficient",
+      "demonstrated_level": "proficient",
+      "demonstrated_level_label": "proficient",
+      "verification_status": "supported",
+      "support_confidence": 0.9,
+      "confidence_band": "high",
+      "independent_experience_count": 1,
+      "aggregate_support_score": 4,
+      "evidence_bonus": 0.2,
+      "resolution_status": "resolved"
+    }
+  ],
+  "capability_evidence_links": [
+    {
+      "link_id": "link_python",
+      "document_id": "cv_fixture_001",
+      "aggregation_key": "skill:python",
+      "skill_id": "skill_python",
+      "canonical_name": "Python",
+      "declared_feature_ids": [
+        "declared_python"
+      ],
+      "experience_skill_feature_id": "experience_python",
+      "experience_feature_id": "work_fixture_001",
+      "supporting_task_feature_ids": [
+        "task_python"
+      ],
+      "support_signals": [
+        "direct_experience"
+      ],
+      "support_score": 4,
+      "demonstrated_level": "proficient",
+      "support_confidence": 0.9,
+      "confidence_band": "high",
+      "evidence_refs": [
+        {
+          "source_id": "cv:work:1",
+          "quote": "Python services",
+          "start": 0,
+          "end": 15,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ],
+      "taxonomy_version": "taxonomy-fixture-v1",
+      "derivation_version": "capability-verification.v1"
+    }
+  ],
+  "projects": [],
+  "work_experiences": [
+    {
+      "experience_id": "work_fixture_001",
+      "kind": "work",
+      "role": "Backend Engineer",
+      "responsibilities": [
+        "Build services"
+      ],
+      "business_scenarios": [],
+      "tool_skill_ids": [
+        "skill_python"
+      ],
+      "start_date": "2021-01-01",
+      "end_date": "2025-01-01",
+      "evidence_refs": [
+        {
+          "source_id": "cv:work:dates",
+          "quote": "2021-2025",
+          "start": 0,
+          "end": 9,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "education_id": "education_fixture_001",
+      "degree_level": "bachelor",
+      "field_of_study": "Computer Science",
+      "start_date": "2020-09-01",
+      "end_date": "2024-06-30",
+      "degree_status": "obtained",
+      "date_text": "bachelor 2020-2024",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "cv:education:1",
+          "quote": "bachelor",
+          "start": 0,
+          "end": 8,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "certificates": [
+    {
+      "credential_id": "certificate_fixture_001",
+      "name": "AWS-SAA",
+      "level": null,
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "cv:certificate:1",
+          "quote": "AWS-SAA",
+          "start": 0,
+          "end": 7,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language_code": "en",
+      "proficiency": "professional",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "cv:language:1",
+          "quote": "English professional",
+          "start": 0,
+          "end": 20,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "evidence_refs": [],
+  "unresolved_items": [],
+  "review_status": "approved",
+  "taxonomy_version": "position-taxonomy.v3.0.0",
+  "derivation_version": "matching-profile.v1",
+  "source_version": "cv-source.v1",
+  "profile_version": "cv-source.v1",
+  "position_classifications": [
+    {
+      "classification_status": "resolved",
+      "position_code": "BACKEND_ENGINEER",
+      "leadership_scope": "none",
+      "career_level": "senior",
+      "taxonomy_version": "position-taxonomy.v3.0.0"
+    }
+  ]
+}

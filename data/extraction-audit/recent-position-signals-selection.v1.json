@@ -1,0 +1,33 @@
+{
+  "schema_version": "recent-position-signals-selection.v1",
+  "source_package": "position-cleaned-publishable-v3-recleaned-20260814.zip",
+  "selection_count": 5,
+  "selection_reason": "Audited published JD facts used by the public recent-position signal projection.",
+  "records": [
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2262:2262",
+      "crawl_date": "2026-08-01",
+      "signal_lens": "data-agent"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3141:3141",
+      "crawl_date": "2026-08-01",
+      "signal_lens": "agentic-ops"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6634:6634",
+      "crawl_date": "2026-08-07",
+      "signal_lens": "ai-coding"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6697:6697",
+      "crawl_date": "2026-08-07",
+      "signal_lens": "self-evolving-agent"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6713:6713",
+      "crawl_date": "2026-08-07",
+      "signal_lens": "ai-for-science-agent"
+    }
+  ]
+}

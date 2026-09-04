@@ -1,0 +1,62 @@
+{
+  "dataset_id": "trend-change-cases",
+  "dataset_version": "trend-change-cases.v1",
+  "algorithm_version": "trend-change.v1",
+  "purpose": "Trend Intelligence 变化点/增长/状态规则的小型确定性评测，用于回归保护。",
+  "cases": [
+    {
+      "case_id": "stable",
+      "subject_id": "case-stable",
+      "subject_type": "market_signal",
+      "scores": [0.40, 0.41, 0.39, 0.40, 0.41],
+      "expected_trend_state": "stable",
+      "expected_change_point_windows": [],
+      "note": "小幅波动不应误报 change point。"
+    },
+    {
+      "case_id": "sudden-rise",
+      "subject_id": "case-sudden-rise",
+      "subject_type": "market_signal",
+      "scores": [0.20, 0.21, 0.19, 0.45, 0.60, 0.68],
+      "expected_trend_state": "rising",
+      "expected_change_point_windows": ["w4"],
+      "note": "明显上升应从 w4 起识别为 change point。"
+    },
+    {
+      "case_id": "slow-growth",
+      "subject_id": "case-slow-growth",
+      "subject_type": "market_signal",
+      "scores": [0.20, 0.25, 0.30, 0.35, 0.40],
+      "expected_trend_state": "rising",
+      "expected_change_point_windows": [],
+      "note": "缓慢持续增长识别为 rising，不认定 sudden change。"
+    },
+    {
+      "case_id": "decline",
+      "subject_id": "case-decline",
+      "subject_type": "market_signal",
+      "scores": [0.70, 0.68, 0.65, 0.45, 0.30],
+      "expected_trend_state": "declining",
+      "expected_change_point_windows": ["w4"],
+      "note": "明显下降应从 w4 起识别为 change point。"
+    },
+    {
+      "case_id": "noise-spike",
+      "subject_id": "case-noise-spike",
+      "subject_type": "market_signal",
+      "scores": [0.30, 0.31, 0.29, 0.60, 0.30, 0.31],
+      "expected_trend_state": "stable",
+      "expected_change_point_windows": [],
+      "note": "单点 spike 不应轻易触发 persistent change point。"
+    },
+    {
+      "case_id": "volatile",
+      "subject_id": "case-volatile",
+      "subject_type": "market_signal",
+      "scores": [0.20, 0.60, 0.25, 0.65, 0.22],
+      "expected_trend_state": "volatile",
+      "expected_change_point_windows": [],
+      "note": "高波动序列优先判定为 volatile，而不是 rising。"
+    }
+  ]
+}

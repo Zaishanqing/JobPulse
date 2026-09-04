@@ -1,0 +1,66 @@
+# 每日爬虫调度配置
+# 方案要求：覆盖所有平台，单个来源失败不阻断其余来源
+# deploy/daily_pipeline.py 和 deploy/scheduler.py 共同读取此文件
+
+schedules:
+  # ===== 采集任务 =====
+  - name: Boss直聘-每日Java北京
+    task_type: boss
+    cron: "0 8 * * *"
+    enabled: true
+    user_id: 1
+    params:
+      keyword: Java
+      city: 北京
+      pages: 5
+
+  - name: 多公司-飞书平台
+    task_type: company
+    cron: "3 8 * * *"
+    enabled: true
+    user_id: 1
+    params:
+      company_name: all
+      platform: feishu
+
+  - name: 多公司-Playwright平台
+    task_type: company
+    cron: "5 8 * * *"
+    enabled: true
+    user_id: 1
+    params:
+      company_name: all
+      platform: playwright
+
+  - name: 多公司-Moka平台
+    task_type: company
+    cron: "7 8 * * *"
+    enabled: true
+    user_id: 1
+    params:
+      company_name: all
+      platform: moka
+
+  - name: 猎聘-每日JavaPython前端
+    task_type: liepin
+    cron: "10 8 * * *"
+    enabled: true
+    user_id: 1
+    params:
+      keywords: [Java, Python, 前端]
+      cities: [北京, 上海, 深圳]
+
+  # ===== 交付任务 =====
+  - name: 每日数据交付管线
+    task_type: pipeline
+    cron: "30 8 * * *"
+    enabled: true
+    user_id: 1
+    params: {}
+
+  - name: 晚间补充导出
+    task_type: export_only
+    cron: "0 18 * * *"
+    enabled: true
+    user_id: 1
+    params: {}

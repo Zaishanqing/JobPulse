@@ -1,0 +1,66 @@
+schema_version: jobpulse-compose-parity.v1
+
+# Denominator for the production-parity claim. A service belongs in the
+# default set when it is required for the always-on production chain. Heavy
+# model providers remain complete, explicitly selectable profiles.
+default_services:
+  - main-postgres
+  - knowledge-graph-postgres
+  - knowledge-graph-migrate
+  - knowledge-graph-bootstrap
+  - knowledge-graph-backend
+  - knowledge-graph-worker
+  - matching-postgres
+  - matching-redis
+  - matching-migrate
+  - matching-api
+  - matching-worker
+  - matching-dispatcher
+  - analytics-postgres
+  - emerging-discovery-migrate
+  - emerging-discovery
+  - trend-intelligence
+  - trend-intelligence-worker
+  - embedding-service
+  - main-backend
+  - validation-worker
+  - kg-outbox-worker
+  - main-frontend
+
+profiles:
+  model-extraction:
+    - jd-extraction
+    - extraction-worker
+  cv-extraction:
+    - cv-extraction
+    - cv-extraction-worker
+  semantic-demo:
+    - qdrant
+    - matching-api-semantic-demo
+    - matching-vector-worker-semantic-demo
+  evidence-rag:
+    - qdrant
+  crawler:
+    - crawler-mysql
+    - crawler-api
+    - crawler-scheduler
+  kg-init:
+    - knowledge-graph-real-data-init
+    - knowledge-graph-readiness-check
+  full:
+    - jd-extraction
+    - extraction-worker
+    - cv-extraction
+    - cv-extraction-worker
+    - qdrant
+    - matching-api-semantic-demo
+    - matching-vector-worker-semantic-demo
+    - crawler-mysql
+    - crawler-api
+    - crawler-scheduler
+
+main_worker_commands:
+  extraction-worker: jobgraph-extraction-worker
+  validation-worker: jobgraph-validation-worker
+  kg-outbox-worker: jobgraph-outbox-worker
+  cv-extraction-worker: jobgraph-cv-extraction-worker

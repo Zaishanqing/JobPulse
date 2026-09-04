@@ -1,0 +1,39 @@
+{
+  "configurations": [
+    {
+      "config_type": "job_knowledge",
+      "version": "job-knowledge.v1",
+      "payload": {
+        "人工智能": {"research_keywords": ["large language model", "llm", "transformer", "deep learning", "generative model", "multimodal", "computer vision", "embodied ai"], "jobs": [{"name": "AI大模型训练师", "industry": "人工智能/互联网"}, {"name": "提示词工程师", "industry": "人工智能/互联网"}, {"name": "AI伦理合规师", "industry": "人工智能/科技法规"}, {"name": "AGI安全研究员", "industry": "人工智能/安全"}, {"name": "多模态AI工程师", "industry": "人工智能/计算机视觉"}]},
+        "新能源": {"research_keywords": ["solar cell", "photovoltaic", "perovskite", "solid state battery", "hydrogen", "energy storage", "smart grid"], "jobs": [{"name": "钙钛矿光伏研发工程师", "industry": "新能源/材料"}, {"name": "固态电池研发科学家", "industry": "新能源/电池"}, {"name": "氢能系统集成工程师", "industry": "新能源/化工"}, {"name": "虚拟电厂运营分析师", "industry": "电力/数字化"}]},
+        "低空经济": {"research_keywords": ["drone", "uav", "evtol", "air traffic", "autonomous flight", "urban air mobility"], "jobs": [{"name": "低空交通管制员", "industry": "航空航天/交通"}, {"name": "无人机系统架构师", "industry": "航空航天/硬件"}, {"name": "eVTOL飞控工程师", "industry": "航空航天/控制"}, {"name": "低空经济运营经理", "industry": "航空/物流"}, {"name": "城市空中交通规划师", "industry": "城市规划/交通"}]},
+        "量子计算": {"research_keywords": ["quantum computing", "quantum error correction", "qubit", "quantum algorithm", "quantum cryptography"], "jobs": [{"name": "量子算法工程师", "industry": "量子计算/软件"}, {"name": "量子纠错研究员", "industry": "量子计算/理论"}, {"name": "量子硬件测试工程师", "industry": "量子计算/硬件"}, {"name": "量子安全密码学家", "industry": "量子计算/安全"}]},
+        "生物医药": {"research_keywords": ["gene editing", "crispr", "cell therapy", "immunotherapy", "mrna", "drug discovery", "precision medicine"], "jobs": [{"name": "基因编辑研究员", "industry": "生物医药/基因"}, {"name": "AI药物发现科学家", "industry": "生物医药/AI"}, {"name": "细胞治疗研发工程师", "industry": "生物医药/细胞"}, {"name": "精准医疗分析师", "industry": "生物医药/诊断"}]},
+        "数字经济": {"research_keywords": ["blockchain", "cloud computing", "edge computing", "big data", "digital twin", "iot", "smart contract"], "jobs": [{"name": "区块链架构师", "industry": "数字金融/技术"}, {"name": "大数据分析师", "industry": "信息技术/数据"}, {"name": "数字孪生工程师", "industry": "工业数字化/仿真"}, {"name": "数据要素运营经理", "industry": "数字经济/数据"}]},
+        "新材料": {"research_keywords": ["carbon fiber", "graphene", "semiconductor material", "nanomaterial", "composite material"], "jobs": [{"name": "石墨烯材料研发工程师", "industry": "新材料/化工"}, {"name": "半导体材料工艺工程师", "industry": "新材料/半导体"}, {"name": "纳米材料研究员", "industry": "新材料/研究"}]},
+        "集成电路": {"research_keywords": ["integrated circuit", "chip design", "semiconductor", "eda", "lithography", "advanced packaging", "chiplet"], "jobs": [{"name": "芯片架构设计师", "industry": "集成电路/设计"}, {"name": "EDA工具开发工程师", "industry": "集成电路/软件"}, {"name": "先进封装工艺工程师", "industry": "集成电路/制造"}, {"name": "光刻技术研究员", "industry": "集成电路/设备"}]},
+        "智能制造": {"research_keywords": ["industrial robot", "digital twin", "smart manufacturing", "automation", "predictive maintenance"], "jobs": [{"name": "工业机器人算法工程师", "industry": "智能制造/机器人"}, {"name": "数字孪生仿真工程师", "industry": "智能制造/仿真"}, {"name": "工业AI视觉工程师", "industry": "智能制造/视觉"}, {"name": "智能产线规划师", "industry": "智能制造/管理"}]},
+        "数据安全": {"research_keywords": ["privacy preserving", "differential privacy", "federated learning", "homomorphic encryption", "cybersecurity"], "jobs": [{"name": "隐私计算工程师", "industry": "数据安全/技术"}, {"name": "联邦学习系统架构师", "industry": "数据安全/AI"}, {"name": "数据合规审计师", "industry": "数据安全/合规"}, {"name": "网络安全攻防研究员", "industry": "网络安全/攻防"}]}
+      }
+    },
+    {
+      "config_type": "domain_dictionary",
+      "version": "domain-dictionary.v1",
+      "payload": {
+        "人工智能": ["人工智能", "大模型", "机器学习", "深度学习", "智能体", "生成式", "aigc", "gpu"],
+        "新能源": ["新能源", "光伏", "风电", "储能", "氢能", "锂电池", "碳中和"],
+        "低空经济": ["低空经济", "无人机", "evtol", "通用航空", "飞行汽车", "空域"],
+        "量子计算": ["量子计算", "量子通信", "量子纠错", "量子比特", "量子芯片"],
+        "生物医药": ["生物医药", "基因编辑", "细胞治疗", "mrna", "创新药", "精准医疗"],
+        "数字经济": ["数字经济", "大数据", "云计算", "区块链", "数据要素", "saas"],
+        "新材料": ["新材料", "碳纤维", "石墨烯", "复合材料", "纳米材料"],
+        "集成电路": ["集成电路", "芯片", "半导体", "光刻", "eda", "晶圆", "封装测试"],
+        "智能制造": ["智能制造", "工业互联网", "机器人", "数字孪生", "自动化", "智能工厂"],
+        "数据安全": ["数据安全", "隐私计算", "网络安全", "数据合规", "信息安全", "零信任"]
+      }
+    },
+    {"config_type": "policy_keywords", "version": "policy-keywords.v1", "payload": {"queries": ["人工智能", "新能源", "低空经济", "量子计算", "生物医药", "数字经济", "新材料", "集成电路", "智能制造", "数据安全"]}},
+    {"config_type": "github_topics", "version": "github-topics.v1", "payload": {"llm": "人工智能", "transformer": "人工智能", "pytorch": "人工智能", "tensorflow": "人工智能", "computer-vision": "人工智能", "robot": "智能制造", "digital-twin": "智能制造", "blockchain": "数字经济", "cloud": "数字经济", "quantum": "量子计算", "security": "数据安全", "privacy": "数据安全", "battery": "新能源", "solar": "新能源", "drone": "低空经济", "chip": "集成电路", "semiconductor": "集成电路", "genomics": "生物医药", "graphene": "新材料"}},
+    {"config_type": "trend_thresholds", "version": "trend-thresholds.v1", "payload": {"rising_growth": 0.15, "declining_growth": -0.15, "confidence_coverage_weight": 0.6, "confidence_evidence_cap": 10, "low_sample_count": 3, "single_source_dominance": 0.8, "stale_evidence_days": 180, "anomalous_growth": 5.0, "source_circuit_failure_threshold": 3, "source_circuit_open_seconds": 300}}
+  ]
+}

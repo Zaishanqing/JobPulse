@@ -1,0 +1,36 @@
+skills:
+  Python:
+    skill_id: skill_python
+    canonical_name: Python
+    category_code: TECH
+    subcategory_code: PROGRAMMING_LANGUAGE
+  Java:
+    skill_id: skill_java
+    canonical_name: Java
+    category_code: TECH
+    subcategory_code: PROGRAMMING_LANGUAGE
+  Spring Boot:
+    skill_id: skill_spring_boot
+    canonical_name: Spring Boot
+    category_code: TECH
+    subcategory_code: FRAMEWORK
+  RAG:
+    skill_id: skill_rag
+    canonical_name: RAG
+    category_code: TECH
+    subcategory_code: METHODOLOGY
+  Docker:
+    skill_id: skill_docker
+    canonical_name: Docker
+    category_code: TECH
+    subcategory_code: TOOL
+  Kubernetes:
+    skill_id: skill_kubernetes
+    canonical_name: Kubernetes
+    category_code: TECH
+    subcategory_code: PLATFORM
+  多智能体:
+    skill_id: skill_multi_agent
+    canonical_name: 多智能体
+    category_code: TECH
+    subcategory_code: METHODOLOGY

@@ -1,0 +1,2006 @@
+{
+  "schema_version": "capability-evolution-selection.v1",
+  "source_package": "D:\\Zaishanqing\\Github-Clone\\NFBS\\JobPulse\\data\\extraction-audit\\position-cleaned-publishable-v3-recleaned-20260814.zip",
+  "source_metadata": "D:\\Zaishanqing\\Github-Clone\\NFBS\\Jobgraph\\Extraction\\jdextraction\\data\\prepared_bundles\\bundle_input_mapping_combined.csv",
+  "selection_count": 214,
+  "position_counts": {
+    "AI_AGENT_ENGINEER": 50,
+    "BACKEND_ENGINEER": 138,
+    "LLM_ALGORITHM_ENGINEER": 26
+  },
+  "position_time_counts": [
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "crawl_date": "2026-07-27",
+      "count": 3
+    },
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "crawl_date": "2026-07-29",
+      "count": 1
+    },
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "crawl_date": "2026-08-01",
+      "count": 34
+    },
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "crawl_date": "2026-08-07",
+      "count": 12
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "crawl_date": "2026-07-27",
+      "count": 6
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "crawl_date": "2026-07-28",
+      "count": 1
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "crawl_date": "2026-07-29",
+      "count": 9
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "crawl_date": "2026-08-01",
+      "count": 62
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "crawl_date": "2026-08-04",
+      "count": 22
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "crawl_date": "2026-08-07",
+      "count": 38
+    },
+    {
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "crawl_date": "2026-07-27",
+      "count": 6
+    },
+    {
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "crawl_date": "2026-08-01",
+      "count": 11
+    },
+    {
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "crawl_date": "2026-08-07",
+      "count": 9
+    }
+  ],
+  "records": [
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:398:398",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7649975071453202730"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:43:43",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7468558953430370572"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:457:457",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7319771176669284646"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:359:359",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7642548978630625586"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:381:381",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7646976385940195610"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:577:577",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7664801284348676361"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:689:689",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7376188662315780371"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:817:817",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260728T001851Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7523167391817419018"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:868:868",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260728T001851Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7538266546884430099"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:102:102",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7519822705312598335"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:438:438",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7655631438141901062"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:603:603",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7665219854999587110"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:62:62",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7488632819863357759"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:681:681",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7369098869147207962"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:682:682",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-07-27",
+      "bundle_id": "bundle_20260727T153648Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7369100389310990619"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:708:708",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-28",
+      "bundle_id": "bundle_20260728T001851Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "5a7b5c5e199eea6e0nB82t--FVVY"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1477:1477",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7667792792038656319"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1419:1419",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "81a0f64e579603c103V43d2_FFNV"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1420:1420",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "83396df3fec5b02003N_0ty9E1JQ"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1423:1423",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "e796e8a98bb49ee80nBy2Ny9EFJQ"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1424:1424",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "ec85532d250133971H1809i8EVJQ"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1425:1425",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7273119592545044791"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1426:1426",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7535380365737855286"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1427:1427",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7546486197486356755"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1428:1428",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "1a4fa7c06d0b5f3033dy29S1ElQ~"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1429:1429",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-07-29",
+      "bundle_id": "bundle_20260729T152508Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7596968153142610218"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1565:1565",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7647010533942659391"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1587:1587",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668241335090841882"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1716:1716",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "76913"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1809:1809",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "8644"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1814:1814",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "8708"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2022:2022",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "M2054795140113698818"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2131:2131",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_156"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2144:2144",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_167"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2188:2188",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_23"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2262:2262",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_83"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2265:2265",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_86"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2356:2356",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "18195"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2400:2400",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "27217"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2405:2405",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "27293"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2414:2414",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "27476"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2416:2416",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "27500"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2417:2417",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "167071"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2423:2423",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "27826"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2447:2447",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "28282"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2479:2479",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "28681"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2766:2766",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "31659"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2801:2801",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "31850"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2838:2838",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "37957"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2971:2971",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "4603505843"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3034:3034",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "4647856843"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3053:3053",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "4661257832"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3057:3057",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "4663352268"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3070:3070",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "511028910"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3094:3094",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "167255"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3106:3106",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "167256"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3141:3141",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "56171"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3150:3150",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "167276"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3161:3161",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "167278"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3164:3164",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "62799"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1499:1499",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "006649790992e7c60nB83Nu5FlBU"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1500:1500",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "5537d713d0ee331a0nFy3Nq4GVBU"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1502:1502",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78201613"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1503:1503",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78201613"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1504:1504",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78308611"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1505:1505",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "79732395"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1506:1506",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "79732395"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1507:1507",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "80556833"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1508:1508",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "80759987"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1509:1509",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "81455961"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1511:1511",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "6c9d399e735f0f4403Vy2Ni8GFJW"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1512:1512",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "81866737"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1513:1513",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "81866737"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1514:1514",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "83375487"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1516:1516",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "83408291"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1567:1567",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7666020707448768819"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1569:1569",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7667789557911357742"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1570:1570",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "10fd250a3df7fe480nFz3Nm-EVZQ"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1577:1577",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668138141194242342"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1582:1582",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668158664591657267"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1583:1583",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668193969034512691"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1593:1593",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668506777416583462"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1594:1594",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668512735076632895"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1599:1599",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668575110299715867"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1600:1600",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668576130366703881"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1601:1601",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668582297851152694"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1604:1604",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7668583423174281513"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1614:1614",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "2631e3e5601790d50nF_2967EFNT"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1615:1615",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "56574837"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1617:1617",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "62076207"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1618:1618",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "62100079"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1629:1629",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "76788959"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1630:1630",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "76972451"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1633:1633",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "77609709"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1634:1634",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "77723453"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1643:1643",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78094089"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1645:1645",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T005842Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78113199"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1664:1664",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "7411"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1665:1665",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "7414"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1712:1712",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "76849"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1849:1849",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "8906"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1959:1959",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "167367"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2181:2181",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "16742"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2189:2189",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_24"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2221:2221",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_5"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2241:2241",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_66"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2263:2263",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "小红书_84"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2512:2512",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "28931"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2543:2543",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "29081"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2590:2590",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "29237"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2691:2691",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "30450"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2695:2695",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "167176"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2703:2703",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "30685"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2807:2807",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "31865"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3074:3074",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "511051996"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3076:3076",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "511083150"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3112:3112",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "5220"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3113:3113",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "52403"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3136:3136",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "56088"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3153:3153",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "5802"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3198:3198",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "6960"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3203:3203",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "71695"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1690:1690",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "7618"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1705:1705",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "76643"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:1903:1903",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "9083"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2388:2388",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "25857"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2797:2797",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "31837"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2800:2800",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "31845"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:2984:2984",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "4613925868"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3054:3054",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "4661385969"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3056:3056",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "4663282308"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3122:3122",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "5314"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3193:3193",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-01",
+      "bundle_id": "bundle_20260801T031534Z_0001",
+      "source_platform": "playwright",
+      "source_record_id": "68492"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3216:3216",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "005020f7704a8a351nN43ti_GFE~"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3217:3217",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7317150335692572938"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3218:3218",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "77846139"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3220:3220",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78226369"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3221:3221",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78257771"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3222:3222",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78257781"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3223:3223",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "78303321"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3300:3300",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7669990413202082111"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3301:3301",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "boss_zhipin",
+      "source_record_id": "74da8b09e098f61f0nJ52t25EFtQ"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3310:3310",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670003464811219238"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3311:3311",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670004276818905350"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3314:3314",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670033751988275498"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3315:3315",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670042080508807467"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3317:3317",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670045459851184422"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3321:3321",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670097668068575531"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3325:3325",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670121862915180863"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3328:3328",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7670141739214653746"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3329:3329",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "33901657"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3332:3332",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "66028437"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3334:3334",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "feishu",
+      "source_record_id": "7273119383979100453"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3338:3338",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "76807335"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:3343:3343",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-04",
+      "bundle_id": "bundle_20260804T153633Z_0001",
+      "source_platform": "liepin",
+      "source_record_id": "77609709"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6016:6016",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167693"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6037:6037",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167732"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6085:6085",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167831"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6456:6456",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "4654186460"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6558:6558",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "feishu",
+      "source_record_id": "7668151631778941190"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6578:6578",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7308647071061592329"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6630:6630",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "74907"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6634:6634",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "75030"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6675:6675",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7602919135697651973"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6696:6696",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "76300"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6697:6697",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "76303"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6713:6713",
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_name": "智能体开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "feishu",
+      "source_record_id": "7670389771152050478"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6020:6020",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167701"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6024:6024",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167708"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6032:6032",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167727"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6033:6033",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167728"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6050:6050",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167762"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6094:6094",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167843"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6120:6120",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167881"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6122:6122",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167886"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6165:6165",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167978"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6167:6167",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167980"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6179:6179",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "168011"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6205:6205",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "168063"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6231:6231",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "28486"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6234:6234",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "28987"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6235:6235",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "2928"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6246:6246",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "29678"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6264:6264",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "29857"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6268:6268",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "30330"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6289:6289",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "31860"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6293:6293",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "31873"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6303:6303",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "31904"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6350:6350",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "4500180659"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6540:6540",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7078966246780438815"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6549:6549",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "71281"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6550:6550",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "71290"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6556:6556",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7143498285306874119"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6564:6564",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7201"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6567:6567",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7224090298623297847"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6574:6574",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7274887402626304314"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6577:6577",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7307183544324032806"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6605:6605",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7405796963634432265"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6607:6607",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7423330033735354662"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6628:6628",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7483056149752514824"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6632:6632",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7496823056819357970"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6648:6648",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "75262"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6654:6654",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "7548726771841206536"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6875:6875",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "M2061342463390232577"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6878:6878",
+      "position_code": "BACKEND_ENGINEER",
+      "position_name": "后端开发工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "M2064987020678852609"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6049:6049",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167757"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6067:6067",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167814"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6086:6086",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167832"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6139:6139",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167909"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6150:6150",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "167941"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6270:6270",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "30580"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6365:6365",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "4531197898"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6656:6656",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "75565"
+    },
+    {
+      "document_id": "bundles_all:bundles_all_prepared.xlsx:row:6848:6848",
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_name": "大模型算法工程师",
+      "crawl_date": "2026-08-07",
+      "bundle_id": "bundle-20260807T073018Z-1173",
+      "source_platform": "playwright",
+      "source_record_id": "M1949745062697705473"
+    }
+  ]
+}

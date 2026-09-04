@@ -1,0 +1,764 @@
+{
+  "bff_contract_version": "insight-card.v1",
+  "core_roles": {
+    "algorithm_config_version": [
+      "algorithm_version",
+      "algorithm_config_version",
+      "algorithm_config_hash",
+      "evidence_algorithm_version",
+      "evidence_config_hash"
+    ],
+    "evidence_refs": [
+      "evidence_refs",
+      "counter_evidence_refs",
+      "used_evidence_ids"
+    ],
+    "result_status": [
+      "next_action",
+      "coverage_status",
+      "limitations"
+    ],
+    "review_state": [
+      "authority_state",
+      "human_decision"
+    ],
+    "uncertainty": [
+      "uncertainty_state",
+      "uncertainty_reasons"
+    ]
+  },
+  "definitions": {
+    "EvidenceRef": {
+      "evidence_id": {
+        "json_name": "evidence_id",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "location_end": {
+        "json_name": "location_end",
+        "kind": "integer",
+        "nullable": true,
+        "python_type": "int",
+        "required": false
+      },
+      "location_start": {
+        "json_name": "location_start",
+        "kind": "integer",
+        "nullable": true,
+        "python_type": "int",
+        "required": false
+      },
+      "quote": {
+        "json_name": "quote",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "source_document_id": {
+        "json_name": "source_document_id",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "source_object_id": {
+        "json_name": "source_object_id",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "source_object_type": {
+        "json_name": "source_object_type",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "source_version": {
+        "json_name": "source_version",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": false
+      },
+      "used": {
+        "json_name": "used",
+        "kind": "boolean",
+        "nullable": false,
+        "python_type": "bool",
+        "required": false
+      }
+    },
+    "HumanDecision": {
+      "algorithm_version": {
+        "contract_role": "algorithm_config_version",
+        "json_name": "algorithm_version",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "bound_object_id": {
+        "json_name": "bound_object_id",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "bound_object_type": {
+        "json_name": "bound_object_type",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "config_version": {
+        "json_name": "config_version",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "decided_at": {
+        "json_name": "decided_at",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "decided_by": {
+        "json_name": "decided_by",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "decision": {
+        "allowed_values": [
+          "approved",
+          "rejected"
+        ],
+        "json_name": "decision",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "typing.Literal['approved', 'rejected']",
+        "required": true
+      },
+      "decision_id": {
+        "json_name": "decision_id",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "graph_version_ref": {
+        "json_name": "graph_version_ref",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "original_authority_state": {
+        "allowed_values": [
+          "candidate",
+          "reviewed",
+          "authoritative"
+        ],
+        "json_name": "original_authority_state",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "typing.Literal['candidate', 'reviewed', 'authoritative']",
+        "required": false
+      },
+      "reason": {
+        "json_name": "reason",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "release_ref": {
+        "json_name": "release_ref",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      }
+    },
+    "SensitivityResult": {
+      "ablation_type": {
+        "json_name": "ablation_type",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "after_score": {
+        "json_name": "after_score",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "after_state": {
+        "json_name": "after_state",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "before_score": {
+        "json_name": "before_score",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "before_state": {
+        "json_name": "before_state",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "certificate_status": {
+        "json_name": "certificate_status",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": false
+      },
+      "fragile_factor": {
+        "json_name": "fragile_factor",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "removed_group_id": {
+        "json_name": "removed_group_id",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": true
+      },
+      "removed_share": {
+        "json_name": "removed_share",
+        "kind": "number",
+        "nullable": false,
+        "python_type": "float",
+        "required": true
+      },
+      "threshold_crossed": {
+        "json_name": "threshold_crossed",
+        "kind": "boolean",
+        "nullable": false,
+        "python_type": "bool",
+        "required": true
+      }
+    },
+    "TemporalEvidenceSummary": {
+      "fresh_evidence_count": {
+        "json_name": "fresh_evidence_count",
+        "kind": "integer",
+        "nullable": true,
+        "python_type": "int",
+        "required": false
+      },
+      "freshness_adjusted_neff": {
+        "json_name": "freshness_adjusted_neff",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "median_market_age_days": {
+        "json_name": "median_market_age_days",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "p90_market_age_days": {
+        "json_name": "p90_market_age_days",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "publish_time_coverage": {
+        "json_name": "publish_time_coverage",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "reference_date": {
+        "json_name": "reference_date",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "source_lag_summary": {
+        "item": {
+          "definition": "TemporalSourceLagRow",
+          "kind": "object",
+          "nullable": false
+        },
+        "json_name": "source_lag_summary",
+        "kind": "array",
+        "nullable": false,
+        "python_type": "tuple[app.contexts.insight_cards.contracts.TemporalSourceLagRow, ...]",
+        "required": false
+      },
+      "stale_evidence_count": {
+        "json_name": "stale_evidence_count",
+        "kind": "integer",
+        "nullable": true,
+        "python_type": "int",
+        "required": false
+      },
+      "stale_evidence_ratio": {
+        "json_name": "stale_evidence_ratio",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "temporal_algorithm_version": {
+        "json_name": "temporal_algorithm_version",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "temporal_reasons": {
+        "item": {
+          "kind": "string",
+          "nullable": false
+        },
+        "json_name": "temporal_reasons",
+        "kind": "array",
+        "nullable": false,
+        "python_type": "tuple[str, ...]",
+        "required": false
+      },
+      "time_provenance_policy": {
+        "json_name": "time_provenance_policy",
+        "kind": "string",
+        "nullable": true,
+        "python_type": "str",
+        "required": false
+      },
+      "unknown_evidence_count": {
+        "json_name": "unknown_evidence_count",
+        "kind": "integer",
+        "nullable": true,
+        "python_type": "int",
+        "required": false
+      }
+    },
+    "TemporalSourceLagRow": {
+      "invalid_sample_count": {
+        "json_name": "invalid_sample_count",
+        "kind": "integer",
+        "nullable": false,
+        "python_type": "int",
+        "required": false
+      },
+      "median_delay_days": {
+        "json_name": "median_delay_days",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "missing_publish_count": {
+        "json_name": "missing_publish_count",
+        "kind": "integer",
+        "nullable": false,
+        "python_type": "int",
+        "required": false
+      },
+      "p90_delay_days": {
+        "json_name": "p90_delay_days",
+        "kind": "number",
+        "nullable": true,
+        "python_type": "float",
+        "required": false
+      },
+      "pipeline_observation_count": {
+        "json_name": "pipeline_observation_count",
+        "kind": "integer",
+        "nullable": false,
+        "python_type": "int",
+        "required": false
+      },
+      "source_id": {
+        "json_name": "source_id",
+        "kind": "string",
+        "nullable": false,
+        "python_type": "str",
+        "required": true
+      },
+      "unknown_provenance_count": {
+        "json_name": "unknown_provenance_count",
+        "kind": "integer",
+        "nullable": false,
+        "python_type": "int",
+        "required": false
+      },
+      "valid_sample_count": {
+        "json_name": "valid_sample_count",
+        "kind": "integer",
+        "nullable": false,
+        "python_type": "int",
+        "required": true
+      }
+    }
+  },
+  "domain_source": {
+    "bff_serializer": "app.api.v1.insights returns success_response(data=asdict(assemble_insight_card(source)))",
+    "module": "app.contexts.insight_cards.contracts",
+    "root_type": "InsightCard"
+  },
+  "fields": {
+    "algorithm_config_hash": {
+      "contract_role": "algorithm_config_version",
+      "json_name": "algorithm_config_hash",
+      "kind": "string",
+      "nullable": true,
+      "python_type": "str",
+      "required": false
+    },
+    "algorithm_config_version": {
+      "contract_role": "algorithm_config_version",
+      "json_name": "algorithm_config_version",
+      "kind": "string",
+      "nullable": true,
+      "python_type": "str",
+      "required": false
+    },
+    "algorithm_version": {
+      "contract_role": "algorithm_config_version",
+      "json_name": "algorithm_version",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "str",
+      "required": false
+    },
+    "authority_state": {
+      "allowed_values": [
+        "candidate",
+        "reviewed",
+        "authoritative"
+      ],
+      "contract_role": "review_state",
+      "json_name": "authority_state",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "typing.Literal['candidate', 'reviewed', 'authoritative']",
+      "required": false
+    },
+    "catalog_refs": {
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "catalog_refs",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    },
+    "claim": {
+      "json_name": "claim",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "str",
+      "required": false
+    },
+    "claim_type": {
+      "allowed_values": [
+        "emerging_position",
+        "role_migration",
+        "trend_change",
+        "matching_what_if",
+        "fact",
+        "statistical_relation",
+        "prediction",
+        "recommendation",
+        "human_decision"
+      ],
+      "json_name": "claim_type",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "typing.Literal['emerging_position', 'role_migration', 'trend_change', 'matching_what_if', 'fact', 'statistical_relation', 'prediction', 'recommendation', 'human_decision']",
+      "required": false
+    },
+    "contract_version": {
+      "json_name": "contract_version",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "str",
+      "required": false
+    },
+    "counter_evidence_refs": {
+      "contract_role": "evidence_refs",
+      "item": {
+        "definition": "EvidenceRef",
+        "kind": "object",
+        "nullable": false
+      },
+      "json_name": "counter_evidence_refs",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[app.contexts.insight_cards.contracts.EvidenceRef, ...]",
+      "required": false
+    },
+    "coverage_status": {
+      "allowed_values": [
+        "covered",
+        "unknown"
+      ],
+      "contract_role": "result_status",
+      "json_name": "coverage_status",
+      "kind": "string",
+      "nullable": true,
+      "python_type": "typing.Literal['covered', 'unknown']",
+      "required": false
+    },
+    "coverage_summary": {
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "coverage_summary",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    },
+    "data_refs": {
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "data_refs",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    },
+    "effective_sample_size": {
+      "json_name": "effective_sample_size",
+      "kind": "number",
+      "nullable": true,
+      "python_type": "float",
+      "required": false
+    },
+    "evidence_algorithm_version": {
+      "contract_role": "algorithm_config_version",
+      "json_name": "evidence_algorithm_version",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "str",
+      "required": false
+    },
+    "evidence_config_hash": {
+      "contract_role": "algorithm_config_version",
+      "json_name": "evidence_config_hash",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "str",
+      "required": false
+    },
+    "evidence_refs": {
+      "contract_role": "evidence_refs",
+      "item": {
+        "definition": "EvidenceRef",
+        "kind": "object",
+        "nullable": false
+      },
+      "json_name": "evidence_refs",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[app.contexts.insight_cards.contracts.EvidenceRef, ...]",
+      "required": false
+    },
+    "evidence_subject_ref": {
+      "json_name": "evidence_subject_ref",
+      "kind": "string",
+      "nullable": true,
+      "python_type": "str",
+      "required": false
+    },
+    "fragile_factor": {
+      "json_name": "fragile_factor",
+      "kind": "string",
+      "nullable": true,
+      "python_type": "str",
+      "required": false
+    },
+    "graph_version_refs": {
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "graph_version_refs",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    },
+    "human_decision": {
+      "contract_role": "review_state",
+      "definition": "HumanDecision",
+      "json_name": "human_decision",
+      "kind": "object",
+      "nullable": true,
+      "python_type": "HumanDecision",
+      "required": false
+    },
+    "insight_id": {
+      "json_name": "insight_id",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "str",
+      "required": false
+    },
+    "limitations": {
+      "contract_role": "result_status",
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "limitations",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    },
+    "next_action": {
+      "allowed_values": [
+        "publish",
+        "collect_evidence",
+        "rerun",
+        "review",
+        "user_action",
+        "none"
+      ],
+      "contract_role": "result_status",
+      "json_name": "next_action",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "typing.Literal['publish', 'collect_evidence', 'rerun', 'review', 'user_action', 'none']",
+      "required": false
+    },
+    "raw_evidence_count": {
+      "json_name": "raw_evidence_count",
+      "kind": "integer",
+      "nullable": true,
+      "python_type": "int",
+      "required": false
+    },
+    "release_refs": {
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "release_refs",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    },
+    "sensitivity_results": {
+      "item": {
+        "definition": "SensitivityResult",
+        "kind": "object",
+        "nullable": false
+      },
+      "json_name": "sensitivity_results",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[app.contexts.insight_cards.contracts.SensitivityResult, ...]",
+      "required": false
+    },
+    "source_coverage": {
+      "json_name": "source_coverage",
+      "kind": "number",
+      "nullable": true,
+      "python_type": "float",
+      "required": false
+    },
+    "subject_ref": {
+      "json_name": "subject_ref",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "str",
+      "required": false
+    },
+    "temporal_evidence": {
+      "definition": "TemporalEvidenceSummary",
+      "json_name": "temporal_evidence",
+      "kind": "object",
+      "nullable": true,
+      "python_type": "TemporalEvidenceSummary",
+      "required": false
+    },
+    "uncertainty_reasons": {
+      "contract_role": "uncertainty",
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "uncertainty_reasons",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    },
+    "uncertainty_state": {
+      "allowed_values": [
+        "ok",
+        "not_observed",
+        "unresolved",
+        "insufficient_evidence",
+        "source_concentrated",
+        "stale_observation",
+        "blocked"
+      ],
+      "contract_role": "uncertainty",
+      "json_name": "uncertainty_state",
+      "kind": "string",
+      "nullable": false,
+      "python_type": "typing.Literal['ok', 'not_observed', 'unresolved', 'insufficient_evidence', 'source_concentrated', 'stale_observation', 'blocked']",
+      "required": false
+    },
+    "used_evidence_ids": {
+      "contract_role": "evidence_refs",
+      "item": {
+        "kind": "string",
+        "nullable": false
+      },
+      "json_name": "used_evidence_ids",
+      "kind": "array",
+      "nullable": false,
+      "python_type": "tuple[str, ...]",
+      "required": false
+    }
+  },
+  "invariants": {
+    "algorithm_version_non_empty": "insight_id/subject_ref/claim/algorithm_version are validated non-empty before BFF serialization",
+    "evidence_location_pair": "EvidenceRef.location_start and location_end are both null or both integers with end >= start",
+    "evidence_ref_identity_non_empty": "EvidenceRef.evidence_id/source_object_type/source_object_id/source_document_id are validated non-empty by __post_init__",
+    "used_evidence_subset": "used_evidence_ids must be a subset of visible evidence_refs"
+  },
+  "schema_version": "insight-card-contract-snapshot.v1"
+}

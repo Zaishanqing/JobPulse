@@ -1,0 +1,2692 @@
+{
+  "schema": "position-taxonomy-catalog.v3",
+  "catalog_version": "position-taxonomy.v3.0.0",
+  "scope": "新一代信息技术及其研发、基础设施、产品和技术服务岗位",
+  "families": [
+    {
+      "code": "AI_ALGORITHM_RESEARCH",
+      "name": "人工智能算法与研究",
+      "primary_skill_domain": "ai_intelligent_systems",
+      "allowed_skill_domains": [
+        "ai_intelligent_systems",
+        "data_engineering",
+        "computing_hardware",
+        "software_engineering"
+      ]
+    },
+    {
+      "code": "AI_APPLICATION_ENGINEERING",
+      "name": "人工智能应用与智能系统",
+      "primary_skill_domain": "ai_intelligent_systems",
+      "allowed_skill_domains": [
+        "ai_intelligent_systems",
+        "software_engineering",
+        "data_engineering",
+        "cloud_distributed"
+      ]
+    },
+    {
+      "code": "DATA_BIG_DATA",
+      "name": "数据与大数据",
+      "primary_skill_domain": "data_engineering",
+      "allowed_skill_domains": [
+        "data_engineering",
+        "software_engineering",
+        "cloud_distributed",
+        "ai_intelligent_systems"
+      ]
+    },
+    {
+      "code": "SOFTWARE_ENGINEERING",
+      "name": "软件研发",
+      "primary_skill_domain": "software_engineering",
+      "allowed_skill_domains": [
+        "software_engineering",
+        "cloud_distributed",
+        "data_engineering",
+        "blockchain_web3"
+      ]
+    },
+    {
+      "code": "CLOUD_PLATFORM_OPERATIONS",
+      "name": "云平台与运维可靠性",
+      "primary_skill_domain": "cloud_distributed",
+      "allowed_skill_domains": [
+        "cloud_distributed",
+        "software_engineering",
+        "network_communications",
+        "cybersecurity_privacy"
+      ]
+    },
+    {
+      "code": "CYBERSECURITY",
+      "name": "网络与数据安全",
+      "primary_skill_domain": "cybersecurity_privacy",
+      "allowed_skill_domains": [
+        "cybersecurity_privacy",
+        "network_communications",
+        "software_engineering",
+        "data_engineering"
+      ]
+    },
+    {
+      "code": "NETWORK_COMMUNICATIONS",
+      "name": "网络与通信",
+      "primary_skill_domain": "network_communications",
+      "allowed_skill_domains": [
+        "network_communications",
+        "computing_hardware",
+        "software_engineering"
+      ]
+    },
+    {
+      "code": "EMBEDDED_IOT_EDGE",
+      "name": "嵌入式、物联网与边缘计算",
+      "primary_skill_domain": "embedded_iot_edge",
+      "allowed_skill_domains": [
+        "embedded_iot_edge",
+        "computing_hardware",
+        "network_communications",
+        "software_engineering",
+        "ai_intelligent_systems"
+      ]
+    },
+    {
+      "code": "CHIP_HARDWARE",
+      "name": "芯片与智能硬件",
+      "primary_skill_domain": "computing_hardware",
+      "allowed_skill_domains": [
+        "computing_hardware",
+        "embedded_iot_edge",
+        "software_engineering"
+      ]
+    },
+    {
+      "code": "ROBOTICS_AUTONOMY",
+      "name": "机器人与自主系统",
+      "primary_skill_domain": "robotics_autonomy",
+      "allowed_skill_domains": [
+        "robotics_autonomy",
+        "ai_intelligent_systems",
+        "embedded_iot_edge",
+        "computing_hardware"
+      ]
+    },
+    {
+      "code": "QUANTUM_INFORMATION",
+      "name": "量子信息技术",
+      "primary_skill_domain": "quantum_computing",
+      "allowed_skill_domains": [
+        "quantum_computing",
+        "computing_hardware",
+        "software_engineering",
+        "network_communications"
+      ]
+    },
+    {
+      "code": "TEST_QUALITY",
+      "name": "测试与质量保障",
+      "primary_skill_domain": "software_engineering",
+      "allowed_skill_domains": [
+        "software_engineering",
+        "cloud_distributed",
+        "computing_hardware",
+        "embedded_iot_edge"
+      ]
+    },
+    {
+      "code": "DIGITAL_PRODUCT",
+      "name": "数字产品",
+      "primary_skill_domain": "digital_governance",
+      "allowed_skill_domains": [
+        "digital_governance",
+        "software_engineering",
+        "ai_intelligent_systems",
+        "data_engineering"
+      ]
+    },
+    {
+      "code": "USER_EXPERIENCE_DESIGN",
+      "name": "用户体验与数字设计",
+      "primary_skill_domain": "hci_graphics_xr",
+      "allowed_skill_domains": [
+        "hci_graphics_xr",
+        "software_engineering"
+      ]
+    },
+    {
+      "code": "PROJECT_DELIVERY",
+      "name": "项目管理与数字化交付",
+      "primary_skill_domain": "digital_governance",
+      "allowed_skill_domains": [
+        "digital_governance",
+        "software_engineering",
+        "cloud_distributed"
+      ]
+    },
+    {
+      "code": "SOLUTION_TECHNICAL_SERVICE",
+      "name": "解决方案与技术服务",
+      "primary_skill_domain": "digital_governance",
+      "allowed_skill_domains": [
+        "digital_governance",
+        "software_engineering",
+        "ai_intelligent_systems",
+        "data_engineering",
+        "cloud_distributed",
+        "cybersecurity_privacy",
+        "network_communications",
+        "embedded_iot_edge",
+        "computing_hardware",
+        "robotics_autonomy",
+        "blockchain_web3",
+        "hci_graphics_xr",
+        "quantum_computing"
+      ]
+    },
+    {
+      "code": "DIGITAL_OPERATIONS",
+      "name": "数字化运营",
+      "primary_skill_domain": "digital_governance",
+      "allowed_skill_domains": [
+        "digital_governance",
+        "data_engineering",
+        "software_engineering"
+      ]
+    },
+    {
+      "code": "TECH_EDUCATION",
+      "name": "信息技术教育与培训",
+      "primary_skill_domain": "digital_governance",
+      "allowed_skill_domains": [
+        "digital_governance",
+        "software_engineering",
+        "ai_intelligent_systems",
+        "data_engineering",
+        "cloud_distributed",
+        "cybersecurity_privacy",
+        "network_communications",
+        "embedded_iot_edge",
+        "computing_hardware",
+        "robotics_autonomy",
+        "quantum_computing"
+      ]
+    },
+    {
+      "code": "DATA_PRODUCTION_EVALUATION",
+      "name": "数据生产与模型评测",
+      "primary_skill_domain": "ai_intelligent_systems",
+      "allowed_skill_domains": [
+        "ai_intelligent_systems",
+        "data_engineering",
+        "digital_governance"
+      ]
+    },
+    {
+      "code": "IT_MANAGEMENT_ANALYSIS",
+      "name": "信息技术管理与业务分析",
+      "primary_skill_domain": "digital_governance",
+      "allowed_skill_domains": [
+        "digital_governance",
+        "software_engineering",
+        "data_engineering",
+        "cloud_distributed",
+        "cybersecurity_privacy"
+      ]
+    }
+  ],
+  "positions": [
+    {
+      "code": "AI_RESEARCH_SCIENTIST",
+      "name": "人工智能研究员",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "研究新型人工智能模型、学习方法或基础理论并形成论文、专利或原型。",
+      "aliases": [
+        "人工智能研究员"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研究新型人工智能模型、学习方法或基础理论并形成论文、专利或原型。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "MACHINE_LEARNING_ENGINEER",
+      "name": "机器学习算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "设计、训练和评估通用机器学习模型与算法。",
+      "aliases": [
+        "机器学习算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合设计、训练和评估通用机器学习模型与算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "DEEP_LEARNING_ENGINEER",
+      "name": "深度学习算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "研发以深度神经网络为核心的模型和训练方法。",
+      "aliases": [
+        "深度学习算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发以深度神经网络为核心的模型和训练方法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "LLM_ALGORITHM_ENGINEER",
+      "name": "大模型算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "负责大语言模型预训练、微调、对齐、蒸馏或模型评估算法。",
+      "aliases": [
+        "大模型算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责大语言模型预训练、微调、对齐、蒸馏或模型评估算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "NLP_ALGORITHM_ENGINEER",
+      "name": "自然语言处理算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "研发文本理解、生成、信息抽取等自然语言处理算法。",
+      "aliases": [
+        "自然语言处理算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发文本理解、生成、信息抽取等自然语言处理算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "COMPUTER_VISION_ENGINEER",
+      "name": "计算机视觉算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "研发图像和视频检测、识别、分割、生成等视觉算法。",
+      "aliases": [
+        "计算机视觉算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发图像和视频检测、识别、分割、生成等视觉算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "MULTIMODAL_ALGORITHM_ENGINEER",
+      "name": "多模态算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "研发文本、图像、语音或视频联合建模算法。",
+      "aliases": [
+        "多模态算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发文本、图像、语音或视频联合建模算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "RECOMMENDATION_SEARCH_ENGINEER",
+      "name": "推荐与搜索算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "研发推荐、排序、召回、搜索和广告算法。",
+      "aliases": [
+        "推荐与搜索算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发推荐、排序、召回、搜索和广告算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "SPEECH_ALGORITHM_ENGINEER",
+      "name": "语音算法工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "研发语音识别、语音合成、声纹或音频理解算法。",
+      "aliases": [
+        "语音算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发语音识别、语音合成、声纹或音频理解算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "AI_INFERENCE_OPTIMIZATION_ENGINEER",
+      "name": "AI推理优化工程师",
+      "family_code": "AI_ALGORITHM_RESEARCH",
+      "definition": "负责模型压缩、量化、编译、推理加速和硬件适配。",
+      "aliases": [
+        "AI推理优化工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责模型压缩、量化、编译、推理加速和硬件适配。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "LLM_APPLICATION_ENGINEER",
+      "name": "大模型应用开发工程师",
+      "family_code": "AI_APPLICATION_ENGINEERING",
+      "definition": "使用大模型构建面向业务的应用、工作流和服务。",
+      "aliases": [
+        "大模型应用开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合使用大模型构建面向业务的应用、工作流和服务。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "AI_AGENT_ENGINEER",
+      "name": "智能体开发工程师",
+      "family_code": "AI_APPLICATION_ENGINEERING",
+      "definition": "设计和开发智能体规划、记忆、工具调用及多智能体系统。",
+      "aliases": [
+        "智能体开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合设计和开发智能体规划、记忆、工具调用及多智能体系统。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "RAG_ENGINEER",
+      "name": "检索增强生成工程师",
+      "family_code": "AI_APPLICATION_ENGINEERING",
+      "definition": "建设知识库、检索、向量化和生成融合的RAG系统。",
+      "aliases": [
+        "检索增强生成工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设知识库、检索、向量化和生成融合的RAG系统。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "PROMPT_ENGINEER",
+      "name": "提示词工程师",
+      "family_code": "AI_APPLICATION_ENGINEERING",
+      "definition": "设计、评测和治理可复用提示词及模型交互策略。",
+      "aliases": [
+        "提示词工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合设计、评测和治理可复用提示词及模型交互策略。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "AI_PLATFORM_ENGINEER",
+      "name": "人工智能平台工程师",
+      "family_code": "AI_APPLICATION_ENGINEERING",
+      "definition": "建设模型训练、部署、推理、评测和治理平台。",
+      "aliases": [
+        "人工智能平台工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设模型训练、部署、推理、评测和治理平台。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "MLOPS_ENGINEER",
+      "name": "MLOps工程师",
+      "family_code": "AI_APPLICATION_ENGINEERING",
+      "definition": "负责机器学习模型持续训练、部署、监控和生命周期工程。",
+      "aliases": [
+        "MLOps工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责机器学习模型持续训练、部署、监控和生命周期工程。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "KNOWLEDGE_GRAPH_ENGINEER",
+      "name": "知识图谱工程师",
+      "family_code": "AI_APPLICATION_ENGINEERING",
+      "definition": "建设知识抽取、本体、图谱存储、推理和应用系统。",
+      "aliases": [
+        "知识图谱工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设知识抽取、本体、图谱存储、推理和应用系统。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DATA_SCIENTIST",
+      "name": "数据科学家",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "通过统计、实验和建模解决复杂数据问题并形成业务结论。",
+      "aliases": [
+        "数据科学家"
+      ],
+      "include_when": [
+        "核心职责与交付物符合通过统计、实验和建模解决复杂数据问题并形成业务结论。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "DATA_ANALYST",
+      "name": "数据分析师",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "负责指标体系、数据分析、洞察和分析报告。",
+      "aliases": [
+        "数据分析师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责指标体系、数据分析、洞察和分析报告。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "BI_ENGINEER",
+      "name": "商业智能工程师",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "建设报表、数据可视化和商业智能分析体系。",
+      "aliases": [
+        "商业智能工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设报表、数据可视化和商业智能分析体系。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DATA_ENGINEER",
+      "name": "数据工程师",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "建设数据采集、清洗、处理、服务和数据管道。",
+      "aliases": [
+        "数据工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设数据采集、清洗、处理、服务和数据管道。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "BIG_DATA_ENGINEER",
+      "name": "大数据开发工程师",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "基于分布式大数据技术建设批流处理和数据平台。",
+      "aliases": [
+        "大数据开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合基于分布式大数据技术建设批流处理和数据平台。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DATA_WAREHOUSE_ENGINEER",
+      "name": "数据仓库工程师",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "负责数据仓库分层、建模、治理和数据集市。",
+      "aliases": [
+        "数据仓库工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数据仓库分层、建模、治理和数据集市。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DATA_GOVERNANCE_ENGINEER",
+      "name": "数据治理工程师",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "负责数据标准、质量、元数据、主数据和数据资产治理。",
+      "aliases": [
+        "数据治理工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数据标准、质量、元数据、主数据和数据资产治理。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "DATABASE_ENGINEER",
+      "name": "数据库工程师",
+      "family_code": "DATA_BIG_DATA",
+      "definition": "负责数据库设计、运维、优化、备份和高可用。",
+      "aliases": [
+        "数据库工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数据库设计、运维、优化、备份和高可用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "BACKEND_ENGINEER",
+      "name": "后端开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发服务端业务逻辑、接口、数据访问和分布式服务。",
+      "aliases": [
+        "后端开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发服务端业务逻辑、接口、数据访问和分布式服务。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "FRONTEND_ENGINEER",
+      "name": "前端开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发Web前端界面、交互、工程体系和浏览器应用。",
+      "aliases": [
+        "前端开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发Web前端界面、交互、工程体系和浏览器应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "FULLSTACK_ENGINEER",
+      "name": "全栈开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "同时承担前端和后端应用开发并交付完整功能。",
+      "aliases": [
+        "全栈开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合同时承担前端和后端应用开发并交付完整功能。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "ANDROID_ENGINEER",
+      "name": "Android开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发Android移动应用及其工程体系。",
+      "aliases": [
+        "Android开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发Android移动应用及其工程体系。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "IOS_ENGINEER",
+      "name": "iOS开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发iOS移动应用及其工程体系。",
+      "aliases": [
+        "iOS开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发iOS移动应用及其工程体系。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "CROSS_PLATFORM_MOBILE_ENGINEER",
+      "name": "跨平台移动开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "使用跨平台框架开发移动端应用。",
+      "aliases": [
+        "跨平台移动开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合使用跨平台框架开发移动端应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DESKTOP_CLIENT_ENGINEER",
+      "name": "桌面与客户端开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发桌面、客户端或跨平台本地应用。",
+      "aliases": [
+        "桌面与客户端开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发桌面、客户端或跨平台本地应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "SYSTEM_SOFTWARE_ENGINEER",
+      "name": "系统软件工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发操作系统、编译器、运行时、存储或高性能系统软件。",
+      "aliases": [
+        "系统软件工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发操作系统、编译器、运行时、存储或高性能系统软件。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "GAME_DEVELOPMENT_ENGINEER",
+      "name": "游戏开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发游戏客户端、服务器、引擎或玩法系统。",
+      "aliases": [
+        "游戏开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发游戏客户端、服务器、引擎或玩法系统。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "BLOCKCHAIN_ENGINEER",
+      "name": "区块链开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发区块链协议、智能合约和分布式账本应用。",
+      "aliases": [
+        "区块链开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发区块链协议、智能合约和分布式账本应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "ENTERPRISE_APPLICATION_ENGINEER",
+      "name": "企业应用开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "开发ERP、CRM、OA等企业信息化应用。",
+      "aliases": [
+        "企业应用开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发ERP、CRM、OA等企业信息化应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "LOW_CODE_ENGINEER",
+      "name": "低代码平台开发工程师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "建设或使用低代码平台交付企业应用。",
+      "aliases": [
+        "低代码平台开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设或使用低代码平台交付企业应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "SOFTWARE_ARCHITECT",
+      "name": "软件架构师",
+      "family_code": "SOFTWARE_ENGINEERING",
+      "definition": "负责复杂软件系统架构、技术决策和关键质量属性。",
+      "aliases": [
+        "软件架构师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责复杂软件系统架构、技术决策和关键质量属性。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "CLOUD_PLATFORM_ENGINEER",
+      "name": "云平台工程师",
+      "family_code": "CLOUD_PLATFORM_OPERATIONS",
+      "definition": "建设云计算资源、容器平台和云原生基础设施。",
+      "aliases": [
+        "云平台工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设云计算资源、容器平台和云原生基础设施。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DEVOPS_ENGINEER",
+      "name": "DevOps工程师",
+      "family_code": "CLOUD_PLATFORM_OPERATIONS",
+      "definition": "建设持续集成、持续交付、自动化环境和研发效能平台。",
+      "aliases": [
+        "DevOps工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设持续集成、持续交付、自动化环境和研发效能平台。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "SRE_ENGINEER",
+      "name": "站点可靠性工程师",
+      "family_code": "CLOUD_PLATFORM_OPERATIONS",
+      "definition": "通过工程化手段保障服务可靠性、容量和可观测性。",
+      "aliases": [
+        "站点可靠性工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合通过工程化手段保障服务可靠性、容量和可观测性。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "SYSTEM_OPERATIONS_ENGINEER",
+      "name": "系统运维工程师",
+      "family_code": "CLOUD_PLATFORM_OPERATIONS",
+      "definition": "负责服务器、操作系统和基础环境运行维护。",
+      "aliases": [
+        "系统运维工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责服务器、操作系统和基础环境运行维护。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "APPLICATION_OPERATIONS_ENGINEER",
+      "name": "应用运维工程师",
+      "family_code": "CLOUD_PLATFORM_OPERATIONS",
+      "definition": "负责业务应用发布、监控、故障处理和运行保障。",
+      "aliases": [
+        "应用运维工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责业务应用发布、监控、故障处理和运行保障。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "MIDDLEWARE_ENGINEER",
+      "name": "中间件工程师",
+      "family_code": "CLOUD_PLATFORM_OPERATIONS",
+      "definition": "建设和运维消息、缓存、网关、注册配置等中间件。",
+      "aliases": [
+        "中间件工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设和运维消息、缓存、网关、注册配置等中间件。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "IT_SUPPORT_ENGINEER",
+      "name": "IT支持工程师",
+      "family_code": "CLOUD_PLATFORM_OPERATIONS",
+      "definition": "提供终端、办公系统、账号和基础IT技术支持。",
+      "aliases": [
+        "IT支持工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合提供终端、办公系统、账号和基础IT技术支持。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "CYBERSECURITY_ENGINEER",
+      "name": "网络安全工程师",
+      "family_code": "CYBERSECURITY",
+      "definition": "建设安全防护、检测、响应和安全运营能力。",
+      "aliases": [
+        "网络安全工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设安全防护、检测、响应和安全运营能力。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "APPLICATION_SECURITY_ENGINEER",
+      "name": "应用安全工程师",
+      "family_code": "CYBERSECURITY",
+      "definition": "负责软件安全设计、代码审计、漏洞治理和安全开发。",
+      "aliases": [
+        "应用安全工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责软件安全设计、代码审计、漏洞治理和安全开发。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DATA_SECURITY_ENGINEER",
+      "name": "数据安全工程师",
+      "family_code": "CYBERSECURITY",
+      "definition": "负责数据分类分级、访问控制、隐私保护和数据安全治理。",
+      "aliases": [
+        "数据安全工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数据分类分级、访问控制、隐私保护和数据安全治理。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "PENETRATION_TEST_ENGINEER",
+      "name": "渗透测试工程师",
+      "family_code": "CYBERSECURITY",
+      "definition": "开展授权渗透测试、攻防演练和漏洞验证。",
+      "aliases": [
+        "渗透测试工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开展授权渗透测试、攻防演练和漏洞验证。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "SECURITY_OPERATIONS_ENGINEER",
+      "name": "安全运营工程师",
+      "family_code": "CYBERSECURITY",
+      "definition": "负责安全监控、事件响应、威胁分析和SOC运营。",
+      "aliases": [
+        "安全运营工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责安全监控、事件响应、威胁分析和SOC运营。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "SECURITY_ARCHITECT",
+      "name": "安全架构师",
+      "family_code": "CYBERSECURITY",
+      "definition": "规划企业或产品整体安全架构和安全控制体系。",
+      "aliases": [
+        "安全架构师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合规划企业或产品整体安全架构和安全控制体系。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "NETWORK_ENGINEER",
+      "name": "网络工程师",
+      "family_code": "NETWORK_COMMUNICATIONS",
+      "definition": "规划、建设和维护计算机网络及网络设备。",
+      "aliases": [
+        "网络工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合规划、建设和维护计算机网络及网络设备。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "COMMUNICATIONS_ENGINEER",
+      "name": "通信工程师",
+      "family_code": "NETWORK_COMMUNICATIONS",
+      "definition": "研发或建设无线、有线、移动通信系统。",
+      "aliases": [
+        "通信工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发或建设无线、有线、移动通信系统。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "NETWORK_PROTOCOL_ENGINEER",
+      "name": "网络协议工程师",
+      "family_code": "NETWORK_COMMUNICATIONS",
+      "definition": "研发网络协议栈、传输协议和通信软件。",
+      "aliases": [
+        "网络协议工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发网络协议栈、传输协议和通信软件。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "EMBEDDED_SOFTWARE_ENGINEER",
+      "name": "嵌入式软件工程师",
+      "family_code": "EMBEDDED_IOT_EDGE",
+      "definition": "开发嵌入式设备软件、实时系统和底层应用。",
+      "aliases": [
+        "嵌入式软件工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发嵌入式设备软件、实时系统和底层应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "FIRMWARE_ENGINEER",
+      "name": "固件开发工程师",
+      "family_code": "EMBEDDED_IOT_EDGE",
+      "definition": "开发硬件固件、启动程序和设备控制软件。",
+      "aliases": [
+        "固件开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发硬件固件、启动程序和设备控制软件。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "IOT_ENGINEER",
+      "name": "物联网工程师",
+      "family_code": "EMBEDDED_IOT_EDGE",
+      "definition": "建设设备接入、物联网平台、协议和物联应用。",
+      "aliases": [
+        "物联网工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设设备接入、物联网平台、协议和物联应用。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "EDGE_COMPUTING_ENGINEER",
+      "name": "边缘计算工程师",
+      "family_code": "EMBEDDED_IOT_EDGE",
+      "definition": "建设边缘节点、端边云协同和边缘智能系统。",
+      "aliases": [
+        "边缘计算工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设边缘节点、端边云协同和边缘智能系统。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "DRIVER_BSP_ENGINEER",
+      "name": "驱动与BSP工程师",
+      "family_code": "EMBEDDED_IOT_EDGE",
+      "definition": "开发设备驱动、板级支持包和操作系统硬件适配。",
+      "aliases": [
+        "驱动与BSP工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发设备驱动、板级支持包和操作系统硬件适配。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "HARDWARE_ENGINEER",
+      "name": "硬件工程师",
+      "family_code": "CHIP_HARDWARE",
+      "definition": "负责电子硬件方案、原理图、PCB、调试和量产。",
+      "aliases": [
+        "硬件工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责电子硬件方案、原理图、PCB、调试和量产。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "FPGA_ENGINEER",
+      "name": "FPGA工程师",
+      "family_code": "CHIP_HARDWARE",
+      "definition": "使用可编程逻辑器件进行数字系统设计和验证。",
+      "aliases": [
+        "FPGA工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合使用可编程逻辑器件进行数字系统设计和验证。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "IC_DESIGN_ENGINEER",
+      "name": "芯片设计工程师",
+      "family_code": "CHIP_HARDWARE",
+      "definition": "负责数字或模拟集成电路前端、后端设计。",
+      "aliases": [
+        "芯片设计工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数字或模拟集成电路前端、后端设计。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "IC_VERIFICATION_ENGINEER",
+      "name": "芯片验证工程师",
+      "family_code": "CHIP_HARDWARE",
+      "definition": "负责芯片功能验证、仿真、形式验证和验证平台。",
+      "aliases": [
+        "芯片验证工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责芯片功能验证、仿真、形式验证和验证平台。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "CHIP_SYSTEM_ENGINEER",
+      "name": "芯片系统工程师",
+      "family_code": "CHIP_HARDWARE",
+      "definition": "负责芯片系统架构、软硬件协同和系统性能分析。",
+      "aliases": [
+        "芯片系统工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责芯片系统架构、软硬件协同和系统性能分析。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "ROBOTICS_ENGINEER",
+      "name": "机器人工程师",
+      "family_code": "ROBOTICS_AUTONOMY",
+      "definition": "研发机器人系统集成、软件平台和任务能力。",
+      "aliases": [
+        "机器人工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发机器人系统集成、软件平台和任务能力。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "SLAM_ALGORITHM_ENGINEER",
+      "name": "SLAM算法工程师",
+      "family_code": "ROBOTICS_AUTONOMY",
+      "definition": "研发定位、建图、导航和传感器融合算法。",
+      "aliases": [
+        "SLAM算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发定位、建图、导航和传感器融合算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "AUTONOMOUS_DRIVING_ENGINEER",
+      "name": "自动驾驶算法工程师",
+      "family_code": "ROBOTICS_AUTONOMY",
+      "definition": "研发自动驾驶感知、预测、规划或决策算法。",
+      "aliases": [
+        "自动驾驶算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发自动驾驶感知、预测、规划或决策算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "ROBOT_PERCEPTION_ENGINEER",
+      "name": "机器人感知算法工程师",
+      "family_code": "ROBOTICS_AUTONOMY",
+      "definition": "研发机器人视觉、点云和多传感器感知算法。",
+      "aliases": [
+        "机器人感知算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发机器人视觉、点云和多传感器感知算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "MOTION_CONTROL_ENGINEER",
+      "name": "运动控制算法工程师",
+      "family_code": "ROBOTICS_AUTONOMY",
+      "definition": "研发机器人、设备或载具的控制、轨迹和运动规划算法。",
+      "aliases": [
+        "运动控制算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发机器人、设备或载具的控制、轨迹和运动规划算法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "QUANTUM_ALGORITHM_ENGINEER",
+      "name": "量子算法工程师",
+      "family_code": "QUANTUM_INFORMATION",
+      "definition": "研发量子算法、量子机器学习和量子计算方法。",
+      "aliases": [
+        "量子算法工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发量子算法、量子机器学习和量子计算方法。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "QUANTUM_SOFTWARE_ENGINEER",
+      "name": "量子软件工程师",
+      "family_code": "QUANTUM_INFORMATION",
+      "definition": "开发量子编程框架、编译工具、模拟器和量子云软件。",
+      "aliases": [
+        "量子软件工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发量子编程框架、编译工具、模拟器和量子云软件。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "QUANTUM_COMMUNICATIONS_ENGINEER",
+      "name": "量子通信工程师",
+      "family_code": "QUANTUM_INFORMATION",
+      "definition": "研发量子通信、量子网络和量子密钥分发系统。",
+      "aliases": [
+        "量子通信工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合研发量子通信、量子网络和量子密钥分发系统。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "SOFTWARE_TEST_ENGINEER",
+      "name": "软件测试工程师",
+      "family_code": "TEST_QUALITY",
+      "definition": "设计和执行软件功能、集成和系统测试。",
+      "aliases": [
+        "软件测试工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合设计和执行软件功能、集成和系统测试。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "TEST_DEVELOPMENT_ENGINEER",
+      "name": "测试开发工程师",
+      "family_code": "TEST_QUALITY",
+      "definition": "开发自动化测试平台、工具、框架和质量基础设施。",
+      "aliases": [
+        "测试开发工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合开发自动化测试平台、工具、框架和质量基础设施。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "PERFORMANCE_TEST_ENGINEER",
+      "name": "性能测试工程师",
+      "family_code": "TEST_QUALITY",
+      "definition": "负责性能、容量、压力、稳定性测试和瓶颈分析。",
+      "aliases": [
+        "性能测试工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责性能、容量、压力、稳定性测试和瓶颈分析。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "none"
+    },
+    {
+      "code": "HARDWARE_TEST_ENGINEER",
+      "name": "硬件测试工程师",
+      "family_code": "TEST_QUALITY",
+      "definition": "负责硬件、芯片或设备测试验证。",
+      "aliases": [
+        "硬件测试工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责硬件、芯片或设备测试验证。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "QUALITY_ASSURANCE_ENGINEER",
+      "name": "质量保障工程师",
+      "family_code": "TEST_QUALITY",
+      "definition": "建设研发质量流程、度量、审计和改进体系。",
+      "aliases": [
+        "质量保障工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合建设研发质量流程、度量、审计和改进体系。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "PRODUCT_MANAGER",
+      "name": "产品经理",
+      "family_code": "DIGITAL_PRODUCT",
+      "definition": "负责数字产品需求、规划、设计、迭代和价值交付。",
+      "aliases": [
+        "产品经理"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数字产品需求、规划、设计、迭代和价值交付。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "AI_PRODUCT_MANAGER",
+      "name": "人工智能产品经理",
+      "family_code": "DIGITAL_PRODUCT",
+      "definition": "负责人工智能或大模型产品规划、评测和落地。",
+      "aliases": [
+        "人工智能产品经理"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责人工智能或大模型产品规划、评测和落地。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "DATA_PRODUCT_MANAGER",
+      "name": "数据产品经理",
+      "family_code": "DIGITAL_PRODUCT",
+      "definition": "负责数据平台、数据服务、指标或分析产品。",
+      "aliases": [
+        "数据产品经理"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数据平台、数据服务、指标或分析产品。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "TECHNICAL_PRODUCT_MANAGER",
+      "name": "技术产品经理",
+      "family_code": "DIGITAL_PRODUCT",
+      "definition": "负责开发者平台、技术基础设施或API产品。",
+      "aliases": [
+        "技术产品经理"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责开发者平台、技术基础设施或API产品。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "UI_DESIGNER",
+      "name": "UI设计师",
+      "family_code": "USER_EXPERIENCE_DESIGN",
+      "definition": "负责数字产品界面视觉和设计规范。",
+      "aliases": [
+        "UI设计师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数字产品界面视觉和设计规范。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "UX_INTERACTION_DESIGNER",
+      "name": "用户体验与交互设计师",
+      "family_code": "USER_EXPERIENCE_DESIGN",
+      "definition": "负责用户研究、信息架构、交互流程和体验设计。",
+      "aliases": [
+        "用户体验与交互设计师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责用户研究、信息架构、交互流程和体验设计。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "VISUAL_DESIGNER",
+      "name": "视觉设计师",
+      "family_code": "USER_EXPERIENCE_DESIGN",
+      "definition": "负责品牌、运营和数字媒体视觉设计。",
+      "aliases": [
+        "视觉设计师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责品牌、运营和数字媒体视觉设计。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "IT_PROJECT_MANAGER",
+      "name": "信息技术项目经理",
+      "family_code": "PROJECT_DELIVERY",
+      "definition": "管理信息系统或软件项目范围、进度、成本、风险和协作。",
+      "aliases": [
+        "信息技术项目经理"
+      ],
+      "include_when": [
+        "核心职责与交付物符合管理信息系统或软件项目范围、进度、成本、风险和协作。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "TECHNICAL_PROJECT_MANAGER",
+      "name": "技术项目经理",
+      "family_code": "PROJECT_DELIVERY",
+      "definition": "管理具有复杂技术依赖的研发项目和跨团队交付。",
+      "aliases": [
+        "技术项目经理"
+      ],
+      "include_when": [
+        "核心职责与交付物符合管理具有复杂技术依赖的研发项目和跨团队交付。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [
+        {
+          "distinguish_by": "项目范围、进度、风险为主；交付经理以客户交付结果和资源协调为主",
+          "position_code": "DELIVERY_MANAGER"
+        },
+        {
+          "distinguish_by": "项目管理不等于研发组织和人员管理",
+          "position_code": "ENGINEERING_MANAGER"
+        }
+      ],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "IMPLEMENTATION_CONSULTANT",
+      "name": "实施顾问",
+      "family_code": "PROJECT_DELIVERY",
+      "definition": "负责企业软件配置、实施、上线、培训和验收。",
+      "aliases": [
+        "实施顾问"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责企业软件配置、实施、上线、培训和验收。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [
+        {
+          "distinguish_by": "具体实施配置、上线、培训和验收为主",
+          "position_code": "DELIVERY_MANAGER"
+        }
+      ],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DELIVERY_MANAGER",
+      "name": "技术交付经理",
+      "family_code": "PROJECT_DELIVERY",
+      "definition": "负责面向客户的技术方案实施、资源协调和交付质量。",
+      "aliases": [
+        "技术交付经理"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责面向客户的技术方案实施、资源协调和交付质量。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [
+        {
+          "distinguish_by": "客户交付质量与资源协调为主",
+          "position_code": "TECHNICAL_PROJECT_MANAGER"
+        },
+        {
+          "distinguish_by": "管理整体交付而非亲自配置、培训和验收",
+          "position_code": "IMPLEMENTATION_CONSULTANT"
+        }
+      ],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "SOLUTION_ARCHITECT",
+      "name": "解决方案架构师",
+      "family_code": "SOLUTION_TECHNICAL_SERVICE",
+      "definition": "根据客户问题设计跨产品、平台和服务的技术解决方案。",
+      "aliases": [
+        "解决方案架构师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合根据客户问题设计跨产品、平台和服务的技术解决方案。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "PRE_SALES_ENGINEER",
+      "name": "售前技术工程师",
+      "family_code": "SOLUTION_TECHNICAL_SERVICE",
+      "definition": "负责需求交流、方案、演示、投标和售前技术支持。",
+      "aliases": [
+        "售前技术工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责需求交流、方案、演示、投标和售前技术支持。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "TECHNICAL_CONSULTANT",
+      "name": "技术顾问",
+      "family_code": "SOLUTION_TECHNICAL_SERVICE",
+      "definition": "提供技术评估、规划、选型和专业咨询。",
+      "aliases": [
+        "技术顾问"
+      ],
+      "include_when": [
+        "核心职责与交付物符合提供技术评估、规划、选型和专业咨询。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "TECHNICAL_SALES",
+      "name": "技术销售",
+      "family_code": "SOLUTION_TECHNICAL_SERVICE",
+      "definition": "负责具有专业技术要求的产品或解决方案销售。",
+      "aliases": [
+        "技术销售"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责具有专业技术要求的产品或解决方案销售。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "CUSTOMER_SUCCESS_ENGINEER",
+      "name": "客户成功工程师",
+      "family_code": "SOLUTION_TECHNICAL_SERVICE",
+      "definition": "帮助客户采用技术产品、解决使用问题并实现持续价值。",
+      "aliases": [
+        "客户成功工程师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合帮助客户采用技术产品、解决使用问题并实现持续价值。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "CONTENT_OPERATIONS",
+      "name": "内容运营",
+      "family_code": "DIGITAL_OPERATIONS",
+      "definition": "负责数字内容策划、生产、分发和效果优化。",
+      "aliases": [
+        "内容运营"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责数字内容策划、生产、分发和效果优化。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "USER_OPERATIONS",
+      "name": "用户运营",
+      "family_code": "DIGITAL_OPERATIONS",
+      "definition": "负责用户增长、活跃、留存和用户关系。",
+      "aliases": [
+        "用户运营"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责用户增长、活跃、留存和用户关系。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "PRODUCT_OPERATIONS",
+      "name": "产品运营",
+      "family_code": "DIGITAL_OPERATIONS",
+      "definition": "围绕数字产品使用、推广、反馈和迭代开展运营。",
+      "aliases": [
+        "产品运营"
+      ],
+      "include_when": [
+        "核心职责与交付物符合围绕数字产品使用、推广、反馈和迭代开展运营。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "GROWTH_OPERATIONS",
+      "name": "增长运营",
+      "family_code": "DIGITAL_OPERATIONS",
+      "definition": "通过实验、渠道和数据驱动用户或业务增长。",
+      "aliases": [
+        "增长运营"
+      ],
+      "include_when": [
+        "核心职责与交付物符合通过实验、渠道和数据驱动用户或业务增长。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "COMMUNITY_OPERATIONS",
+      "name": "社区运营",
+      "family_code": "DIGITAL_OPERATIONS",
+      "definition": "负责线上社区、开发者社区或社群建设和维护。",
+      "aliases": [
+        "社区运营"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责线上社区、开发者社区或社群建设和维护。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "ECOMMERCE_OPERATIONS",
+      "name": "电商运营",
+      "family_code": "DIGITAL_OPERATIONS",
+      "definition": "负责电商平台商品、活动、流量和经营分析。",
+      "aliases": [
+        "电商运营"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责电商平台商品、活动、流量和经营分析。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "DATA_OPERATIONS",
+      "name": "数据运营",
+      "family_code": "DIGITAL_OPERATIONS",
+      "definition": "通过数据监控、分析和策略执行支持业务运营。",
+      "aliases": [
+        "数据运营"
+      ],
+      "include_when": [
+        "核心职责与交付物符合通过数据监控、分析和策略执行支持业务运营。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "IT_TRAINER",
+      "name": "信息技术培训师",
+      "family_code": "TECH_EDUCATION",
+      "definition": "讲授软件、网络、数据或其他信息技术课程。",
+      "aliases": [
+        "信息技术培训师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合讲授软件、网络、数据或其他信息技术课程。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "AI_TRAINER",
+      "name": "人工智能培训师",
+      "family_code": "TECH_EDUCATION",
+      "definition": "讲授人工智能、大模型或智能体相关课程和实践。",
+      "aliases": [
+        "人工智能培训师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合讲授人工智能、大模型或智能体相关课程和实践。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "TECHNICAL_INSTRUCTOR",
+      "name": "信息技术专业教师",
+      "family_code": "TECH_EDUCATION",
+      "definition": "在学校或职业教育场景承担信息技术专业教学。",
+      "aliases": [
+        "信息技术专业教师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合在学校或职业教育场景承担信息技术专业教学。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "TECHNICAL_COURSE_DEVELOPER",
+      "name": "技术课程研发",
+      "family_code": "TECH_EDUCATION",
+      "definition": "设计信息技术课程体系、教材、实验和教学内容。",
+      "aliases": [
+        "技术课程研发"
+      ],
+      "include_when": [
+        "核心职责与交付物符合设计信息技术课程体系、教材、实验和教学内容。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "DATA_ANNOTATOR",
+      "name": "数据标注员",
+      "family_code": "DATA_PRODUCTION_EVALUATION",
+      "definition": "依据规范对文本、图像、语音或视频数据进行标注。",
+      "aliases": [
+        "数据标注员"
+      ],
+      "include_when": [
+        "核心职责与交付物符合依据规范对文本、图像、语音或视频数据进行标注。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "DATA_QUALITY_SPECIALIST",
+      "name": "训练数据质量专员",
+      "family_code": "DATA_PRODUCTION_EVALUATION",
+      "definition": "负责训练数据清洗、质检、规范和质量管理。",
+      "aliases": [
+        "训练数据质量专员"
+      ],
+      "include_when": [
+        "核心职责与交付物符合负责训练数据清洗、质检、规范和质量管理。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "MODEL_EVALUATION_SPECIALIST",
+      "name": "模型评测专员",
+      "family_code": "DATA_PRODUCTION_EVALUATION",
+      "definition": "设计和执行人工智能模型能力、安全或体验评测。",
+      "aliases": [
+        "模型评测专员"
+      ],
+      "include_when": [
+        "核心职责与交付物符合设计和执行人工智能模型能力、安全或体验评测。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "BUSINESS_ANALYST",
+      "name": "业务分析师",
+      "family_code": "IT_MANAGEMENT_ANALYSIS",
+      "definition": "分析业务流程、需求和数据并连接业务与技术团队。",
+      "aliases": [
+        "业务分析师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合分析业务流程、需求和数据并连接业务与技术团队。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "SYSTEM_ANALYST",
+      "name": "系统分析师",
+      "family_code": "IT_MANAGEMENT_ANALYSIS",
+      "definition": "分析信息系统需求、业务规则、系统边界和功能结构。",
+      "aliases": [
+        "系统分析师"
+      ],
+      "include_when": [
+        "核心职责与交付物符合分析信息系统需求、业务规则、系统边界和功能结构。"
+      ],
+      "exclude_when": [
+        "仅标题相似但核心职责不符",
+        "仅因职级、管理范围、技术方向或行业关键词命中"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sparse"
+    },
+    {
+      "code": "ENGINEERING_MANAGER",
+      "name": "研发管理",
+      "family_code": "IT_MANAGEMENT_ANALYSIS",
+      "definition": "负责研发组织管理、人员发展、工程效能和跨团队研发交付。",
+      "aliases": [
+        "研发经理"
+      ],
+      "include_when": [
+        "明确承担研发团队或研发组织管理职责"
+      ],
+      "exclude_when": [
+        "仅承担技术方案或技术带头职责",
+        "仅承担项目进度、客户交付或实施职责"
+      ],
+      "confusable_with": [
+        {
+          "distinguish_by": "研发组织与人员管理，而非项目范围进度管理",
+          "position_code": "TECHNICAL_PROJECT_MANAGER"
+        },
+        {
+          "distinguish_by": "研发组织管理，而非客户交付管理",
+          "position_code": "DELIVERY_MANAGER"
+        }
+      ],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "IT_MANAGER",
+      "name": "IT服务管理",
+      "family_code": "IT_MANAGEMENT_ANALYSIS",
+      "definition": "负责企业 IT 服务、基础设施、终端、账号、供应商和服务台管理。",
+      "aliases": [
+        "信息技术经理"
+      ],
+      "include_when": [
+        "明确承担企业内部 IT 服务管理职责"
+      ],
+      "exclude_when": [
+        "泛技术管理",
+        "研发组织管理",
+        "项目或客户交付管理"
+      ],
+      "confusable_with": [
+        {
+          "distinguish_by": "IT 服务运营而非研发组织管理",
+          "position_code": "ENGINEERING_MANAGER"
+        },
+        {
+          "distinguish_by": "内部 IT 服务而非客户项目交付",
+          "position_code": "DELIVERY_MANAGER"
+        }
+      ],
+      "lifecycle_status": "active",
+      "deprecated_at": null,
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    },
+    {
+      "code": "TECHNOLOGY_EXECUTIVE",
+      "name": "技术负责人",
+      "family_code": "IT_MANAGEMENT_ANALYSIS",
+      "definition": "已废弃的混合管理身份；按实际职能选择标准岗位，并使用 leadership_scope=executive。",
+      "aliases": [
+        "技术负责人"
+      ],
+      "include_when": [],
+      "exclude_when": [
+        "所有新分类"
+      ],
+      "confusable_with": [],
+      "lifecycle_status": "deprecated",
+      "deprecated_at": "2026-08-08",
+      "replaced_by": null,
+      "sample_support_status": "sufficient"
+    }
+  ],
+  "classification_policy_version": "position-classifier.v3.0",
+  "classification_policy": {
+    "resolved_min_score": 0.75,
+    "resolved_min_margin": 0.08,
+    "resolved_min_evidence_refs": 1
+  },
+  "career_levels": [
+    "intern",
+    "junior",
+    "mid",
+    "senior",
+    "expert",
+    "unspecified"
+  ],
+  "leadership_scopes": [
+    "none",
+    "technical_lead",
+    "team",
+    "department",
+    "organization",
+    "executive"
+  ],
+  "technology_focus_codes": [
+    "ARTIFICIAL_INTELLIGENCE",
+    "LLM",
+    "AI_AGENT",
+    "RAG",
+    "NLP",
+    "COMPUTER_VISION",
+    "MULTIMODAL",
+    "RECOMMENDATION",
+    "SEARCH",
+    "SPEECH",
+    "BIG_DATA",
+    "CLOUD_NATIVE",
+    "CYBERSECURITY",
+    "IOT",
+    "EDGE_COMPUTING",
+    "INTELLIGENT_HARDWARE",
+    "ROBOTICS",
+    "AUTONOMOUS_DRIVING",
+    "BLOCKCHAIN",
+    "GAME",
+    "DIGITAL_TWIN",
+    "XR",
+    "GIS"
+  ],
+  "industry_context_codes": [
+    "FINANCE",
+    "HEALTHCARE",
+    "EDUCATION",
+    "ECOMMERCE",
+    "MANUFACTURING",
+    "GOVERNMENT",
+    "ENTERPRISE_SERVICES",
+    "TELECOMMUNICATIONS",
+    "TRANSPORTATION",
+    "ENERGY",
+    "MEDIA",
+    "GAMING"
+  ]
+}

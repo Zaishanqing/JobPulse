@@ -1,0 +1,91 @@
+{
+  "dataset_id": "trend-change-competition",
+  "dataset_version": "trend-change-competition.v1",
+  "provenance": "synthetic",
+  "purpose": "Trend Change 专项评测：复用原有六类 synthetic case，并扩展 accelerating、multiple change points、irregular window length。",
+  "change_point_tolerance_windows": 1,
+  "cases": [
+    {
+      "case_id": "stable",
+      "subject_id": "case-stable",
+      "subject_type": "market_signal",
+      "scores": [0.40, 0.41, 0.39, 0.40, 0.41],
+      "expected_trend_state": "stable",
+      "expected_change_point_windows": [],
+      "note": "小幅波动不应误报 change point。"
+    },
+    {
+      "case_id": "sudden-rise",
+      "subject_id": "case-sudden-rise",
+      "subject_type": "market_signal",
+      "scores": [0.20, 0.21, 0.19, 0.45, 0.60, 0.68],
+      "expected_trend_state": "rising",
+      "expected_change_point_windows": ["w4"],
+      "note": "明显上升应从 w4 起识别为 change point。"
+    },
+    {
+      "case_id": "slow-growth",
+      "subject_id": "case-slow-growth",
+      "subject_type": "market_signal",
+      "scores": [0.20, 0.25, 0.30, 0.35, 0.40],
+      "expected_trend_state": "rising",
+      "expected_change_point_windows": [],
+      "note": "缓慢持续增长识别为 rising，不认定 sudden change。"
+    },
+    {
+      "case_id": "decline",
+      "subject_id": "case-decline",
+      "subject_type": "market_signal",
+      "scores": [0.70, 0.68, 0.65, 0.45, 0.30],
+      "expected_trend_state": "declining",
+      "expected_change_point_windows": ["w4"],
+      "note": "明显下降应从 w4 起识别为 change point。"
+    },
+    {
+      "case_id": "noise-spike",
+      "subject_id": "case-noise-spike",
+      "subject_type": "market_signal",
+      "scores": [0.30, 0.31, 0.29, 0.60, 0.30, 0.31],
+      "expected_trend_state": "stable",
+      "expected_change_point_windows": [],
+      "note": "单点 spike 不应轻易触发 persistent change point。"
+    },
+    {
+      "case_id": "volatile",
+      "subject_id": "case-volatile",
+      "subject_type": "market_signal",
+      "scores": [0.20, 0.60, 0.25, 0.65, 0.22],
+      "expected_trend_state": "volatile",
+      "expected_change_point_windows": [],
+      "note": "高波动序列优先判定为 volatile。"
+    },
+    {
+      "case_id": "accelerating",
+      "subject_id": "case-accelerating",
+      "subject_type": "market_signal",
+      "scores": [1.0, 1.1, 1.25, 1.5, 1.9, 2.5],
+      "expected_trend_state": "accelerating",
+      "expected_change_point_windows": ["w3"],
+      "note": "增速持续提高，w3 后加速趋势明显。"
+    },
+    {
+      "case_id": "multiple-change-points",
+      "subject_id": "case-multiple-change-points",
+      "subject_type": "market_signal",
+      "scores": [1.0, 1.05, 1.0, 1.8, 2.1, 2.15, 3.2, 3.8],
+      "expected_trend_state": "rising",
+      "expected_change_point_windows": ["w4", "w7"],
+      "note": "两个持久平台跃迁，应分别报告 w4 与 w7。"
+    },
+    {
+      "case_id": "irregular-window-length",
+      "subject_id": "case-irregular-window-length",
+      "subject_type": "market_signal",
+      "scores": [1.0, 1.05, 1.1, 1.6, 1.65],
+      "duration_days": [10, 10, 10, 30, 10],
+      "expected_trend_state": "stable",
+      "expected_change_point_windows": [],
+      "note": "w4 窗口时长更长，按单位时间归一化后不应视为 sudden change。"
+    }
+  ]
+}

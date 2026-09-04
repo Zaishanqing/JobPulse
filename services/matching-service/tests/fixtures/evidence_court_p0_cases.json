@@ -1,0 +1,129 @@
+{
+  "schema_version": "jobpulse.evidence-court.p0-test-cases.v1",
+  "feature": "evidence-court-report-access",
+  "purpose": "Verify that report references and report details remain readable without weakening tenant isolation.",
+  "items": [
+    {
+      "case_id": "EC-P0-001",
+      "title": "Internal service can open a completed report from another tenant scope",
+      "priority": "P0",
+      "type": "api",
+      "preconditions": [
+        "A persisted evaluation exists under tenant scope tenant-a.",
+        "The caller is authenticated with the matching.service role."
+      ],
+      "steps": [
+        "Call GET /api/v1/evaluations/{evaluation_id} with the service credential.",
+        "Use a service access scope that differs from tenant-a."
+      ],
+      "expected": "HTTP 200 returns the persisted evaluation and its task metadata.",
+      "automation": "services/matching-service/tests/test_evaluation_tasks_stage11.py::test_service_wide_result_queries_are_explicit_and_read_across_scopes"
+    },
+    {
+      "case_id": "EC-P0-002",
+      "title": "Tenant user cannot open a report from another tenant scope",
+      "priority": "P0",
+      "type": "security",
+      "preconditions": [
+        "A persisted evaluation exists under tenant-a.",
+        "The caller is authenticated as a normal tenant identity for tenant-b."
+      ],
+      "steps": [
+        "Call GET /api/v1/evaluations/{evaluation_id} with tenant-b scope.",
+        "Do not set the internal service-wide flag."
+      ],
+      "expected": "The result is not disclosed and the API returns the stable not-found response.",
+      "automation": "services/matching-service/tests/test_evaluation_tasks_stage11.py::test_result_queries_are_isolated_by_access_scope"
+    },
+    {
+      "case_id": "EC-P0-003",
+      "title": "Internal service receives not-found for an unknown report ID",
+      "priority": "P0",
+      "type": "api",
+      "preconditions": [
+        "The caller is authenticated with the matching.service role."
+      ],
+      "steps": [
+        "Call GET /api/v1/evaluations/{unknown_evaluation_id}."
+      ],
+      "expected": "HTTP 404 with EVALUATION_NOT_FOUND; no unrelated evaluation is returned.",
+      "automation": "Add route-level regression coverage for the service-wide branch."
+    },
+    {
+      "case_id": "EC-P0-004",
+      "title": "Report list entries are detail-readable",
+      "priority": "P0",
+      "type": "integration",
+      "preconditions": [
+        "GET /matches/reports returns at least one reference with evaluation_id."
+      ],
+      "steps": [
+        "Load the Evidence Court report selector.",
+        "Open every selectable evaluation_id once."
+      ],
+      "expected": "Every selectable entry either opens a report or is explicitly marked unavailable; no raw MATCHING_RESOURCE_NOT_FOUND error is shown.",
+      "automation": "Add an end-to-end test covering list-to-detail consistency."
+    },
+    {
+      "case_id": "EC-P0-005",
+      "title": "Pending references are not presented as completed evidence reports",
+      "priority": "P0",
+      "type": "ui",
+      "preconditions": [
+        "The report list contains a pending reference without evaluation_id."
+      ],
+      "steps": [
+        "Open the Evidence Court selector.",
+        "Inspect the pending entry and its enabled state."
+      ],
+      "expected": "Pending work is either hidden from the completed-report selector or shown as disabled with a clear processing status.",
+      "automation": "Add an EvidenceCourt component test for pending and failed references."
+    },
+    {
+      "case_id": "EC-P0-006",
+      "title": "A stale but readable report still renders its evidence",
+      "priority": "P1",
+      "type": "ui",
+      "preconditions": [
+        "A persisted evaluation is readable and marked stale."
+      ],
+      "steps": [
+        "Open the report in Evidence Court.",
+        "Inspect the verdict banner and evidence sections."
+      ],
+      "expected": "The report renders, visibly explains the stale reason, and offers recomputation guidance without hiding the evidence.",
+      "automation": "Add a component test with stale=true and stale_reason_codes."
+    },
+    {
+      "case_id": "EC-P0-007",
+      "title": "Evidence Court keeps requirement context while deduplicating evidence",
+      "priority": "P1",
+      "type": "data-model",
+      "preconditions": [
+        "The same evidence result_reference supports two distinct requirements."
+      ],
+      "steps": [
+        "Build evidence groups from the evaluation report.",
+        "Inspect the rendered rows and their requirement references."
+      ],
+      "expected": "The UI does not lose the requirement-to-evidence relationship when deduplicating repeated evidence.",
+      "automation": "Extend groupEvaluationEvidence.test.ts with repeated evidence across requirements."
+    },
+    {
+      "case_id": "EC-P0-008",
+      "title": "Report display labels do not depend on the current user’s private lists",
+      "priority": "P1",
+      "type": "ui",
+      "preconditions": [
+        "A reviewer can read a report belonging to another user.",
+        "The reviewer cannot list the owner’s private resume."
+      ],
+      "steps": [
+        "Open the Evidence Court selector as a reviewer.",
+        "Inspect the report label and subject metadata."
+      ],
+      "expected": "The selector receives an authorized display label from the API or uses an intentional masked label; it does not degrade to missing-name text without explanation.",
+      "automation": "Add a contract test for reviewer-visible report metadata."
+    }
+  ]
+}

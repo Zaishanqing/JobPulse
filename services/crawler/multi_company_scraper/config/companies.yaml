@@ -1,0 +1,310 @@
+# 50家公司招聘官网配置
+companies:
+  # ===== 第1组：Moka平台 =====
+  - name: "SHEIN"
+    platform: moka
+    base_url: "https://app.mokahr.com/apply/shein/"
+    enabled: true
+    api_config:
+      moka_company_id: "shein"
+
+  - name: "中兴通讯"
+    platform: moka
+    base_url: "https://app.mokahr.com/su/101UHY"
+    enabled: true
+    api_config:
+      moka_company_id: "101UHY"
+
+  - name: "滴滴"
+    platform: moka
+    base_url: "https://app.mokahr.com/apply/didiglobal/6222"
+    enabled: true
+    api_config:
+      moka_company_id: "didiglobal"
+
+  - name: "搜狐"
+    platform: moka
+    base_url: "https://app.mokahr.com/campus_apply/sohu/"
+    enabled: true
+    api_config:
+      moka_company_id: "sohu"
+
+  - name: "新浪微博"
+    platform: moka
+    base_url: "https://app.mokahr.com/campus-recruitment/sina/"
+    enabled: true
+    api_config:
+      moka_company_id: "sina"
+
+  - name: "知乎"
+    platform: moka
+    base_url: "https://app.mokahr.com/campus-recruitment/zhihu/"
+    enabled: true
+    api_config:
+      moka_company_id: "zhihu"
+
+  - name: "三七互娱"
+    platform: moka
+    base_url: "https://app.mokahr.com/apply/37/"
+    enabled: true
+    api_config:
+      moka_company_id: "37"
+
+  - name: "唯品会"
+    platform: moka
+    base_url: "https://app.mokahr.com/campus-recruitment/vip/"
+    enabled: true
+    api_config:
+      moka_company_id: "vip"
+
+  - name: "作业帮"
+    platform: moka
+    base_url: "https://app.mokahr.com/campus-recruitment/zuoyebang/"
+    enabled: true
+    api_config:
+      moka_company_id: "zuoyebang"
+
+  # ===== 第2组：飞书招聘平台 =====
+  - name: "小鹏汽车"
+    platform: feishu
+    base_url: "https://xiaopeng.jobs.feishu.cn/"
+    enabled: true
+    api_config:
+      feishu_company_id: "xiaopeng"
+
+  - name: "莉莉丝游戏"
+    platform: feishu
+    base_url: "https://lilithgames.jobs.feishu.cn/"
+    enabled: true
+    api_config:
+      feishu_company_id: "lilithgames"
+
+  - name: "蔚来"
+    platform: feishu
+    base_url: "https://nio.jobs.feishu.cn/"
+    enabled: true
+    api_config:
+      feishu_company_id: "nio"
+
+  - name: "得物"
+    platform: feishu
+    base_url: "https://poizon.jobs.feishu.cn/"
+    enabled: true
+    api_config:
+      feishu_company_id: "poizon"
+
+  - name: "理想汽车"
+    platform: feishu
+    base_url: "https://lixiang.jobs.feishu.cn/"
+    enabled: true
+    api_config:
+      feishu_company_id: "lixiang"
+
+  # ===== 第3组：有公开API/易解析的独立网站 =====
+  - name: "腾讯"
+    platform: tencent
+    base_url: "https://join.qq.com/"
+    enabled: true
+
+  - name: "百度"
+    platform: baidu
+    base_url: "https://talent.baidu.com/"
+    enabled: true
+
+  - name: "网易"
+    platform: playwright
+    base_url: "https://hr.163.com/job-list.html"
+    enabled: true
+
+  - name: "科大讯飞"
+    platform: zhiye
+    base_url: "https://iflytek.zhiye.com/"
+    enabled: true
+
+  # ===== 第4组：自定义SPA（Playwright兜底）=====
+  - name: "字节跳动"
+    platform: playwright
+    base_url: "https://jobs.bytedance.com/experienced/position"
+    enabled: true
+
+  - name: "阿里巴巴"
+    platform: playwright
+    base_url: "https://talent.alibaba.com/"
+    enabled: true
+
+  - name: "京东"
+    platform: playwright
+    base_url: "https://zhaopin.jd.com/web/job/job_info_list/3"
+    enabled: true
+    selectors:
+      next_page: ".current + a, a.current + a:not(.btn-next)"
+
+  # ===== 第3组补充（原独立网站，迁移至Playwright）=====
+  - name: "华为"
+    platform: playwright
+    base_url: "https://career.huawei.com/"
+    enabled: true
+
+  - name: "蚂蚁集团"
+    platform: playwright
+    base_url: "https://talent.antgroup.com/"
+    enabled: true
+
+  - name: "携程"
+    platform: playwright
+    base_url: "https://campus.ctrip.com/"
+    enabled: true
+
+  - name: "联想"
+    platform: playwright
+    base_url: "https://talent.lenovo.com.cn/"
+    enabled: true
+
+  # ===== 第4组补充：全Playwright公司 =====
+  - name: "美团"
+    platform: playwright
+    base_url: "https://zhaopin.meituan.com/social"
+    enabled: true
+
+  - name: "拼多多"
+    platform: playwright
+    base_url: "https://careers.pinduoduo.com/"
+    enabled: true
+
+  - name: "快手"
+    platform: playwright
+    base_url: "https://zhaopin.kuaishou.cn/#/official/social/"
+    enabled: true
+
+  - name: "小米"
+    platform: playwright
+    base_url: "https://hr.xiaomi.com/"
+    enabled: true
+
+  - name: "滴滴"
+    platform: playwright
+    base_url: "https://talent.didiglobal.com/"
+    enabled: false  # migrated to Moka
+
+  - name: "小红书"
+    platform: playwright
+    base_url: "https://job.xiaohongshu.com/"
+    enabled: true
+
+  - name: "B站"
+    platform: playwright
+    base_url: "https://jobs.bilibili.com/social"
+    enabled: true
+
+  - name: "大疆"
+    platform: playwright
+    base_url: "https://we.dji.com/social"
+    enabled: true
+
+  - name: "商汤科技"
+    platform: playwright
+    base_url: "https://www.sensetime.com/careers"
+    enabled: true
+
+  - name: "海康威视"
+    platform: playwright
+    base_url: "https://campushr.hikvision.com/"
+    enabled: true
+
+  - name: "比亚迪"
+    platform: playwright
+    base_url: "https://job.byd.com/"
+    enabled: true
+
+  - name: "宁德时代"
+    platform: playwright
+    base_url: "https://catl.zhiye.com/"
+    enabled: true
+
+  - name: "中兴通讯"
+    platform: playwright
+    base_url: "https://job.zte.com.cn/"
+    enabled: false  # migrated to Moka
+
+  - name: "OPPO"
+    platform: playwright
+    base_url: "https://career.oppo.com/"
+    enabled: true
+
+  - name: "vivo"
+    platform: playwright
+    base_url: "https://hr.vivo.com/jobs"
+    enabled: true
+
+  - name: "荣耀"
+    platform: playwright
+    base_url: "https://www.hihonor.com/careers/"
+    enabled: true
+
+  - name: "米哈游"
+    platform: playwright
+    base_url: "https://jobs.mihoyo.com/#/position"
+    enabled: true
+
+  - name: "叠纸"
+    platform: playwright
+    base_url: "https://www.papegames.com/career"
+    enabled: true
+
+  - name: "鹰角网络"
+    platform: playwright
+    base_url: "https://www.hypergryph.com/careers"
+    enabled: true
+
+  - name: "完美世界"
+    platform: playwright
+    base_url: "https://recruit.wanmei.com/"
+    enabled: true
+
+  - name: "贝壳找房"
+    platform: playwright
+    base_url: "https://campus.ke.com/"
+    enabled: true
+
+  - name: "猿辅导"
+    platform: playwright
+    base_url: "https://hr.yuanfudao.com/"
+    enabled: true
+
+  - name: "Keep"
+    platform: playwright
+    base_url: "https://hr.keep.com/social/jobs"
+    enabled: true
+
+  - name: "阅文集团"
+    platform: playwright
+    base_url: "https://careers.yuewen.com/"
+    enabled: true
+
+  - name: "虎牙"
+    platform: playwright
+    base_url: "https://hr.huya.com/"
+    enabled: true
+
+  - name: "斗鱼"
+    platform: playwright
+    base_url: "https://zhaopin.douyu.com/"
+    enabled: true
+
+  - name: "满帮"
+    platform: playwright
+    base_url: "https://zhaopin.fulltruckalliance.com/"
+    enabled: true
+
+  # ===== 第三方招聘平台 =====
+  - name: "猎聘"
+    platform: liepin
+    base_url: "https://www.liepin.com/"
+    enabled: true
+
+  - name: "猎聘-快速测试"
+    platform: liepin
+    base_url: "https://www.liepin.com/"
+    enabled: true
+    api_config:
+      search_params_file: "config/liepin_search_params_quick.yaml"

@@ -1,0 +1,114 @@
+{
+    "schema_version": "v2",
+    "document_id": "jd_demo_001",
+    "job_classification": {
+        "taxonomy_version": "position-taxonomy.v2.0.0",
+        "source_title": "\u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1\u5de5\u7a0b\u5e08",
+        "position_id": "position-llm-application",
+        "position_code": "LLM_APPLICATION_ENGINEER",
+        "position_name": "\u5927\u6a21\u578b\u5e94\u7528\u5f00\u53d1\u5de5\u7a0b\u5e08",
+        "family_code": "AI_APPLICATION_ENGINEERING",
+        "family_name": "\u4eba\u5de5\u667a\u80fd\u5e94\u7528\u4e0e\u667a\u80fd\u7cfb\u7edf",
+        "skill_domain_codes": [
+            "ai_intelligent_systems",
+            "software_engineering"
+        ],
+        "specializations": [],
+        "seniority": null,
+        "confidence": 1.0,
+        "needs_review": false,
+        "resolution_status": "resolved",
+        "resolution_source": "main_position_catalog",
+        "reason": null
+    },
+    "normalized_requirements": [
+        {
+            "source_name": "Python",
+            "skill_id": "LANG_PYTHON",
+            "canonical_name": "Python",
+            "category_code": "programming_language",
+            "subcategory_code": "GENERAL_PURPOSE",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "FastAPI",
+            "skill_id": "FRAMEWORK_FASTAPI",
+            "canonical_name": "FastAPI",
+            "category_code": "framework",
+            "subcategory_code": "WEB_BACKEND",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "Docker",
+            "skill_id": "TOOL_DOCKER",
+            "canonical_name": "Docker",
+            "category_code": "tool",
+            "subcategory_code": "CONTAINER",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "RAG",
+            "skill_id": "METHOD_RAG",
+            "canonical_name": "\u68c0\u7d22\u589e\u5f3a\u751f\u6210",
+            "category_code": "methodology",
+            "subcategory_code": "AI_TECHNIQUE",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "Embedding",
+            "skill_id": "METHOD_EMBEDDING",
+            "canonical_name": "\u5411\u91cf\u5d4c\u5165",
+            "category_code": "methodology",
+            "subcategory_code": "AI_TECHNIQUE",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "Milvus",
+            "skill_id": "TOOL_MILVUS",
+            "canonical_name": "Milvus",
+            "category_code": "tool",
+            "subcategory_code": "VECTOR_DB",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "Chroma",
+            "skill_id": "TOOL_CHROMA",
+            "canonical_name": "Chroma",
+            "category_code": "tool",
+            "subcategory_code": "VECTOR_DB",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "Qdrant",
+            "skill_id": "TOOL_QDRANT",
+            "canonical_name": "Qdrant",
+            "category_code": "tool",
+            "subcategory_code": "VECTOR_DB",
+            "resolution_status": "resolved"
+        },
+        {
+            "source_name": "Prompt\u6ce8\u5165\u9632\u5fa1",
+            "skill_id": null,
+            "canonical_name": null,
+            "category_code": "domain_knowledge",
+            "subcategory_code": null,
+            "resolution_status": "unresolved"
+        }
+    ],
+    "salary": {
+        "raw_value": "\u9762\u8bae",
+        "minimum": null,
+        "maximum": null,
+        "currency": "CNY",
+        "period": null
+    },
+    "unresolved_items": [
+        {
+            "item_type": "skill",
+            "source_value": "Prompt\u6ce8\u5165\u9632\u5fa1",
+            "reason": "\u672a\u627e\u5230\u5bf9\u5e94\u7684\u6807\u51c6\u6280\u80fd",
+            "severity": "warning",
+            "source": "normalization"
+        }
+    ]
+}

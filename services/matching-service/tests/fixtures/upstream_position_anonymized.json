@@ -1,0 +1,49 @@
+{
+  "contract_version": "position-matching-input-bundle.v1",
+  "source_system": "jd-and-position-anonymized-fixture",
+  "jd_extraction": {
+    "schema_version": "v2",
+    "document_id": "jd_anon_integration_001",
+    "title": {"value": "Backend Engineer", "evidence": {"source_id": "jd:title:1", "quote": "Backend Engineer", "start": 0, "end": 16, "alignment": "exact", "occurrence_index": 0}},
+    "responsibilities": [{"requirement_id": "jd_resp_001", "text": {"value": "Build Python API services", "evidence": {"source_id": "jd:resp:1", "quote": "Build Python API services", "start": 0, "end": 25, "alignment": "exact", "occurrence_index": 0}}}],
+    "requirements": [
+      {"requirement_id": "jd_skill_001", "kind": "skill", "modality": "required", "proficiency": "proficient", "minimum_degree": null, "minimum_years": null, "certificates": [], "evidence": {"source_id": "jd:skill:1", "quote": "Proficient Python", "start": 0, "end": 17, "alignment": "exact", "occurrence_index": 0}},
+      {"requirement_id": "jd_skill_002", "kind": "skill", "modality": "preferred", "proficiency": "familiar", "minimum_degree": null, "minimum_years": null, "certificates": [], "evidence": {"source_id": "jd:skill:2", "quote": "Familiar with FastAPI", "start": 0, "end": 21, "alignment": "exact", "occurrence_index": 0}},
+      {"requirement_id": "jd_education_001", "kind": "education", "modality": "required", "proficiency": null, "minimum_degree": "bachelor", "minimum_years": null, "certificates": [], "evidence": {"source_id": "jd:education:1", "quote": "Bachelor degree", "start": 0, "end": 15, "alignment": "exact", "occurrence_index": 0}},
+      {"requirement_id": "jd_experience_001", "kind": "experience", "modality": "required", "proficiency": null, "minimum_degree": null, "minimum_years": 2, "certificates": [], "evidence": {"source_id": "jd:experience:1", "quote": "2 years experience", "start": 0, "end": 18, "alignment": "exact", "occurrence_index": 0}}
+    ],
+    "industries": [{"value": "software", "evidence": {"source_id": "jd:industry:1", "quote": "software", "start": 0, "end": 8, "alignment": "exact", "occurrence_index": 0}}],
+    "locations": []
+  },
+  "jd_normalization": {
+    "schema_version": "v2",
+    "document_id": "jd_anon_integration_001",
+    "taxonomy_version": "position-taxonomy.v3.0.0",
+    "derivation_version": "jd-normalization.v2",
+    "position_code": "BACKEND_ENGINEER",
+    "canonical_title": "Backend Engineer",
+    "classification_status": "resolved",
+    "career_level": "senior",
+    "leadership_scope": "none",
+    "requirements": [
+      {"requirement_id": "jd_skill_001", "kind": "skill", "modality": "required", "skills": [{"source_name": "Python", "skill_id": "LANG_PYTHON", "canonical_name": "Python", "resolution_status": "resolved"}]},
+      {"requirement_id": "jd_skill_002", "kind": "skill", "modality": "preferred", "skills": [{"source_name": "FastAPI", "skill_id": "FRAMEWORK_FASTAPI", "canonical_name": "FastAPI", "resolution_status": "resolved"}]}
+    ],
+    "unresolved_items": []
+  },
+  "standard_position": {
+    "snapshot_id": "position_snapshot_20260727_001",
+    "position_id": "POSITION_BACKEND_ENGINEER",
+    "position_name": "Backend Engineer",
+    "taxonomy_version": "position-taxonomy.v3.0.0",
+    "position_code": "BACKEND_ENGINEER",
+    "sample_support_status": "sufficient",
+    "review_status": "approved",
+    "required_skills": [{"skill_id": "LANG_PYTHON", "skill_name": "Python", "weight": 1.0, "confidence": 0.95, "importance_level": "required"}],
+    "bonus_skills": [{"skill_id": "FRAMEWORK_FASTAPI", "skill_name": "FastAPI", "weight": 0.6, "confidence": 0.9, "importance_level": "bonus"}],
+    "business_scenarios": ["API platform"]
+  },
+  "graph": {"snapshot_id": "graph_snapshot_20260727_001", "position_id": "POSITION_BACKEND_ENGINEER", "graph_version": "graph-integration-v1", "source_system": "knowledge-graph-anonymized-fixture"},
+  "quality": {"snapshot_id": "quality_snapshot_20260727_001", "status": "trusted", "completeness": 0.95, "assessed_at": "2026-07-27", "evidence": [{"source_id": "quality:1", "quote": "contract reviewed", "start": 0, "end": 17, "alignment": "exact", "occurrence_index": 0}]},
+  "trend": null
+}

@@ -1,0 +1,36 @@
+{
+  "snapshot_version": "trend-demo-history.v2",
+  "kg_version": "kg-demo-2025q3",
+  "skill_catalog_version": "skill-taxonomy-demo.v1",
+  "algorithm_version": "market-prediction-demo.v1",
+  "formula_version": "evidence-weighted-multi-source.v1",
+  "config_version": "trend-competition-demo.v1",
+  "observation_windows": [
+    {"key": "history-2025q3", "start": "2025-07-01T00:00:00Z", "end": "2025-10-01T00:00:00Z"},
+    {"key": "history-2025q4", "start": "2025-10-01T00:00:00Z", "end": "2026-01-01T00:00:00Z"}
+  ],
+  "validation_window": {"start": "2026-01-01T00:00:00Z", "end": "2026-04-01T00:00:00Z"},
+  "sources": {
+    "arxiv": [
+      {"external_id": "arxiv-2508.05492", "title": "MoMA: A Mixture-of-Multimodal-Agents Architecture", "content": "A mixture of multimodal large language model agents is used for prediction over multimodal records.", "url": "https://arxiv.org/abs/2508.05492", "published_at": "2025-08-07T08:00:00Z", "captured_at": "2025-08-08T08:00:00Z", "metadata": {"source_type": "academic", "date_precision": "exact", "content_completeness": "full"}},
+      {"external_id": "arxiv-2510.10991", "title": "A Survey on Agentic Multimodal Large Language Models", "content": "Agentic multimodal large language models combine perception, reasoning, tool use and safety evaluation.", "url": "https://arxiv.org/abs/2510.10991", "published_at": "2025-10-13T08:00:00Z", "captured_at": "2025-10-14T08:00:00Z", "metadata": {"source_type": "academic", "date_precision": "exact", "content_completeness": "full"}}
+    ],
+    "policy": [
+      {"external_id": "gov-ai-plus-2025", "title": "国务院关于深入实施“人工智能+”行动的意见", "content": "意见提出推动大模型、智能体和跨模态能力进入产业应用，并培育新就业岗位。", "url": "https://www.gov.cn/zhengce/content/202508/content_7037861.htm", "published_at": "2025-08-26T08:00:00Z", "captured_at": "2025-08-27T08:00:00Z", "metadata": {"source_type": "policy", "industry_domains": ["人工智能"], "keywords": ["large language model", "LLM", "智能体"], "signal_value": 3, "date_precision": "exact", "content_completeness": "full"}},
+      {"external_id": "gov-ai-plus-2025-repost", "title": "国务院关于深入实施“人工智能+”行动的意见", "content": "意见提出推动大模型、智能体和跨模态能力进入产业应用，并培育新就业岗位。", "url": "https://big5.www.gov.cn/gate/big5/www.gov.cn/zhengce/content/202508/content_7037861.htm", "published_at": "2025-08-27T08:00:00Z", "captured_at": "2025-08-28T08:00:00Z", "metadata": {"source_type": "policy", "industry_domains": ["人工智能"], "keywords": ["large language model", "LLM", "智能体"], "signal_value": 3, "date_precision": "exact", "content_completeness": "full", "quality_flags": ["syndicated_copy"]}},
+      {"external_id": "sh-ai-plus-2025", "title": "上海市人工智能+行动项目申报通知", "content": "项目方向覆盖语言大模型、长时记忆、工具调用、物理AI和多模态工程能力。", "url": "https://sheitc.sh.gov.cn/cmsres/30/309cd73577fb4741a212f6cfa9dcec2f/db8f18a7488f8e29b14a783d960b14d5.pdf", "published_at": "2025-11-18T08:00:00Z", "captured_at": "2025-11-19T08:00:00Z", "metadata": {"source_type": "policy", "industry_domains": ["人工智能"], "keywords": ["LLM", "AI安全", "多模态"], "signal_value": 4, "date_precision": "exact", "content_completeness": "full"}}
+    ],
+    "github": [
+      {"external_id": "github-microsoft-magma-2025q3", "title": "Magma multimodal agent repository activity", "content": "The Magma repository provides a foundation model for multimodal AI agents across text, image and action.", "url": "https://github.com/microsoft/Magma", "published_at": "2025-08-15T08:00:00Z", "captured_at": "2025-08-16T08:00:00Z", "metadata": {"source_type": "github", "industry_domains": ["人工智能"], "keywords": ["large language model", "agent", "multimodal"], "signal_value": 5, "date_precision": "snapshot", "content_completeness": "full"}},
+      {"external_id": "github-appagent-2025q4", "title": "AppAgent multimodal agent repository activity", "content": "AppAgent demonstrates LLM-based multimodal agents operating smartphone applications.", "url": "https://github.com/TencentQQGYLab/AppAgent", "published_at": "2025-11-15T08:00:00Z", "captured_at": "2025-11-16T08:00:00Z", "metadata": {"source_type": "github", "industry_domains": ["人工智能"], "keywords": ["LLM", "agent", "multimodal"], "signal_value": 7, "date_precision": "snapshot", "content_completeness": "full"}}
+    ],
+    "funding": [
+      {"external_id": "36kr-united-imaging-ai-20250812", "title": "联影智能发力多模态医疗智能体", "content": "融资将支持多模态医疗大模型、智能体和医院数字化系统研发。", "url": "https://36kr.com/p/3417849954749830", "published_at": "2025-08-12T08:00:00Z", "captured_at": "2025-08-13T08:00:00Z", "metadata": {"source_type": "funding", "industry_domains": ["人工智能"], "keywords": ["large language model", "企业智能体"], "signal_value": 2, "date_precision": "exact", "content_completeness": "full"}},
+      {"external_id": "36kr-modal-leap-202512", "title": "模态跃迁完成新一轮融资", "content": "模态跃迁完成新一轮融资", "url": "https://pitchhub.36kr.com/project/3578526988137348", "published_at": "2025-12-15T08:00:00Z", "captured_at": "2025-12-20T08:00:00Z", "metadata": {"source_type": "funding", "industry_domains": ["人工智能"], "keywords": ["multimodal", "LLM", "AI安全"], "signal_value": 3, "date_precision": "estimated", "content_completeness": "title_only", "quality_flags": ["estimated_publish_date", "title_only"]}}
+    ]
+  },
+  "labels": [
+    {"slice_key": "history-2025q3", "candidate_key": "AGI安全研究员", "entity_id": "position-agi-safety", "direction": "rising", "observed_value": 1.28, "observed_at": "2025-12-20T08:00:00Z", "validation_end": "2026-01-01T00:00:00Z", "case_type": "success", "quality_impact": "来源完整、日期明确，重复政策转载已合并为一个独立事件，未重复放大。", "explanation": "政策、论文、GitHub 与融资四类信号在观察截止前共同出现，验证窗口内安全治理岗位需求上升。"},
+    {"slice_key": "history-2025q4", "candidate_key": "提示词工程师", "entity_id": "position-prompt-engineer", "direction": "declining", "observed_value": -0.18, "observed_at": "2026-03-15T08:00:00Z", "validation_end": "2026-04-01T00:00:00Z", "case_type": "failure", "quality_impact": "融资记录只有标题且日期为估计值，按质量权重降权；但领域级共享信号仍无法区分岗位替代关系。", "explanation": "系统把同一人工智能领域内岗位共享信号平均分配，未识别提示词岗位被复合型应用工程岗位替代，且一条融资信号只有标题和估计日期。"}
+  ]
+}

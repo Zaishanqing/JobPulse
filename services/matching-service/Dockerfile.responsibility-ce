@@ -1,0 +1,22 @@
+FROM jobpulse/embedding-service:gpu-local
+
+ARG PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /service
+COPY packages/contracts /tmp/jobgraph-contracts
+RUN --mount=type=cache,target=/root/.cache/pip pip install /tmp/jobgraph-contracts
+COPY services/matching-service/pyproject.toml services/matching-service/README.md ./
+RUN --mount=type=cache,target=/root/.cache/pip \
+    mkdir -p app \
+    && touch app/__init__.py \
+    && pip install . \
+    && rm -rf app
+COPY services/matching-service/app ./app
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install --no-deps --force-reinstall .
+
+EXPOSE 8000
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

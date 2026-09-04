@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jobgraph-emerging-discovery"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["fastapi", "uvicorn", "sqlalchemy", "alembic", "pydantic", "pydantic-settings", "httpx", "numpy", "psycopg[binary]"]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov>=5", "httpx", "ruff>=0.9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "tests_final"]
+pythonpath = [".", "../.."]
+addopts = "-p no:cacheprovider"
+norecursedirs = ["historical_defect_reproduction"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

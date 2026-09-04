@@ -1,0 +1,11 @@
+{
+  "input_version": "competition-demo-input.v1",
+  "alias": "jd-demo-003",
+  "source_type": "manual",
+  "source_record_id": "competition-demo-v1-jd-003-windowed-v3",
+  "job_title": "生成式 AI 平台工程师",
+  "company_name": "匿名企业 C",
+  "region": "北京",
+  "publish_time": "2026-05-15T08:00:00Z",
+  "raw_text": "岗位职责：开发生成式 AI 平台的应用层能力，维护模型接入、权限过滤和评测流程。任职要求：Python 和 SQL 为必需技能，了解 FastAPI；需要提供可核验的项目证据，缺少证据时不得判定满足要求。"
+}

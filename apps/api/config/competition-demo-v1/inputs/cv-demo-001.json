@@ -1,0 +1,6 @@
+{
+  "input_version": "competition-demo-input.v1",
+  "alias": "cv-demo-001",
+  "source_record_id": "competition-demo-v1-cv-001",
+  "raw_text": "匿名候选人。三年软件开发经验。项目经历：使用 Python、FastAPI 和 PostgreSQL 开发企业知识库服务；负责检索接口、权限过滤和自动化测试。未提供向量模型训练或生产级 RAG 评测证据。"
+}

@@ -1,0 +1,69 @@
+hard_errors:
+  - error_type: schema_validation_error
+    description: 模型输出不符合抽取层判别联合 Schema。
+  - error_type: source_binding_error
+    description: Evidence 无法在声明的 source block 中精确对齐。
+  - error_type: semantic_validation_error
+    description: 抽取结果违反确定性语义约束，包括基础薪资进入 Fact、Fact 非原子、候选人条件越界或事实重复。
+
+soft_review_flags:
+  - issue_type: missing_job_title
+    severity: soft_error
+    scope: document
+    description: The successful extraction has no evidence-backed job title.
+    suggested_action: Check the first title-like source block and confirm whether job_title was missed.
+  - issue_type: missing_company_fact
+    severity: soft_error
+    scope: document
+    description: The successful extraction has no company fact.
+    suggested_action: Confirm whether the source contains a company name or company attribute that was missed.
+  - issue_type: missing_company_name
+    severity: soft_error
+    scope: document
+    description: The extraction has no evidence-backed company_name fact.
+    suggested_action: Check the structured company-name source block and add the missing company_name fact.
+  - issue_type: company_fact_other_requires_review
+    severity: soft_error
+    scope: fact
+    description: A company fact uses kind=other and may contain job duties, candidate conditions, or marketing copy.
+    suggested_action: Confirm that the value describes the company itself; otherwise remove or move it to the correct layer.
+  - issue_type: skill_item_other_requires_review
+    severity: soft_error
+    scope: requirement
+    description: A skill item uses item_type=other and cannot enter the normalization taxonomy reliably.
+    suggested_action: Confirm the entity boundary and assign an existing item type, or remove it from the skill requirement.
+  - issue_type: job_classification_not_resolved
+    severity: soft_error
+    scope: document
+    description: Job-family normalization is ambiguous or unresolved.
+    suggested_action: Review the extracted title and candidate family codes before downstream use.
+  - issue_type: duplicate_skill_in_requirement
+    severity: soft_error
+    scope: requirement
+    description: 同一个 skill requirement 内重复出现相同 name 和 item_type。
+    suggested_action: 检查模型是否重复抽取并列技能
+  - issue_type: unknown_modality
+    severity: soft_error
+    scope: requirement
+    description: 原文要求强度无法判定，modality=unknown。
+    suggested_action: 人工确认 required、preferred 或 bonus
+  - issue_type: empty_structured_constraint
+    severity: soft_error
+    scope: requirement
+    description: 教育或经验 requirement 没有抽取出任何结构化约束值。
+    suggested_action: 检查是否应改为 other，或补充原文明确支持的字段
+  - issue_type: duplicate_requirement_semantics
+    severity: soft_error
+    scope: requirement
+    description: 多个 requirement 的 kind 和结构化语义完全相同，可能发生跨 source block 重复抽取。
+    suggested_action: 根据 related_requirement_id 确认是否为同一原子约束的重复表达
+  - issue_type: conflicting_requirement_modality
+    severity: soft_error
+    scope: requirement
+    description: 多个 requirement 的结构化语义相同但 modality 不一致，可能存在来源冲突或强度误判。
+    suggested_action: 对照 related_requirement_id 和原文确认正确的要求强度
+  - issue_type: overlapping_requirement_evidence
+    severity: soft_error
+    scope: requirement
+    description: 同一 source block 内多个 skill requirement 共享至少一个技能项，且 evidence 存在包含关系，可能同时抽取了整段和原子项。
+    suggested_action: 人工确认是否应保留原子 requirement 并移除整段重复抽取

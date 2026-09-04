@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nfbs-crawler"
+version = "0.1.0"
+description = "NFBS 多源招聘数据采集器"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2",
+    "fastapi",
+    "uvicorn",
+    "pymysql",
+    "dbutils",
+    "passlib",
+    "pyjwt",
+    "pyyaml",
+    "openpyxl",
+    "loguru>=0.7",
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "lxml>=4.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "pytest-asyncio",
+    "httpx",
+    # Unit tests use deterministic fakes but import the Playwright API types.
+    # Installing the Python package does not download native browser binaries.
+    "playwright>=1.45",
+]
+
+# Browser engines are optional at install time.  Production browser crawls
+# install this extra; unit tests use deterministic fakes and keep running when
+# the native browser runtime is unavailable.
+browser = [
+    "playwright>=1.45",
+    "DrissionPage>=4",
+]
+
+[tool.setuptools.packages.find]
+include = ["multi_company_scraper*", "unified_api*", "crawler*", "historical_jd*"]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "*/tests/*",
+    "*\\tests\\*",
+    "*/test_*.py",
+    "*\\test_*.py",
+    "*/migrations/*",
+    "*\\migrations\\*",
+    "*/alembic/*",
+    "*\\alembic\\*",
+    "*/generated/*",
+    "*\\generated\\*",
+]
+
+[tool.coverage.report]
+omit = [
+    "*/tests/*",
+    "*\\tests\\*",
+    "*/test_*.py",
+    "*\\test_*.py",
+    "*/migrations/*",
+    "*\\migrations\\*",
+    "*/alembic/*",
+    "*\\alembic\\*",
+    "*/generated/*",
+    "*\\generated\\*",
+]

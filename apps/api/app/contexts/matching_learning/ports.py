@@ -1,0 +1,41 @@
+from app.contexts.matching_learning._ports.matching import (
+    LearningPathRecordData,
+    MatchingPositionCandidate,
+    MatchingRepository,
+    MatchingServiceReferenceRecord,
+    MatchingUnitOfWork,
+    PositionProfile,
+    PositionProfilePort,
+    ResumeProfile,
+    ResumeProfilePort,
+    ResumeSkillIdentity,
+)
+from app.domain.matching import (
+    LearningStage,
+    MatchExplanation,
+    MatchSkill,
+    ProjectEvidence,
+    ProjectMatch,
+    RadarMetric,
+    ResumeProject,
+)
+
+__all__ = [
+    "LearningPathRecordData",
+    "LearningStage",
+    "MatchExplanation",
+    "MatchSkill",
+    "MatchingPositionCandidate",
+    "MatchingRepository",
+    "MatchingServiceReferenceRecord",
+    "MatchingUnitOfWork",
+    "PositionProfile",
+    "PositionProfilePort",
+    "ProjectEvidence",
+    "ProjectMatch",
+    "RadarMetric",
+    "ResumeProfile",
+    "ResumeProfilePort",
+    "ResumeProject",
+    "ResumeSkillIdentity",
+]

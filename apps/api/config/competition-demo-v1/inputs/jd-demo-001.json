@@ -1,0 +1,11 @@
+{
+  "input_version": "competition-demo-input.v1",
+  "alias": "jd-demo-001",
+  "source_type": "boss_zhipin",
+  "source_record_id": "competition-demo-v1-jd-001-windowed-v3",
+  "job_title": "AI 应用工程师",
+  "company_name": "匿名企业 A",
+  "region": "上海",
+  "publish_time": "2025-11-15T08:00:00Z",
+  "raw_text": "岗位职责：负责企业知识库与智能问答应用开发，使用 Python、FastAPI 和 SQL 构建可追溯的服务接口。任职要求：能够维护检索链路，理解向量检索基础，并能用测试验证关键业务流程。"
+}

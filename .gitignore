@@ -1,0 +1,143 @@
+.agents/
+.codex/
+.vscode/
+.claude/
+CLAUDE.md
+AGENTS.md
+.obsidian/
+# Python virtual environments
+.venv/
+**/.venv/
+venv/
+
+
+# Python cache
+__pycache__/
+*.pyc
+
+
+# Environment files
+.env
+
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+**/.pytest_tmp_*/
+
+# Build and dependencies
+node_modules/
+dist/
+build/
+.pnpm-store/
+**/.pnpm-store/
+*.tsbuildinfo
+
+# Local databases and runtime state
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+**/browser_profile/
+
+# Downloaded runtime binaries
+**/chromedriver.exe
+*.pb.gz
+**/.cache/embedding-models/
+
+# Cookie files (gitignored — use .example.json templates)
+**/*cookies*.json
+!**/*cookies*.example.json
+**/browser_profile/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Pytest temporary files
+.pytest_cache/
+.pytest_tmp*/
+
+# Coverage and IDE local settings
+.coverage
+htmlcov/
+.idea/
+
+# Local investigation and UI-test artifacts
+.tmp_pdf_extract/
+JobPulse/.test-artifacts/
+JobPulse/cev4_tail.bin
+JobPulse/infra/.env.*-backup
+
+# JobPulse-specific ignores
+# JobPulse migration workspace
+migration/reports/*.tmp
+migration/reports/*.log
+migration/snapshots/*
+!migration/snapshots/.gitkeep
+__pycache__/
+.pytest_cache/
+.pytest-tmp-*/
+.venv/
+node_modules/
+dist/
+build/
+!apps/web/src/features/build/
+!apps/web/src/features/build/**
+.cache/
+
+# Large frozen model weights are kept locally and reproduced by scripts
+# (single files exceed GitHub's 100 MB limit; do not push).
+/models/
+services/matching-service/models/
+services/matching-service/evaluation/responsibility_matching_routes_v4/reranker_cache/
+
+# Historical experiment archives stay local for traceability and are not part
+# of the active pipeline.
+services/matching-service/evaluation/_archive_final_2026_08_22/
+services/matching-service/evaluation/_archive_responsibility_legacy_2026_08_22/
+
+# Generated Python coverage reports and per-run diagnostics.
+/artifacts/coverage*/
+
+# Generated frontend build outputs and local test artifacts.
+apps/web/vite.config.js
+apps/web/vite.config.d.ts
+apps/api/.test-artifacts/
+
+services/matching-service/.test-artifacts/
+
+# Generated extraction audit exports and crawler runtime bundles stay local.
+data/extraction-audit/full-import-*.json
+services/crawler/output/
+
+# Local cleanup and database rollback backups are not runtime assets.
+data/backups/
+
+# JobPulse macOS starter runtime artifacts
+/start-jobpulse-mac.sh
+apps/api/.jobpulse-api.pid
+services/knowledge-graph/.jobpulse-kg-api.pid
+services/knowledge-graph/.jobpulse-kg-worker.pid

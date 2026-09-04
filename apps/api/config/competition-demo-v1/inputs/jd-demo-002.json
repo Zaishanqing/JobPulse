@@ -1,0 +1,11 @@
+{
+  "input_version": "competition-demo-input.v1",
+  "alias": "jd-demo-002",
+  "source_type": "liepin",
+  "source_record_id": "competition-demo-v1-jd-002-windowed-v3",
+  "job_title": "大模型应用开发工程师",
+  "company_name": "匿名企业 B",
+  "region": "深圳",
+  "publish_time": "2026-02-15T08:00:00Z",
+  "raw_text": "岗位职责：建设面向业务人员的大模型应用，完成提示词、工具调用、RAG 检索和服务监控。任职要求：熟悉 Python、REST API、PostgreSQL，具备将模型结果绑定原文证据的工程经验。"
+}

@@ -1,0 +1,88 @@
+version: "2.6"
+
+scope_boundaries:
+  responsibilities: 岗位要求任职者执行、交付或负责的任务，不表示候选人已经具备该经历
+  requirements: 候选人需要满足的技能、教育、经验、证书、软技能或其他准入条件
+  company_facts: 公司自身的行业、规模、业务、产品、团队、资源与资质事实
+  employment_facts: 地点、雇佣、办公、时间、福利与工作条件事实
+
+detailed_boundaries:
+  - 技术名只出现在职责中时只建立 task，不派生候选人 skill
+  - 以熟悉、掌握、精通、具备、会使用、了解等候选人能力语义开头的内容进入 requirement，即使原文误放在岗位职责标题下也不得标为 task
+  - 技术名只出现在经历要求中时只建立 experience，不派生候选人 skill
+  - 只有原文明示熟悉、掌握、精通或能够使用等技能准入语义时才建立 skill
+  - job_title 必须在 source block 中有精确 Evidence，独立标题 hint 不能替代 Evidence
+  - 与 job_title 使用相同 source_id、quote 和文字的标题不得再次输出为 responsibility
+  - 同一 Evidence 和 modality 下共同构成一个筛选条件的学历、专业和院校约束合并为一个 education
+  - 同一年限直接修饰的 domain 或 role 必须保存在同一个 experience 中，总年限与方向年限不同才拆分
+  - ExperienceRequirement 即使没有年限也必须填写原文明示的 domain 或 role，不得只凭 Evidence 输出结构字段全空的 experience
+  - 普通基础薪资范围不生成 EmploymentFact，由独立 salary parser 解析
+  - EmploymentFact 必须原子化，多个不同福利不得合并到一个 other fact
+  - 候选人优先条件、学历、经验限制不得放入 EmploymentFact
+  - “你将、你会、你可以”以及发展通道、晋升通道等面向候选人的工作关系或条件不得作为 CompanyFact，公司事实只描述公司自身
+  - 相同 kind 和 value 的 CompanyFact 或 EmploymentFact 不得重复输出
+  - proficiency 完全未提及时使用 null；存在但无法映射到受控档位时使用 unknown
+  - C/C++、TensorFlow/PyTorch、Spark/Hadoop/Hive 等并列技术必须拆成多个 SkillItem
+  - 名称中包含项目经验、开发经验、架构经验等经历语义时建立 experience，不得标成 skill item
+  - 类别后用括号列举具体技术示例时只抽取原文明示的具体技术实体，不把“类别(示例等)”整体作为 SkillItem
+  - “和/或”是自然语言连接结构而不是技能分隔符，不得生成以“和”结尾或以“或”开头的残缺 SkillItem
+  - 同一条件同时以孤立标签和明确技能要求或任职要求字段出现时只抽取一次，并采用明确字段上下文判定 required
+  - 技能要求、任职要求、学历或经验要求等明确字段标题下的默认准入条件使用 required，不使用 unknown
+  - Qualifications、Requirements、What You Bring、What We Value、Who You Are 等候选人条件章节下的列表默认使用 required，除非原文明示 preferred、optional 或 bonus
+  - 同一结构条件在通用字段标签与完整正文中强度冲突时，带必须、优先、加分等显式强度词的正文优先，只保留该显式强度版本
+  - 具名模型、协议、API、框架、库、工具或方法不得使用 skill item_type=other，必须选择最接近的合法类型
+  - 英文读写、沟通能力、代码实现能力等候选人能力短语进入 soft_skill 或 other requirement，不得建立 SkillItem
+  - SkillItem.name 必须是可跨 JD 复用的具名技术、方法或知识领域；“相关场景”“相关产品或框架的理解”“某某能力”“某某技术栈”等描述性能力短语不得作为技能实体
+  - 对描述性能力短语，原文强调行为特质时使用 soft_skill，Schema 无法用既有结构忠实表达时才使用 other；不得仅删除动作词后虚构技能名称
+  - OtherRequirement 只保存现有结构确实无法表达的准入条件；开发、完善、推动、交付、指导等工作动作属于 responsibilities，明确技术能力应拆为 skill、experience 或 soft_skill
+  - 原文明示熟悉、掌握、精通或会使用的软件、工具、平台、框架、语言、协议、数据库、算法或模型不得放入 OtherRequirement，必须建立 SkillRequirement 并保留原文技术实体
+  - INT4、INT8、FP16、BF16 等精度或数据格式只作为量化或训练方法的参数，不单独建立 SkillItem
+  - 模型按通用定义输出粗粒度 item_type；正式归一化词表中的已知类别由 Python 权威规范化，不要求模型记忆配置表
+  - CompanyFact 中只要原文明示公司名称就必须建立 company_name，其他公司属性不能替代公司名
+  - CompanyFact.other 仅用于无法归入既有公司类别的真实公司属性；业务应用方向使用 business_domain 或 product_service，面向候选人的宣传与岗位挑战不建立 CompanyFact
+  - EmploymentFact.kind 必须按字段定义与福利语义选择，不得把社会保障、补助、餐食、休假、奖金或股权混为 other
+  - SoftSkillRequirement.skills 中同一能力不得重复输出
+
+requirement_kinds:
+  task: 岗位职责中的原子任务，进入 responsibilities
+  skill: 语言、框架、库、数据库、工具、平台、方法或领域知识
+  education: 学历、专业、院校、招生类型、届次
+  experience: 工作、方向、岗位、管理或实习经验及时长
+  certificate: 证书、执照、竞赛获奖或明确资质
+  soft_skill: 沟通、协作、学习、逻辑、责任心等行为特质
+  other: 无法归入以上类型但原文明确要求候选人满足的条件
+
+modality:
+  required: 明确必须、任职要求中的默认准入条件
+  preferred: 原文明确优先考虑或具备更佳
+  bonus: 明确位于加分项或原文明示加分
+  unknown: 无法从原文判断强度
+
+evidence_rules:
+  - 每个 requirement 和 fact 必须输出 source_id 与连续 quote
+  - quote 必须逐字存在于对应 source block，不得改词、改标点、拼接或省略中间文字
+  - 一个原子语义对象只引用一个 source block
+  - start、end、alignment 和 occurrence_index 由 Python 确定，模型不得输出
+
+skill_item_types:
+  programming_language: 可直接编写程序或脚本的语言
+  framework: 应用或工程框架
+  library: 被代码调用的程序库或 SDK
+  database: 数据库、向量库、缓存或中间件
+  tool: 具体开发、部署、协作或 AI 辅助工具
+  platform: 云平台、业务平台、操作系统或运行环境
+  methodology: 算法、工程方法、训练方法、分析方法
+  domain_knowledge: 理论、行业或业务领域知识
+  other: 仅用于确实无法归入以上类别的稳定技能实体；不得用于具名技术或候选人能力短语
+
+atomicity_rules:
+  - 一个 requirement 必须能够独立判断是否满足
+  - 同一证据中共享熟练度和强度的并列技能可以放在一个 skill requirement
+  - 学历、经验和技能即使出现在同一句中也分别建立 requirement
+  - 职责任务进入 responsibilities，不得伪造成候选人已有经验
+  - 不得从 task 或 experience 中仅凭技术名派生独立 skill
+
+normalization_boundary:
+  - 模型只抽取原文名称和粗类型
+  - 模型不得输出 normalized、标准技能 ID、岗位族、统计细类或导出字段
+  - 归一化和岗位分类由独立 Python 阶段处理

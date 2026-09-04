@@ -1,0 +1,6 @@
+{
+  "document_id": "jd_demo_001",
+  "title": "大模型应用开发工程师",
+  "raw_text": "岗位名称：大模型应用开发工程师。公司：示例科技有限公司。工作地点：北京。职责：1. 基于LangChain和LlamaIndex构建RAG应用，设计检索策略和Prompt工程；2. 使用FastAPI开发AI应用后端，集成多种LLM服务；3. 负责向量数据库（Milvus）的选型、部署和性能优化；4. 参与Agent框架的设计与开发，支持工具调用和多步推理。要求：1. 精通Python，熟悉FastAPI、Docker；2. 有RAG系统实际开发经验，熟悉主流Embedding模型；3. 熟悉至少一种向量数据库（Milvus、Chroma、Qdrant）；4. 了解大模型应用安全，包括Prompt注入防御和输出校验；5. 本科及以上学历，3年以上开发经验。",
+  "source_name": "synthetic_demo"
+}

@@ -1,0 +1,408 @@
+{
+  "models": {
+    "FinalMatchResult": {
+      "fields": {
+        "algorithm_version": {
+          "json_name": "algorithm_version",
+          "nullable": false,
+          "required": true
+        },
+        "cv_derivation_version": {
+          "json_name": "cv_derivation_version",
+          "nullable": false,
+          "required": true
+        },
+        "cv_profile_id": {
+          "json_name": "cv_profile_id",
+          "nullable": true,
+          "required": false
+        },
+        "cv_taxonomy_version": {
+          "json_name": "cv_taxonomy_version",
+          "nullable": false,
+          "required": true
+        },
+        "dimension_scores": {
+          "json_name": "dimension_scores",
+          "nullable": false,
+          "required": false
+        },
+        "embedding_model": {
+          "json_name": "embedding_model",
+          "nullable": true,
+          "required": false
+        },
+        "embedding_version": {
+          "json_name": "embedding_version",
+          "nullable": true,
+          "required": false
+        },
+        "explanation": {
+          "json_name": "explanation",
+          "nullable": false,
+          "required": true
+        },
+        "gaps": {
+          "json_name": "gaps",
+          "nullable": false,
+          "required": false
+        },
+        "hard_gate_status": {
+          "json_name": "hard_gate_status",
+          "nullable": false,
+          "required": true
+        },
+        "input_evaluation_algorithm_version": {
+          "json_name": "input_evaluation_algorithm_version",
+          "nullable": false,
+          "required": true
+        },
+        "match_confidence": {
+          "json_name": "match_confidence",
+          "nullable": false,
+          "required": true
+        },
+        "overall_score": {
+          "json_name": "overall_score",
+          "nullable": true,
+          "required": false
+        },
+        "position_graph_version": {
+          "json_name": "position_graph_version",
+          "nullable": false,
+          "required": true
+        },
+        "position_profile_id": {
+          "json_name": "position_profile_id",
+          "nullable": true,
+          "required": false
+        },
+        "position_quality_snapshot_id": {
+          "json_name": "position_quality_snapshot_id",
+          "nullable": false,
+          "required": true
+        },
+        "position_taxonomy_version": {
+          "json_name": "position_taxonomy_version",
+          "nullable": false,
+          "required": true
+        },
+        "position_trend_version": {
+          "json_name": "position_trend_version",
+          "nullable": true,
+          "required": false
+        },
+        "recommendation_level": {
+          "json_name": "recommendation_level",
+          "nullable": false,
+          "required": true
+        },
+        "score_contributions": {
+          "json_name": "score_contributions",
+          "nullable": false,
+          "required": false
+        },
+        "scoring_config_version": {
+          "json_name": "scoring_config_version",
+          "nullable": false,
+          "required": true
+        },
+        "semantic_algorithm_version": {
+          "json_name": "semantic_algorithm_version",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_collection": {
+          "json_name": "semantic_collection",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_embedding_dimension": {
+          "json_name": "semantic_embedding_dimension",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_embedding_normalization": {
+          "json_name": "semantic_embedding_normalization",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_embedding_normalized": {
+          "json_name": "semantic_embedding_normalized",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_index_revision": {
+          "json_name": "semantic_index_revision",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_text_derivation_version": {
+          "json_name": "semantic_text_derivation_version",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_threshold_config_version": {
+          "json_name": "semantic_threshold_config_version",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_vector_representation": {
+          "json_name": "semantic_vector_representation",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_vector_similarity": {
+          "json_name": "semantic_vector_similarity",
+          "nullable": true,
+          "required": false
+        },
+        "semantic_weight": {
+          "json_name": "semantic_weight",
+          "nullable": false,
+          "required": false
+        },
+        "source_evaluation_id": {
+          "json_name": "source_evaluation_id",
+          "nullable": true,
+          "required": false
+        },
+        "strengths": {
+          "json_name": "strengths",
+          "nullable": false,
+          "required": false
+        },
+        "uncertain_items": {
+          "json_name": "uncertain_items",
+          "nullable": false,
+          "required": false
+        },
+        "vector_text_derivation_version": {
+          "json_name": "vector_text_derivation_version",
+          "nullable": true,
+          "required": false
+        }
+      }
+    },
+    "WhatIfResult": {
+      "fields": {
+        "actions": {
+          "json_name": "actions",
+          "nullable": false,
+          "required": false
+        },
+        "algorithm_version": {
+          "json_name": "algorithm_version",
+          "nullable": false,
+          "required": true
+        },
+        "baseline_confidence": {
+          "json_name": "baseline_confidence",
+          "nullable": true,
+          "required": false
+        },
+        "baseline_evaluation": {
+          "json_name": "baseline_evaluation",
+          "nullable": true,
+          "required": false
+        },
+        "baseline_evaluation_id": {
+          "json_name": "baseline_evaluation_id",
+          "nullable": true,
+          "required": false
+        },
+        "baseline_hard_gate_status": {
+          "json_name": "baseline_hard_gate_status",
+          "nullable": true,
+          "required": false
+        },
+        "baseline_recommendation": {
+          "json_name": "baseline_recommendation",
+          "nullable": true,
+          "required": false
+        },
+        "baseline_score": {
+          "json_name": "baseline_score",
+          "nullable": true,
+          "required": false
+        },
+        "confidence_delta": {
+          "json_name": "confidence_delta",
+          "nullable": true,
+          "required": false
+        },
+        "current_verified_outcome": {
+          "json_name": "current_verified_outcome",
+          "nullable": true,
+          "required": false
+        },
+        "denominator_changed": {
+          "json_name": "denominator_changed",
+          "nullable": false,
+          "required": false
+        },
+        "dimension_deltas": {
+          "json_name": "dimension_deltas",
+          "nullable": false,
+          "required": false
+        },
+        "error_code": {
+          "json_name": "error_code",
+          "nullable": true,
+          "required": false
+        },
+        "error_message": {
+          "json_name": "error_message",
+          "nullable": true,
+          "required": false
+        },
+        "generation_status": {
+          "json_name": "generation_status",
+          "nullable": false,
+          "required": true
+        },
+        "hypothetical": {
+          "json_name": "hypothetical",
+          "nullable": false,
+          "required": false
+        },
+        "modeled_confidence_delta": {
+          "json_name": "modeled_confidence_delta",
+          "nullable": true,
+          "required": false
+        },
+        "modeled_final_score": {
+          "json_name": "modeled_final_score",
+          "nullable": true,
+          "required": false
+        },
+        "modeled_score_delta": {
+          "json_name": "modeled_score_delta",
+          "nullable": true,
+          "required": false
+        },
+        "observed_outcome": {
+          "json_name": "observed_outcome",
+          "nullable": false,
+          "required": false
+        },
+        "outcome_semantics": {
+          "json_name": "outcome_semantics",
+          "nullable": false,
+          "required": false
+        },
+        "position_graph_version": {
+          "json_name": "position_graph_version",
+          "nullable": true,
+          "required": false
+        },
+        "projected_actions": {
+          "json_name": "projected_actions",
+          "nullable": false,
+          "required": false
+        },
+        "projected_confidence": {
+          "json_name": "projected_confidence",
+          "nullable": true,
+          "required": false
+        },
+        "projected_evaluation": {
+          "json_name": "projected_evaluation",
+          "nullable": true,
+          "required": false
+        },
+        "projected_hard_gate_status": {
+          "json_name": "projected_hard_gate_status",
+          "nullable": true,
+          "required": false
+        },
+        "projected_if_completed": {
+          "json_name": "projected_if_completed",
+          "nullable": false,
+          "required": false
+        },
+        "projected_if_completed_outcome": {
+          "json_name": "projected_if_completed_outcome",
+          "nullable": true,
+          "required": false
+        },
+        "projected_recommendation": {
+          "json_name": "projected_recommendation",
+          "nullable": true,
+          "required": false
+        },
+        "projected_score": {
+          "json_name": "projected_score",
+          "nullable": true,
+          "required": false
+        },
+        "projected_score_delta": {
+          "json_name": "projected_score_delta",
+          "nullable": true,
+          "required": false
+        },
+        "scenario_confidence": {
+          "json_name": "scenario_confidence",
+          "nullable": true,
+          "required": false
+        },
+        "scenario_evaluation": {
+          "json_name": "scenario_evaluation",
+          "nullable": true,
+          "required": false
+        },
+        "scenario_hard_gate_status": {
+          "json_name": "scenario_hard_gate_status",
+          "nullable": true,
+          "required": false
+        },
+        "scenario_id": {
+          "json_name": "scenario_id",
+          "nullable": false,
+          "required": true
+        },
+        "scenario_recommendation": {
+          "json_name": "scenario_recommendation",
+          "nullable": true,
+          "required": false
+        },
+        "scenario_score": {
+          "json_name": "scenario_score",
+          "nullable": true,
+          "required": false
+        },
+        "score_delta": {
+          "json_name": "score_delta",
+          "nullable": true,
+          "required": false
+        },
+        "score_effect_status": {
+          "json_name": "score_effect_status",
+          "nullable": false,
+          "required": false
+        },
+        "scoring_algorithm_version": {
+          "json_name": "scoring_algorithm_version",
+          "nullable": true,
+          "required": false
+        },
+        "scoring_config_version": {
+          "json_name": "scoring_config_version",
+          "nullable": true,
+          "required": false
+        },
+        "target_type": {
+          "json_name": "target_type",
+          "nullable": true,
+          "required": false
+        },
+        "use_enterprise_weights": {
+          "json_name": "use_enterprise_weights",
+          "nullable": true,
+          "required": false
+        }
+      }
+    }
+  },
+  "schema_version": "matching-bff-ts-contract-snapshot.v1"
+}

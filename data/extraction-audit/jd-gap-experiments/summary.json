@@ -1,0 +1,50 @@
+{
+  "automated_experiments": {
+    "integrity_rejection": {
+      "accuracy": 1.0,
+      "scope": "synthetic contract/evidence integrity mutations over reviewed real JD cases; not semantic rejection accuracy",
+      "status": "complete"
+    },
+    "stratified_generalization": {
+      "challenge_coverage_gate_passed": false,
+      "coverage_gate_passed": false,
+      "gate_passed": false,
+      "overall": {
+        "case_exact_match_rate": 0.976667,
+        "error_case_count": 7,
+        "exact_span_f1_jd_macro": 0.99519,
+        "exact_span_f1_micro": 0.996741
+      },
+      "performance_gate_passed": true,
+      "status": "complete"
+    }
+  },
+  "claim_boundary": "Automated results do not replace independent human semantic gold or real semantic rejection cases.",
+  "dataset_version": "sha256:379e212b41f9de3d769b7f6b5b80b1c685927cee0cd29c9bb4f812fe50b58d74",
+  "human_gold": {
+    "completed_by_both_count": 0,
+    "completion_rate": 0.0,
+    "publication_decision_cohen_kappa": null,
+    "requirement_exact_agreement": {
+      "f1": null,
+      "precision": null,
+      "recall": null
+    },
+    "schema_version": "jd-independent-annotation-agreement.v1",
+    "shared_case_count": 200,
+    "status": "pending_human_annotation"
+  },
+  "human_gold_evaluation": {
+    "evaluated_case_count": 0,
+    "gold_case_count": 200,
+    "publication_decision_accuracy": null,
+    "requirement_exact_semantic_metrics": {
+      "f1": null,
+      "precision": null,
+      "recall": null
+    },
+    "schema_version": "jd-independent-human-gold-evaluation.v1",
+    "status": "pending_adjudicated_gold"
+  },
+  "schema_version": "jd-gap-experiments.v1"
+}

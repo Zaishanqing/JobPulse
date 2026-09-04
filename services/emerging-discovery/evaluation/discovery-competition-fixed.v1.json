@@ -1,0 +1,53 @@
+{
+  "dataset_id": "discovery-competition-fixed",
+  "dataset_version": "discovery-competition-fixed.v1",
+  "algorithm_config_version": "discovery-multiview-competition.v2",
+  "purpose": "竞赛规模的三窗口新兴岗位发现评估；expected 为人工一致性标注，不来自算法输出。",
+  "cases": [
+    {
+      "case_id": "discovery-agentic-rag-2026q1",
+      "input": {
+        "contract_version": "discovery.v2",
+        "request_id": "discovery-competition-fixed-v1-case-1",
+        "algorithm": "emerge_v3_2",
+        "snapshots": [
+          {"source_fact_id":"fixed-fact-01","source_fact_version":"1","jd_id":"agent-01","schema_version":"v2","review_status":"published","consumption_path":"published","title":"智能体应用工程师","source_name":"招聘平台甲","publish_date":"2026-01-05","structured_data":{"responsibilities":["设计可调用企业知识库的智能体工作流"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"RAG"},{"raw_skill":"LangGraph"}],"bonus_skills":[],"business_scenarios":["智能客服"],"industry":"人工智能","company_name":"星云科技"}},
+          {"source_fact_id":"fixed-fact-07","source_fact_version":"1","jd_id":"agent-04","schema_version":"v2","review_status":"published","consumption_path":"published","title":"LLM 工作流开发工程师","source_name":"企业官网乙","publish_date":"2026-01-18","structured_data":{"responsibilities":["构建检索增强的多步骤大模型任务编排"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"RAG"},{"raw_skill":"LangGraph"}],"bonus_skills":[],"business_scenarios":["知识助手"],"industry":"人工智能","company_name":"山海智能"}},
+          {"source_fact_id":"fixed-fact-02","source_fact_version":"1","jd_id":"data-01","schema_version":"v2","review_status":"published","consumption_path":"published","title":"数据工程师","source_name":"企业官网乙","publish_date":"2026-01-12","structured_data":{"responsibilities":["建设离线数据仓库与批处理任务"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"SQL"},{"raw_skill":"Spark"}],"bonus_skills":[],"business_scenarios":["数据平台"],"industry":"软件","company_name":"矩阵数据"}},
+          {"source_fact_id":"fixed-fact-03","source_fact_version":"1","jd_id":"agent-02","schema_version":"v2","review_status":"published","consumption_path":"published","title":"企业知识智能体研发","source_name":"人才市场丙","publish_date":"2026-02-04","structured_data":{"responsibilities":["研发具备检索与工具调用能力的企业智能助手"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"RAG"},{"raw_skill":"LangGraph"}],"bonus_skills":[],"business_scenarios":["企业知识库"],"industry":"人工智能","company_name":"远航网络"}},
+          {"source_fact_id":"fixed-fact-08","source_fact_version":"1","jd_id":"agent-05","schema_version":"v2","review_status":"published","consumption_path":"published","title":"生成式 AI 编排工程师","source_name":"招聘平台丁","publish_date":"2026-02-19","structured_data":{"responsibilities":["实现面向业务流程的生成式 AI 代理编排"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"RAG"},{"raw_skill":"LangGraph"}],"bonus_skills":[],"business_scenarios":["流程自动化"],"industry":"人工智能","company_name":"云杉软件"}},
+          {"source_fact_id":"fixed-fact-04","source_fact_version":"1","jd_id":"data-02","schema_version":"v2","review_status":"published","consumption_path":"published","title":"数据工程师","source_name":"招聘平台丁","publish_date":"2026-02-11","structured_data":{"responsibilities":["建设离线数据仓库与批处理任务"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"SQL"},{"raw_skill":"Spark"}],"bonus_skills":[],"business_scenarios":["数据平台"],"industry":"软件","company_name":"山海智能"}},
+          {"source_fact_id":"fixed-fact-05","source_fact_version":"1","jd_id":"agent-03","schema_version":"v2","review_status":"published","consumption_path":"published","title":"自主任务代理开发工程师","source_name":"企业官网乙","publish_date":"2026-03-06","structured_data":{"responsibilities":["开发结合私域检索的自主任务执行代理"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"RAG"},{"raw_skill":"LangGraph"}],"bonus_skills":[],"business_scenarios":["研究助手"],"industry":"人工智能","company_name":"矩阵数据"}},
+          {"source_fact_id":"fixed-fact-09","source_fact_version":"1","jd_id":"agent-06","schema_version":"v2","review_status":"published","consumption_path":"published","title":"Agent 平台应用研发","source_name":"招聘平台丁","publish_date":"2026-03-17","structured_data":{"responsibilities":["交付连接知识库和业务工具的 Agent 应用"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"RAG"},{"raw_skill":"LangGraph"}],"bonus_skills":[],"business_scenarios":["运营自动化"],"industry":"人工智能","company_name":"云杉软件"}},
+          {"source_fact_id":"fixed-fact-06","source_fact_version":"1","jd_id":"data-03","schema_version":"v2","review_status":"published","consumption_path":"published","title":"数据工程师","source_name":"人才市场丙","publish_date":"2026-03-13","structured_data":{"responsibilities":["建设离线数据仓库与批处理任务"],"required_skills":[{"raw_skill":"Python"},{"raw_skill":"SQL"},{"raw_skill":"Spark"}],"bonus_skills":[],"business_scenarios":["数据平台"],"industry":"软件","company_name":"远航网络"}}
+        ],
+        "position_references": [
+          {"position_id":"standard-data-engineer","graph_version_id":"graph-2026-q1","required_skills":[{"raw_skill":"Python"},{"raw_skill":"SQL"},{"raw_skill":"Spark"}]}
+        ],
+        "config": {"responsibility_similarity_threshold": 0.0}
+      },
+      "expected": {
+        "provenance": "human_annotation",
+        "annotation_note": "两名维护者按职责、技能组合与跨窗口身份一致标注：Agentic RAG 为新兴正例，数据工程为稳定对照。",
+        "labels": {"agent-01":"emerging_agentic_rag","agent-02":"emerging_agentic_rag","agent-03":"emerging_agentic_rag","agent-04":"emerging_agentic_rag","agent-05":"emerging_agentic_rag","agent-06":"emerging_agentic_rag","data-01":"standard_data","data-02":"standard_data","data-03":"standard_data"},
+        "positive_candidate_jd_ids": ["agent-01", "agent-02", "agent-03", "agent-04", "agent-05", "agent-06"]
+      },
+      "source_metadata": {
+        "sources": ["招聘平台甲", "企业官网乙", "人才市场丙", "招聘平台丁"],
+        "review_status": "published",
+        "annotation_reviewers": 2
+      },
+      "windows": [
+        {"window_id":"2026-Q1-M1","start":"2026-01-01","end":"2026-01-31"},
+        {"window_id":"2026-Q1-M2","start":"2026-02-01","end":"2026-02-28"},
+        {"window_id":"2026-Q1-M3","start":"2026-03-01","end":"2026-03-31"}
+      ],
+      "algorithm_config": {
+        "version": "discovery-multiview-competition.v2",
+        "evaluation_k": 2,
+        "comparison_algorithms": ["baseline", "multi_view"],
+        "algorithm_configs": {"multi_view": {"responsibility_similarity_threshold": 0.0}}
+      }
+    }
+  ]
+}

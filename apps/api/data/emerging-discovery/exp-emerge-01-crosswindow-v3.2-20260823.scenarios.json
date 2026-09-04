@@ -1,0 +1,49 @@
+{
+  "schema_version": "emerge-v3.2-industry-scenarios.v1",
+  "experiment_id": "EXP-EMERGE-01-CROSSWINDOW-V3.2-20260823",
+  "definitions": {
+    "AI Agent研发工程师(大数据运维治理方向)": [
+      {"scenario": "生产平台研发与智能运维", "evidence_fragment": "生产平台核心模块的功能开发"},
+      {"scenario": "AI Agent 运维治理", "evidence_fragment": "端到端生产及运维的AI Agent产品系统"}
+    ],
+    "AI产品经理(AIBP方向)": [
+      {"scenario": "营销服务 AI 赋能", "evidence_fragment": "营销服务 / 制造 / 供应链"},
+      {"scenario": "制造与供应链 AI 赋能", "evidence_fragment": "营销服务 / 制造 / 供应链"},
+      {"scenario": "跨场景智能体与流程自动化", "evidence_fragment": "跨场景智能体、端到端 AI 流程自动化"}
+    ],
+    "可观测性技术研发-基础技术": [
+      {"scenario": "高并发系统可观测与稳定性保障", "evidence_fragment": "高并发环境下的高性能、高可用"},
+      {"scenario": "AI 基础设施与应用可观测", "evidence_fragment": "AI Infra 可观测、AI 应用可观测"}
+    ],
+    "商业分析师(广告与流量方向)-【生活服务】": [
+      {"scenario": "生活服务广告投放分析", "evidence_fragment": "生活服务广告与流量方向"},
+      {"scenario": "流量健康度监控与分发优化", "evidence_fragment": "监控流量健康度"}
+    ],
+    "广告agent算法工程师(数据业务)-商业算法": [
+      {"scenario": "广告智能投放 Agent", "evidence_fragment": "智能投放Agent系统"},
+      {"scenario": "广告人群定向与素材策略", "evidence_fragment": "人群定向、素材策略"},
+      {"scenario": "跨平台广告数据整合", "evidence_fragment": "跨平台的业务数据整合"}
+    ],
+    "推荐算法工程师": [
+      {"scenario": "应用商店游戏分发推荐", "evidence_fragment": "游戏app的分发推荐"},
+      {"scenario": "CPC 与 OCPX 广告推荐", "evidence_fragment": "CPC OCPX广告推荐业务"}
+    ],
+    "测试开发岗": [
+      {"scenario": "核心业务功能、性能与安全测试", "evidence_fragment": "覆盖功能、性能、安全"},
+      {"scenario": "自动化测试与持续集成", "evidence_fragment": "自动化测试框架"}
+    ],
+    "空间智能算法工程师(VSLAM方向)": [
+      {"scenario": "机器人视觉定位与建图", "evidence_fragment": "算法在机器人产品上的工程落地"},
+      {"scenario": "动态场景语义 SLAM 与三维重建", "evidence_fragment": "动态场景处理、语义SLAM或端到端三维重建"}
+    ],
+    "算法开发((地图)": [
+      {"scenario": "地图路径规划与路线推荐", "evidence_fragment": "基于路网进行算路和排序"},
+      {"scenario": "上下车点智能推荐", "evidence_fragment": "最优的上下车点数据"},
+      {"scenario": "到达时间预测与路线优化", "evidence_fragment": "ETA(预估到达时间)预测精度优化"}
+    ],
+    "系统架构专家(图形系统)": [
+      {"scenario": "图形系统架构与功能研发", "evidence_fragment": "图形系统子模块架构设计及功能开发"},
+      {"scenario": "图形系统性能优化与疑难攻关", "evidence_fragment": "图形系统关键性能方案设计"}
+    ]
+  }
+}

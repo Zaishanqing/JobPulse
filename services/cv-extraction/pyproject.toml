@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nfbs-cv-extraction"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic>=2",
+    "pydantic-settings",
+    "openai>=1",
+    "python-dotenv",
+    "tenacity",
+    "pyyaml",
+    "tqdm",
+    "pandas>=1.5",
+    "openpyxl>=3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx"]
+
+[tool.setuptools.packages.find]
+include = ["src*", "api*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

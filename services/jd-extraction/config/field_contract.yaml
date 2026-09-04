@@ -1,0 +1,142 @@
+version: "1.0"
+contract_id: jdextraction.v2.field_contract
+pydantic:
+  source_module: src.models
+  extra_fields: forbid
+  assignment_validation: true
+canonical_enums:
+  modality: [required, preferred, bonus, unknown]
+  alignment: [exact, normalized_exact, unresolved]
+  proficiency: [know, familiar, proficient, expert, unknown]
+  skill_item_type: [programming_language, framework, library, database, tool, platform, methodology, domain_knowledge, other]
+  degree_level: [high_school, associate, bachelor, master, doctor, unknown]
+  company_fact_kind: [company_name, industry, development_stage, company_size, business_domain, product_service, target_market, team, technical_resource, qualification, other]
+  employment_fact_kind: [location, employment_type, work_mode, work_schedule, social_security, allowance, meal, accommodation, health_check, team_activity, leave, bonus, commission, equity, training, equipment, other]
+  requirement_kind: [skill, education, experience, certificate, soft_skill, other]
+  resolution_status: [resolved, ambiguous, unresolved]
+  position_classification_status: [resolved, manually_confirmed, ambiguous, out_of_scope, catalog_gap]
+  admission_type: [unified, non_unified, unknown]
+  salary_status: [specified, negotiable, not_disclosed]
+  salary_currency: [CNY]
+  salary_period: [月, 日, 时, 周, 年]
+models:
+  Evidence:
+    fields:
+      source_id: {type: string, required: true, nullable: false}
+      quote: {type: string, required: true, nullable: false}
+      start: {type: integer, required: false, nullable: true, minimum: 0}
+      end: {type: integer, required: false, nullable: true, minimum: 0}
+      alignment: {type: alignment, required: true, nullable: false, default: unresolved}
+      occurrence_index: {type: integer, required: false, nullable: true, minimum: 0}
+  SourcedText:
+    fields:
+      value: {type: string, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  SkillItem:
+    fields:
+      name: {type: string, required: true, nullable: false}
+      item_type: {type: skill_item_type, required: true, nullable: false}
+  Requirements:
+    common_fields:
+      requirement_id: {type: string, required: true, nullable: false, generated_by: python}
+      modality: {type: modality, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+    variants:
+      task: {kind: task, fields: {action: {type: string, required: true, nullable: false}}}
+      skill: {kind: skill, fields: {items: {type: "list[SkillItem]", required: true, nullable: false, min_items: 1}, proficiency: {type: proficiency, required: false, nullable: true}}}
+      education: {kind: education, fields: {minimum_degree: {type: degree_level, required: false, nullable: true}, majors: {type: "list[string]", required: true, nullable: false}, school_constraints: {type: "list[string]", required: true, nullable: false}, admission_type: {type: admission_type, required: false, nullable: true}, graduation_year: {type: integer, required: false, nullable: true}, student_cohort: {type: string, required: false, nullable: true}}}
+      experience: {kind: experience, fields: {minimum_years: {type: number, required: false, nullable: true}, maximum_years: {type: number, required: false, nullable: true}, domain: {type: string, required: false, nullable: true}, role: {type: string, required: false, nullable: true}, duration_text: {type: string, required: false, nullable: true}, experience_unlimited: {type: boolean, required: true, nullable: false, default: false}}}
+      certificate: {kind: certificate, fields: {certificates: {type: "list[string]", required: true, nullable: false, min_items: 1}}}
+      soft_skill: {kind: soft_skill, fields: {skills: {type: "list[string]", required: true, nullable: false, min_items: 1}}}
+      other: {kind: other, fields: {label: {type: string, required: true, nullable: false}, value: {type: string, required: false, nullable: true}}}
+  CompanyFact:
+    fields:
+      fact_id: {type: string, required: true, nullable: false, generated_by: python}
+      kind: {type: company_fact_kind, required: true, nullable: false}
+      value: {type: string, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  EmploymentFact:
+    fields:
+      fact_id: {type: string, required: true, nullable: false, generated_by: python}
+      kind: {type: employment_fact_kind, required: true, nullable: false}
+      value: {type: string, required: true, nullable: false}
+      evidence: {type: Evidence, required: true, nullable: false}
+  JDExtractionResult:
+    fields:
+      document_id: {type: string, required: true, nullable: false, generated_by: python}
+      job_title: {type: SourcedText, required: false, nullable: true}
+      responsibilities: {type: "list[TaskRequirement]", required: true, nullable: false}
+      requirements: {type: "list[CandidateRequirement]", required: true, nullable: false}
+      company_facts: {type: "list[CompanyFact]", required: true, nullable: false}
+      employment_facts: {type: "list[EmploymentFact]", required: true, nullable: false}
+  Salary:
+    fields:
+      raw_text: {type: string, required: true, nullable: false, description: exact matched source text}
+      status: {type: salary_status, required: true, nullable: false, default: specified}
+      minimum: {type: number, required: false, nullable: true}
+      maximum: {type: number, required: false, nullable: true}
+      currency: {type: salary_currency, required: false, nullable: true}
+      period: {type: salary_period, required: false, nullable: true}
+      salary_months: {type: number, required: false, nullable: true, minimum: 1}
+    invariants:
+      - specified requires minimum, maximum, currency and period
+      - specified minimum must not exceed maximum
+      - negotiable and not_disclosed must not contain numeric bounds, currency, period or salary_months
+  JobClassification:
+    fields:
+      schema_version: {type: string, required: true, nullable: false, const: job-position-classification.v3}
+      taxonomy_version: {type: string, required: true, nullable: false}
+      source_title: {type: string, required: false, nullable: true}
+      position_code: {type: string, required: false, nullable: true}
+      position_name: {type: string, required: false, nullable: true}
+      family_code: {type: string, required: false, nullable: true}
+      family_name: {type: string, required: false, nullable: true}
+      candidate_positions: {type: "list[object]", required: true, nullable: false}
+      career_level: {type: string, required: false, nullable: true}
+      leadership_scope: {type: string, required: false, nullable: true}
+      technology_focus_codes: {type: "list[string]", required: true, nullable: false}
+      industry_context_codes: {type: "list[string]", required: true, nullable: false}
+      observed_skill_domain_codes: {type: "list[string]", required: true, nullable: false}
+      confidence: {type: number, required: false, nullable: true, minimum: 0, maximum: 1}
+      classification_status: {type: position_classification_status, required: true, nullable: false}
+      review_reason_codes: {type: "list[string]", required: true, nullable: false}
+      evidence_refs: {type: "list[string]", required: true, nullable: false}
+      classification_policy_version: {type: string, required: true, nullable: false}
+    invariants:
+      - resolved requires an active position_code, sufficient evidence, the minimum score, and the minimum Top-1/Top-2 margin
+      - ambiguous, out_of_scope and catalog_gap must not bind position_code
+      - observed_skill_domain_codes must be derived from the JD normalized skills
+      - evidence_refs must reference evidence available in the source JD
+  JDNormalizedResult:
+    fields:
+      document_id: {type: string, required: true, nullable: false}
+      job_classification: {type: JobClassification, required: false, nullable: true}
+      normalized_requirements: {type: "list[NormalizedRequirement]", required: true, nullable: false}
+      salary: {type: Salary, required: false, nullable: true}
+      unresolved_items: {type: "list[string]", required: true, nullable: false}
+salary_parser:
+  supported_numeric_forms:
+    - range: 20-40K
+    - single: 20K
+    - range_with_currency: 8000-12000元/月
+    - single_with_currency: 8000元/月
+    - ten_thousand_unit: 2-3万/月
+    - thousand_unit: 8千-1万/月
+    - annual_context: 年薪30万
+    - monthly_context: 月薪8千-1.2万
+    - annual_bonus: 15-20K·13薪
+  supported_non_numeric_forms:
+    negotiable: [面议, 薪资可谈, 工资可谈, 薪酬可谈, 待遇面议]
+    not_disclosed: [薪资保密, 工资保密, 薪酬保密, 保密]
+  canonicalization:
+    currency: CNY
+    k_multiplier: 1000
+    thousand_multiplier: 1000
+    ten_thousand_multiplier: 10000
+    hourly_output_period: 时
+    month_aliases: [月, 个月]
+    day_aliases: [日, 天]
+    hour_aliases: [时, 小时]
+  ambiguity_policy:
+    - numeric 元/千/万 without an explicit period or 月薪/年薪 context is rejected
+    - only the first salary expression is returned when a source contains multiple expressions

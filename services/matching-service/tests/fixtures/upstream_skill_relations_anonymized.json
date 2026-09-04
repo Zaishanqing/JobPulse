@@ -1,0 +1,23 @@
+{
+  "relations": [
+    {
+      "relation_id": "relation_python_fastapi_transferable",
+      "source_skill_id": "LANG_PYTHON",
+      "target_skill_id": "FRAMEWORK_FASTAPI",
+      "relation_type": "transferable",
+      "confidence": 0.85,
+      "source_system": "knowledge-graph-anonymized-fixture",
+      "graph_version": "graph-integration-v1",
+      "evidence_refs": [
+        {
+          "source_id": "kg:relation:1",
+          "quote": "reviewed transferable relation",
+          "start": 0,
+          "end": 30,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ]
+}

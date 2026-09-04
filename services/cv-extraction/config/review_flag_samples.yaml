@@ -1,0 +1,14 @@
+version: "2.0"
+samples:
+  - issue_type: duplicate_skill
+    evidence: 熟悉 Python、Python 和 Java
+    expected: 保留不同来源证据，并为重复 name/item_type 的每个对象产生可追踪审查标记
+  - issue_type: unknown_skill_proficiency
+    evidence: 使用 Python 完成数据处理
+    expected: 没有明确程度词时 proficiency 为 unknown 或省略，并进入人工复核
+  - issue_type: skill_item_other_requires_review
+    evidence: 熟悉某内部工具
+    expected: 无法归入既有技能类型时进入人工复核
+  - issue_type: unresolved_skill_normalization
+    evidence: 熟悉尚未进入标准技能表的具名工具
+    expected: 精确查表未命中时标记 unresolved，不进行近似兜底匹配

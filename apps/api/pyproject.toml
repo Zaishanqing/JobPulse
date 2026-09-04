@@ -1,0 +1,82 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "job-ability-graph-backend"
+version = "0.1.0"
+description = "多源异构数据驱动岗位和能力图谱构建与动态演化分析系统后端基础骨架"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "jobgraph-contracts>=0.1.0",
+    "uvicorn",
+    "sqlalchemy",
+    "psycopg[binary]",
+    "alembic>=1.18,<1.19",
+    "pydantic",
+    "pydantic-settings",
+    "python-multipart",
+    "pytest",
+    "httpx",
+    "passlib",
+    "python-jose[cryptography]>=3.5,<4",
+    "openpyxl",
+    "PyYAML",
+    "PyMuPDF",
+    "python-docx",
+    "pytesseract",
+    "Pillow",
+    "scikit-learn",
+    "openai>=1.30",
+    "tenacity>=8.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2",
+    "pytest-cov>=5",
+    "pytest-xdist>=3.6",
+    "ruff>=0.9",
+]
+
+[project.scripts]
+jobgraph-outbox-worker = "app.workers.outbox:main"
+jobgraph-extraction-worker = "app.workers.extraction_tasks:main"
+jobgraph-validation-worker = "app.workers.validation_tasks:main"
+jobgraph-cv-extraction-worker = "app.workers.cv_extraction:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = ["."]
+addopts = "-p no:cacheprovider --basetemp=.test-artifacts/pytest-tmp"
+norecursedirs = ["historical_defect_reproduction"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["tests*", "scripts*"]
+
+[tool.coverage.run]
+branch = true
+source = ["app"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+# The materialized application tree currently has a reproducible 78.80%
+# branch-aware baseline; keep this local gate aligned with coverage-all.py.
+fail_under = 78
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["build"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*.py" = ["E402"]

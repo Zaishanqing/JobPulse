@@ -1,0 +1,49 @@
+hard_errors:
+  - error_type: schema_validation_error
+    description: 模型输出不符合抽取层 Schema。
+  - error_type: source_binding_error
+    description: Evidence 无法在声明的 source block 中精确对齐。
+  - error_type: semantic_validation_error
+    description: 抽取结果违反确定性语义约束。
+
+soft_review_flags:
+  - issue_type: missing_personal_info
+    severity: soft_error
+    scope: document
+    description: 简历缺少个人信息部分。
+    suggested_action: 检查简历头部是否有姓名、联系方式等信息。
+  - issue_type: missing_name
+    severity: soft_error
+    scope: document
+    description: 简历缺少姓名信息。
+    suggested_action: 检查简历头部是否有姓名（可能被遮挡或马赛克）。
+  - issue_type: missing_education
+    severity: soft_error
+    scope: document
+    description: 简历缺少教育经历。
+    suggested_action: 检查原文是否存在教育经历部分。
+  - issue_type: missing_experience
+    severity: soft_error
+    scope: document
+    description: 简历缺少工作经历和项目经历。
+    suggested_action: 检查原文是否存在实习/工作/项目经历部分。
+  - issue_type: duplicate_skill
+    severity: soft_error
+    scope: skill
+    description: 同一声明技能列表或同一项目技术栈内重复出现相同 name 和 item_type 的技能。
+    suggested_action: 检查同一作用域内是否重复抽取同一技能；跨声明与项目出现不属于重复。
+  - issue_type: unknown_skill_proficiency
+    severity: soft_error
+    scope: skill
+    description: 声明技能的熟练度无法从原文判定。
+    suggested_action: 仅对简历技能声明区人工确认熟练度；项目技术栈不要求熟练度。
+  - issue_type: skill_item_other_requires_review
+    severity: soft_error
+    scope: skill
+    description: 技能使用 item_type=other，无法可靠归一化。
+    suggested_action: 确认技能实体边界并分配已有的 item_type，或从技能列表中移除。
+  - issue_type: unresolved_skill_normalization
+    severity: soft_error
+    scope: skill
+    description: 技能无法按名称和类型精确映射到标准技能表。
+    suggested_action: 进入技能标准化人工审查，不进行近似兜底匹配。

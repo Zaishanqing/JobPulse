@@ -1,0 +1,62 @@
+{
+  "fixture_provenance": {
+    "source_archive": "audit.zip",
+    "source_run_id": "jd_chunk_01_20260716_b001",
+    "source_document_id": "jd_000001",
+    "validation_status": "not_provided",
+    "authority_allowed": false
+  },
+  "source_requirements": [
+    {
+      "requirement_id": "req_003",
+      "kind": "skill",
+      "modality": "required",
+      "skill_names": ["Python", "MATLAB", "Docker", "Kubernetes"],
+      "evidence_source_id": "src_0007",
+      "evidence_quote": "Python MATLAB Docker/Kubernetes 计算机相关专业 声学相关专业 语音识别工作经验 NeMo Framework"
+    },
+    {
+      "requirement_id": "req_004",
+      "kind": "skill",
+      "modality": "preferred",
+      "skill_names": ["NeMo Framework"],
+      "evidence_source_id": "src_0018",
+      "evidence_quote": "3,熟悉英伟达(NVIDIA)NeMo框架者优先考虑。"
+    },
+    {
+      "requirement_id": "req_005",
+      "kind": "education",
+      "modality": "required",
+      "skill_names": [],
+      "evidence_source_id": "src_0008",
+      "evidence_quote": "学历:本科"
+    }
+  ],
+  "normalized_requirements": [
+    {
+      "requirement_id": "req_003",
+      "kind": "skill",
+      "modality": "required",
+      "skills": [
+        {"source_name": "Python", "resolution_status": "resolved", "skill_id": "LANG_PYTHON"},
+        {"source_name": "MATLAB", "resolution_status": "resolved", "skill_id": "LANG_MATLAB"},
+        {"source_name": "Docker", "resolution_status": "resolved", "skill_id": "TOOL_DOCKER"},
+        {"source_name": "Kubernetes", "resolution_status": "resolved", "skill_id": "TOOL_KUBERNETES"}
+      ]
+    },
+    {
+      "requirement_id": "req_004",
+      "kind": "skill",
+      "modality": "preferred",
+      "skills": [
+        {"source_name": "NeMo Framework", "resolution_status": "unresolved", "skill_id": null}
+      ]
+    },
+    {
+      "requirement_id": "req_005",
+      "kind": "education",
+      "modality": "required",
+      "skills": []
+    }
+  ]
+}

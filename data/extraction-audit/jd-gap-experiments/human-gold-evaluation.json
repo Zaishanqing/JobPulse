@@ -1,0 +1,12 @@
+{
+  "evaluated_case_count": 0,
+  "gold_case_count": 200,
+  "publication_decision_accuracy": null,
+  "requirement_exact_semantic_metrics": {
+    "f1": null,
+    "precision": null,
+    "recall": null
+  },
+  "schema_version": "jd-independent-human-gold-evaluation.v1",
+  "status": "pending_adjudicated_gold"
+}

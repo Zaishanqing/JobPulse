@@ -1,0 +1,56 @@
+{
+  "experiment_id": "EXP-EMERGE-01-CROSSWINDOW-V3.2-20260823",
+  "algorithm_version": "EMERGE-v3.2",
+  "status": "accepted",
+  "stage2_unit": "occupation_cluster",
+  "evidence_level": "short_window",
+  "window_semantics": "12 days / 6 dates; no long-term market-growth claim",
+  "source_results_sha256": "8b6f35b1d77d7bbe7317892578b1478a8adae4158199a859caae260047b093ec",
+  "source_manifest_sha256": "aad90eb3335e1c4bd2887b385fa37efc5ad4dcb6afade83615cb4b8782cf051b",
+  "cluster_counts": {
+    "total_clusters": 2811,
+    "clusters_with_stage1_evaluated": 2752,
+    "clusters_without_annotation": 59,
+    "clusters_eligible_for_stage2": 2021,
+    "clusters_with_any_temporal_evidence": 2080
+  },
+  "stage2_distribution_over_eligible": {
+    "insufficient_evidence": 1310,
+    "not_emerging": 562,
+    "weak_emerging_signal": 139,
+    "emerging": 10
+  },
+  "coverage": {
+    "independent_posting_persistence": 280,
+    "enterprise_diffusion": 252,
+    "source_diffusion": 77,
+    "structural_evolution": 41,
+    "short_window_growth": 280,
+    "re_observation_only": 1800
+  },
+  "stage1_regression": {
+    "matched": 127,
+    "total": 127,
+    "distribution": {
+      "insufficient_evidence": 52,
+      "renaming": 36,
+      "hybridization": 6,
+      "specialization": 30,
+      "unexplained_structural_novelty": 3
+    }
+  },
+  "acceptance_gates": {"passed": 7, "total": 7},
+  "emerging_clusters": [
+    {"cluster_key":"aiagent研发","canonical_title":"AI Agent研发工程师(大数据运维治理方向)","stage1_relation":"hybridization","postings":2,"enterprises":2,"sources":1},
+    {"cluster_key":"ai产品经理","canonical_title":"AI产品经理(AIBP方向)","stage1_relation":"hybridization","postings":7,"enterprises":7,"sources":4},
+    {"cluster_key":"可观测性技术研发基础技术","canonical_title":"可观测性技术研发-基础技术","stage1_relation":"hybridization","postings":2,"enterprises":2,"sources":1},
+    {"cluster_key":"商业分析师【生活服务】","canonical_title":"商业分析师(广告与流量方向)-【生活服务】","stage1_relation":"specialization","postings":5,"enterprises":2,"sources":1},
+    {"cluster_key":"广告agent算法工程师商业算法","canonical_title":"广告agent算法工程师(数据业务)-商业算法","stage1_relation":"specialization","postings":2,"enterprises":2,"sources":1},
+    {"cluster_key":"推荐算法","canonical_title":"推荐算法工程师","stage1_relation":"specialization","postings":2,"enterprises":2,"sources":1},
+    {"cluster_key":"测试开发","canonical_title":"测试开发岗","stage1_relation":"hybridization","postings":6,"enterprises":5,"sources":2},
+    {"cluster_key":"空间智能算法","canonical_title":"空间智能算法工程师(VSLAM方向)","stage1_relation":"hybridization","postings":2,"enterprises":2,"sources":1},
+    {"cluster_key":"算法","canonical_title":"算法开发((地图)","stage1_relation":"specialization","postings":12,"enterprises":6,"sources":3},
+    {"cluster_key":"系统架构","canonical_title":"系统架构专家(图形系统)","stage1_relation":"unexplained_structural_novelty","postings":5,"enterprises":2,"sources":1}
+  ],
+  "validation_boundary": "Rule-assisted reference labels are not independent expert Gold."
+}

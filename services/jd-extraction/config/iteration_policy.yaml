@@ -1,0 +1,10 @@
+batch_size: 20
+min_document_count: 1
+min_create_new_document_count: 1
+max_evidence_samples: 3
+max_candidates_per_review: 500
+semantic_request_batch_size: 50
+pending_review_dir: config/pending_review
+applied_review_dir: config/pending_review/applied
+candidate_pool_path: config/normalization_candidate_pool.json
+decision_ledger_path: config/normalization_decision_ledger.json

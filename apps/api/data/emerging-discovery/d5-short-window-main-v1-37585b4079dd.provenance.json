@@ -1,0 +1,12 @@
+{
+  "schema_version": "jobpulse-frozen-discovery-dataset.v1",
+  "dataset_id": "d5-short-window-main-v1-37585b4079dd",
+  "record_count": 127,
+  "sample_manifest_sha256": "6055a9f4dd4d5647c86e885f7f67fa9f4c834802a51629bae4e97a809f8a6ad0",
+  "window_manifest_sha256": "f09c064b789caab2b0e26ac1f090650c83313ce7ef6b7d3e93e377f1622393db",
+  "source_repository_path": "services/emerging-discovery/evaluation/d5-preregistered-gold/sample_manifest.jsonl",
+  "source_experiment": "EXP-EMERGE-01",
+  "source_status": "real_frozen",
+  "window_ids": ["D5-SW-01", "D5-SW-02", "D5-SW-03", "D5-SW-04"],
+  "note": "Copied byte-for-byte from the frozen experiment asset; no extraction is rerun."
+}

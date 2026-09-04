@@ -1,0 +1,161 @@
+{
+  "schema_version": "cv-matching-input-bundle.v1",
+  "contract_version": "cv-matching-input-bundle.v1",
+  "source_system": "jobgraph-main",
+  "source_version": "snapshot=snapshot-01:1:sha256:example-fingerprint-for-machine-a",
+  "created_at": "2026-08-04T00:00:00+00:00",
+  "user_ref": "subject:anon-user-01",
+  "verification_snapshot_id": "snapshot-01",
+  "review_status": "approved",
+  "structure_derivation_version": "jobgraph-cv-structure.v1",
+  "structure": {
+    "document_id": "cv-doc-01",
+    "education": [
+      {
+        "education_id": "edu-01",
+        "degree_level": "bachelor",
+        "field_of_study": "computer_science",
+        "resolution_status": "resolved",
+        "evidence": [
+          {
+            "source_id": "src_0001",
+            "quote": "计算机科学 学士",
+            "start": 0,
+            "end": 8,
+            "alignment": "exact",
+            "occurrence_index": 0
+          }
+        ]
+      }
+    ],
+    "work_experiences": [
+      {
+        "experience_id": "work-01",
+        "kind": "work",
+        "role": "backend_engineer",
+        "responsibilities": [
+          {
+            "value": "负责服务开发",
+            "evidence": {
+              "source_id": "src_0002",
+              "quote": "负责服务开发",
+              "start": 12,
+              "end": 18,
+              "alignment": "exact",
+              "occurrence_index": 0
+            }
+          }
+        ],
+        "business_scenarios": [],
+        "tool_source_item_ids": [
+          "skill-01"
+        ],
+        "start_date": "2020-01",
+        "end_date": "2024-01",
+        "evidence": [
+          {
+            "source_id": "src_0002",
+            "quote": "负责服务开发",
+            "start": 12,
+            "end": 18,
+            "alignment": "exact",
+            "occurrence_index": 0
+          }
+        ]
+      }
+    ],
+    "projects": [],
+    "certificates": [],
+    "languages": [],
+    "evidence": []
+  },
+  "normalization": {
+    "document_id": "cv-doc-01",
+    "taxonomy_version": "skill-taxonomy-snapshot.v1",
+    "derivation_version": "jobgraph-cv-normalization.v1",
+    "skills": [
+      {
+        "source_item_id": "skill-01",
+        "source_scope": "skills",
+        "source_name": "Python",
+        "skill_id": "LANG_PYTHON",
+        "canonical_name": "Python",
+        "normalization_confidence": 1.0,
+        "declared_level": "proficient",
+        "resolution_status": "resolved",
+        "evidence": [
+          {
+            "source_id": "src_0001",
+            "quote": "熟练使用 Python",
+            "start": 0,
+            "end": 11,
+            "alignment": "exact",
+            "occurrence_index": 0
+          }
+        ]
+      },
+      {
+        "source_item_id": "skill-02",
+        "source_scope": "skills",
+        "source_name": "未知技能",
+        "resolution_status": "unresolved",
+        "evidence": []
+      }
+    ]
+  },
+  "match_features": {
+    "document_id": "cv-doc-01",
+    "as_of_date": "2026-08-04",
+    "taxonomy_version": "skill-taxonomy-snapshot.v1",
+    "derivation_version": "jobgraph-cv-match-features.v1",
+    "features": [
+      {
+        "feature_id": "feature-01",
+        "document_id": "cv-doc-01",
+        "side": "cv",
+        "feature_type": "skill",
+        "source_object_id": "skill-01",
+        "source_scope": "skills",
+        "canonical_id": "LANG_PYTHON",
+        "canonical_name": "Python",
+        "raw_text": "Python",
+        "vector_text": "Python",
+        "requirement_modality": null,
+        "candidate_level": "proficient",
+        "structured_values": {
+          "aggregation_key": "skill:LANG_PYTHON"
+        },
+        "resolution_status": "resolved",
+        "evidence_refs": [
+          {
+            "source_id": "src_0001",
+            "quote": "熟练使用 Python",
+            "start": 0,
+            "end": 11,
+            "alignment": "exact",
+            "occurrence_index": 0
+          }
+        ],
+        "taxonomy_version": "skill-taxonomy-snapshot.v1",
+        "derivation_version": "jobgraph-cv-match-features.v1"
+      }
+    ]
+  },
+  "capabilities": {
+    "document_id": "cv-doc-01",
+    "taxonomy_version": "skill-taxonomy-snapshot.v1",
+    "derivation_version": "jobgraph-capability-projection.v1",
+    "profiles": [],
+    "evidence_links": []
+  },
+  "unresolved_items": [
+    {
+      "item_id": "skill-02",
+      "item_type": "skill",
+      "raw_value": "未知技能",
+      "reason": "user_unknown",
+      "evidence": []
+    }
+  ],
+  "profile_fingerprint": "e5fb087fdd5da4bb3f765f853e9c976358a5753da54e843e6562bb5fa8d30272"
+}

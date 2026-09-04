@@ -1,0 +1,183 @@
+{
+  "contract_version": "position-match-profile.v1",
+  "position_id": "position_fixture_001",
+  "canonical_position_id": "position_backend_engineer",
+  "canonical_title": "Backend Engineer",
+  "core_responsibilities": [
+    "Build backend services"
+  ],
+  "required_skills": [
+    {
+      "skill_id": "skill_python",
+      "canonical_name": "Python",
+      "required_level": "working",
+      "importance": 1.0,
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:skill:1",
+          "quote": "Python",
+          "start": 0,
+          "end": 6,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "preferred_skills": [
+    {
+      "skill_id": "skill_go",
+      "canonical_name": "Go",
+      "required_level": "working",
+      "importance": 0.5,
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:skill:2",
+          "quote": "Go preferred",
+          "start": 0,
+          "end": 12,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "hard_conditions": [
+    {
+      "condition_id": "hard_education",
+      "condition_type": "education",
+      "operator": "at_least",
+      "value": "bachelor",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:hard:1",
+          "quote": "bachelor",
+          "start": 0,
+          "end": 8,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    },
+    {
+      "condition_id": "hard_experience",
+      "condition_type": "experience",
+      "operator": "at_least",
+      "value": "3 years",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:hard:2",
+          "quote": "3 years",
+          "start": 0,
+          "end": 7,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    },
+    {
+      "condition_id": "hard_certificate",
+      "condition_type": "certificate",
+      "operator": "equals",
+      "value": "AWS-SAA",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:hard:3",
+          "quote": "AWS-SAA",
+          "start": 0,
+          "end": 7,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    },
+    {
+      "condition_id": "hard_language",
+      "condition_type": "language",
+      "operator": "at_least",
+      "value": "en:conversational",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:hard:4",
+          "quote": "English conversational",
+          "start": 0,
+          "end": 22,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    },
+    {
+      "condition_id": "hard_location",
+      "condition_type": "location",
+      "operator": "equals",
+      "value": "Shanghai",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:hard:5",
+          "quote": "Shanghai",
+          "start": 0,
+          "end": 8,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    },
+    {
+      "condition_id": "hard_availability",
+      "condition_type": "availability",
+      "operator": "equals",
+      "value": "immediate",
+      "resolution_status": "resolved",
+      "evidence_refs": [
+        {
+          "source_id": "jd:hard:6",
+          "quote": "immediate",
+          "start": 0,
+          "end": 9,
+          "alignment": "exact",
+          "occurrence_index": 0
+        }
+      ]
+    }
+  ],
+  "tools": {
+    "values": [],
+    "evidence_refs": []
+  },
+  "industries": {
+    "values": [],
+    "evidence_refs": []
+  },
+  "business_scenarios": {
+    "values": [],
+    "evidence_refs": []
+  },
+  "evidence_refs": [],
+  "quality_context": {
+    "snapshot_id": "quality_fixture_001",
+    "status": "trusted",
+    "completeness": 1.0,
+    "assessed_at": "2026-07-27",
+    "evidence_refs": []
+  },
+  "trend_context": null,
+  "unresolved_items": [],
+  "review_status": "approved",
+  "taxonomy_version": "position-taxonomy.v3.0.0",
+  "graph_version": "graph-fixture-v1",
+  "source_version": "position-source.v1",
+  "profile_version": "position-source.v1",
+  "position_code": "BACKEND_ENGINEER",
+  "classification_status": "resolved",
+  "career_level": "senior",
+  "leadership_scope": "none",
+  "sample_support_status": "sufficient"
+}

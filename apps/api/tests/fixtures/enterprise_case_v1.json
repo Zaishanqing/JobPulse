@@ -1,0 +1,162 @@
+{
+  "schema_version": "enterprise-case-source.v1",
+  "case_id": "D-ENTERPRISE-CASE-01",
+  "base_cv_fixture": "tests/fixtures/cv_ready.json",
+  "enterprise_job": {
+    "job_id": "enterprise-case-job-001",
+    "title": "反欺诈平台工程师",
+    "standard_position_id": "position_backend_engineer",
+    "jd_text": "岗位职责：负责反欺诈实时决策服务。业务场景：银行反欺诈。工作地点：Shanghai。熟悉 Python，优先熟悉 Docker。",
+    "jd_text_updated": "岗位职责：负责反欺诈实时决策服务。岗位职责：负责跨境支付风险策略。业务场景：银行反欺诈。工作地点：Shanghai。熟悉 Python，优先熟悉 Docker。",
+    "requirement_graph": {
+      "graph_version": "requirement-graph.v1",
+      "status": "complete",
+      "groups": [],
+      "unresolved_items": []
+    },
+    "updated_at": "2026-08-17T10:00:00+08:00",
+    "weights": [
+      {"skill_id": "skill_python", "weight": 0.7, "is_required": true, "is_bonus": false},
+      {"skill_id": "skill_docker", "weight": 0.3, "is_required": false, "is_bonus": true}
+    ]
+  },
+  "kg_profile": {
+    "contract_version": "position-profile.v3",
+    "position_id": "position_backend_engineer",
+    "position_code": "BACKEND_ENGINEER",
+    "position_name": "Backend Engineer",
+    "graph_version": "v3",
+    "graph_version_id": 3,
+    "profile_state": "published",
+    "published_at": "2026-08-17T01:00:00+00:00",
+    "taxonomy_version": "position-taxonomy.v3.0.0",
+    "classification_status": "resolved",
+    "sample_support_status": "sufficient",
+    "responsibilities": [{"text": "Build backend services"}],
+    "requirements": [],
+    "dependencies": {
+      "position_profile_thresholds": {
+        "required_skill_gate": {
+          "min_required_prevalence": 0.5,
+          "min_required_prevalence_jd_count": 1,
+          "min_required_purity": 0.5
+        }
+      }
+    },
+    "skill_relations": [
+      {
+        "skill_id": "skill_python",
+        "skill_name": "Python",
+        "weight": 1.0,
+        "modality": "required",
+        "required_prevalence": 1.0,
+        "required_supporting_jd_count": 3,
+        "required_purity": 1.0,
+        "supporting_jd_count": 3
+      },
+      {
+        "skill_id": "skill_docker",
+        "skill_name": "Docker",
+        "weight": 0.5,
+        "modality": "preferred",
+        "required_prevalence": 0.0,
+        "required_supporting_jd_count": 0,
+        "required_purity": 0.0,
+        "supporting_jd_count": 2
+      }
+    ],
+    "evidence_summary": [
+      {"evidence_id": "kg-python", "skill_id": "skill_python", "quote": "Python"},
+      {"evidence_id": "kg-docker", "skill_id": "skill_docker", "quote": "Docker"}
+    ],
+    "quality": {"publication_gate_passed": true, "completeness": 1.0}
+  },
+  "candidates": [
+    {
+      "candidate_id": "candidate-context-high",
+      "label": "高匹配且业务场景命中",
+      "candidate_status": "submitted",
+      "board_status": "succeeded",
+      "profile_version": "candidate-context-high.v1",
+      "recruiter_decision": {"decision": "fit", "reason_code": "FORMAL_HIGH_PASS", "reason_text": "Hard Gate 全部通过，且有反欺诈场景与工作 Evidence。"},
+      "operations": [
+        {"op": "replace", "path": ["work_experiences", 0, "responsibilities"], "value": ["负责反欺诈实时决策服务"]},
+        {"op": "replace", "path": ["work_experiences", 0, "business_scenarios"], "value": ["银行反欺诈"]},
+        {"op": "append", "path": ["projects"], "value": {
+          "experience_id": "project-fraud-decision",
+          "kind": "project",
+          "role": "Backend Engineer",
+          "responsibilities": ["负责反欺诈实时决策服务"],
+          "business_scenarios": ["银行反欺诈"],
+          "tool_skill_ids": ["skill_python"],
+          "start_date": "2023-01-01",
+          "end_date": "2025-01-01",
+          "evidence_refs": [
+            {"source_id": "cv:project:fraud", "quote": "负责反欺诈实时决策服务", "start": 0, "end": 11, "alignment": "exact", "occurrence_index": 0},
+            {"source_id": "cv:project:scenario", "quote": "银行反欺诈", "start": 0, "end": 5, "alignment": "exact", "occurrence_index": 0}
+          ]
+        }}
+      ]
+    },
+    {
+      "candidate_id": "candidate-high-pass",
+      "label": "高匹配 Hard Gate PASS",
+      "candidate_status": "submitted",
+      "board_status": "succeeded",
+      "profile_version": "candidate-high-pass.v1",
+      "recruiter_decision": {"decision": "fit", "reason_code": "FORMAL_PASS", "reason_text": "Python 能力及 Shanghai 硬条件通过，Evidence 可追溯。"},
+      "operations": []
+    },
+    {
+      "candidate_id": "candidate-hard-fail",
+      "label": "技能较强但 Hard Gate FAIL",
+      "candidate_status": "submitted",
+      "board_status": "succeeded",
+      "profile_version": "candidate-hard-fail.v1",
+      "recruiter_decision": {"decision": "unfit", "reason_code": "LOCATION_GATE_FAIL", "reason_text": "Python 能力较强，但期望地点为 Beijing，不满足正式地点 Hard Gate。"},
+      "operations": [
+        {"op": "replace", "path": ["match_features", 0, "canonical_name"], "value": "Beijing"},
+        {"op": "replace", "path": ["match_features", 0, "raw_text"], "value": "Beijing"},
+        {"op": "replace", "path": ["match_features", 0, "evidence_refs", 0, "quote"], "value": "Beijing"},
+        {"op": "replace", "path": ["match_features", 0, "evidence_refs", 0, "end"], "value": 7}
+      ]
+    },
+    {
+      "candidate_id": "candidate-evidence-uncertain",
+      "label": "Evidence 不足与不确定",
+      "candidate_status": "submitted",
+      "board_status": "succeeded",
+      "profile_version": "candidate-evidence-uncertain.v1",
+      "recruiter_decision": {"decision": "unfit", "reason_code": "EVIDENCE_INSUFFICIENT", "reason_text": "Python 仅有自述，缺少独立项目/工作 Evidence，当前不确定。"},
+      "operations": [
+        {"op": "replace", "path": ["skills", 0, "evidence_refs"], "value": []},
+        {"op": "replace", "path": ["skills", 0, "verification_status"], "value": "not_observed"},
+        {"op": "replace", "path": ["skills", 0, "demonstrated_level"], "value": "unknown"},
+        {"op": "replace", "path": ["capability_profiles"], "value": []},
+        {"op": "replace", "path": ["capability_evidence_links"], "value": []},
+        {"op": "replace", "path": ["work_experiences"], "value": []}
+      ]
+    },
+    {
+      "candidate_id": "candidate-stale",
+      "label": "JD 更新后的旧 Evaluation",
+      "candidate_status": "submitted",
+      "board_status": "stale",
+      "profile_version": "candidate-stale.v1",
+      "recruiter_decision": {"decision": "fit", "reason_code": "HISTORICAL_BEFORE_JD_UPDATE", "reason_text": "该理由属于 JD 更新前的历史决策，不得进入当前排序。"},
+      "operations": []
+    },
+    {
+      "candidate_id": "candidate-revoked",
+      "label": "已撤回 Candidate",
+      "candidate_status": "revoked",
+      "board_status": "revoked",
+      "profile_version": "candidate-revoked.v1",
+      "recruiter_decision": {"decision": "fit", "reason_code": "HISTORICAL_REVOKED", "reason_text": "候选人已撤回，历史正向理由不得恢复其排名。"},
+      "operations": [
+        {"op": "replace", "path": ["work_experiences", 0, "responsibilities"], "value": ["负责反欺诈实时决策服务"]},
+        {"op": "replace", "path": ["work_experiences", 0, "business_scenarios"], "value": ["银行反欺诈"]}
+      ]
+    }
+  ]
+}

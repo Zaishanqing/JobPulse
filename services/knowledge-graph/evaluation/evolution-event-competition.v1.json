@@ -1,0 +1,632 @@
+{
+  "dataset_id": "evolution-event-competition",
+  "dataset_version": "evolution-event-competition.v1",
+  "provenance": "synthetic_manually_labelled",
+  "purpose": "Evolution Event 专项评测：人工标注版本对，比较 Snapshot Diff Baseline 与 Full Event Detector。",
+  "not_covered": ["position_split", "position_merge"],
+  "cases": [
+    {
+      "case_id": "skill-emergence",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "同一技能权重显著上升，标注为 skill_emergence。",
+      "taxonomy_context": {
+        "skill_taxonomy": "LANG",
+        "related_categories": ["编程语言"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.55, "final_weight": 0.55, "weight": 0.55,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {"event_type": "skill_emergence", "source_keys": [], "target_keys": ["PY"]}
+      ]
+    },
+    {
+      "case_id": "skill-decline",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "TensorFlow 权重显著下降，标注为 skill_decline。",
+      "taxonomy_context": {
+        "skill_taxonomy": "ML",
+        "related_categories": ["机器学习框架"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "TF", "canonical_name": "TensorFlow", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.6, "final_weight": 0.6, "weight": 0.6,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "TF", "canonical_name": "TensorFlow", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.2, "final_weight": 0.2, "weight": 0.2,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "common", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {"event_type": "skill_decline", "source_keys": ["TF"], "target_keys": []}
+      ]
+    },
+    {
+      "case_id": "skill-replacement",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "ML 分类下 TensorFlow 下降、PyTorch 上升，标注为 replacement 且能力广度增加。",
+      "taxonomy_context": {
+        "skill_taxonomy": "ML",
+        "related_categories": ["机器学习框架"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "TF", "canonical_name": "TensorFlow", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.6, "final_weight": 0.6, "weight": 0.6,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "TF", "canonical_name": "TensorFlow", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.2, "final_weight": 0.2, "weight": 0.2,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "common", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "PT", "canonical_name": "PyTorch", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.5, "final_weight": 0.5, "weight": 0.5,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {"event_type": "skill_replacement", "source_keys": ["TF"], "target_keys": ["PT"]},
+        {"event_type": "role_expansion", "source_keys": [], "target_keys": []}
+      ]
+    },
+    {
+      "case_id": "technology-stack-migration",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "多个 ML 相关技能成组替换，标注为 technology_stack_migration 与 role_expansion。",
+      "taxonomy_context": {
+        "skill_taxonomy": "ML",
+        "related_categories": ["机器学习框架", "深度学习"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "TF", "canonical_name": "TensorFlow", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.6, "final_weight": 0.6, "weight": 0.6,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "KERAS", "canonical_name": "Keras", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.5, "final_weight": 0.5, "weight": 0.5,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "TF", "canonical_name": "TensorFlow", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.2, "final_weight": 0.2, "weight": 0.2,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "common", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "KERAS", "canonical_name": "Keras", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.15, "final_weight": 0.15, "weight": 0.15,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "common", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "PT", "canonical_name": "PyTorch", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.5, "final_weight": 0.5, "weight": 0.5,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "TRANSFORMERS", "canonical_name": "Transformers", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "PEFT", "canonical_name": "PEFT", "category_code": "ML",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.3, "final_weight": 0.3, "weight": 0.3,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "common", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {
+          "event_type": "technology_stack_migration",
+          "source_keys": ["KERAS", "TF"],
+          "target_keys": ["PEFT", "PT", "TRANSFORMERS"]
+        },
+        {"event_type": "role_expansion", "source_keys": [], "target_keys": []}
+      ]
+    },
+    {
+      "case_id": "responsibility-shift",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "职责从模型训练/数据处理转向 RAG 系统设计/评测/部署，同时职责范围扩大。",
+      "taxonomy_context": {
+        "skill_taxonomy": "AI",
+        "related_categories": ["应用开发", "评测"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [],
+          "responsibilities": [{"text": "模型训练"}, {"text": "数据处理"}],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [],
+          "responsibilities": [{"text": "RAG 系统设计"}, {"text": "评测"}, {"text": "部署"}],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {
+          "event_type": "responsibility_shift",
+          "source_keys": ["模型训练", "数据处理"],
+          "target_keys": ["RAG 系统设计", "评测", "部署"]
+        }
+      ]
+    },
+    {
+      "case_id": "role-expansion",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "技能与职责均增加，标注为 role_expansion；新增技能是支撑证据而非独立事件。",
+      "taxonomy_context": {
+        "skill_taxonomy": "AI/OPS",
+        "related_categories": ["智能体", "部署"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "RAG", "canonical_name": "RAG", "category_code": "AI",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.5, "final_weight": 0.5, "weight": 0.5,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "DEPLOY", "canonical_name": "Deploy", "category_code": "OPS",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.3, "final_weight": 0.3, "weight": 0.3,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "common", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}, {"text": "评测"}],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {"event_type": "role_expansion", "source_keys": [], "target_keys": []}
+      ]
+    },
+    {
+      "case_id": "role-contraction",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "技能与职责均减少，标注为 role_contraction。",
+      "taxonomy_context": {
+        "skill_taxonomy": "AI/OPS",
+        "related_categories": ["智能体", "部署"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "RAG", "canonical_name": "RAG", "category_code": "AI",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.5, "final_weight": 0.5, "weight": 0.5,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            },
+            {
+              "skill_id": "DEPLOY", "canonical_name": "Deploy", "category_code": "OPS",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.3, "final_weight": 0.3, "weight": 0.3,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "common", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}, {"text": "评测"}],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {"event_type": "role_contraction", "source_keys": [], "target_keys": []}
+      ]
+    },
+    {
+      "case_id": "position-rename",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "岗位名称从英文改为中文，技能与职责不变，标注为 position_rename。",
+      "taxonomy_context": {
+        "skill_taxonomy": "LANG",
+        "related_categories": ["岗位命名"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI 工程师", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {
+          "event_type": "position_rename",
+          "source_keys": ["AI Engineer"],
+          "target_keys": ["AI 工程师"]
+        }
+      ]
+    },
+    {
+      "case_id": "no-meaningful-event",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "仅有噪声级小幅波动，不应产生任何事件。",
+      "taxonomy_context": {
+        "skill_taxonomy": "LANG",
+        "related_categories": ["噪声"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.4, "final_weight": 0.4, "weight": 0.4,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "PY", "canonical_name": "Python", "category_code": "LANG",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.42, "final_weight": 0.42, "weight": 0.42,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [{"text": "应用开发"}],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": []
+    },
+    {
+      "case_id": "unrelated-skill-change-no-replacement",
+      "position_id": "POS_EVAL",
+      "from_version_id": 1,
+      "to_version_id": 2,
+      "annotation_note": "Excel 被 Kubernetes 替换，但分类不相关，不应判定为 skill_replacement。",
+      "taxonomy_context": {
+        "skill_taxonomy": "OFFICE/INFRA",
+        "related_categories": ["办公工具", "基础设施"]
+      },
+      "snapshots": {
+        "before": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-01-01", "end": "2026-03-31"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "EXCEL", "canonical_name": "Excel", "category_code": "OFFICE",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.5, "final_weight": 0.5, "weight": 0.5,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        },
+        "after": {
+          "position_id": "POS_EVAL",
+          "position": {"position_id": "POS_EVAL", "name": "AI Engineer", "category_code": "TECH"},
+          "time_window": {"start": "2026-04-01", "end": "2026-06-30"},
+          "sample_stats": {"included_samples": 3},
+          "skill_relations": [
+            {
+              "skill_id": "K8S", "canonical_name": "Kubernetes", "category_code": "INFRA",
+              "subcategory_code": null, "classifications": [], "taxonomy_version": "eval",
+              "auto_weight": 0.5, "final_weight": 0.5, "weight": 0.5,
+              "auto_confidence": 0.9, "final_confidence": 0.9, "confidence": 0.9,
+              "importance_level": "important", "primary_modality": "required",
+              "statistics": {"support_document_count": 3, "source_diversity": 2, "enterprise_coverage": 2},
+              "explanation": {"method": "eval"}
+            }
+          ],
+          "responsibilities": [],
+          "requirement_profile": []
+        }
+      },
+      "expected_events": [
+        {"event_type": "skill_decline", "source_keys": ["EXCEL"], "target_keys": []},
+        {"event_type": "skill_emergence", "source_keys": [], "target_keys": ["K8S"]}
+      ]
+    }
+  ]
+}

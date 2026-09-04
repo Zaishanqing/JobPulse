@@ -1,0 +1,44 @@
+{
+  "dataset_version": "matching-offline-anonymous.v1",
+  "annotation_version": "matching-offline-annotations.v1",
+  "fixture_notice": "anonymous_fixture_not_business_accuracy",
+  "samples": [
+    {
+      "sample_id": "anonymous_sample_001",
+      "cv_profile_path": "cv_ready.json",
+      "position_profile_path": "position_ready.json",
+      "skill_relations_path": "skill_relations.json",
+      "expected_recommendation": "strong_match",
+      "expected_hard_gate_status": "passed",
+      "embedding_vectors": [
+        {"vector_text": "Build services", "embedding": [1.0, 0.0]},
+        {"vector_text": "Build backend services", "embedding": [0.98, 0.02]}
+      ],
+      "annotations": [
+        {"requirement_id": "hard_education", "dimension": "hard_constraint", "label": "matched"},
+        {"requirement_id": "hard_experience", "dimension": "hard_constraint", "label": "matched"},
+        {"requirement_id": "hard_certificate", "dimension": "hard_constraint", "label": "matched"},
+        {"requirement_id": "hard_language", "dimension": "hard_constraint", "label": "matched"},
+        {"requirement_id": "hard_location", "dimension": "hard_constraint", "label": "matched"},
+        {"requirement_id": "hard_availability", "dimension": "hard_constraint", "label": "matched"},
+        {"requirement_id": "required:skill_python", "dimension": "required_skill", "label": "matched"},
+        {"requirement_id": "bonus:skill_go", "dimension": "bonus_skill", "label": "not_matched"},
+        {
+          "requirement_id": "responsibility:1",
+          "dimension": "responsibility",
+          "label": "partial",
+          "candidate_feature_id": "anonymous_feature_build_services",
+          "semantic_score": 0.94,
+          "relevant_rank": 1
+        },
+        {
+          "requirement_id": "project:required_skill_combination",
+          "dimension": "project",
+          "label": "not_matched",
+          "candidate_feature_id": "anonymous_feature_project_negative",
+          "semantic_score": 0.35
+        }
+      ]
+    }
+  ]
+}

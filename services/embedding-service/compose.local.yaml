@@ -1,0 +1,33 @@
+services:
+  embedding-service:
+    build:
+      context: ../..
+      dockerfile: services/embedding-service/Dockerfile
+      args:
+        PIP_INDEX_URL: ${PIP_INDEX_URL:-https://pypi.tuna.tsinghua.edu.cn/simple}
+        PIP_DEFAULT_TIMEOUT: ${PIP_DEFAULT_TIMEOUT:-120}
+        PIP_RETRIES: ${PIP_RETRIES:-10}
+        TORCH_VARIANT: cpu
+        TORCH_CPU_VERSION: ${TORCH_CPU_VERSION:-2.6.0+cpu}
+        TORCH_CPU_INDEX_URL: ${TORCH_CPU_INDEX_URL:-https://download.pytorch.org/whl/cpu}
+    environment:
+      EMBEDDING_MODEL_ID: BAAI/bge-m3
+      EMBEDDING_MODEL_REVISION: 5617a9f61b028005a4858fdac845db406aefb181
+      EMBEDDING_DIMENSION: 1024
+      EMBEDDING_NORMALIZED: "true"
+      EMBEDDING_BATCH_SIZE: 16
+      EMBEDDING_MAX_CONCURRENCY: 2
+      EMBEDDING_REQUEST_TIMEOUT_SECONDS: 60
+      EMBEDDING_CACHE_DIR: /models
+      HF_ENDPOINT: ${HF_ENDPOINT:-https://hf-mirror.com}
+    volumes:
+      - type: bind
+        source: ${EMBEDDING_MODEL_CACHE:-./.cache/embedding-models}
+        target: /models
+    ports:
+      - "8001:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=2)"]
+      interval: 15s
+      timeout: 5s
+      retries: 30

@@ -1,0 +1,482 @@
+{
+  "published": [
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_id": "56101559-7078-4599-9022-7c4f1b7d62d9",
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-07-30T00:00:00+00:00",
+      "version": {
+        "id": 32,
+        "version_number": 2,
+        "version_name": "AI_AGENT_ENGINEER-2026-bundle-1",
+        "build_run_id": 51,
+        "release_id": null,
+        "rollback_from_version_id": null,
+        "dependencies": {
+          "published_fact_versions": [
+            "main-system:7512e738-25e6-4d90-8a76-c19352849f80@2026-08-25T08:46:07.665845+00:00",
+            "main-system:8224aa07-ccf9-4d41-8133-819db395b99a@2026-08-25T08:46:06.740430+00:00",
+            "main-system:a6a5f58d-a6d6-4cf3-adff-2c3f6c727b77@2026-08-25T08:45:50.122746+00:00",
+            "main-system:d0822ad4-8924-43fc-9099-8ad9e3eb0ef2@2026-08-25T08:46:06.236111+00:00"
+          ],
+          "skill_catalog_version": "skill-taxonomy-snapshot.v1",
+          "mapping_snapshot_version": "main-capability-snapshot-v2",
+          "normalization_algorithm_version": "deterministic-normalization-v1",
+          "build_config_version": "weighted-v1:build:0c571d13ba70fcd1033d1e90",
+          "source_time_window": {
+            "start": "2026-07-27T00:00:00+00:00",
+            "end": "2026-07-30T00:00:00+00:00"
+          }
+        },
+        "rollback_from_version_number": null,
+        "rollback_reason": null,
+        "is_current": false,
+        "created_at": "2026-08-25T08:57:21.310772+00:00"
+      },
+      "reused": true
+    },
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_id": "56101559-7078-4599-9022-7c4f1b7d62d9",
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-08-02T00:00:00+00:00",
+      "version": {
+        "id": 33,
+        "version_number": 3,
+        "version_name": "AI_AGENT_ENGINEER-2026-bundle-2",
+        "build_run_id": 52,
+        "release_id": null,
+        "rollback_from_version_id": null,
+        "dependencies": {
+          "published_fact_versions": [
+            "main-system:220598e7-ac1c-4f88-b590-0463ed627622@2026-08-25T08:46:02.828817+00:00",
+            "main-system:281b1166-11d3-429f-83bc-be7ccf65d5c3@2026-08-25T08:46:00.665748+00:00",
+            "main-system:33809b92-29c0-4f80-94a2-b5c56cde51a9@2026-08-25T08:45:57.928042+00:00",
+            "main-system:4684cc6e-4f39-4fd2-9633-79624ffd6dd0@2026-08-25T08:46:01.203505+00:00",
+            "main-system:47a91964-ddbc-47b0-8f43-8ae20f0d260f@2026-08-25T08:45:55.444162+00:00",
+            "main-system:49887bc8-70d9-49a7-8cc9-1abb1ad56f45@2026-08-25T08:45:58.857370+00:00",
+            "main-system:4afd3f98-5012-48c9-95b5-0bb21fa15a35@2026-08-25T08:45:56.925106+00:00",
+            "main-system:5703d71c-f353-40fa-b6a3-0428fc6461fb@2026-08-25T08:45:58.793412+00:00",
+            "main-system:593f39b5-c270-411b-8361-631a8e27272d@2026-08-25T08:45:57.568270+00:00",
+            "main-system:691f33c2-6b06-46e6-b645-509dfac01315@2026-08-25T08:45:57.935422+00:00",
+            "main-system:710495a0-b765-4f45-8939-8c635f1a5eb8@2026-08-25T08:46:00.533754+00:00",
+            "main-system:74678ae1-812f-4a15-9b63-e74037c0ffe7@2026-08-25T08:45:55.748003+00:00",
+            "main-system:7512e738-25e6-4d90-8a76-c19352849f80@2026-08-25T08:46:07.665845+00:00",
+            "main-system:779931d5-dc5d-4e04-b76f-ec5d75a40bc2@2026-08-25T08:46:01.293554+00:00",
+            "main-system:78204aae-775e-45f8-bbb7-865229416461@2026-08-25T08:45:55.861445+00:00",
+            "main-system:8224aa07-ccf9-4d41-8133-819db395b99a@2026-08-25T08:46:06.740430+00:00",
+            "main-system:85556da4-dccf-4434-b084-ab5f65e31839@2026-08-25T08:45:58.834295+00:00",
+            "main-system:86f561a4-0145-4783-b9bf-be6b6b8c0e61@2026-08-25T08:45:56.814430+00:00",
+            "main-system:8960fe5d-9f90-42ab-9be1-78d6ea5690de@2026-08-25T08:45:55.107154+00:00",
+            "main-system:94b2e4f2-df99-4169-b072-862a91aab79f@2026-08-25T08:45:53.002936+00:00",
+            "main-system:9dc5f92e-64ad-4b5f-abda-5654a74bedf7@2026-08-25T08:45:57.595927+00:00",
+            "main-system:a426c4cb-d79c-4a00-aace-8c7aef6e7862@2026-08-25T08:45:54.453941+00:00",
+            "main-system:a6a5f58d-a6d6-4cf3-adff-2c3f6c727b77@2026-08-25T08:45:50.122746+00:00",
+            "main-system:a6dbb70e-4c93-4b92-8c52-eeef60bf67c0@2026-08-25T08:45:55.581564+00:00",
+            "main-system:afb811b6-a882-4222-9548-34a7675b4f45@2026-08-25T08:46:02.140310+00:00",
+            "main-system:bbca8b93-03c8-4eb6-909e-ce62f0a450a5@2026-08-25T08:45:54.908434+00:00",
+            "main-system:bfddb427-4a13-46f8-83da-d75b8143a0d5@2026-08-25T08:45:59.227736+00:00",
+            "main-system:c92a757d-3a74-4dc5-af93-a0985b70996a@2026-08-25T08:45:59.834897+00:00",
+            "main-system:d0822ad4-8924-43fc-9099-8ad9e3eb0ef2@2026-08-25T08:46:06.236111+00:00",
+            "main-system:d1ec4390-e793-41f8-8d73-6ebd400b0e88@2026-08-25T08:45:56.869286+00:00",
+            "main-system:d30d8e85-76ff-4291-83c8-63d9dc48df36@2026-08-25T08:45:57.374994+00:00",
+            "main-system:db381c9b-9918-4fb5-918c-5ff2b423c7c6@2026-08-25T08:46:01.798048+00:00",
+            "main-system:e66b0475-6dfa-44a2-be1e-f57d0514feba@2026-08-25T08:46:01.945873+00:00",
+            "main-system:e6d2bd63-eb8e-440c-93fb-c1ae5602e5f7@2026-08-25T08:45:56.632807+00:00",
+            "main-system:f7315690-0087-474a-a224-bda2ff8ed290@2026-08-25T08:45:53.949484+00:00",
+            "main-system:fae9abf9-99c1-4e4d-af15-2b71dc545cca@2026-08-25T08:45:49.954163+00:00",
+            "main-system:fb162cca-7ae7-498b-8c31-7808e08a1c73@2026-08-25T08:45:54.518472+00:00"
+          ],
+          "skill_catalog_version": "skill-taxonomy-snapshot.v1",
+          "mapping_snapshot_version": "main-capability-snapshot-v2",
+          "normalization_algorithm_version": "deterministic-normalization-v1",
+          "build_config_version": "weighted-v1:build:0c571d13ba70fcd1033d1e90",
+          "source_time_window": {
+            "start": "2026-07-27T00:00:00+00:00",
+            "end": "2026-08-02T00:00:00+00:00"
+          }
+        },
+        "rollback_from_version_number": null,
+        "rollback_reason": null,
+        "is_current": false,
+        "created_at": "2026-08-25T08:57:56.744862+00:00"
+      },
+      "reused": true
+    },
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "position_id": "56101559-7078-4599-9022-7c4f1b7d62d9",
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-08-08T00:00:00+00:00",
+      "version": {
+        "id": 34,
+        "version_number": 4,
+        "version_name": "AI_AGENT_ENGINEER-2026-bundle-3",
+        "build_run_id": 53,
+        "release_id": null,
+        "rollback_from_version_id": null,
+        "dependencies": {
+          "published_fact_versions": [
+            "main-system:0f68d4d4-02f6-456d-ba7b-3ec9f84ee8f7@2026-08-25T08:46:15.660646+00:00",
+            "main-system:220598e7-ac1c-4f88-b590-0463ed627622@2026-08-25T08:46:02.828817+00:00",
+            "main-system:281b1166-11d3-429f-83bc-be7ccf65d5c3@2026-08-25T08:46:00.665748+00:00",
+            "main-system:33809b92-29c0-4f80-94a2-b5c56cde51a9@2026-08-25T08:45:57.928042+00:00",
+            "main-system:4684cc6e-4f39-4fd2-9633-79624ffd6dd0@2026-08-25T08:46:01.203505+00:00",
+            "main-system:47a91964-ddbc-47b0-8f43-8ae20f0d260f@2026-08-25T08:45:55.444162+00:00",
+            "main-system:49887bc8-70d9-49a7-8cc9-1abb1ad56f45@2026-08-25T08:45:58.857370+00:00",
+            "main-system:4afd3f98-5012-48c9-95b5-0bb21fa15a35@2026-08-25T08:45:56.925106+00:00",
+            "main-system:5703d71c-f353-40fa-b6a3-0428fc6461fb@2026-08-25T08:45:58.793412+00:00",
+            "main-system:593f39b5-c270-411b-8361-631a8e27272d@2026-08-25T08:45:57.568270+00:00",
+            "main-system:5f23ca4d-c400-48a8-b138-33fe2a3ea7f2@2026-08-25T08:46:07.190836+00:00",
+            "main-system:691f33c2-6b06-46e6-b645-509dfac01315@2026-08-25T08:45:57.935422+00:00",
+            "main-system:710495a0-b765-4f45-8939-8c635f1a5eb8@2026-08-25T08:46:00.533754+00:00",
+            "main-system:74080660-4b0d-4f1b-819b-708f4d9aadfe@2026-08-25T08:46:14.318308+00:00",
+            "main-system:74678ae1-812f-4a15-9b63-e74037c0ffe7@2026-08-25T08:45:55.748003+00:00",
+            "main-system:7512e738-25e6-4d90-8a76-c19352849f80@2026-08-25T08:46:07.665845+00:00",
+            "main-system:779931d5-dc5d-4e04-b76f-ec5d75a40bc2@2026-08-25T08:46:01.293554+00:00",
+            "main-system:78204aae-775e-45f8-bbb7-865229416461@2026-08-25T08:45:55.861445+00:00",
+            "main-system:7e1e38b1-4aaa-4490-956c-007bfed38717@2026-08-25T08:46:15.922127+00:00",
+            "main-system:8224aa07-ccf9-4d41-8133-819db395b99a@2026-08-25T08:46:06.740430+00:00",
+            "main-system:85556da4-dccf-4434-b084-ab5f65e31839@2026-08-25T08:45:58.834295+00:00",
+            "main-system:86f561a4-0145-4783-b9bf-be6b6b8c0e61@2026-08-25T08:45:56.814430+00:00",
+            "main-system:8960fe5d-9f90-42ab-9be1-78d6ea5690de@2026-08-25T08:45:55.107154+00:00",
+            "main-system:94b2e4f2-df99-4169-b072-862a91aab79f@2026-08-25T08:45:53.002936+00:00",
+            "main-system:9dc5f92e-64ad-4b5f-abda-5654a74bedf7@2026-08-25T08:45:57.595927+00:00",
+            "main-system:a426c4cb-d79c-4a00-aace-8c7aef6e7862@2026-08-25T08:45:54.453941+00:00",
+            "main-system:a6a5f58d-a6d6-4cf3-adff-2c3f6c727b77@2026-08-25T08:45:50.122746+00:00",
+            "main-system:a6dbb70e-4c93-4b92-8c52-eeef60bf67c0@2026-08-25T08:45:55.581564+00:00",
+            "main-system:aa748490-5a15-4c94-be3a-f02bee27bb7a@2026-08-25T08:46:09.680243+00:00",
+            "main-system:afb811b6-a882-4222-9548-34a7675b4f45@2026-08-25T08:46:02.140310+00:00",
+            "main-system:b477ee70-f7e2-4df0-94ae-58a213e0df17@2026-08-25T08:46:16.475022+00:00",
+            "main-system:bbca8b93-03c8-4eb6-909e-ce62f0a450a5@2026-08-25T08:45:54.908434+00:00",
+            "main-system:bfddb427-4a13-46f8-83da-d75b8143a0d5@2026-08-25T08:45:59.227736+00:00",
+            "main-system:c1502c7b-71f5-467d-b896-d17a81b67632@2026-08-25T08:46:16.166274+00:00",
+            "main-system:c92a757d-3a74-4dc5-af93-a0985b70996a@2026-08-25T08:45:59.834897+00:00",
+            "main-system:d0822ad4-8924-43fc-9099-8ad9e3eb0ef2@2026-08-25T08:46:06.236111+00:00",
+            "main-system:d1ec4390-e793-41f8-8d73-6ebd400b0e88@2026-08-25T08:45:56.869286+00:00",
+            "main-system:d30d8e85-76ff-4291-83c8-63d9dc48df36@2026-08-25T08:45:57.374994+00:00",
+            "main-system:db381c9b-9918-4fb5-918c-5ff2b423c7c6@2026-08-25T08:46:01.798048+00:00",
+            "main-system:e66b0475-6dfa-44a2-be1e-f57d0514feba@2026-08-25T08:46:01.945873+00:00",
+            "main-system:e6d2bd63-eb8e-440c-93fb-c1ae5602e5f7@2026-08-25T08:45:56.632807+00:00",
+            "main-system:eb8e06fb-129d-4ce4-a0fc-22fe9f4a8345@2026-08-25T08:46:14.502143+00:00",
+            "main-system:eec0848b-7c7b-46ce-a79d-97a786e726a8@2026-08-25T08:46:16.188841+00:00",
+            "main-system:f3ed9dac-cf28-4714-ade6-6c1a25fdfb40@2026-08-25T08:46:12.777935+00:00",
+            "main-system:f7315690-0087-474a-a224-bda2ff8ed290@2026-08-25T08:45:53.949484+00:00",
+            "main-system:fae9abf9-99c1-4e4d-af15-2b71dc545cca@2026-08-25T08:45:49.954163+00:00",
+            "main-system:fb162cca-7ae7-498b-8c31-7808e08a1c73@2026-08-25T08:45:54.518472+00:00",
+            "main-system:fd1641e4-2a00-4f66-a735-83ca7864a9fb@2026-08-25T08:46:14.471343+00:00"
+          ],
+          "skill_catalog_version": "skill-taxonomy-snapshot.v1",
+          "mapping_snapshot_version": "main-capability-snapshot-v2",
+          "normalization_algorithm_version": "deterministic-normalization-v1",
+          "build_config_version": "weighted-v1:build:0c571d13ba70fcd1033d1e90",
+          "source_time_window": {
+            "start": "2026-07-27T00:00:00+00:00",
+            "end": "2026-08-08T00:00:00+00:00"
+          }
+        },
+        "rollback_from_version_number": null,
+        "rollback_reason": null,
+        "is_current": true,
+        "created_at": "2026-08-25T08:58:35.916666+00:00"
+      },
+      "reused": true
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "position_id": "be810ef8-3b45-4b1b-8265-140d216fdcdc",
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-07-30T00:00:00+00:00",
+      "version": {
+        "id": 35,
+        "version_number": 2,
+        "version_name": "BACKEND_ENGINEER-2026-bundle-1",
+        "build_run_id": 54,
+        "release_id": null,
+        "rollback_from_version_id": null,
+        "dependencies": {
+          "published_fact_versions": [
+            "main-system:00f8301a-ce82-45b6-8283-6d1fa7236377@2026-08-25T08:45:49.448190+00:00",
+            "main-system:2da27294-33b8-4242-ad3f-85429aef0ef3@2026-08-25T08:46:16.674488+00:00",
+            "main-system:3684c44b-4528-411a-ac3e-2270d83234a9@2026-08-25T08:45:48.770080+00:00",
+            "main-system:3bde4c43-875a-4a25-a7cd-abc92805a37c@2026-08-25T08:46:16.017805+00:00",
+            "main-system:4b13e9f0-5ea9-4532-818b-8828971f683d@2026-08-25T08:45:47.701005+00:00",
+            "main-system:57501d87-daef-49e3-a096-49d0e174dcfe@2026-08-25T08:45:48.869583+00:00",
+            "main-system:619057fd-d1c6-4d2a-bfcc-0674abb804b1@2026-08-25T08:45:50.093479+00:00",
+            "main-system:63099fd3-a825-48b1-ae5e-a0f531710490@2026-08-25T08:46:07.378176+00:00",
+            "main-system:6c2547e2-a6f1-4dfe-a30d-8080c2516621@2026-08-25T08:46:16.607874+00:00",
+            "main-system:6c9a730e-683b-4c89-a833-0eea9af22097@2026-08-25T08:45:49.227377+00:00",
+            "main-system:749cac9b-1757-4e79-a392-bd8f3e2c79de@2026-08-25T08:45:47.659218+00:00",
+            "main-system:bdce7679-5937-4bdc-97da-5c98d09fe357@2026-08-25T08:46:07.396447+00:00",
+            "main-system:d29a16c4-81ed-4ecb-8ab7-42ac8aed20d0@2026-08-25T08:45:49.368176+00:00",
+            "main-system:deda5481-5ae7-420a-9aad-a6fa65aeff5b@2026-08-25T08:46:06.089155+00:00",
+            "main-system:ed46114b-58ad-481c-a4d7-0dfed4c471ca@2026-08-25T08:46:17.257729+00:00"
+          ],
+          "skill_catalog_version": "skill-taxonomy-snapshot.v1",
+          "mapping_snapshot_version": "main-capability-snapshot-v2",
+          "normalization_algorithm_version": "deterministic-normalization-v1",
+          "build_config_version": "weighted-v1:build:0c571d13ba70fcd1033d1e90",
+          "source_time_window": {
+            "start": "2026-07-27T00:00:00+00:00",
+            "end": "2026-07-30T00:00:00+00:00"
+          }
+        },
+        "rollback_from_version_number": null,
+        "rollback_reason": null,
+        "is_current": true,
+        "created_at": "2026-08-25T08:58:51.816669+00:00"
+      },
+      "reused": true
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "position_id": "be810ef8-3b45-4b1b-8265-140d216fdcdc",
+      "job_id": 47,
+      "build_run_id": 58,
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-08-02T00:00:00+00:00",
+      "summary": {
+        "input": {
+          "samples": 514
+        },
+        "valid": {
+          "samples": 58
+        },
+        "deduplication": {
+          "samples": 58,
+          "duplicates": 0
+        },
+        "excluded": {
+          "samples": 456,
+          "by_reason": {
+            "outside_window": 402,
+            "position_mismatch_or_unresolved": 308
+          }
+        },
+        "risks": {
+          "count": 0,
+          "affected_samples": 0,
+          "by_reason": {}
+        },
+        "manual_modifications": {
+          "relations": 0,
+          "fields": 0,
+          "events": 0
+        },
+        "included_samples": 58,
+        "excluded_samples": 456,
+        "relations": 136,
+        "minimum_valid_samples": 1,
+        "skill_profile_available": true,
+        "task_profile_available": true,
+        "requirement_profile_available": true
+      },
+      "human_approved_review_count": 214,
+      "version": {
+        "version_id": 36,
+        "version_number": 3,
+        "rollback_from_version_id": null
+      }
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "position_id": "be810ef8-3b45-4b1b-8265-140d216fdcdc",
+      "job_id": 48,
+      "build_run_id": 59,
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-08-08T00:00:00+00:00",
+      "summary": {
+        "input": {
+          "samples": 514
+        },
+        "valid": {
+          "samples": 101
+        },
+        "deduplication": {
+          "samples": 101,
+          "duplicates": 0
+        },
+        "excluded": {
+          "samples": 413,
+          "by_reason": {
+            "outside_window": 339,
+            "position_mismatch_or_unresolved": 308
+          }
+        },
+        "risks": {
+          "count": 0,
+          "affected_samples": 0,
+          "by_reason": {}
+        },
+        "manual_modifications": {
+          "relations": 0,
+          "fields": 0,
+          "events": 0
+        },
+        "included_samples": 101,
+        "excluded_samples": 413,
+        "relations": 142,
+        "minimum_valid_samples": 1,
+        "skill_profile_available": true,
+        "task_profile_available": true,
+        "requirement_profile_available": true
+      },
+      "human_approved_review_count": 295,
+      "version": {
+        "version_id": 37,
+        "version_number": 4,
+        "rollback_from_version_id": null
+      }
+    },
+    {
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_id": "e9b98dc4-1ab1-42d0-b9ee-c2467dc7b675",
+      "job_id": 49,
+      "build_run_id": 60,
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-07-30T00:00:00+00:00",
+      "summary": {
+        "input": {
+          "samples": 514
+        },
+        "valid": {
+          "samples": 6
+        },
+        "deduplication": {
+          "samples": 6,
+          "duplicates": 0
+        },
+        "excluded": {
+          "samples": 508,
+          "by_reason": {
+            "outside_window": 489,
+            "position_mismatch_or_unresolved": 413
+          }
+        },
+        "risks": {
+          "count": 0,
+          "affected_samples": 0,
+          "by_reason": {}
+        },
+        "manual_modifications": {
+          "relations": 0,
+          "fields": 0,
+          "events": 0
+        },
+        "included_samples": 6,
+        "excluded_samples": 508,
+        "relations": 25,
+        "minimum_valid_samples": 1,
+        "skill_profile_available": true,
+        "task_profile_available": true,
+        "requirement_profile_available": true
+      },
+      "human_approved_review_count": 35,
+      "version": {
+        "version_id": 38,
+        "version_number": 2,
+        "rollback_from_version_id": null
+      }
+    },
+    {
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_id": "e9b98dc4-1ab1-42d0-b9ee-c2467dc7b675",
+      "job_id": 50,
+      "build_run_id": 61,
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-08-02T00:00:00+00:00",
+      "summary": {
+        "input": {
+          "samples": 514
+        },
+        "valid": {
+          "samples": 17
+        },
+        "deduplication": {
+          "samples": 17,
+          "duplicates": 0
+        },
+        "excluded": {
+          "samples": 497,
+          "by_reason": {
+            "outside_window": 402,
+            "position_mismatch_or_unresolved": 413
+          }
+        },
+        "risks": {
+          "count": 0,
+          "affected_samples": 0,
+          "by_reason": {}
+        },
+        "manual_modifications": {
+          "relations": 0,
+          "fields": 0,
+          "events": 0
+        },
+        "included_samples": 17,
+        "excluded_samples": 497,
+        "relations": 51,
+        "minimum_valid_samples": 1,
+        "skill_profile_available": true,
+        "task_profile_available": true,
+        "requirement_profile_available": true
+      },
+      "human_approved_review_count": 95,
+      "version": {
+        "version_id": 39,
+        "version_number": 3,
+        "rollback_from_version_id": null
+      }
+    },
+    {
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "position_id": "e9b98dc4-1ab1-42d0-b9ee-c2467dc7b675",
+      "job_id": 51,
+      "build_run_id": 62,
+      "window_start": "2026-07-27T00:00:00+00:00",
+      "window_end": "2026-08-08T00:00:00+00:00",
+      "summary": {
+        "input": {
+          "samples": 514
+        },
+        "valid": {
+          "samples": 26
+        },
+        "deduplication": {
+          "samples": 26,
+          "duplicates": 0
+        },
+        "excluded": {
+          "samples": 488,
+          "by_reason": {
+            "outside_window": 339,
+            "position_mismatch_or_unresolved": 413
+          }
+        },
+        "risks": {
+          "count": 0,
+          "affected_samples": 0,
+          "by_reason": {}
+        },
+        "manual_modifications": {
+          "relations": 0,
+          "fields": 0,
+          "events": 0
+        },
+        "included_samples": 26,
+        "excluded_samples": 488,
+        "relations": 63,
+        "minimum_valid_samples": 1,
+        "skill_profile_available": true,
+        "task_profile_available": true,
+        "requirement_profile_available": true
+      },
+      "human_approved_review_count": 123,
+      "version": {
+        "version_id": 40,
+        "version_number": 4,
+        "rollback_from_version_id": null
+      }
+    }
+  ]
+}

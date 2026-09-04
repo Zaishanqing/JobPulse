@@ -1,0 +1,719 @@
+{
+  "dataset_id": "candidate-lifecycle-competition",
+  "dataset_version": "candidate-lifecycle-competition.v1",
+  "provenance": "synthetic_manually_labelled",
+  "purpose": "小型跨窗口评测集：验证 candidate identity 与 lifecycle 的链接级指标、状态指标和组件消融。",
+  "source_metadata": {
+    "annotation_method": "synthetic_rule_then_manual_review",
+    "annotation_reviewers": 2,
+    "domain": "job_candidate_lifecycle"
+  },
+  "cases": [
+    {
+      "case_id": "title-rename-same-candidate",
+      "scenario": "同一岗位 title 改名但身份不变",
+      "semantic_available": true,
+      "lifecycle_config": {
+        "weak_to_incubating_min_windows": 2,
+        "weak_to_incubating_min_support": 1,
+        "weak_to_incubating_min_companies": 1,
+        "weak_to_incubating_min_emergence": 0.0,
+        "incubating_to_emerging_min_windows": 3,
+        "incubating_to_emerging_min_support": 1,
+        "incubating_to_emerging_min_companies": 1,
+        "incubating_to_emerging_min_emergence": 0.0,
+        "incubating_to_emerging_min_identity_stability": 1,
+        "identity_stability_threshold": 0.6
+      },
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "rename-1",
+              "window_id": "w1",
+              "title": "AI Agent Developer",
+              "skills": ["python", "rag"],
+              "responsibilities": ["构建智能体应用"],
+              "member_jd_ids": ["jd-101", "jd-102"],
+              "semantic_centroid": [1.0, 0.0, 0.0],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.6,
+              "expected_candidate_id": "cand-rag-agent"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "rename-2",
+              "window_id": "w2",
+              "title": "Agent Engineer",
+              "skills": ["python", "rag"],
+              "responsibilities": ["构建智能体应用"],
+              "member_jd_ids": ["jd-103", "jd-104"],
+              "semantic_centroid": [0.95, 0.1, 0.0],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.65,
+              "expected_candidate_id": "cand-rag-agent"
+            }
+          ]
+        },
+        {
+          "window_id": "w3",
+          "observations": [
+            {
+              "observation_id": "rename-3",
+              "window_id": "w3",
+              "title": "智能体应用工程师",
+              "skills": ["python", "rag"],
+              "responsibilities": ["构建智能体应用"],
+              "member_jd_ids": ["jd-105"],
+              "semantic_centroid": [0.9, 0.2, 0.05],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.7,
+              "expected_candidate_id": "cand-rag-agent"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-rag-agent", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-rag-agent", "state": "incubating"},
+          {"window_id": "w3", "candidate_id": "cand-rag-agent", "state": "emerging_candidate"}
+        ]
+      }
+    },
+    {
+      "case_id": "skill-change-same-candidate",
+      "scenario": "skill 变化但仍是同一 candidate",
+      "semantic_available": false,
+      "lifecycle_config": {
+        "weak_to_incubating_min_windows": 2,
+        "weak_to_incubating_min_support": 1,
+        "weak_to_incubating_min_companies": 1,
+        "weak_to_incubating_min_emergence": 0.0,
+        "incubating_to_emerging_min_windows": 3,
+        "incubating_to_emerging_min_support": 1,
+        "incubating_to_emerging_min_companies": 1,
+        "incubating_to_emerging_min_emergence": 0.0,
+        "incubating_to_emerging_min_identity_stability": 1,
+        "identity_stability_threshold": 0.6
+      },
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "skill-1",
+              "window_id": "w1",
+              "title": "大模型部署工程师",
+              "skills": ["python", "docker", "k8s"],
+              "responsibilities": ["模型服务部署", "监控"],
+              "member_jd_ids": ["jd-201", "jd-202"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.6,
+              "expected_candidate_id": "cand-llm-deploy"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "skill-2",
+              "window_id": "w2",
+              "title": "大模型部署工程师",
+              "skills": ["python", "docker", "k8s", "gpu"],
+              "responsibilities": ["模型服务部署", "监控"],
+              "member_jd_ids": ["jd-203", "jd-204"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.62,
+              "expected_candidate_id": "cand-llm-deploy"
+            }
+          ]
+        },
+        {
+          "window_id": "w3",
+          "observations": [
+            {
+              "observation_id": "skill-3",
+              "window_id": "w3",
+              "title": "大模型部署工程师",
+              "skills": ["python", "k8s", "gpu", "vllm"],
+              "responsibilities": ["模型服务部署", "监控", "压测"],
+              "member_jd_ids": ["jd-205"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.65,
+              "expected_candidate_id": "cand-llm-deploy"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-llm-deploy", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-llm-deploy", "state": "incubating"},
+          {"window_id": "w3", "candidate_id": "cand-llm-deploy", "state": "emerging_candidate"}
+        ]
+      }
+    },
+    {
+      "case_id": "responsibility-change-same-candidate",
+      "scenario": "responsibility 变化但仍是同一 candidate",
+      "semantic_available": false,
+      "lifecycle_config": {
+        "weak_to_incubating_min_windows": 2,
+        "weak_to_incubating_min_support": 1,
+        "weak_to_incubating_min_companies": 1,
+        "weak_to_incubating_min_emergence": 0.0,
+        "incubating_to_emerging_min_windows": 3,
+        "incubating_to_emerging_min_support": 1,
+        "incubating_to_emerging_min_companies": 1,
+        "incubating_to_emerging_min_emergence": 0.0,
+        "incubating_to_emerging_min_identity_stability": 1,
+        "identity_stability_threshold": 0.6
+      },
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "resp-1",
+              "window_id": "w1",
+              "title": "数据分析师",
+              "skills": ["sql", "python"],
+              "responsibilities": ["取数报表"],
+              "member_jd_ids": ["jd-301", "jd-302"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.6,
+              "expected_candidate_id": "cand-data-analyst"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "resp-2",
+              "window_id": "w2",
+              "title": "数据分析师",
+              "skills": ["sql", "python"],
+              "responsibilities": ["取数报表", "指标体系"],
+              "member_jd_ids": ["jd-302", "jd-303"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.62,
+              "expected_candidate_id": "cand-data-analyst"
+            }
+          ]
+        },
+        {
+          "window_id": "w3",
+          "observations": [
+            {
+              "observation_id": "resp-3",
+              "window_id": "w3",
+              "title": "数据分析师",
+              "skills": ["sql", "python"],
+              "responsibilities": ["指标体系", "专题分析", "数据治理"],
+              "member_jd_ids": ["jd-303", "jd-304"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.65,
+              "expected_candidate_id": "cand-data-analyst"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-data-analyst", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-data-analyst", "state": "incubating"},
+          {"window_id": "w3", "candidate_id": "cand-data-analyst", "state": "emerging_candidate"}
+        ]
+      }
+    },
+    {
+      "case_id": "similar-title-different-candidate",
+      "scenario": "相似 title 但实际上不同岗位",
+      "semantic_available": false,
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "similar-a",
+              "window_id": "w1",
+              "title": "AI Engineer",
+              "skills": ["python", "ml"],
+              "responsibilities": ["模型训练"],
+              "member_jd_ids": ["jd-401"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.4,
+              "expected_candidate_id": "cand-ai-ml"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "similar-b",
+              "window_id": "w2",
+              "title": "AI 工程师",
+              "skills": ["java", "spring"],
+              "responsibilities": ["后端开发"],
+              "member_jd_ids": ["jd-402"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.4,
+              "expected_candidate_id": "cand-ai-backend"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-ai-ml", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-ai-backend", "state": "weak_signal"}
+        ]
+      }
+    },
+    {
+      "case_id": "candidate-growth",
+      "scenario": "candidate 持续成长",
+      "semantic_available": false,
+      "lifecycle_config": {
+        "weak_to_incubating_min_windows": 2,
+        "weak_to_incubating_min_support": 1,
+        "weak_to_incubating_min_companies": 1,
+        "weak_to_incubating_min_emergence": 0.0,
+        "incubating_to_emerging_min_windows": 3,
+        "incubating_to_emerging_min_support": 1,
+        "incubating_to_emerging_min_companies": 1,
+        "incubating_to_emerging_min_emergence": 0.0,
+        "incubating_to_emerging_min_identity_stability": 1,
+        "emerging_to_stable_min_windows": 4,
+        "emerging_to_stable_min_support": 1,
+        "emerging_to_stable_min_companies": 1,
+        "emerging_to_stable_min_emergence": 0.0,
+        "emerging_to_stable_min_identity_stability": 1,
+        "identity_stability_threshold": 0.6
+      },
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "growth-1",
+              "window_id": "w1",
+              "title": "AI 智能体开发工程师",
+              "skills": ["python", "rag"],
+              "responsibilities": ["构建智能体"],
+              "member_jd_ids": ["jd-501"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.4,
+              "expected_candidate_id": "cand-agent-growth"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "growth-2",
+              "window_id": "w2",
+              "title": "AI 智能体开发工程师",
+              "skills": ["python", "rag"],
+              "responsibilities": ["构建智能体"],
+              "member_jd_ids": ["jd-502", "jd-503"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.5,
+              "expected_candidate_id": "cand-agent-growth"
+            }
+          ]
+        },
+        {
+          "window_id": "w3",
+          "observations": [
+            {
+              "observation_id": "growth-3",
+              "window_id": "w3",
+              "title": "AI 智能体开发工程师",
+              "skills": ["python", "rag", "agent"],
+              "responsibilities": ["构建智能体", "评测"],
+              "member_jd_ids": ["jd-504", "jd-505", "jd-506"],
+              "support_count": 4,
+              "company_count": 3,
+              "emergence_score": 0.6,
+              "expected_candidate_id": "cand-agent-growth"
+            }
+          ]
+        },
+        {
+          "window_id": "w4",
+          "observations": [
+            {
+              "observation_id": "growth-4",
+              "window_id": "w4",
+              "title": "AI 智能体开发工程师",
+              "skills": ["python", "rag", "agent", "mcp"],
+              "responsibilities": ["构建智能体", "评测", "部署"],
+              "member_jd_ids": ["jd-507", "jd-508", "jd-509", "jd-510"],
+              "support_count": 5,
+              "company_count": 4,
+              "emergence_score": 0.7,
+              "expected_candidate_id": "cand-agent-growth"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-agent-growth", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-agent-growth", "state": "incubating"},
+          {"window_id": "w3", "candidate_id": "cand-agent-growth", "state": "emerging_candidate"},
+          {"window_id": "w4", "candidate_id": "cand-agent-growth", "state": "stable_emerging_role"}
+        ]
+      }
+    },
+    {
+      "case_id": "candidate-decline",
+      "scenario": "candidate 衰退但未立即消失",
+      "semantic_available": false,
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "decline-1",
+              "window_id": "w1",
+              "title": "传统推荐算法工程师",
+              "skills": ["协同过滤", "python"],
+              "responsibilities": ["推荐系统开发"],
+              "member_jd_ids": ["jd-601", "jd-602", "jd-603", "jd-604"],
+              "support_count": 4,
+              "company_count": 3,
+              "emergence_score": 0.7,
+              "expected_candidate_id": "cand-recommendation"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "decline-2",
+              "window_id": "w2",
+              "title": "传统推荐算法工程师",
+              "skills": ["协同过滤", "python"],
+              "responsibilities": ["推荐系统开发"],
+              "member_jd_ids": ["jd-605", "jd-606", "jd-607"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.5,
+              "expected_candidate_id": "cand-recommendation"
+            }
+          ]
+        },
+        {
+          "window_id": "w3",
+          "observations": [
+            {
+              "observation_id": "decline-3",
+              "window_id": "w3",
+              "title": "传统推荐算法工程师",
+              "skills": ["协同过滤", "python"],
+              "responsibilities": ["推荐系统开发"],
+              "member_jd_ids": ["jd-608", "jd-609"],
+              "support_count": 2,
+              "company_count": 2,
+              "emergence_score": 0.4,
+              "expected_candidate_id": "cand-recommendation"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-recommendation", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-recommendation", "state": "incubating"},
+          {"window_id": "w3", "candidate_id": "cand-recommendation", "state": "incubating"}
+        ]
+      }
+    },
+    {
+      "case_id": "noise",
+      "scenario": "低质量重复信号被识别为 noise",
+      "semantic_available": false,
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "noise-1",
+              "window_id": "w1",
+              "title": "模糊岗位标题",
+              "skills": ["python"],
+              "responsibilities": ["临时任务"],
+              "member_jd_ids": ["jd-701"],
+              "support_count": 1,
+              "company_count": 1,
+              "emergence_score": 0.1,
+              "expected_candidate_id": "cand-noise"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "noise-2",
+              "window_id": "w2",
+              "title": "模糊岗位标题",
+              "skills": ["python"],
+              "responsibilities": ["临时任务"],
+              "member_jd_ids": ["jd-702"],
+              "support_count": 1,
+              "company_count": 1,
+              "emergence_score": 0.1,
+              "expected_candidate_id": "cand-noise"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-noise", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-noise", "state": "noise"}
+        ]
+      }
+    },
+    {
+      "case_id": "dead",
+      "scenario": "连续缺失窗口后 candidate 进入 dead",
+      "semantic_available": false,
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "dead-1",
+              "window_id": "w1",
+              "title": "旧版低代码平台工程师",
+              "skills": ["低代码", "sql"],
+              "responsibilities": ["表单搭建"],
+              "member_jd_ids": ["jd-801", "jd-802", "jd-803"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.6,
+              "expected_candidate_id": "cand-lowcode"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "dead-2",
+              "window_id": "w2",
+              "title": "旧版低代码平台工程师",
+              "skills": ["低代码", "sql"],
+              "responsibilities": ["表单搭建"],
+              "member_jd_ids": ["jd-804", "jd-805", "jd-806"],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.6,
+              "expected_candidate_id": "cand-lowcode"
+            }
+          ]
+        },
+        {"window_id": "w3", "observations": []},
+        {"window_id": "w4", "observations": []}
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-lowcode", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-lowcode", "state": "incubating"},
+          {"window_id": "w3", "candidate_id": "cand-lowcode", "state": "incubating"},
+          {"window_id": "w4", "candidate_id": "cand-lowcode", "state": "dead"}
+        ]
+      }
+    },
+    {
+      "case_id": "new-candidate-emergence",
+      "scenario": "新 candidate 真正出现",
+      "semantic_available": false,
+      "lifecycle_config": {
+        "weak_to_incubating_min_windows": 2,
+        "weak_to_incubating_min_support": 1,
+        "weak_to_incubating_min_companies": 1,
+        "weak_to_incubating_min_emergence": 0.0,
+        "incubating_to_emerging_min_windows": 3,
+        "incubating_to_emerging_min_support": 1,
+        "incubating_to_emerging_min_companies": 1,
+        "incubating_to_emerging_min_emergence": 0.0,
+        "incubating_to_emerging_min_identity_stability": 1,
+        "identity_stability_threshold": 0.6
+      },
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "new-a1",
+              "window_id": "w1",
+              "title": "Agent Ops 工程师",
+              "skills": ["python", "rag"],
+              "responsibilities": ["智能体运维"],
+              "member_jd_ids": ["jd-901"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.4,
+              "expected_candidate_id": "cand-agent-ops"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "new-a2",
+              "window_id": "w2",
+              "title": "Agent Ops 工程师",
+              "skills": ["python", "rag"],
+              "responsibilities": ["智能体运维"],
+              "member_jd_ids": ["jd-902", "jd-903"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.5,
+              "expected_candidate_id": "cand-agent-ops"
+            },
+            {
+              "observation_id": "new-b1",
+              "window_id": "w2",
+              "title": "AI 安全审计师",
+              "skills": ["red-team", "评测"],
+              "responsibilities": ["安全审计"],
+              "member_jd_ids": ["jd-904"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.5,
+              "expected_candidate_id": "cand-ai-safety"
+            }
+          ]
+        },
+        {
+          "window_id": "w3",
+          "observations": [
+            {
+              "observation_id": "new-a3",
+              "window_id": "w3",
+              "title": "Agent Ops 工程师",
+              "skills": ["python", "rag"],
+              "responsibilities": ["智能体运维"],
+              "member_jd_ids": ["jd-905", "jd-906"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.55,
+              "expected_candidate_id": "cand-agent-ops"
+            },
+            {
+              "observation_id": "new-b2",
+              "window_id": "w3",
+              "title": "AI 安全审计师",
+              "skills": ["red-team", "评测"],
+              "responsibilities": ["安全审计"],
+              "member_jd_ids": ["jd-907"],
+              "support_count": 2,
+              "company_count": 1,
+              "emergence_score": 0.55,
+              "expected_candidate_id": "cand-ai-safety"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-agent-ops", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-agent-ops", "state": "incubating"},
+          {"window_id": "w2", "candidate_id": "cand-ai-safety", "state": "weak_signal"},
+          {"window_id": "w3", "candidate_id": "cand-agent-ops", "state": "emerging_candidate"},
+          {"window_id": "w3", "candidate_id": "cand-ai-safety", "state": "incubating"}
+        ]
+      }
+    },
+    {
+      "case_id": "cross-language-rename-semantic",
+      "scenario": "跨语言 title 改名依赖 semantic 维持身份",
+      "semantic_available": true,
+      "identity_config": {
+        "identity_match_threshold": 0.4
+      },
+      "lifecycle_config": {
+        "weak_to_incubating_min_windows": 2,
+        "weak_to_incubating_min_support": 1,
+        "weak_to_incubating_min_companies": 1,
+        "weak_to_incubating_min_emergence": 0.0,
+        "identity_stability_threshold": 0.6
+      },
+      "windows": [
+        {
+          "window_id": "w1",
+          "observations": [
+            {
+              "observation_id": "sem-1",
+              "window_id": "w1",
+              "title": "AI Agent Engineer",
+              "skills": ["python", "rag", "langchain"],
+              "responsibilities": ["构建智能体应用"],
+              "member_jd_ids": ["jd-1001", "jd-1002"],
+              "semantic_centroid": [1.0, 0.0],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.6,
+              "expected_candidate_id": "cand-semantic-agent"
+            }
+          ]
+        },
+        {
+          "window_id": "w2",
+          "observations": [
+            {
+              "observation_id": "sem-2",
+              "window_id": "w2",
+              "title": "智能体应用工程师",
+              "skills": ["python", "langgraph", "mcp"],
+              "responsibilities": ["构建智能体应用"],
+              "member_jd_ids": ["jd-1002", "jd-1003"],
+              "semantic_centroid": [0.9, 0.1],
+              "support_count": 3,
+              "company_count": 2,
+              "emergence_score": 0.65,
+              "expected_candidate_id": "cand-semantic-agent"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "lifecycle_states": [
+          {"window_id": "w1", "candidate_id": "cand-semantic-agent", "state": "weak_signal"},
+          {"window_id": "w2", "candidate_id": "cand-semantic-agent", "state": "incubating"}
+        ]
+      }
+    }
+  ]
+}

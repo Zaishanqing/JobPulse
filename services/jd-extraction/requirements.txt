@@ -1,0 +1,14 @@
+pandas
+openpyxl
+pydantic>=2
+openai
+python-dotenv
+tenacity
+pyyaml
+tqdm
+pytest
+pytest-cov>=5
+pytest-xdist>=3.6
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+httpx>=0.27,<1

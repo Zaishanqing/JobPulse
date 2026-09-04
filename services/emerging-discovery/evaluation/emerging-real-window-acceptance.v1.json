@@ -1,0 +1,51 @@
+{
+  "dataset_version": "emerging-real-window-acceptance.v1",
+  "dataset_kind": "synthetic_engineering_regression",
+  "market_representative": false,
+  "source_version": "curated-reviewed-jd-window-snapshots.v1",
+  "algorithm": "strict",
+  "config_version": "candidate-lifecycle-v1",
+  "config": {
+    "weak_to_incubating_min_windows": 2,
+    "weak_to_incubating_min_support": 3,
+    "weak_to_incubating_min_companies": 3,
+    "weak_to_incubating_min_emergence": 0.0,
+    "incubating_to_emerging_min_windows": 3,
+    "incubating_to_emerging_min_support": 3,
+    "incubating_to_emerging_min_companies": 3,
+    "incubating_to_emerging_min_emergence": 0.0,
+    "incubating_to_emerging_min_identity_stability": 1,
+    "emerging_to_stable_min_windows": 4,
+    "emerging_to_stable_min_support": 3,
+    "emerging_to_stable_min_companies": 3,
+    "emerging_to_stable_min_emergence": 0.0,
+    "emerging_to_stable_min_identity_stability": 1,
+    "dead_after_missing_windows": 2
+  },
+  "windows": [
+    {"window_id": "phase-9", "start": "2026-01-01", "end": "2026-01-31", "title": "AI Agent Developer"},
+    {"window_id": "phase-2", "start": "2026-02-01", "end": "2026-02-28", "title": "智能体应用工程师"},
+    {"window_id": "phase-11", "start": "2026-03-01", "end": "2026-03-31", "title": "Agent Systems Engineer"},
+    {"window_id": "phase-1", "start": "2026-04-01", "end": "2026-04-30", "title": "AI Agent Engineer"},
+    {"window_id": "phase-20", "start": "2026-05-01", "end": "2026-05-31", "title": "智能体平台工程师"}
+  ],
+  "stable_role": {
+    "skills": ["Python", "RAG", "Agent Orchestration"],
+    "responsibilities": ["构建智能体应用", "设计工具调用与评测链路"],
+    "companies": ["acme", "globex", "initech", "umbrella"],
+    "sources": ["source-a", "source-b"]
+  },
+  "weak_role": {
+    "title": "Legacy Batch Specialist",
+    "skills": ["COBOL", "Mainframe"],
+    "responsibilities": ["Maintain legacy batch jobs"],
+    "company": "legacy-single-company",
+    "source": "source-legacy",
+    "observed_window_ids": ["phase-9"]
+  },
+  "position_reference": {
+    "position_id": "standard-backend-engineer",
+    "graph_version_id": "skill-graph-2026.05",
+    "required_skills": ["Java", "Spring"]
+  }
+}

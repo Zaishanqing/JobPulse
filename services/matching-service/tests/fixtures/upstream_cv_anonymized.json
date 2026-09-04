@@ -1,0 +1,84 @@
+{
+  "contract_version": "cv-matching-input-bundle.v1",
+  "source_system": "cv-extraction-anonymized-fixture",
+  "user_ref": "usr_opaque_integration_001",
+  "verification_snapshot_id": "cv_verify_snapshot_20260727_001",
+  "review_status": "approved",
+  "structure_derivation_version": "cv-structure-projection.v1",
+  "structure": {
+    "document_id": "cv_anon_integration_001",
+    "education": [
+      {
+        "education_id": "edu_anon_001",
+        "degree_level": "bachelor",
+        "field_of_study": "Computer Science",
+        "resolution_status": "resolved",
+        "evidence": [{"source_id": "cv:edu:1", "quote": "Bachelor in Computer Science", "start": 0, "end": 28, "alignment": "exact", "occurrence_index": 0}]
+      }
+    ],
+    "work_experiences": [
+      {
+        "experience_id": "work_anon_001",
+        "kind": "work",
+        "role": "Backend Engineer",
+        "responsibilities": [{"value": "Build Python API services", "evidence": {"source_id": "cv:work:task:1", "quote": "Build Python API services", "start": 0, "end": 25, "alignment": "exact", "occurrence_index": 0}}],
+        "business_scenarios": [{"value": "API platform", "evidence": {"source_id": "cv:work:scenario:1", "quote": "API platform", "start": 0, "end": 12, "alignment": "exact", "occurrence_index": 0}}],
+        "tool_source_item_ids": ["cv_skill_python_work"],
+        "start_date": "2021-01-01",
+        "end_date": "2025-01-01",
+        "evidence": [{"source_id": "cv:work:1", "quote": "Backend Engineer 2021-2025", "start": 0, "end": 26, "alignment": "exact", "occurrence_index": 0}]
+      }
+    ],
+    "projects": [
+      {
+        "experience_id": "project_anon_001",
+        "kind": "project",
+        "role": "Backend Engineer",
+        "responsibilities": [{"value": "Build Python API services", "evidence": {"source_id": "cv:project:task:1", "quote": "Build Python API services", "start": 0, "end": 25, "alignment": "exact", "occurrence_index": 0}}],
+        "business_scenarios": [{"value": "API platform", "evidence": {"source_id": "cv:project:scenario:1", "quote": "API platform", "start": 0, "end": 12, "alignment": "exact", "occurrence_index": 0}}],
+        "tool_source_item_ids": ["cv_skill_python_project"],
+        "start_date": "2024-01-01",
+        "end_date": "2024-12-31",
+        "evidence": [{"source_id": "cv:project:1", "quote": "Python API platform project", "start": 0, "end": 27, "alignment": "exact", "occurrence_index": 0}]
+      }
+    ],
+    "certificates": [],
+    "languages": [],
+    "evidence": []
+  },
+  "normalization": {
+    "document_id": "cv_anon_integration_001",
+    "taxonomy_version": "position-taxonomy.v3.0.0",
+    "derivation_version": "cv-normalization.v2.4",
+    "skills": [
+      {"source_item_id": "cv_skill_python_declared", "source_scope": "skills", "source_name": "Python", "skill_id": "LANG_PYTHON", "canonical_name": "Python", "normalization_confidence": 0.99, "resolution_source": "canonical_name", "declared_level": "proficient", "resolution_status": "resolved", "evidence": [{"source_id": "cv:skill:1", "quote": "Python", "start": 0, "end": 6, "alignment": "exact", "occurrence_index": 0}]},
+      {"source_item_id": "cv_skill_python_work", "source_scope": "work:work_anon_001:tech_stack", "source_name": "Python", "skill_id": "LANG_PYTHON", "canonical_name": "Python", "normalization_confidence": 0.99, "resolution_source": "canonical_name", "declared_level": null, "resolution_status": "resolved", "evidence": [{"source_id": "cv:work:skill:1", "quote": "Python", "start": 0, "end": 6, "alignment": "exact", "occurrence_index": 0}]},
+      {"source_item_id": "cv_skill_python_project", "source_scope": "project:project_anon_001:tech_stack", "source_name": "Python", "skill_id": "LANG_PYTHON", "canonical_name": "Python", "normalization_confidence": 0.99, "resolution_source": "canonical_name", "declared_level": null, "resolution_status": "resolved", "evidence": [{"source_id": "cv:project:skill:1", "quote": "Python", "start": 0, "end": 6, "alignment": "exact", "occurrence_index": 0}]}
+    ]
+  },
+  "match_features": {
+    "document_id": "cv_anon_integration_001",
+    "as_of_date": "2026-07-27",
+    "taxonomy_version": "position-taxonomy.v3.0.0",
+    "derivation_version": "cv-match-feature.v1.3",
+    "features": [
+      {"feature_id": "feature_python_declared", "document_id": "cv_anon_integration_001", "side": "cv", "feature_type": "skill", "source_object_id": "cv_skill_python_declared", "source_scope": "skills", "canonical_id": "LANG_PYTHON", "canonical_name": "Python", "raw_text": "Python", "vector_text": "Python", "requirement_modality": null, "candidate_level": "proficient", "structured_values": {"aggregation_key": "skill:LANG_PYTHON"}, "resolution_status": "resolved", "evidence_refs": [{"source_id": "cv:skill:1", "quote": "Python", "start": 0, "end": 6, "alignment": "exact", "occurrence_index": 0}], "taxonomy_version": "position-taxonomy.v3.0.0", "derivation_version": "cv-match-feature.v1.3"},
+      {"feature_id": "feature_python_experience", "document_id": "cv_anon_integration_001", "side": "cv", "feature_type": "skill", "source_object_id": "cv_skill_python_work", "source_scope": "work:work_anon_001:tech_stack", "canonical_id": "LANG_PYTHON", "canonical_name": "Python", "raw_text": "Python", "vector_text": "Python", "requirement_modality": null, "candidate_level": null, "structured_values": {"aggregation_key": "skill:LANG_PYTHON"}, "resolution_status": "resolved", "evidence_refs": [{"source_id": "cv:work:skill:1", "quote": "Python", "start": 0, "end": 6, "alignment": "exact", "occurrence_index": 0}], "taxonomy_version": "position-taxonomy.v3.0.0", "derivation_version": "cv-match-feature.v1.3"},
+      {"feature_id": "feature_work_task", "document_id": "cv_anon_integration_001", "side": "cv", "feature_type": "task", "source_object_id": "work_anon_001", "source_scope": "work:work_anon_001:responsibility", "canonical_id": null, "canonical_name": null, "raw_text": "Build Python API services", "vector_text": "Build Python API services", "requirement_modality": null, "candidate_level": null, "structured_values": {}, "resolution_status": "resolved", "evidence_refs": [{"source_id": "cv:work:task:1", "quote": "Build Python API services", "start": 0, "end": 25, "alignment": "exact", "occurrence_index": 0}], "taxonomy_version": "position-taxonomy.v3.0.0", "derivation_version": "cv-match-feature.v1.3"},
+      {"feature_id": "feature_work_experience", "document_id": "cv_anon_integration_001", "side": "cv", "feature_type": "experience", "source_object_id": "work_anon_001", "source_scope": "work:work_anon_001", "canonical_id": null, "canonical_name": null, "raw_text": "Backend Engineer 2021-2025", "vector_text": null, "requirement_modality": null, "candidate_level": null, "structured_values": {}, "resolution_status": "resolved", "evidence_refs": [{"source_id": "cv:work:1", "quote": "Backend Engineer 2021-2025", "start": 0, "end": 26, "alignment": "exact", "occurrence_index": 0}], "taxonomy_version": "position-taxonomy.v3.0.0", "derivation_version": "cv-match-feature.v1.3"},
+      {"feature_id": "feature_work_role", "document_id": "cv_anon_integration_001", "side": "cv", "feature_type": "role", "source_object_id": "work_anon_001", "source_scope": "work:work_anon_001:position", "canonical_id": null, "canonical_name": "Backend Engineer", "raw_text": "Backend Engineer", "vector_text": "Backend Engineer", "requirement_modality": null, "candidate_level": "senior", "structured_values": {"position_code": "BACKEND_ENGINEER", "classification_status": "resolved", "career_level": "senior", "leadership_scope": "none"}, "resolution_status": "resolved", "evidence_refs": [{"source_id": "cv:work:1", "quote": "Backend Engineer 2021-2025", "start": 0, "end": 26, "alignment": "exact", "occurrence_index": 0}], "taxonomy_version": "position-taxonomy.v3.0.0", "derivation_version": "position-classifier.v3.0"}
+    ]
+  },
+  "capabilities": {
+    "document_id": "cv_anon_integration_001",
+    "taxonomy_version": "position-taxonomy.v3.0.0",
+    "derivation_version": "capability-verification.v1",
+    "profiles": [
+      {"profile_id": "cap_python", "document_id": "cv_anon_integration_001", "aggregation_key": "skill:LANG_PYTHON", "skill_id": "LANG_PYTHON", "canonical_name": "Python", "declared_feature_ids": ["feature_python_declared"], "experience_skill_feature_ids": ["feature_python_experience"], "evidence_link_ids": ["link_python_work"], "declared_level": "proficient", "demonstrated_level": "proficient", "demonstrated_level_label": "proficient", "verification_status": "supported", "support_confidence": 0.9, "confidence_band": "high", "independent_experience_count": 1, "aggregate_support_score": 4, "evidence_bonus": 0.2, "resolution_status": "resolved"}
+    ],
+    "evidence_links": [
+      {"link_id": "link_python_work", "document_id": "cv_anon_integration_001", "aggregation_key": "skill:LANG_PYTHON", "skill_id": "LANG_PYTHON", "canonical_name": "Python", "declared_feature_ids": ["feature_python_declared"], "experience_skill_feature_id": "feature_python_experience", "experience_feature_id": "feature_work_experience", "supporting_task_feature_ids": ["feature_work_task"], "support_signals": ["direct_experience", "task_evidence"], "support_score": 4, "demonstrated_level": "proficient", "support_confidence": 0.9, "confidence_band": "high", "evidence_refs": [{"source_id": "cv:work:task:1", "quote": "Build Python API services", "start": 0, "end": 25, "alignment": "exact", "occurrence_index": 0}], "taxonomy_version": "position-taxonomy.v3.0.0", "derivation_version": "capability-verification.v1"}
+    ]
+  },
+  "unresolved_items": []
+}

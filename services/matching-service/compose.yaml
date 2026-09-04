@@ -1,0 +1,244 @@
+name: matching-service
+
+x-matching-environment: &matching-environment
+  MATCHING_RUNTIME_MODE: production
+  MATCHING_PERSISTENCE_PROVIDER: postgres
+  MATCHING_DATABASE_URL: postgresql+psycopg://${MATCHING_POSTGRES_USER:-matching}:${MATCHING_POSTGRES_PASSWORD:?set MATCHING_POSTGRES_PASSWORD}@postgres:5432/${MATCHING_POSTGRES_DB:-matching}
+  MATCHING_DATABASE_CONNECT_TIMEOUT_SECONDS: ${MATCHING_DATABASE_CONNECT_TIMEOUT_SECONDS:-3}
+  MATCHING_DATABASE_POOL_TIMEOUT_SECONDS: ${MATCHING_DATABASE_POOL_TIMEOUT_SECONDS:-3}
+  MATCHING_DATABASE_POOL_SIZE: ${MATCHING_DATABASE_POOL_SIZE:-5}
+  MATCHING_DATABASE_MAX_OVERFLOW: ${MATCHING_DATABASE_MAX_OVERFLOW:-5}
+  MATCHING_QUEUE_PROVIDER: redis
+  MATCHING_REDIS_URL: redis://redis:6379/0
+  MATCHING_QUEUE_NAME: ${MATCHING_QUEUE_NAME:-matching:evaluation-tasks}
+  MATCHING_QUEUE_VISIBILITY_TIMEOUT_SECONDS: ${MATCHING_QUEUE_VISIBILITY_TIMEOUT_SECONDS:-15}
+  MATCHING_QUEUE_RETRY_INTERVAL_SECONDS: ${MATCHING_QUEUE_RETRY_INTERVAL_SECONDS:-2}
+  MATCHING_REDIS_TIMEOUT_SECONDS: ${MATCHING_REDIS_TIMEOUT_SECONDS:-3}
+  MATCHING_AUTH_MODE: ${MATCHING_AUTH_MODE:-jwt}
+  MATCHING_AUTH_ISSUER: ${MATCHING_AUTH_ISSUER:-https://matching.local/issuer}
+  MATCHING_AUTH_AUDIENCE: ${MATCHING_AUTH_AUDIENCE:-matching-api}
+  MATCHING_AUTH_VERIFICATION_KEY: ${MATCHING_AUTH_VERIFICATION_KEY:-}
+  MATCHING_AUTH_ALGORITHMS: ${MATCHING_AUTH_ALGORITHMS:-HS256}
+  MATCHING_AUTH_DISCOVERY_URL: ${MATCHING_AUTH_DISCOVERY_URL:-}
+  MATCHING_AUTH_TIMEOUT_SECONDS: ${MATCHING_AUTH_TIMEOUT_SECONDS:-5}
+  MATCHING_AUTH_JWKS_CACHE_TTL_SECONDS: ${MATCHING_AUTH_JWKS_CACHE_TTL_SECONDS:-300}
+  MATCHING_EMBEDDING_BATCH_SIZE: ${MATCHING_EMBEDDING_BATCH_SIZE:-32}
+  MATCHING_EMBEDDING_TIMEOUT_SECONDS: ${MATCHING_EMBEDDING_TIMEOUT_SECONDS:-5}
+  MATCHING_EMBEDDING_MAX_RETRIES: ${MATCHING_EMBEDDING_MAX_RETRIES:-2}
+  MATCHING_EMBEDDING_RETRY_BACKOFF_SECONDS: ${MATCHING_EMBEDDING_RETRY_BACKOFF_SECONDS:-0.1}
+  MATCHING_VECTOR_TIMEOUT_SECONDS: ${MATCHING_VECTOR_TIMEOUT_SECONDS:-5}
+  MATCHING_VECTOR_MAX_RETRIES: ${MATCHING_VECTOR_MAX_RETRIES:-2}
+  MATCHING_VECTOR_RETRY_BACKOFF_SECONDS: ${MATCHING_VECTOR_RETRY_BACKOFF_SECONDS:-0.1}
+  MATCHING_CV_SOURCE_URL: ${MATCHING_CV_SOURCE_URL:?set MATCHING_CV_SOURCE_URL}
+  MATCHING_CV_HEALTH_URL: ${MATCHING_CV_HEALTH_URL:-}
+  MATCHING_POSITION_SOURCE_URL: ${MATCHING_POSITION_SOURCE_URL:?set MATCHING_POSITION_SOURCE_URL}
+  MATCHING_POSITION_HEALTH_URL: ${MATCHING_POSITION_HEALTH_URL:-}
+  MATCHING_GRAPH_SOURCE_URL: ${MATCHING_GRAPH_SOURCE_URL:?set MATCHING_GRAPH_SOURCE_URL}
+  MATCHING_GRAPH_HEALTH_URL: ${MATCHING_GRAPH_HEALTH_URL:-}
+  MATCHING_GRAPH_VERSION: ${MATCHING_GRAPH_VERSION:?set MATCHING_GRAPH_VERSION}
+  MATCHING_CV_AUTHORIZATION_URL: ${MATCHING_CV_AUTHORIZATION_URL:?set MATCHING_CV_AUTHORIZATION_URL}
+  MATCHING_CV_AUTHORIZATION_HEALTH_URL: ${MATCHING_CV_AUTHORIZATION_HEALTH_URL:-}
+  MATCHING_APPLICATION_GRANT_URL: ${MATCHING_APPLICATION_GRANT_URL:?set MATCHING_APPLICATION_GRANT_URL}
+  MATCHING_APPLICATION_GRANT_HEALTH_URL: ${MATCHING_APPLICATION_GRANT_HEALTH_URL:-}
+  MATCHING_UPSTREAM_SERVICE_TOKEN: ${MATCHING_UPSTREAM_SERVICE_TOKEN:?set MATCHING_UPSTREAM_SERVICE_TOKEN}
+  MATCHING_UPSTREAM_TIMEOUT_SECONDS: ${MATCHING_UPSTREAM_TIMEOUT_SECONDS:-5}
+  MATCHING_UPSTREAM_MAX_RETRIES: ${MATCHING_UPSTREAM_MAX_RETRIES:-2}
+  MATCHING_UPSTREAM_RETRY_BACKOFF_SECONDS: ${MATCHING_UPSTREAM_RETRY_BACKOFF_SECONDS:-0.1}
+  MATCHING_PROFILE_CONTRACT_MAPPING_VERSION: ${MATCHING_PROFILE_CONTRACT_MAPPING_VERSION:-contract-mapping.v3}
+  MATCHING_SEMANTIC_ALGORITHM_VERSION: ${MATCHING_SEMANTIC_ALGORITHM_VERSION:-semantic-shadow.v1}
+  MATCHING_SEMANTIC_THRESHOLD_VERSION: ${MATCHING_SEMANTIC_THRESHOLD_VERSION:-semantic-shadow-disabled.v1}
+  MATCHING_SEMANTIC_TOP_K: ${MATCHING_SEMANTIC_TOP_K:-20}
+  MATCHING_SEMANTIC_TOP_N: ${MATCHING_SEMANTIC_TOP_N:-50}
+  MATCHING_SEMANTIC_DISABLED_TENANT_REFS: ${MATCHING_SEMANTIC_DISABLED_TENANT_REFS:-}
+  MATCHING_SEMANTIC_DISABLED_TARGET_TYPES: ${MATCHING_SEMANTIC_DISABLED_TARGET_TYPES:-}
+  MATCHING_DEEPSEEK_MODE: ${MATCHING_DEEPSEEK_MODE:-disabled}
+  MATCHING_DEEPSEEK_MODEL: ${MATCHING_DEEPSEEK_MODEL:-deepseek-v4-flash}
+  MATCHING_DEEPSEEK_ALGORITHM_VERSION: ${MATCHING_DEEPSEEK_ALGORITHM_VERSION:-deepseek-semantic-candidates.v1}
+  MATCHING_DEEPSEEK_TIMEOUT_SECONDS: ${MATCHING_DEEPSEEK_TIMEOUT_SECONDS:-120}
+  MATCHING_DEEPSEEK_MAX_CANDIDATES: ${MATCHING_DEEPSEEK_MAX_CANDIDATES:-10}
+  MATCHING_DEEPSEEK_MIN_RELATION_CONFIDENCE: ${MATCHING_DEEPSEEK_MIN_RELATION_CONFIDENCE:-0.7}
+  MATCHING_DEEPSEEK_MAX_CANDIDATES_PER_REQUIREMENT: ${MATCHING_DEEPSEEK_MAX_CANDIDATES_PER_REQUIREMENT:-3}
+  DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+  DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+  MATCHING_API_SHUTDOWN_TIMEOUT_SECONDS: ${MATCHING_API_SHUTDOWN_TIMEOUT_SECONDS:-30}
+  MATCHING_API_LOG_LEVEL: ${MATCHING_API_LOG_LEVEL:-info}
+  MATCHING_WORKER_SHUTDOWN_TIMEOUT_SECONDS: ${MATCHING_WORKER_SHUTDOWN_TIMEOUT_SECONDS:-30}
+  MATCHING_WORKER_LOG_LEVEL: ${MATCHING_WORKER_LOG_LEVEL:-INFO}
+  MATCHING_QDRANT_TIMEOUT_SECONDS: ${MATCHING_QDRANT_TIMEOUT_SECONDS:-5}
+  MATCHING_QDRANT_MAX_RETRIES: ${MATCHING_QDRANT_MAX_RETRIES:-2}
+  MATCHING_QDRANT_RETRY_BACKOFF_SECONDS: ${MATCHING_QDRANT_RETRY_BACKOFF_SECONDS:-0.1}
+
+x-matching-image: &matching-image
+  image: ${MATCHING_IMAGE:-jobgraph/matching-service:local}
+  build:
+    context: ../..
+    dockerfile: services/matching-service/Dockerfile
+  env_file:
+    - ../../config/semantic-demo-contract.env
+  environment: *matching-environment
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${MATCHING_POSTGRES_USER:-matching}
+      POSTGRES_PASSWORD: ${MATCHING_POSTGRES_PASSWORD:?set MATCHING_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${MATCHING_POSTGRES_DB:-matching}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - matching-postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - matching-redis-data:/data
+
+  embedding-service:
+    build:
+      context: ../embedding-service
+    restart: unless-stopped
+    env_file:
+      - ../../config/semantic-demo-contract.env
+    environment:
+      EMBEDDING_BATCH_SIZE: ${EMBEDDING_BATCH_SIZE:-16}
+      EMBEDDING_MAX_CONCURRENCY: ${EMBEDDING_MAX_CONCURRENCY:-2}
+      EMBEDDING_REQUEST_TIMEOUT_SECONDS: ${EMBEDDING_REQUEST_TIMEOUT_SECONDS:-30}
+    volumes:
+      - ../../.cache/embedding-models:/models
+    ports:
+      - "${EMBEDDING_PUBLISHED_PORT:-8001}:8000"
+    healthcheck:
+      test:
+        ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=2)"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+
+  qdrant:
+    image: qdrant/qdrant:v1.12.5
+    restart: unless-stopped
+    ports:
+      - "${QDRANT_PUBLISHED_PORT:-6333}:6333"
+    volumes:
+      - matching-qdrant-data:/qdrant/storage
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c ':> /dev/tcp/127.0.0.1/6333'"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  matching-migrate:
+    <<: *matching-image
+    command: ["migrate"]
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  matching-api:
+    <<: *matching-image
+    command: ["api"]
+    restart: unless-stopped
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      embedding-service:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    ports:
+      - "${MATCHING_API_PUBLISHED_PORT:-8000}:8000"
+    healthcheck:
+      test:
+        ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
+  matching-worker:
+    <<: *matching-image
+    command: ["worker"]
+    restart: unless-stopped
+    environment:
+      <<: *matching-environment
+      MATCHING_WORKER_TOKEN: ${MATCHING_WORKER_TOKEN:?set MATCHING_WORKER_TOKEN}
+      MATCHING_WORKER_ID: ${MATCHING_WORKER_ID:-matching-worker-compose}
+      MATCHING_WORKER_METRICS_HOST: 0.0.0.0
+      MATCHING_WORKER_METRICS_PORT: 9091
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+    ports:
+      - "${MATCHING_WORKER_PUBLISHED_PORT:-9091}:9091"
+    healthcheck:
+      test:
+        ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:9091/health/ready', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
+  matching-vector-worker:
+    <<: *matching-image
+    command: ["vector-worker"]
+    restart: unless-stopped
+    environment:
+      <<: *matching-environment
+      MATCHING_EMBEDDING_ENDPOINT: http://embedding-service:8000
+      MATCHING_VECTOR_WORKER_ID: ${MATCHING_VECTOR_WORKER_ID:-matching-vector-worker-compose}
+      MATCHING_VECTOR_WORKER_METRICS_HOST: 0.0.0.0
+      MATCHING_VECTOR_WORKER_METRICS_PORT: 9092
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      embedding-service:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    ports:
+      - "${MATCHING_VECTOR_WORKER_PUBLISHED_PORT:-9092}:9092"
+    healthcheck:
+      test:
+        ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:9092/health/ready', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
+  matching-dispatcher:
+    <<: *matching-image
+    command: ["dispatcher"]
+    restart: unless-stopped
+    environment:
+      <<: *matching-environment
+      MATCHING_DISPATCHER_ID: ${MATCHING_DISPATCHER_ID:-matching-dispatcher-compose}
+      MATCHING_OUTBOX_LEASE_SECONDS: ${MATCHING_OUTBOX_LEASE_SECONDS:-30}
+      MATCHING_OUTBOX_RETRY_INTERVAL_SECONDS: ${MATCHING_OUTBOX_RETRY_INTERVAL_SECONDS:-2}
+      MATCHING_OUTBOX_IDLE_SECONDS: ${MATCHING_OUTBOX_IDLE_SECONDS:-0.25}
+    depends_on:
+      matching-migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+
+volumes:
+  matching-postgres-data:
+  matching-redis-data:
+  matching-qdrant-data:

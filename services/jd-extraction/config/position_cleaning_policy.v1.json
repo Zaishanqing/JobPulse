@@ -1,0 +1,581 @@
+{
+  "schema": "position-cleaning-policy.v1",
+  "policy_version": "position-cleaning.v3",
+  "taxonomy_version": "position-taxonomy.v3.0.0",
+  "near_threshold": {
+    "minimum_top_score": 0.7,
+    "minimum_margin": 0.05,
+    "minimum_evidence_refs": 1
+  },
+  "historical_title_consensus": {
+    "minimum_occurrences": 2
+  },
+  "candidate_title_consensus": {
+    "minimum_title_occurrences": 2,
+    "minimum_winner_share": 0.75
+  },
+  "single_candidate_catalog_gap": {
+    "minimum_score": 0.4,
+    "minimum_evidence_refs": 1
+  },
+  "strong_title_rules": [
+    {
+      "position_code": "AI_AGENT_ENGINEER",
+      "required_any": [
+        "智能体开发",
+        "智能体研发",
+        "智能体工程师",
+        "智能体架构师",
+        "agent开发",
+        "agent研发",
+        "agent工程师",
+        "agent架构师"
+      ],
+      "forbidden_any": [
+        "销售",
+        "产品经理",
+        "运营",
+        "训练师",
+        "助理",
+        "合伙人",
+        "ceo",
+        "法务",
+        "hrbp",
+        "质量经理",
+        "seo"
+      ]
+    },
+    {
+      "position_code": "RAG_ENGINEER",
+      "required_any": ["rag工程", "rag开发", "检索增强生成"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "LLM_ALGORITHM_ENGINEER",
+      "required_all": ["大模型", "算法"],
+      "forbidden_any": ["产品", "运营", "销售"]
+    },
+    {
+      "position_code": "LLM_APPLICATION_ENGINEER",
+      "required_all": ["大模型", "开发"],
+      "forbidden_any": ["算法", "产品"]
+    },
+    {
+      "position_code": "AI_PRODUCT_MANAGER",
+      "required_any": ["ai产品经理", "人工智能产品经理", "大模型产品经理", "智能体产品经理"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DATA_PRODUCT_MANAGER",
+      "required_any": ["数据产品经理"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "TECHNICAL_PRODUCT_MANAGER",
+      "required_any": ["技术产品经理"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "BACKEND_ENGINEER",
+      "required_any": [
+        "java",
+        "php工程师",
+        "php开发",
+        "python后端",
+        "java开发",
+        "java后端",
+        "后端开发",
+        "服务端开发"
+      ],
+      "forbidden_any": ["前端", "全栈", "测试", "产品开发", "硬件"]
+    },
+    {
+      "position_code": "FRONTEND_ENGINEER",
+      "required_any": ["前端开发", "web前端"],
+      "forbidden_any": ["模拟前端", "硬件"]
+    },
+    {
+      "position_code": "FULLSTACK_ENGINEER",
+      "required_any": ["全栈开发", "前后端工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SYSTEM_OPERATIONS_ENGINEER",
+      "required_any": ["系统运维", "平台运维", "运维工程师"],
+      "forbidden_any": ["河运维", "设备运维", "车辆运维"]
+    },
+    {
+      "position_code": "DATA_ENGINEER",
+      "required_any": ["数据工程师", "data engineer"],
+      "forbidden_any": ["质量", "标注"]
+    },
+    {
+      "position_code": "DATA_ANALYST",
+      "required_any": ["数据分析师", "数据分析岗"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SOFTWARE_TEST_ENGINEER",
+      "required_any": ["软件测试工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "TEST_DEVELOPMENT_ENGINEER",
+      "required_any": ["测试开发工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "EMBEDDED_SOFTWARE_ENGINEER",
+      "required_any": ["嵌入式软件"],
+      "forbidden_any": ["硬件"]
+    },
+    {
+      "position_code": "FIRMWARE_ENGINEER",
+      "required_any": ["固件开发", "固件工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "MLOPS_ENGINEER",
+      "required_any": ["mlops"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DEVOPS_ENGINEER",
+      "required_any": ["devops"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "KNOWLEDGE_GRAPH_ENGINEER",
+      "required_any": ["知识图谱工程师", "知识图谱开发"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "AUTONOMOUS_DRIVING_ENGINEER",
+      "required_any": ["自动驾驶算法", "智能驾驶算法"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SLAM_ALGORITHM_ENGINEER",
+      "required_any": ["slam算法", "slam工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "NLP_ALGORITHM_ENGINEER",
+      "required_any": ["nlp算法", "自然语言处理算法"],
+      "forbidden_any": ["大模型", "llm"]
+    },
+    {
+      "position_code": "COMPUTER_VISION_ENGINEER",
+      "required_any": ["计算机视觉算法", "视觉算法工程师", "cv算法工程师"],
+      "forbidden_any": ["多模态"]
+    },
+    {
+      "position_code": "MULTIMODAL_ALGORITHM_ENGINEER",
+      "required_any": ["多模态算法", "vlm算法", "vla算法"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "RECOMMENDATION_SEARCH_ENGINEER",
+      "required_any": ["推荐算法", "搜索算法", "搜推算法"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SPEECH_ALGORITHM_ENGINEER",
+      "required_any": ["语音算法"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "MACHINE_LEARNING_ENGINEER",
+      "required_any": ["机器学习算法工程师", "machine learning engineer"],
+      "forbidden_any": ["大模型", "llm"]
+    },
+    {
+      "position_code": "DEEP_LEARNING_ENGINEER",
+      "required_any": ["深度学习算法工程师"],
+      "forbidden_any": ["大模型", "llm"]
+    },
+    {
+      "position_code": "AI_INFERENCE_OPTIMIZATION_ENGINEER",
+      "required_any": ["推理优化工程师", "模型推理优化"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DATA_SCIENTIST",
+      "required_any": ["数据科学家", "data scientist"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "BIG_DATA_ENGINEER",
+      "required_any": ["大数据开发工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DATA_WAREHOUSE_ENGINEER",
+      "required_any": ["数据仓库工程师", "数仓开发工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DATA_GOVERNANCE_ENGINEER",
+      "required_any": ["数据治理工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DATABASE_ENGINEER",
+      "required_any": ["数据库工程师", "dba工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "ANDROID_ENGINEER",
+      "required_any": ["android开发工程师", "安卓开发工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "IOS_ENGINEER",
+      "required_any": ["ios开发工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SOFTWARE_ARCHITECT",
+      "required_any": ["软件架构师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "CLOUD_PLATFORM_ENGINEER",
+      "required_any": ["云平台工程师", "云计算平台工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SRE_ENGINEER",
+      "required_any": ["sre工程师", "站点可靠性工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "APPLICATION_OPERATIONS_ENGINEER",
+      "required_any": ["应用运维工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "MIDDLEWARE_ENGINEER",
+      "required_any": ["中间件工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "CYBERSECURITY_ENGINEER",
+      "required_any": ["网络安全工程师", "信息安全工程师"],
+      "forbidden_any": ["汽车", "生产", "施工"]
+    },
+    {
+      "position_code": "APPLICATION_SECURITY_ENGINEER",
+      "required_any": ["应用安全工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DATA_SECURITY_ENGINEER",
+      "required_any": ["数据安全工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SECURITY_OPERATIONS_ENGINEER",
+      "required_any": ["安全运营工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "NETWORK_ENGINEER",
+      "required_any": ["网络工程师"],
+      "forbidden_any": ["销售"]
+    },
+    {
+      "position_code": "COMMUNICATIONS_ENGINEER",
+      "required_any": ["通信工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "IOT_ENGINEER",
+      "required_any": ["物联网工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "FPGA_ENGINEER",
+      "required_any": ["fpga工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "IC_DESIGN_ENGINEER",
+      "required_any": ["芯片设计工程师", "ic设计工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "IC_VERIFICATION_ENGINEER",
+      "required_any": ["芯片验证工程师", "ic验证工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "ROBOTICS_ENGINEER",
+      "required_any": ["机器人工程师", "机器人仿真工程师"],
+      "forbidden_any": ["销售", "资产管理", "质量经理"]
+    },
+    {
+      "position_code": "HARDWARE_TEST_ENGINEER",
+      "required_any": ["硬件测试工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "PERFORMANCE_TEST_ENGINEER",
+      "required_any": ["性能测试工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "QUALITY_ASSURANCE_ENGINEER",
+      "required_any": ["质量保障工程师", "qa工程师"],
+      "forbidden_any": ["供应链", "汽车", "材料"]
+    },
+    {
+      "position_code": "PRODUCT_MANAGER",
+      "required_any": [
+        "互联网产品经理",
+        "软件产品经理",
+        "游戏策划",
+        "游戏主策划",
+        "系统策划",
+        "数值策划",
+        "任务策划"
+      ],
+      "forbidden_any": ["汽车", "快消", "硬件", "保险", "金融产品"]
+    },
+    {
+      "position_code": "UI_DESIGNER",
+      "required_any": ["ui设计师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "UX_INTERACTION_DESIGNER",
+      "required_any": [
+        "交互设计师",
+        "ux设计师",
+        "用户体验设计师",
+        "用户研究",
+        "user researcher"
+      ],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "GAME_DEVELOPMENT_ENGINEER",
+      "required_any": [
+        "技术美术",
+        "technical artist",
+        "关卡td",
+        "技术策划",
+        "游戏技术美术"
+      ],
+      "forbidden_any": ["市场", "营销", "销售"]
+    },
+    {
+      "position_code": "VISUAL_DESIGNER",
+      "required_any": [
+        "视觉设计师",
+        "游戏特效设计师",
+        "3d特效师",
+        "三维动画设计师",
+        "角色原画",
+        "场景原画",
+        "level artist",
+        "vx设计师"
+      ],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "IT_PROJECT_MANAGER",
+      "required_any": ["it项目经理", "信息化项目经理"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "TECHNICAL_PROJECT_MANAGER",
+      "required_any": ["技术项目经理"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "IMPLEMENTATION_CONSULTANT",
+      "required_any": ["实施顾问"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DELIVERY_MANAGER",
+      "required_any": ["技术交付经理"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SOLUTION_ARCHITECT",
+      "required_any": ["解决方案架构师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "PRE_SALES_ENGINEER",
+      "required_any": ["售前技术工程师", "售前工程师"],
+      "forbidden_any": ["汽车", "机械"]
+    },
+    {
+      "position_code": "TECHNICAL_CONSULTANT",
+      "required_any": ["技术顾问"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "CUSTOMER_SUCCESS_ENGINEER",
+      "required_any": ["客户成功工程师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "CONTENT_OPERATIONS",
+      "required_any": ["内容运营"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "USER_OPERATIONS",
+      "required_any": ["用户运营"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "PRODUCT_OPERATIONS",
+      "required_any": ["产品运营"],
+      "forbidden_any": ["自有品牌", "商品"]
+    },
+    {
+      "position_code": "GROWTH_OPERATIONS",
+      "required_any": ["增长运营"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "COMMUNITY_OPERATIONS",
+      "required_any": ["社区运营"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "ECOMMERCE_OPERATIONS",
+      "required_any": ["电商运营"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "DATA_OPERATIONS",
+      "required_any": ["数据运营"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "BUSINESS_ANALYST",
+      "required_any": ["业务分析师", "商业分析师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "SYSTEM_ANALYST",
+      "required_any": ["系统分析师"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "ENGINEERING_MANAGER",
+      "required_any": ["研发经理", "研发管理"],
+      "forbidden_any": []
+    },
+    {
+      "position_code": "TECHNOLOGY_EXECUTIVE",
+      "required_any": ["技术负责人", "研发负责人"],
+      "forbidden_any": ["销售", "产品", "运营"]
+    }
+  ],
+  "technical_title_patterns": [
+    "开发",
+    "工程师",
+    "架构",
+    "算法",
+    "数据",
+    "人工智能",
+    "大模型",
+    "智能体",
+    "前端",
+    "后端",
+    "全栈",
+    "测试",
+    "运维",
+    "网络安全",
+    "信息安全",
+    "软件",
+    "硬件",
+    "嵌入式",
+    "固件",
+    "机器学习",
+    "深度学习",
+    "计算机视觉",
+    "自然语言处理",
+    "研发",
+    "网络",
+    "云平台",
+    "数据库",
+    "芯片",
+    "集成电路",
+    "机器人",
+    "物联网",
+    "边缘计算",
+    "Java",
+    "Python",
+    "C++",
+    "iOS",
+    "Android",
+    "LLM",
+    "Agent",
+    "NLP",
+    "MLOps",
+    "DevOps"
+    ,"产品"
+    ,"运营"
+    ,"策划"
+    ,"设计"
+    ,"用户研究"
+    ,"用户体验"
+    ,"交互"
+    ,"项目管理"
+    ,"项目经理"
+    ,"交付"
+    ,"实施"
+    ,"解决方案"
+    ,"售前"
+    ,"技术支持"
+    ,"客户成功"
+    ,"质量"
+    ,"仿真"
+    ,"自动驾驶"
+    ,"智能驾驶"
+    ,"通信"
+    ,"电子"
+    ,"电气"
+    ,"系统分析"
+    ,"信息化"
+  ],
+  "obvious_out_of_scope_title_patterns": [
+    "销售顾问",
+    "门店销售",
+    "汽车顾问",
+    "门店店长",
+    "储备店长",
+    "行销顾问",
+    "客户经理",
+    "大客户经理",
+    "销售主管",
+    "销售经理",
+    "销售岗",
+    "人力资源",
+    "招聘专员",
+    "招聘实习生",
+    "财务",
+    "会计",
+    "出纳",
+    "审计",
+    "仓储",
+    "物流销售",
+    "采购经理",
+    "采销经理",
+    "城市经理",
+    "省区经理",
+    "店总",
+    "保险产品",
+    "商务拓展",
+    "市场营销",
+    "品牌营销"
+  ]
+}

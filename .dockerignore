@@ -1,0 +1,23 @@
+.git
+**/.env
+**/.venv
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.test-artifacts/
+**/.ci.test-artifacts/
+**/.pytest_tmp*
+**/.acceptance_*.db
+**/uploads/
+**/node_modules/
+**/dist/
+**/build/
+**/.cache/
+
+# Research and local runtime outputs are not Docker build inputs.
+research/
+apps/api/data/runtime/
+services/crawler/data/
+services/crawler/output/
+services/crawler/cookies/
+services/crawler/browser_profile/

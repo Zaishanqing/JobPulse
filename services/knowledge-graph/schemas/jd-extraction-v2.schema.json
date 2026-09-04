@@ -1,0 +1,533 @@
+{
+  "$defs": {
+    "CertificateRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "modality": {
+          "default": "unknown",
+          "enum": [
+            "required",
+            "preferred",
+            "bonus",
+            "unknown"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "const": "certificate",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "evidence",
+        "text",
+        "kind"
+      ],
+      "title": "CertificateRequirement",
+      "type": "object"
+    },
+    "CompanyFact": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        }
+      },
+      "required": [
+        "fact_id",
+        "text",
+        "evidence"
+      ],
+      "title": "CompanyFact",
+      "type": "object"
+    },
+    "EducationRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "modality": {
+          "default": "unknown",
+          "enum": [
+            "required",
+            "preferred",
+            "bonus",
+            "unknown"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "const": "education",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "evidence",
+        "text",
+        "kind"
+      ],
+      "title": "EducationRequirement",
+      "type": "object"
+    },
+    "EmploymentFact": {
+      "additionalProperties": false,
+      "properties": {
+        "fact_id": {
+          "title": "Fact Id",
+          "type": "string"
+        },
+        "fact_type": {
+          "enum": [
+            "location",
+            "employment_type",
+            "salary",
+            "headcount",
+            "schedule",
+            "other"
+          ],
+          "title": "Fact Type",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        }
+      },
+      "required": [
+        "fact_id",
+        "fact_type",
+        "text",
+        "evidence"
+      ],
+      "title": "EmploymentFact",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "title": "Source Id",
+          "type": "string"
+        },
+        "quote": {
+          "title": "Quote",
+          "type": "string"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "alignment": {
+          "default": "unresolved",
+          "enum": [
+            "exact",
+            "normalized_exact",
+            "unresolved"
+          ],
+          "title": "Alignment",
+          "type": "string"
+        },
+        "occurrence_index": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Occurrence Index"
+        }
+      },
+      "required": [
+        "source_id",
+        "quote"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "ExperienceRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "modality": {
+          "default": "unknown",
+          "enum": [
+            "required",
+            "preferred",
+            "bonus",
+            "unknown"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "const": "experience",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "evidence",
+        "text",
+        "kind"
+      ],
+      "title": "ExperienceRequirement",
+      "type": "object"
+    },
+    "OtherRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "modality": {
+          "default": "unknown",
+          "enum": [
+            "required",
+            "preferred",
+            "bonus",
+            "unknown"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "const": "other",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "evidence",
+        "text",
+        "kind"
+      ],
+      "title": "OtherRequirement",
+      "type": "object"
+    },
+    "SkillItem": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "item_type": {
+          "default": "technology",
+          "enum": [
+            "technology",
+            "tool",
+            "language",
+            "framework",
+            "platform",
+            "method",
+            "other"
+          ],
+          "title": "Item Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "SkillItem",
+      "type": "object"
+    },
+    "SkillRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "modality": {
+          "default": "unknown",
+          "enum": [
+            "required",
+            "preferred",
+            "bonus",
+            "unknown"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "kind": {
+          "const": "skill",
+          "title": "Kind",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/SkillItem"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "proficiency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proficiency"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "evidence",
+        "kind",
+        "items"
+      ],
+      "title": "SkillRequirement",
+      "type": "object"
+    },
+    "SoftSkillRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "modality": {
+          "default": "unknown",
+          "enum": [
+            "required",
+            "preferred",
+            "bonus",
+            "unknown"
+          ],
+          "title": "Modality",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "kind": {
+          "const": "soft_skill",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "evidence",
+        "text",
+        "kind"
+      ],
+      "title": "SoftSkillRequirement",
+      "type": "object"
+    },
+    "SourcedText": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        }
+      },
+      "required": [
+        "text",
+        "evidence"
+      ],
+      "title": "SourcedText",
+      "type": "object"
+    },
+    "TaskRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "text",
+        "evidence"
+      ],
+      "title": "TaskRequirement",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "job_title": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SourcedText"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "responsibilities": {
+      "items": {
+        "$ref": "#/$defs/TaskRequirement"
+      },
+      "title": "Responsibilities",
+      "type": "array"
+    },
+    "requirements": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "certificate": "#/$defs/CertificateRequirement",
+            "education": "#/$defs/EducationRequirement",
+            "experience": "#/$defs/ExperienceRequirement",
+            "other": "#/$defs/OtherRequirement",
+            "skill": "#/$defs/SkillRequirement",
+            "soft_skill": "#/$defs/SoftSkillRequirement"
+          },
+          "propertyName": "kind"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/SkillRequirement"
+          },
+          {
+            "$ref": "#/$defs/EducationRequirement"
+          },
+          {
+            "$ref": "#/$defs/ExperienceRequirement"
+          },
+          {
+            "$ref": "#/$defs/CertificateRequirement"
+          },
+          {
+            "$ref": "#/$defs/SoftSkillRequirement"
+          },
+          {
+            "$ref": "#/$defs/OtherRequirement"
+          }
+        ]
+      },
+      "title": "Requirements",
+      "type": "array"
+    },
+    "company_facts": {
+      "items": {
+        "$ref": "#/$defs/CompanyFact"
+      },
+      "title": "Company Facts",
+      "type": "array"
+    },
+    "employment_facts": {
+      "items": {
+        "$ref": "#/$defs/EmploymentFact"
+      },
+      "title": "Employment Facts",
+      "type": "array"
+    }
+  },
+  "required": [
+    "document_id"
+  ],
+  "title": "JDExtractionResult",
+  "type": "object"
+}

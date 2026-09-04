@@ -1,0 +1,13 @@
+{
+  "completed_by_both_count": 0,
+  "completion_rate": 0.0,
+  "publication_decision_cohen_kappa": null,
+  "requirement_exact_agreement": {
+    "f1": null,
+    "precision": null,
+    "recall": null
+  },
+  "schema_version": "jd-independent-annotation-agreement.v1",
+  "shared_case_count": 200,
+  "status": "pending_human_annotation"
+}

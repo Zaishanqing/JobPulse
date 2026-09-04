@@ -1,0 +1,7 @@
+batch_size: 20
+min_document_count: 2
+max_evidence_samples: 3
+max_candidates_per_review: 50
+pending_review_dir: config/pending_review
+applied_review_dir: config/pending_review/applied
+candidate_pool_path: config/normalization_candidate_pool.json
